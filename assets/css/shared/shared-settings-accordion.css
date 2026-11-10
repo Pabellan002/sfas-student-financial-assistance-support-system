@@ -1,0 +1,469 @@
+/**
+ * Shared settings accordion — use with body.portal-settings-page
+ */
+
+body.portal-settings-page [hidden] {
+    display: none !important;
+}
+
+body.portal-settings-page .portal-settings-main-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.portal-settings-page .portal-settings-main-card > .card-header {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid #eef1f5;
+}
+
+body.portal-settings-page .portal-settings-main-card > .card-body {
+    padding: 1.25rem 1.15rem 1.5rem;
+    background: #f4f6f9;
+}
+
+body.portal-settings-page .settings-page-menu__item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 76px;
+    padding: 0.95rem 1.1rem;
+    color: #1f2937;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.portal-settings-page .settings-page-menu__item:hover {
+    color: #03600f;
+    border-color: rgba(3, 96, 15, 0.35);
+    box-shadow: 0 9px 22px rgba(3, 96, 15, 0.09);
+    transform: translateY(-1px);
+}
+
+body.portal-settings-page .settings-page-menu__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    color: #03600f;
+    background: #eaf7ee;
+    border-radius: 11px;
+    font-size: 1.1rem;
+}
+
+body.portal-settings-page .settings-page-menu__item span:nth-child(2) {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+body.portal-settings-page .settings-page-menu__item small {
+    margin-top: 0.15rem;
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+body.portal-settings-page .settings-page-menu__arrow {
+    color: #94a3b8;
+}
+
+body.portal-settings-page .settings-page-back {
+    margin-bottom: 0.9rem;
+}
+
+body.portal-settings-page .settings-page-back a {
+    color: #03600f;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body.portal-settings-page .settings-page-focus .accordion-header {
+    display: none;
+}
+
+body.portal-settings-page .settings-page-focus .accordion-collapse {
+    display: block;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    text-align: left !important;
+    background: linear-gradient(135deg, #f0faf3 0%, #fff 72%);
+    border: 1px solid #d8ebdd;
+    border-radius: 16px;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero .position-relative {
+    flex: 0 0 auto;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero img {
+    width: 82px !important;
+    height: 82px !important;
+    border: 4px solid #fff !important;
+    box-shadow: 0 5px 16px rgba(3, 96, 15, 0.16);
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero .mt-2 {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    margin: 0 !important;
+    color: #64748b;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero .mt-2::before {
+    margin-bottom: 0.22rem;
+    color: #173b25;
+    content: 'Profile & contact';
+    font-size: 1.15rem;
+    font-weight: 750;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero .mt-2::after {
+    margin: 0.15rem 0 0.4rem;
+    color: #52635a;
+    content: 'Keep your details current so we can contact you about your work and account.';
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-profile-hero small {
+    color: #61746a !important;
+    font-size: 0.78rem;
+}
+
+body.portal-settings-page .settings-page-focus .settings-contact-section-label {
+    margin: 1.15rem 0 0.15rem;
+    padding-bottom: 0.5rem;
+    color: #03600f;
+    border-bottom: 1px solid #e5ece7;
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.portal-settings-page .settings-page-focus .row > .settings-contact-section-label {
+    width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    body.portal-settings-page .settings-page-focus .settings-contact-profile-hero {
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.9rem;
+    }
+
+    body.portal-settings-page .settings-page-focus .settings-contact-profile-hero img {
+        width: 66px !important;
+        height: 66px !important;
+    }
+
+    body.portal-settings-page .settings-page-focus .settings-contact-profile-hero .mt-2::before {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    body.portal-settings-page .portal-settings-main-card > .card-body {
+        padding: 1.5rem 1.5rem 1.75rem;
+    }
+}
+
+body.portal-settings-page .portal-settings-accordion {
+    --bs-accordion-border-color: #e8ecf0;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+    --bs-accordion-active-bg: #ffffff;
+    --bs-accordion-active-color: #212529;
+}
+
+body.portal-settings-page .portal-settings-accordion-item {
+    background: #fff;
+    border: 1px solid #e8ecf0 !important;
+    border-radius: 14px !important;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+body.portal-settings-page .portal-settings-accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+body.portal-settings-page .portal-settings-accordion .accordion-button {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #212529 !important;
+    background: #fff;
+    padding: 1rem 1.15rem;
+    box-shadow: none;
+}
+
+body.portal-settings-page .portal-settings-accordion .accordion-button:not(.collapsed) {
+    color: #212529 !important;
+    background: #fff;
+    box-shadow: none;
+    border-bottom: 1px solid #eef1f5;
+}
+
+body.portal-settings-page .portal-settings-accordion .accordion-button i {
+    font-size: 1.05rem;
+    color: #495057;
+}
+
+body.portal-settings-page .portal-settings-accordion .accordion-button::after {
+    filter: none;
+    opacity: 0.55;
+}
+
+body.portal-settings-page .portal-settings-accordion .accordion-body {
+    padding: 1.15rem 1.15rem 1.25rem;
+    background: #fff;
+}
+
+@media (min-width: 768px) {
+    body.portal-settings-page .portal-settings-accordion .accordion-button {
+        padding: 1.1rem 1.5rem;
+    }
+
+    body.portal-settings-page .portal-settings-accordion .accordion-body {
+        padding: 1.25rem 1.5rem 1.5rem;
+    }
+}
+
+body.portal-settings-page .portal-settings-accordion .form-control,
+body.portal-settings-page .portal-settings-accordion .form-select {
+    border-radius: 10px;
+    border-color: #dce3ea;
+}
+
+body.portal-settings-page .portal-settings-accordion .form-control:focus,
+body.portal-settings-page .portal-settings-accordion .form-select:focus {
+    border-color: rgba(3, 96, 15, 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+}
+
+body.portal-settings-page .portal-settings-accordion .input-group .form-control {
+    border-radius: 0 10px 10px 0;
+}
+
+body.portal-settings-page .portal-settings-accordion .input-group .input-group-text {
+    border-radius: 10px 0 0 10px;
+    border-color: #dce3ea;
+    background: #f8fafc;
+}
+
+body.portal-settings-page .portal-settings-accordion .input-group .btn-outline-secondary:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+body.portal-settings-page .portal-settings-accordion .btn-success {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Shared Cloudflare Turnstile layout for profile, password, and OTP forms. */
+body.portal-settings-page .turnstile-responsive {
+    width: 100%;
+    max-width: 100%;
+}
+
+body.portal-settings-page .turnstile-responsive__host {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    justify-content: flex-end;
+}
+
+body.portal-settings-page .turnstile-responsive__host > div,
+body.portal-settings-page .turnstile-responsive__host iframe {
+    max-width: 100% !important;
+}
+
+body.portal-settings-page .turnstile-responsive__status {
+    overflow-wrap: anywhere;
+}
+
+body.portal-settings-page .settings-turnstile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    padding: 1rem;
+    background: rgba(7, 24, 14, 0.58);
+    backdrop-filter: blur(2px);
+}
+
+body.portal-settings-page .settings-turnstile-overlay .turnstile-responsive__host {
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+}
+
+body.portal-settings-page .settings-turnstile-overlay .turnstile-responsive__status {
+    max-width: 360px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+body.turnstile-overlay-open {
+    overflow: hidden;
+}
+
+body.portal-settings-page #profileImagePreview,
+body.portal-settings-page #studentProfileImagePreview {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+
+body.portal-settings-page .portal-settings-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 0.15rem;
+}
+
+body.portal-settings-page .portal-settings-faq-entry {
+    border: 1px solid #eef1f5;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    background: #f8fafc;
+}
+
+body.portal-settings-page .portal-settings-faq-entry__question {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1d2939;
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+}
+
+body.portal-settings-page .portal-settings-faq-entry__answer {
+    font-size: 0.84rem;
+    color: #475569;
+    line-height: 1.55;
+}
+
+body.portal-settings-page .portal-settings-logout-panel {
+    margin-top: 0.75rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid #e8ecf0;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+@media (min-width: 768px) {
+    body.portal-settings-page .portal-settings-logout-panel {
+        padding: 1.1rem 1.5rem;
+    }
+}
+
+body.portal-settings-page .portal-settings-logout-panel__title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #212529;
+    margin-bottom: 0.35rem;
+}
+
+body.portal-settings-page .portal-settings-logout-copy {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+body.portal-settings-page #settingsLogoutBtn {
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 140px;
+}
+
+/* Activity Log Styles */
+body.portal-settings-page #activityLogTable {
+    font-size: 0.875rem;
+}
+
+body.portal-settings-page #activityLogTable thead th {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #475569;
+    border-bottom: 2px solid #e8ecf0;
+    padding: 0.75rem 0.85rem;
+}
+
+body.portal-settings-page #activityLogTable tbody td {
+    padding: 0.85rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+body.portal-settings-page #activityLogTable tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+body.portal-settings-page #activityLogTable .badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.45em 0.75em;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+body.portal-settings-page #activityLogPagination {
+    padding-top: 0.75rem;
+    border-top: 1px solid #e8ecf0;
+}
+
+body.portal-settings-page #activityLogPagination .pagination-sm .page-link {
+    border-radius: 6px;
+    margin: 0 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+body.portal-settings-page #activityLogPagination .pagination-sm .page-item.active .page-link {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+body.portal-settings-page #activityLogInfo {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Profile fields should stack on phones, regardless of dashboard KPI row rules. */
+@media (max-width: 767.98px) {
+    body.portal-settings-page:is(.finance-settings-page, .coo-settings-page, .assessment-app, .branch-settings-page) #updateContactForm .row.g-3 > [class*="col-"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}

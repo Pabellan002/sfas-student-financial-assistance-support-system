@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Student Registration - CSDL Student Financial Assistance</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+    <link href="../../assets/css/auth/register.css?v=20261010-family-full-name" rel="stylesheet">
+</head>
+<body class="register-page">
+    <header class="register-topbar">
+        <div class="register-topbar__inner">
+            <div class="register-topbar__brand">
+                <img src="../../assets/images/i.png" alt="CSDL">
+                <div>
+                    <p class="register-topbar__title mb-0">Student Financial Assistance</p>
+                    <p class="register-topbar__subtitle mb-0">PHINMA Cagayan de Oro College</p>
+                </div>
+            </div>
+            <a href="login.html" class="register-back-link">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                <span>Back to sign in</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="register-shell">
+        <aside class="register-hero">
+            <div class="register-intro">
+                <span class="register-intro__eyebrow">Student account request</span>
+                <h1>Start your financial assistance journey.</h1>
+                <p>
+                    <span class="register-intro__copy register-intro__copy--desktop">Register your student information for review. After CSDL approves your account, Assessment will prepare your balance record before you apply for a loan.</span>
+                    <span class="register-intro__copy register-intro__copy--mobile">Register for CSDL review, then sign in after approval.</span>
+                </p>
+            </div>
+            <div class="register-steps" role="group" aria-label="Registration process">
+                <span class="register-step">
+                    <span class="register-step__num">1</span>
+                    <span class="register-step__text register-step__text--short">Complete form</span>
+                    <span class="register-step__text register-step__text--full">Complete the registration form</span>
+                </span>
+                <span class="register-step__divider" aria-hidden="true"></span>
+                <span class="register-step">
+                    <span class="register-step__num">2</span>
+                    <span class="register-step__text register-step__text--short">CSDL approval</span>
+                    <span class="register-step__text register-step__text--full">CSDL approval</span>
+                </span>
+                <span class="register-step__divider" aria-hidden="true"></span>
+                <span class="register-step">
+                    <span class="register-step__num">3</span>
+                    <span class="register-step__text register-step__text--short">Sign in</span>
+                    <span class="register-step__text register-step__text--full">Sign in after CSDL approval</span>
+                </span>
+                <span class="register-step__divider" aria-hidden="true"></span>
+                <span class="register-step">
+                    <span class="register-step__num">4</span>
+                    <span class="register-step__text register-step__text--short">Balance setup</span>
+                    <span class="register-step__text register-step__text--full">Assessment sets balance before loans</span>
+                </span>
+            </div>
+            <div class="register-guide-note">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                <span>Your information is reviewed securely by the CSDL office.</span>
+            </div>
+        </aside>
+
+        <section class="register-workspace" aria-labelledby="registrationDetailsTitle">
+            <div class="register-workspace__head">
+                <div>
+                    <h2 id="registrationDetailsTitle">Registration details</h2>
+                    <p>Upload your school ID and complete the information below.</p>
+                </div>
+                <span class="register-required-note"><span class="text-danger">*</span> Required fields</span>
+            </div>
+
+            <div id="registerError" class="alert alert-danger d-none mb-3" role="alert" aria-hidden="true"></div>
+
+            <div class="register-card">
+            <form id="registerForm" novalidate>
+                <div class="register-form-layout">
+                    <div class="register-form-layout__col">
+                        <section class="register-section">
+                            <div class="register-section__head">
+                                <span class="register-section__icon"><i class="bi bi-person"></i></span>
+                                <div>
+                                    <h2 class="register-section__title">Personal Information</h2>
+                                </div>
+                            </div>
+                            <div class="school-id-scanner" id="schoolIdScanner">
+                                <input type="file" id="schoolIdScanInput" class="visually-hidden" accept="image/jpeg,image/png,image/webp">
+                                <div class="school-id-scanner__copy">
+                                    <span class="school-id-scanner__icon"><i class="bi bi-card-image"></i></span>
+                                    <div>
+                                        <h3>Upload your school ID</h3>
+                                    </div>
+                                </div>
+                                <div class="school-id-scanner__actions">
+                                    <button type="button" class="btn btn-success" id="schoolIdScanBtn">
+                                        <span id="schoolIdScanBtnIcon"><i class="bi bi-upload"></i></span>
+                                        <span id="schoolIdScanBtnText">Upload School ID</span>
+                                        <span id="schoolIdScanBtnSpinner" class="spinner-border spinner-border-sm d-none ms-1" role="status" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-sm-6">
+                                    <label for="school_id" class="form-label">School ID <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="school_id" name="school_id" placeholder="02-2324-13857" required autocomplete="username" readonly>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juan" required maxlength="80" autocomplete="given-name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="middle_name" class="form-label">Middle Name <span class="text-muted">(Optional)</span></label>
+                                    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="De La" autocomplete="additional-name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Cruz" required maxlength="80" autocomplete="family-name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="birthDateToggle" class="form-label">Date of Birth</label>
+                                    <div class="register-dob" id="birthDatePicker">
+                                        <button type="button" class="register-dob__trigger" id="birthDateToggle" aria-haspopup="dialog" aria-controls="birthDateCalendar" aria-expanded="false" aria-describedby="birthDateError">
+                                            <span id="birthDateValue">Select date of birth</span>
+                                            <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="register-dob__calendar d-none" id="birthDateCalendar" role="dialog" aria-label="Choose date of birth">
+                                            <div class="register-dob__toolbar">
+                                                <button type="button" class="register-dob__nav" id="birthPrevMonth" aria-label="Previous month"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+                                                <label for="birthCalendarMonth" class="visually-hidden">Month</label>
+                                                <select class="form-select" id="birthCalendarMonth" aria-label="Month"></select>
+                                                <label for="birthCalendarYear" class="visually-hidden">Year</label>
+                                                <select class="form-select" id="birthCalendarYear" aria-label="Year"></select>
+                                                <button type="button" class="register-dob__nav" id="birthNextMonth" aria-label="Next month"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="register-dob__weekdays" aria-hidden="true"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+                                            <div class="register-dob__days" id="birthCalendarDays" role="group" aria-label="Days of the month"></div>
+                                            <div class="register-dob__footer"><button type="button" id="birthDateClear">Clear date</button></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="date_of_birth" name="date_of_birth">
+                                    <div class="register-field-error d-none" id="birthDateError" role="alert"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="gender" name="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="register-section register-section--last-in-col">
+                            <div class="register-section__head">
+                                <span class="register-section__icon"><i class="bi bi-mortarboard"></i></span>
+                                <div>
+                                    <h2 class="register-section__title">Academic Information</h2>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <label for="program_id" class="form-label">Program <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="program_id" name="program_id" required>
+                                        <option value="">Select program</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="year_level_id" class="form-label">Year Level <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="year_level_id" name="year_level_id" required>
+                                        <option value="">Select year level</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="campus_id" class="form-label">Campus</label>
+                                    <select class="form-select" id="campus_id" name="campus_id">
+                                        <option value="">Select campus</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="modality" class="form-label">Modality</label>
+                                    <select class="form-select" id="modality" name="modality" required>
+                                        <option value="">Select Modality</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="fb_account" class="form-label">Facebook Account</label>
+                                    <input type="text" class="form-control" id="fb_account" name="fb_account" placeholder="Facebook name or profile URL">
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="register-form-layout__col">
+                        <section class="register-section">
+                            <div class="register-section__head">
+                                <span class="register-section__icon"><i class="bi bi-envelope-at"></i></span>
+                                <div>
+                                    <h2 class="register-section__title">Contact Information</h2>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-sm-6">
+                                    <label for="contact_number" class="form-label">Contact Number</label>
+                                    <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder="e.g. 09123456789" maxlength="11" inputmode="numeric" pattern="[0-9]*" autocomplete="tel">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="personal_email" class="form-label">Personal Email</label>
+                                    <input type="email" class="form-control" id="personal_email" name="personal_email" placeholder="e.g. name@gmail.com" autocomplete="email">
+                                </div>
+                                <div class="col-12">
+                                    <label for="email_local" class="form-label">PHINMAEd School Email</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="email_local" name="email_local" placeholder="firstname.lastname.coc" autocomplete="off">
+                                        <span class="input-group-text">@phinmaed.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="register-section register-section--last-in-col">
+                            <div class="register-section__head">
+                                <span class="register-section__icon"><i class="bi bi-shield-lock"></i></span>
+                                <div>
+                                    <h2 class="register-section__title">Account Password</h2>
+                                </div>
+                            </div>
+                            <div class="row g-2 pb-1">
+                                <div class="col-sm-6">
+                                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" name="password" required autocomplete="new-password">
+                                        <button type="button" class="btn btn-outline-secondary" id="togglePasswordBtn" tabindex="-1" aria-label="Show password"><i class="bi bi-eye-slash"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="confirm_password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autocomplete="new-password">
+                                        <button type="button" class="btn btn-outline-secondary" id="toggleConfirmPasswordBtn" tabindex="-1" aria-label="Show confirm password"><i class="bi bi-eye-slash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register-security-check d-none" id="registerSecurityCheck">
+                                <div id="registerTurnstile" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+                            </div>
+                        </section>
+                    </div>
+                    <section class="register-section register-section--family" aria-labelledby="registerFamilyTitle">
+                        <div class="register-section__head">
+                            <span class="register-section__icon"><i class="bi bi-people"></i></span>
+                            <div><h2 class="register-section__title" id="registerFamilyTitle">Family Details</h2></div>
+                        </div>
+                        <p class="small text-muted mb-3">Add at least one family member who may be selected for a loan application. Enter their full name and mobile number. If a sibling will act as your guardian, enter them under Guardian.</p>
+                        <div class="row g-3" id="registerFamilyFixed">
+                            <div class="col-md-4" data-family-member data-relationship-id="1"><div class="register-family-person"><h3 class="h6">Father</h3><label class="form-label small">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name autocomplete="off" maxlength="200" aria-label="Father full name"></label><label class="form-label small mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Father mobile number"></label></div></div>
+                            <div class="col-md-4" data-family-member data-relationship-id="2"><div class="register-family-person"><h3 class="h6">Mother</h3><label class="form-label small">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name autocomplete="off" maxlength="200" aria-label="Mother full name"></label><label class="form-label small mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Mother mobile number"></label></div></div>
+                            <div class="col-md-4" data-family-member data-relationship-id="3"><div class="register-family-person"><h3 class="h6">Guardian</h3><label class="form-label small">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name autocomplete="off" maxlength="200" aria-label="Guardian full name"></label><label class="form-label small mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Guardian mobile number"></label></div></div>
+                        </div>
+                    </section>
+                </div>
+                <div class="register-account-actions mt-3">
+                    <button type="submit" class="btn btn-success register-submit-btn" id="registerSubmitBtn"><span id="registerSubmitText">Submit</span></button>
+                </div>
+            </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <meta name="csrf-token" content="">
+    <script type="module" src="../../js/auth/auth-register.js?v=20261011-mobile-no-zero"></script>
+</body>
+</html>

@@ -1,0 +1,2560 @@
+/* Students Dashboard Styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #03600f;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 100px;
+    --header-height: 56px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+/* Student mobile header logo override:
+   remove white circular badge from shared navbar styles */
+@media (max-width: 991.98px) {
+    .navbar .navbar-brand.student-mobile-brand img {
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+    }
+}
+
+.stat-card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--success-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stat-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.stat-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--success-color);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+    line-height: 1;
+}
+
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Student Profile Card - Expanded to fill available space */
+#studentProfileCard {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#studentProfileCard .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+#studentProfileCard .row.g-4 {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* Base styles for columns - apply on all screens */
+#studentProfileCard .col-lg-9,
+#studentProfileCard .col-lg-3.profile-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Desktop specific alignment */
+@media (min-width: 992px) {
+    #studentProfileCard .col-lg-9,
+    #studentProfileCard .col-lg-3.profile-section {
+        align-items: stretch;
+    }
+
+    /* Slightly compact overall profile card height on desktop */
+    #studentProfileCard .student-info-section {
+        margin-bottom: 1rem !important;
+    }
+
+    #studentProfileCard hr.my-4 {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #studentProfileCard .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+#studentProfileCard .col-lg-9 {
+    /* Update Contact Details - left column, expanded */
+    flex: 1 1 auto;
+}
+
+
+/* Desktop Only Styles - Profile Section */
+@media (min-width: 992px) {
+    #studentProfileCard .card-header {
+        margin-bottom: 0 !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    #studentProfileCard .card-body {
+        padding-top: 0.25rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    #studentProfileCard .row.g-4 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        margin-left: -0.5rem !important;
+        margin-right: -0.5rem !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section {
+        /* Profile Photo column - Positioned at the very top */
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        min-height: 100%;
+        padding: 0 0.5rem 1rem !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Ensure profile section content starts at the top */
+    #studentProfileCard .col-lg-3.profile-section > div.mb-4 {
+        margin-bottom: 0.5rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section > div:first-child {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .profile-name {
+        margin-bottom: 0.15rem !important;
+        margin-top: 0 !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .profile-role {
+        margin-bottom: 0.5rem !important;
+        margin-top: 0 !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .quick-actions-mobile {
+        max-width: 220px;
+        margin: 0 auto;
+        width: 100%;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+
+/* Desktop Only - Button Styles */
+@media (min-width: 992px) {
+    #studentProfileCard .col-lg-3.profile-section .quick-action-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        border-radius: 0.375rem;
+        text-align: center;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .quick-action-btn i {
+        font-size: 0.9rem;
+    }
+}
+
+#studentProfileCard form {
+    min-height: 0;
+}
+
+/* Student Info Value - Base Styles */
+#studentProfileCard .student-info-value {
+    font-size: 1.05rem;
+    color: #212529;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+    padding: 1rem 1.5rem;
+}
+
+.card-header h6 {
+    color: var(--success-color) !important;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.875rem;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(25, 135, 84, 0.05);
+}
+
+.badge.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--success-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #024a0c !important;
+    border-color: #024a0c !important;
+}
+
+.btn-success {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-success:hover {
+    background-color: #024a0c !important;
+    border-color: #024a0c !important;
+}
+
+.btn-outline-success {
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+    color: white !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#mainContent {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    min-height: calc(100vh - var(--header-height));
+    padding-top: 1rem;
+    overflow: visible;
+}
+
+/* Page title: same brand tone as student dashboard (deep green, not pure black) */
+#mainContent #pageTitle {
+    color: #123524;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+#mainContent #pageTitle + small.text-muted {
+    color: #5f6c7b !important;
+}
+
+@media (max-width: 575.98px) {
+    #mainContent #pageTitle {
+        font-size: 1.45rem;
+    }
+}
+
+@media (min-width: 576px) {
+    #mainContent #pageTitle {
+        font-size: 1.65rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #mainContent #pageTitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    #mainContent {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+/* ===== Students Loans Page Enhancements ===== */
+.filters-card .card-body {
+    padding: 1.5rem 1.25rem;
+}
+
+.filters-card .input-group {
+    border: 1px solid #dee2e6;
+    border-radius: 0.65rem;
+    overflow: hidden;
+}
+
+.filters-card .input-group-text {
+    border: none;
+    background-color: #fff;
+    color: #6c757d;
+}
+
+.filters-card .form-control,
+.filters-card .form-select {
+    border-radius: 0.65rem;
+    border: 1px solid #dee2e6;
+}
+
+.filters-card .btn {
+    border-radius: 0.65rem;
+}
+
+.stat-card.active-card {
+    border-left-width: 6px;
+    border-left-color: #024a0c;
+    box-shadow: 0 0.65rem 1.5rem rgba(3, 96, 15, 0.15);
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+}
+
+.table .view-loan-btn {
+    min-width: 80px;
+}
+
+@media (max-width: 767.98px) {
+    .filters-card .card-body {
+        padding: 1rem;
+    }
+
+    .filters-card .col-lg-1,
+    .filters-card .col-md-6 {
+        width: 100%;
+    }
+
+    .filters-card .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .stat-card .stat-value {
+        font-size: 1.75rem;
+    }
+}
+
+/* Calendar Styles - Green Theme */
+
+/* Base Calendar Container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 240px;
+}
+
+.calendar-container.compact {
+    min-height: 220px;
+}
+
+/* Calendar Header - Day Names */
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    justify-items: center;
+    align-items: center;
+    padding: 0.5rem 2px;
+    padding-left: 12px !important;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.calendar-header.compact {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    justify-items: center;
+    align-items: center;
+    padding: 0.5rem 2px;
+    padding-left: 12px !important;
+}
+
+.calendar-day-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem;
+    text-align: center;
+    color: #495057;
+}
+
+/* Calendar Body - Days Grid */
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    justify-items: stretch;
+    align-items: center;
+    padding: 0.25rem 2px;
+    padding-left: 12px !important;
+    flex: 1 1 auto;
+}
+
+.calendar-body.compact {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    justify-items: stretch;
+    align-items: center;
+    padding: 0.25rem 2px;
+    padding-left: 12px !important;
+    flex: 1 1 auto;
+}
+
+/* Calendar Day Cells */
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 28px;
+    max-height: 36px;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    color: #212529;
+}
+
+.calendar-day:hover {
+    background-color: #f8f9fa;
+    border-color: var(--success-color);
+}
+
+.calendar-day.other-month {
+    color: #adb5bd !important;
+}
+
+.calendar-day.today {
+    background-color: var(--success-color) !important;
+    color: white !important;
+}
+
+.calendar-day.today:hover {
+    background-color: #024a0c !important;
+}
+
+.calendar-container.compact .calendar-day.today {
+    background-color: var(--success-color) !important;
+    color: white !important;
+}
+
+.calendar-day.selected {
+    color: white !important;
+}
+
+/* Calendar loan dates indicators */
+.calendar-day.has-due-date {
+    position: relative;
+    background-color: #fff3cd !important;
+    border: 2px solid #ffc107 !important;
+    font-weight: 600;
+}
+
+.calendar-day.has-due-date::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #ffc107;
+    border-radius: 50%;
+}
+
+.calendar-day.has-exam-date {
+    position: relative;
+    background-color: #e7f1ff !important;
+    border: 2px solid #0d6efd !important;
+    font-weight: 600;
+}
+
+.calendar-day.has-exam-date::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #0d6efd;
+    border-radius: 50%;
+}
+
+.calendar-day.has-due-date.has-exam-date {
+    background: linear-gradient(135deg, #fff3cd 50%, #e7f1ff 50%) !important;
+    border: 2px solid #ffc107 !important;
+}
+
+.calendar-day.has-due-date.has-exam-date::after {
+    background: linear-gradient(90deg, #ffc107 50%, #0d6efd 50%);
+    width: 8px;
+    border-radius: 2px;
+}
+
+.calendar-day.has-promised-date {
+    position: relative;
+    background-color: #d1ecf1 !important;
+    border: 2px solid #0dcaf0 !important;
+    font-weight: 600;
+}
+
+.calendar-day.has-promised-date::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #0dcaf0;
+    border-radius: 50%;
+}
+
+.calendar-day.has-expiry-date {
+    position: relative;
+    background-color: #f8d7da !important;
+    border: 2px solid #dc3545 !important;
+    font-weight: 600;
+}
+
+.calendar-day.has-expiry-date::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #dc3545;
+    border-radius: 50%;
+}
+
+/* Combinations of two dates */
+.calendar-day.has-due-date.has-promised-date {
+    background: linear-gradient(135deg, #fff3cd 50%, #d1ecf1 50%) !important;
+    border: 2px solid #ffc107 !important;
+}
+
+.calendar-day.has-due-date.has-promised-date::after {
+    background: linear-gradient(90deg, #ffc107 50%, #0dcaf0 50%);
+    width: 8px;
+    border-radius: 2px;
+}
+
+.calendar-day.has-due-date.has-expiry-date {
+    background: linear-gradient(135deg, #fff3cd 50%, #f8d7da 50%) !important;
+    border: 2px solid #ffc107 !important;
+}
+
+.calendar-day.has-due-date.has-expiry-date::after {
+    background: linear-gradient(90deg, #ffc107 50%, #dc3545 50%);
+    width: 8px;
+    border-radius: 2px;
+}
+
+.calendar-day.has-promised-date.has-expiry-date {
+    background: linear-gradient(135deg, #d1ecf1 50%, #f8d7da 50%) !important;
+    border: 2px solid #0dcaf0 !important;
+}
+
+.calendar-day.has-promised-date.has-expiry-date::after {
+    background: linear-gradient(90deg, #0dcaf0 50%, #dc3545 50%);
+    width: 8px;
+    border-radius: 2px;
+}
+
+/* Combination of all three dates */
+.calendar-day.has-due-date.has-promised-date.has-expiry-date {
+    background: linear-gradient(135deg, #fff3cd 33.33%, #d1ecf1 33.33%, #d1ecf1 66.66%, #f8d7da 66.66%) !important;
+    border: 2px solid #ffc107 !important;
+}
+
+.calendar-day.has-due-date.has-promised-date.has-expiry-date::after {
+    background: linear-gradient(90deg, #ffc107 33.33%, #0dcaf0 33.33%, #0dcaf0 66.66%, #dc3545 66.66%);
+    width: 12px;
+    border-radius: 2px;
+}
+
+/* Ensure today's styling takes precedence but keep indicators visible */
+.calendar-day.today.has-due-date,
+.calendar-day.today.has-promised-date,
+.calendar-day.today.has-expiry-date {
+    background-color: var(--success-color) !important;
+    color: white !important;
+}
+
+.calendar-day.today.has-due-date {
+    border: 2px solid #ffc107 !important;
+}
+
+.calendar-day.today.has-promised-date {
+    border: 2px solid #0dcaf0 !important;
+}
+
+.calendar-day.today.has-expiry-date {
+    border: 2px solid #dc3545 !important;
+}
+
+.calendar-day.today.has-due-date.has-promised-date,
+.calendar-day.today.has-due-date.has-expiry-date,
+.calendar-day.today.has-promised-date.has-expiry-date,
+.calendar-day.today.has-due-date.has-promised-date.has-expiry-date {
+    background-color: var(--success-color) !important;
+    border: 2px solid #ffc107 !important;
+    color: white !important;
+}
+
+/* Dashboard Utility Styles */
+.sidebar-profile-container {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-profile-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar-profile-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Student mobile floating bottom navigation (replaces sidebar on phones) */
+@media (max-width: 991.98px) {
+    /* When sidebar toggler is hidden, add left breathing room so logo isn't glued to the edge */
+    body.students-mobile-bottom-nav-enabled .navbar .container-fluid {
+        padding-left: 0.7rem !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .navbar .navbar-brand.student-mobile-brand {
+        margin-left: 0.1rem !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled {
+        padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled #sidebarMenu,
+    body.students-mobile-bottom-nav-enabled #mobileSidebarOverlay {
+        display: none !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .navbar .navbar-toggler {
+        display: none !important;
+    }
+
+    .student-mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        width: min(94vw, 430px);
+        z-index: 1200;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.15rem;
+        padding: 0.35rem;
+    }
+
+    .student-mobile-bottom-nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #5f6c7b;
+        border-radius: 12px;
+        min-height: 58px;
+        gap: 0.1rem;
+        font-size: 0.68rem;
+        font-weight: 600;
+    }
+
+    .student-mobile-bottom-nav__link i {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .student-mobile-bottom-nav__link.is-active {
+        background: #03600f;
+        color: #ffffff;
+    }
+
+    .students-mobile-bottom-nav-enabled #chatbotWidget {
+        bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    /* Loan application modal: avoid bottom nav overlap on phones */
+    body.students-mobile-bottom-nav-enabled #loanApplicationModal .modal-dialog {
+        margin: 0.75rem;
+        margin-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled #loanApplicationModal .modal-content {
+        max-height: calc(100dvh - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+        overflow: hidden;
+    }
+
+    body.students-mobile-bottom-nav-enabled #loanApplicationModal .modal-body {
+        max-height: calc(100dvh - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Loan details + document viewer: sticky footer above bottom nav */
+    /* Loan details modal — vertically centered above bottom nav (dashboard + loans) */
+    body.students-mobile-bottom-nav-enabled #viewLoanModal.modal {
+        padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-dialog,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-dialog,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-dialog {
+        margin: 0.75rem auto;
+        max-height: calc(100dvh - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-content,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-content,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-content {
+        max-height: calc(100dvh - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-body,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-body,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-body {
+        overflow-y: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-footer,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-footer,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-footer {
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding-top: 0.75rem;
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-footer .btn,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-footer .btn,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-footer .btn {
+        min-height: 44px;
+    }
+
+    /*
+     * Modal Close button — match the clean balances-page style on mobile.
+     * Compact (no 44px expansion), right-aligned, natural width.
+     * Applies to: dashboard calendar modal, loan details modal, document viewer.
+     */
+    body.students-mobile-bottom-nav-enabled #calendarEventModal .modal-footer,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-footer,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal #loanDetailsFooter,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-footer,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-footer {
+        justify-content: flex-end !important;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    body.students-mobile-bottom-nav-enabled #calendarEventModal .modal-footer .btn,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-footer .btn,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal #loanDetailsFooter .btn,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-footer .btn,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-footer .btn {
+        min-height: unset !important;
+        height: auto !important;
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.875rem !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled #calendarEventModal .modal-footer .btn-secondary,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal .modal-footer .btn-secondary,
+    body.students-mobile-bottom-nav-enabled #viewLoanModal #loanDetailsFooter .btn-secondary,
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal .modal-footer .btn-secondary,
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-footer .btn-secondary {
+        width: auto !important;
+    }
+
+    /* Modal must sit above the floating bottom nav (z-index 1200) */
+    body.modal-open .student-mobile-bottom-nav {
+        z-index: 1040;
+    }
+}
+
+/* "View full details" button in latest-application card — full width on mobile, auto on desktop */
+.view-full-details-btn {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .view-full-details-btn {
+        width: auto;
+    }
+}
+
+/* Loan details modal — fixed shell; only body scrolls (prevents dragging modal up/down) */
+#viewLoanModal.modal,
+#viewDocumentModal.modal {
+    overflow: hidden !important;
+    overscroll-behavior: contain;
+}
+
+#viewLoanModal .modal-dialog,
+#viewDocumentModal .modal-dialog,
+.student-mobile-safe-modal .modal-dialog {
+    min-height: auto !important;
+    max-height: calc(100dvh - 1.5rem);
+    height: auto;
+    margin: auto;
+}
+
+#viewLoanModal .modal-content,
+#viewDocumentModal .modal-content,
+.student-mobile-safe-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 1.5rem);
+    overflow: hidden;
+}
+
+#viewLoanModal .modal-body,
+#viewDocumentModal .modal-body,
+.student-mobile-safe-modal .modal-body {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+#viewLoanModal .modal-footer,
+#viewDocumentModal .modal-footer,
+.student-mobile-safe-modal .modal-footer {
+    flex-shrink: 0;
+}
+
+#viewLoanModal .modal-header,
+#viewDocumentModal .modal-header,
+.student-mobile-safe-modal .modal-header {
+    flex-shrink: 0;
+}
+
+/* Balance detail and FAQ modals: restore Bootstrap's vertical centering on desktop.
+   The shared mobile-safe modal shell intentionally removes the dialog min-height,
+   which otherwise pins these shorter desktop modals to the top of the viewport. */
+@media (min-width: 992px) {
+    #viewBalanceModal .modal-dialog.modal-dialog-centered,
+    #balanceFaqModal .modal-dialog.modal-dialog-centered {
+        min-height: calc(100% - (var(--bs-modal-margin) * 2)) !important;
+        margin: var(--bs-modal-margin) auto;
+    }
+
+    /* The document viewer uses the same scroll-safe shell, but remains vertically centered on desktop. */
+    #viewDocumentModal .modal-dialog.modal-dialog-centered {
+        min-height: calc(100% - (var(--bs-modal-margin) * 2)) !important;
+        margin: var(--bs-modal-margin) auto !important;
+    }
+}
+
+/* Student loan details modal: use the full phone viewport while it is open. */
+@media (max-width: 991.98px) {
+    body.students-mobile-bottom-nav-enabled.modal-open .student-mobile-bottom-nav {
+        display: none !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal {
+        padding: 0.5rem !important;
+        overflow: hidden !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-dialog {
+        width: 100%;
+        max-width: none !important;
+        height: auto;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+        min-height: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-dialog.modal-dialog-centered {
+        min-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-content {
+        height: auto !important;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled .student-mobile-safe-modal .modal-body {
+        overscroll-behavior: contain;
+    }
+}
+
+/* Mobile document viewer: let the image define the modal height instead of leaving empty space above and below it. */
+@media (max-width: 767.98px) {
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal #documentViewerContent {
+        min-height: 0 !important;
+        max-height: 60dvh !important;
+        overflow: auto !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal #documentViewerContent > .d-flex {
+        min-height: 0 !important;
+        align-items: flex-start !important;
+        padding: 0.75rem !important;
+    }
+
+    body.students-mobile-bottom-nav-enabled #viewDocumentModal #documentViewerContent img {
+        display: block;
+        width: 100%;
+        max-height: 52dvh;
+        object-fit: contain;
+    }
+}
+
+/* Application history — mobile cards */
+.student-loan-history-card {
+    background: #fff;
+}
+
+.student-loan-history-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+.student-loan-history-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.student-loan-history-table th,
+.student-loan-history-table td {
+    vertical-align: middle;
+}
+
+/* Keep the four history fields in columns. The wrapper scrolls horizontally
+   when the loan-details modal is narrower than the table. */
+.student-loan-history-table {
+    min-width: 720px;
+    table-layout: auto;
+    width: 100%;
+}
+
+.student-loan-history-table th:nth-child(1),
+.student-loan-history-table td:nth-child(1) {
+    width: auto;
+    min-width: 160px;
+}
+
+.student-loan-history-table th:nth-child(2),
+.student-loan-history-table td:nth-child(2) {
+    width: auto;
+    min-width: 150px;
+}
+
+.student-loan-history-table th:nth-child(3),
+.student-loan-history-table td:nth-child(3) {
+    width: auto;
+    min-width: 140px;
+}
+
+.student-loan-history-table th:nth-child(4),
+.student-loan-history-table td:nth-child(4) {
+    width: auto;
+    min-width: 270px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+@media (max-width: 767.98px) {
+    .student-loan-details .student-loan-history-table-wrap::after {
+        content: none;
+        display: none;
+    }
+}
+
+/* Card Header Styles - Green Theme */
+.card-header.bg-success {
+    background-color: #03600f !important;
+    color: white !important;
+}
+
+.card-header.bg-success h5,
+.card-header.bg-success .h5 {
+    color: white !important;
+}
+
+.card-header.bg-success i {
+    color: white !important;
+}
+
+/* Stat Cards - Masterfiles Style */
+.stat-card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--success-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stat-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.stat-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--success-color);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+    line-height: 1;
+}
+
+/* Calendar height matching for student dashboard */
+.row.mb-4 > .col-lg-7,
+.row.mb-4 > .col-lg-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.row.mb-4 > .col-lg-7 > .card {
+    /* Student Profile card (left column, expanded) - matches total height of right column */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.row.mb-4 > .col-lg-7 > .card > div:last-child {
+    /* Profile card body - expand to fill available space */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.row.mb-4 > .col-lg-7 > .card .row.g-4 {
+    /* Information grid - expand to fill space with more gap */
+    flex: 1 1 auto;
+    row-gap: 1.25rem !important;
+}
+
+.row.mb-4 > .col-lg-7 > .card .row.g-4 > div > div {
+    /* Individual info boxes - add more padding */
+    padding: 0.75rem !important;
+}
+
+.row.mb-4 > .col-lg-5 > .card.mb-4 {
+    /* Calendar card (right column, top) - adjusted height for better fit */
+    flex: 0 0 auto;
+    min-height: 320px;
+}
+
+.row.mb-4 > .col-lg-5 > .card.flex-grow-1 {
+    /* History card (right column, bottom) - fills remaining space */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-lg-5 .card.h-100 .card-body,
+.col-lg-5 .card.flex-grow-1 .card-body,
+.col-lg-5 .card.mb-4 .card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.col-lg-5 .card.h-100 .calendar-container.compact,
+.col-lg-5 .card .calendar-container.compact {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-lg-5 .card.h-100 .calendar-body.compact,
+.col-lg-5 .card .calendar-body.compact {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+/* Student Profile Card adjustments for new layout */
+.col-lg-6 .card.shadow.h-100 {
+    max-height: none;
+    overflow: visible;
+}
+
+.col-lg-6 .card.shadow.h-100 .card-body {
+    max-height: none;
+    overflow: visible;
+}
+
+/* Mobile Responsive Styles - Right Column Stacking */
+@media (max-width: 991.98px) {
+    /* Right Column - Calendar and Loan History */
+    .row.mb-4 > .col-lg-5 {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .row.mb-4 > .col-lg-5 .card {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+/* Mobile Responsive Styles for Student Profile */
+@media (max-width: 991.98px) {
+    /* Student Profile Card - Mobile adjustments */
+    #studentProfileCard .card-body {
+        padding: 1.5rem 1rem !important;
+    }
+
+    /* Profile Photo Section - Mobile */
+    #studentProfileCard .col-lg-3.profile-section {
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+        padding: 0.5rem 0.5rem 1.5rem !important;
+        padding-top: 0.25rem !important;
+        border-bottom: 1px solid #dee2e6;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important;
+        min-height: auto !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .quick-actions-mobile {
+        max-width: 100% !important;
+        margin-top: 0.75rem !important;
+        width: 100% !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section > div:first-child {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 0.75rem !important;
+        margin-top: 0 !important;
+    }
+
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .profile-name {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+        width: 100%;
+    }
+
+    .profile-role {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+        width: 100%;
+    }
+
+    /* Quick Action Buttons - Mobile */
+    .quick-actions-mobile {
+        margin-top: 0.5rem;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .quick-action-btn {
+        width: 100%;
+        padding: 0.625rem 1rem !important;
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quick-action-btn i {
+        font-size: 1rem !important;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Student Details Section - Mobile */
+    #studentProfileCard .col-lg-9 {
+        width: 100%;
+    }
+
+    /* Student Information Section - Mobile */
+    #studentProfileCard .mb-4 h6 {
+        font-size: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #studentProfileCard .row.g-3 > div {
+        margin-bottom: 1rem;
+    }
+
+    #studentProfileCard .student-info-section .row.g-3 > div {
+        width: 100% !important;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    #studentProfileCard .form-label {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #studentProfileCard .student-info-value {
+        font-size: 0.95rem !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    #studentProfileCard .h6 {
+        font-size: 0.95rem !important;
+    }
+
+    /* Update Contact Details Form - Mobile */
+    #studentProfileCard form {
+        margin-top: 0;
+    }
+
+    #studentProfileCard form .row.g-3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #studentProfileCard form .row.g-3 > div {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    #studentProfileCard form .col-md-4,
+    #studentProfileCard form .col-md-12 {
+        width: 100% !important;
+    }
+
+    #studentProfileCard form .form-label {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #studentProfileCard form .form-control,
+    #studentProfileCard form .form-select {
+        font-size: 0.9rem !important;
+        padding: 0.625rem 0.75rem !important;
+    }
+
+    /* Captcha - Mobile */
+    #studentProfileCard .mt-auto .row.g-2 {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem !important;
+    }
+
+    #studentProfileCard .captcha-input {
+        width: 60px !important;
+        font-size: 0.95rem !important;
+    }
+
+    #studentProfileCard #profileRefreshCaptcha {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Submit Button - Mobile */
+    #studentProfileCard #sendOtpProfileBtn {
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        margin-top: 1rem;
+    }
+
+    /* Horizontal Rule - Mobile */
+    #studentProfileCard hr {
+        margin: 1.5rem 0 !important;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 575.98px) {
+    #studentProfileCard .card-body {
+        padding: 1rem 0.75rem !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section {
+        margin-bottom: 1rem;
+        padding: 0.5rem 0.5rem 1rem !important;
+        padding-top: 0.25rem !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section > div:first-child {
+        margin-bottom: 0.5rem !important;
+        margin-top: 0 !important;
+    }
+
+    .profile-img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .profile-name {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .profile-role {
+        font-size: 0.875rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #studentProfileCard .col-lg-3.profile-section .quick-actions-mobile {
+        margin-top: 0.5rem !important;
+        max-width: 100% !important;
+    }
+
+    .quick-action-btn {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    #studentProfileCard .mb-4 h6 {
+        font-size: 0.95rem !important;
+    }
+
+    #studentProfileCard .form-label {
+        font-size: 0.8rem !important;
+    }
+
+    #studentProfileCard .student-info-value {
+        font-size: 0.9rem !important;
+    }
+
+    #studentProfileCard .h6 {
+        font-size: 0.9rem !important;
+    }
+
+    #studentProfileCard .student-info-section .row.g-3 > div {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #studentProfileCard form .row.g-3 > div {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #studentProfileCard form .form-control,
+    #studentProfileCard form .form-select {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.625rem !important;
+    }
+
+    #studentProfileCard .captcha-input {
+        width: 55px !important;
+    }
+
+    #studentProfileCard #profileRefreshCaptcha {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    #studentProfileCard #sendOtpProfileBtn {
+        padding: 0.45rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Calendar Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    /* Calendar Card - Mobile */
+    .col-lg-5 .card.mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .col-lg-5 .card.mb-4 .card-body {
+        padding: 0.75rem !important;
+    }
+
+    .calendar-container.compact {
+        min-height: 340px;
+    }
+
+    .calendar-header.compact {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.25rem;
+        padding: 0.5rem 0.25rem;
+    }
+
+    .calendar-day-header {
+        font-size: 0.75rem !important;
+        font-weight: 600;
+        padding: 0.25rem;
+        text-align: center;
+    }
+
+    .calendar-body.compact {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.25rem;
+        padding: 0.25rem;
+        flex: 1 1 auto;
+    }
+
+    .calendar-day {
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem !important;
+        padding: 0.25rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-height: 32px;
+    }
+
+    /* Calendar Navigation - Mobile */
+    #currentMonthYear {
+        font-size: 0.9rem !important;
+        padding: 0 0.5rem;
+    }
+
+    #prevMonth,
+    #nextMonth {
+        padding: 0.375rem 0.5rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    #todayBtn {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .calendar-container.compact {
+        min-height: 300px;
+    }
+
+    .calendar-day-header {
+        font-size: 0.7rem !important;
+        padding: 0.2rem;
+    }
+
+    .calendar-day {
+        font-size: 0.75rem !important;
+        padding: 0.2rem;
+        min-height: 28px;
+    }
+
+    #currentMonthYear {
+        font-size: 0.85rem !important;
+    }
+
+    #prevMonth,
+    #nextMonth {
+        padding: 0.3rem 0.4rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    #todayBtn {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Loan History Table Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    /* Loan History Card - Mobile */
+    .col-lg-5 .card.flex-grow-1 {
+        min-height: 300px;
+    }
+
+    /* Table Header - Mobile */
+    #allLoansTable thead th {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.375rem !important;
+        white-space: nowrap;
+    }
+
+    #allLoansTable thead th i {
+        font-size: 0.7rem !important;
+    }
+
+    /* Table Body - Mobile */
+    #allLoansTable tbody td {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.375rem !important;
+        vertical-align: middle;
+    }
+
+    /* Empty State - Mobile */
+    #allLoansTable tbody td.text-center {
+        padding: 2rem 1rem !important;
+    }
+
+    #allLoansTable tbody td i.fs-1 {
+        font-size: 2rem !important;
+    }
+
+    #allLoansTable tbody td h6 {
+        font-size: 0.9rem !important;
+    }
+
+    #allLoansTable tbody td p.small {
+        font-size: 0.8rem !important;
+    }
+
+    /* Pagination - Mobile */
+    .card-footer {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem 1rem !important;
+    }
+
+    .card-footer > div {
+        width: 100%;
+        justify-content: center !important;
+    }
+
+    #perPageSelect {
+        width: 70px !important;
+        font-size: 0.8rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.8rem !important;
+        padding: 0 0.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Horizontal-scroll table on mobile */
+    #allLoansTable {
+        display: table !important;
+        width: 100% !important;
+        min-width: 600px;
+    }
+
+    #allLoansTable thead {
+        display: table-header-group !important;
+    }
+
+    #allLoansTable thead th {
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    #allLoansTable tbody {
+        display: table-row-group !important;
+    }
+
+    #allLoansTable tbody tr {
+        display: table-row !important;
+    }
+
+    #allLoansTable tbody td {
+        display: table-cell !important;
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #allLoansTable tbody td::before {
+        display: none !important;
+    }
+
+    #allLoansTable tbody td[colspan] {
+        display: table-cell !important;
+        padding: 2rem 1rem !important;
+        text-align: center !important;
+        white-space: normal;
+    }
+    
+    .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0 !important;
+    }
+
+    .table-responsive::after {
+        content: '← Scroll to view more →';
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6c757d;
+        padding: 0.25rem 0;
+        font-style: italic;
+    }
+
+    /* Card body padding on mobile */
+    .card-body.p-0 {
+        padding: 0 !important;
+    }
+
+    /* Badge sizing on mobile */
+    #allLoansTable .badge {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #allLoansTable {
+        min-width: 550px;
+    }
+
+    #allLoansTable thead th {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #allLoansTable tbody td {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #allLoansTable .badge {
+        font-size: 0.6rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+
+    #perPageSelect {
+        width: 60px !important;
+        font-size: 0.75rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.75rem !important;
+        padding: 0 0.25rem !important;
+    }
+
+    .table-responsive::after {
+        font-size: 0.65rem;
+    }
+}
+
+/* Balance History Table Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    /* Table Header - Mobile */
+    #allBalancesTable thead th {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.375rem !important;
+        white-space: nowrap;
+    }
+
+    #allBalancesTable thead th i {
+        font-size: 0.7rem !important;
+    }
+
+    /* Table Body - Mobile */
+    #allBalancesTable tbody td {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.375rem !important;
+        vertical-align: middle;
+    }
+
+    /* Empty State - Mobile */
+    #allBalancesTable tbody td.text-center {
+        padding: 2rem 1rem !important;
+    }
+
+    #allBalancesTable tbody td i.fs-1 {
+        font-size: 2rem !important;
+    }
+
+    #allBalancesTable tbody td h6 {
+        font-size: 0.9rem !important;
+    }
+
+    #allBalancesTable tbody td p.small {
+        font-size: 0.8rem !important;
+    }
+
+    /* Pagination - Mobile */
+    #allBalancesTable ~ .card-footer {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem 1rem !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    #allBalancesTable ~ .card-footer > div {
+        width: 100%;
+        justify-content: center !important;
+        display: flex !important;
+    }
+
+    #perPageSelect {
+        width: 70px !important;
+        font-size: 0.8rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.8rem !important;
+        padding: 0 0.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #allBalancesTable {
+        display: table !important;
+        width: 100% !important;
+        min-width: 700px;
+    }
+
+    #allBalancesTable thead {
+        display: table-header-group !important;
+    }
+
+    #allBalancesTable thead th {
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    #allBalancesTable tbody {
+        display: table-row-group !important;
+    }
+
+    #allBalancesTable tbody tr {
+        display: table-row !important;
+    }
+
+    #allBalancesTable tbody td {
+        display: table-cell !important;
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #allBalancesTable tbody td[colspan] {
+        display: table-cell !important;
+        padding: 2rem 1rem !important;
+        text-align: center !important;
+        white-space: normal;
+    }
+    /* Horizontal scrollable wrapper (legacy tables only) */
+    .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0 !important;
+    }
+
+    .table-responsive::after {
+        content: '← Scroll to view more →';
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6c757d;
+        padding: 0.25rem 0;
+        font-style: italic;
+    }
+
+    /* Card body padding on mobile */
+    .card-body.p-0 {
+        padding: 0 !important;
+    }
+
+    /* Center pagination controls on mobile for balances */
+    #allBalancesTable ~ .card-footer {
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #allBalancesTable ~ .card-footer > div:first-child {
+        justify-content: center !important;
+        width: 100%;
+        display: flex !important;
+    }
+
+    #allBalancesTable ~ .card-footer > div:last-child {
+        justify-content: center !important;
+        width: 100%;
+        display: flex !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #allBalancesTable {
+        min-width: 650px;
+    }
+
+    #allBalancesTable thead th {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #allBalancesTable tbody td {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #perPageSelect {
+        width: 60px !important;
+        font-size: 0.75rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.75rem !important;
+        padding: 0 0.25rem !important;
+    }
+
+    .table-responsive::after {
+        font-size: 0.65rem;
+    }
+}
+
+/* Dashboard Loan History Table Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    /* Table Header - Mobile */
+    #loanHistoryTable thead th {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.375rem !important;
+        white-space: nowrap;
+    }
+
+    #loanHistoryTable thead th i {
+        font-size: 0.7rem !important;
+    }
+
+    /* Table Body - Mobile */
+    #loanHistoryTable tbody td {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.375rem !important;
+        vertical-align: middle;
+    }
+
+    /* Empty State - Mobile */
+    #loanHistoryTable tbody td.text-center {
+        padding: 2rem 1rem !important;
+    }
+
+    #loanHistoryTable tbody td i.fs-1 {
+        font-size: 2rem !important;
+    }
+
+    #loanHistoryTable tbody td h6 {
+        font-size: 0.9rem !important;
+    }
+
+    #loanHistoryTable tbody td p.small {
+        font-size: 0.8rem !important;
+    }
+
+    /* Pagination - Mobile - Dashboard Recent Loan History */
+    .card:has(#loanHistoryTable) .card-body.p-0 > div.d-flex:last-child,
+    .card-body.p-0 > div.d-flex.border-top,
+    #loanHistoryTable ~ div.d-flex {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .card:has(#loanHistoryTable) .card-body.p-0 > div.d-flex:last-child > div,
+    .card-body.p-0 > div.d-flex.border-top > div,
+    #loanHistoryTable ~ div.d-flex > div {
+        width: 100%;
+        justify-content: center !important;
+        display: flex !important;
+    }
+
+    #itemsPerPage {
+        width: 70px !important;
+        font-size: 0.8rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.8rem !important;
+        padding: 0 0.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #loanHistoryTable {
+        display: table !important;
+        width: 100% !important;
+        min-width: 550px;
+    }
+
+    #loanHistoryTable thead {
+        display: table-header-group !important;
+    }
+
+    #loanHistoryTable thead th {
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    #loanHistoryTable tbody {
+        display: table-row-group !important;
+    }
+
+    #loanHistoryTable tbody tr {
+        display: table-row !important;
+    }
+
+    #loanHistoryTable tbody td {
+        display: table-cell !important;
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #loanHistoryTable tbody td.text-end {
+        text-align: right !important;
+    }
+
+    #loanHistoryTable tbody td[colspan] {
+        display: table-cell !important;
+        padding: 2rem 1rem !important;
+        text-align: center !important;
+        white-space: normal;
+    }
+    
+    .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0 !important;
+    }
+
+    .table-responsive::after {
+        content: '← Scroll to view more →';
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6c757d;
+        padding: 0.25rem 0;
+        font-style: italic;
+    }
+
+    /* Card body padding on mobile */
+    .card-body.p-0 {
+        padding: 0 !important;
+    }
+
+    /* Badge sizing on mobile */
+    #loanHistoryTable .badge {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    /* Center pagination controls on mobile - Dashboard Recent Loan History */
+    .card:has(#loanHistoryTable) .card-body.p-0 > div.d-flex.border-top,
+    .card-body.p-0 > div.d-flex.border-top,
+    #loanHistoryTable ~ div.d-flex {
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .card:has(#loanHistoryTable) .card-body.p-0 > div.d-flex.border-top > div:first-child,
+    .card-body.p-0 > div.d-flex.border-top > div:first-child,
+    #loanHistoryTable ~ div.d-flex > div:first-child {
+        justify-content: center !important;
+        width: 100%;
+        display: flex !important;
+    }
+
+    .card:has(#loanHistoryTable) .card-body.p-0 > div.d-flex.border-top > div:last-child,
+    .card-body.p-0 > div.d-flex.border-top > div:last-child,
+    #loanHistoryTable ~ div.d-flex > div:last-child {
+        justify-content: center !important;
+        width: 100%;
+        display: flex !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #loanHistoryTable {
+        min-width: 500px;
+    }
+
+    #loanHistoryTable thead th {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #loanHistoryTable tbody td {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #loanHistoryTable .badge {
+        font-size: 0.6rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+
+    /* Pagination adjustments */
+    #itemsPerPage {
+        width: 60px !important;
+        font-size: 0.75rem !important;
+    }
+
+    #prevPage,
+    #nextPage {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    #pageInfo {
+        font-size: 0.75rem !important;
+        padding: 0 0.25rem !important;
+    }
+
+    /* Scroll hint adjustment */
+    .table-responsive::after {
+        font-size: 0.65rem;
+    }
+}
+
+/* Captcha validation - hide icons, show only colored border */
+#captchaAnswer.is-valid,
+#captchaAnswer.is-invalid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+#captchaAnswer.is-valid:focus,
+#captchaAnswer.is-invalid:focus {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Parent/Guardian contact validation - hide icons, show only colored border */
+#parentContact.is-valid,
+#parentContact.is-invalid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+#parentContact.is-valid:focus,
+#parentContact.is-invalid:focus {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Modern document preview and scan state */
+.id-document-preview {
+    overflow: hidden;
+    border: 1px solid rgba(3, 96, 15, 0.16);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(11, 61, 36, 0.10);
+}
+
+.id-document-preview__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(3, 96, 15, 0.10);
+    background: linear-gradient(135deg, #f4fbf6, #ffffff);
+}
+
+.id-document-preview__title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #063d19;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.id-document-preview__title i { color: #087d26; font-size: 1rem; }
+.id-document-preview__hint { margin-top: 0.2rem; color: #667085; font-size: 0.73rem; }
+
+.id-document-preview__state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.56rem;
+    border-radius: 999px;
+    color: #087d26;
+    background: #eaf7ee;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.id-document-preview__canvas-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 180px;
+    padding: 0.55rem;
+    background: #f7f8fa;
+}
+
+#idPreviewCanvas {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    height: auto;
+    border: 0;
+    border-radius: 10px;
+    background: #fff;
+    object-fit: contain;
+    box-shadow: 0 2px 10px rgba(16, 24, 40, 0.12);
+}
+
+.id-document-preview__overlay {
+    position: absolute;
+    inset: 0.55rem;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(3, 96, 15, 0.20);
+    backdrop-filter: blur(1px);
+    pointer-events: none;
+}
+
+.id-scan-beam {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 42%;
+    border-bottom: 2px solid rgba(186, 255, 202, 0.98);
+    background: linear-gradient(180deg, rgba(134, 239, 172, 0.28), rgba(134, 239, 172, 0));
+    box-shadow: 0 8px 18px rgba(15, 157, 72, 0.42);
+    animation: id-scan-sweep 1.8s ease-in-out infinite;
+}
+
+@keyframes id-scan-sweep {
+    0% { transform: translateY(-105%); opacity: 0; }
+    15%, 85% { opacity: 1; }
+    100% { transform: translateY(260%); opacity: 0; }
+}
+
+.id-scan-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: #d7ffe3;
+    border-style: solid;
+    filter: drop-shadow(0 1px 4px rgba(0, 68, 25, 0.65));
+}
+.id-scan-corner--tl { top: 0.7rem; left: 0.7rem; border-width: 3px 0 0 3px; border-radius: 5px 0 0; }
+.id-scan-corner--tr { top: 0.7rem; right: 0.7rem; border-width: 3px 3px 0 0; border-radius: 0 5px 0 0; }
+.id-scan-corner--bl { bottom: 0.7rem; left: 0.7rem; border-width: 0 0 3px 3px; border-radius: 0 0 0 5px; }
+.id-scan-corner--br { right: 0.7rem; bottom: 0.7rem; border-width: 0 3px 3px 0; border-radius: 0 0 5px 0; }
+
+.id-scan-status {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 220px;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 12px;
+    color: #fff;
+    background: rgba(5, 65, 26, 0.90);
+    box-shadow: 0 12px 26px rgba(0, 49, 16, 0.30);
+    transform: translate(-50%, -50%);
+}
+
+.id-scan-status__icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.17);
+    animation: id-scan-pulse 1.2s ease-in-out infinite;
+}
+.id-scan-status__title { font-size: 0.83rem; font-weight: 800; }
+.id-scan-status__text { margin-top: 0.08rem; color: rgba(255, 255, 255, 0.78); font-size: 0.7rem; }
+
+@keyframes id-scan-pulse {
+    50% { transform: scale(1.12); background: rgba(255, 255, 255, 0.28); }
+}
+
+.id-document-preview__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.62rem 1rem;
+    color: #667085;
+    background: #fff;
+    font-size: 0.72rem;
+}
+.id-document-preview__footer i { color: #087d26; }
+
+@media (max-width: 575.98px) {
+    .id-document-preview__header { align-items: flex-start; }
+    .id-document-preview__state { flex-shrink: 0; }
+    .id-document-preview__canvas-wrap { min-height: 145px; padding: 0.4rem; }
+    .id-document-preview__overlay { inset: 0.4rem; }
+    .id-scan-status { min-width: 190px; padding: 0.6rem 0.7rem; }
+}
+
+
+
+/* Hide validation icon for contact number field */
+#contactNumber.is-invalid,
+#contactNumber.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+#contactNumber.form-control.is-invalid,
+#contactNumber.form-control.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Students balances filters (desktop + mobile parity with admin pages) */
+#filterSchoolYear,
+#filterPeriod {
+    min-height: 32px;
+}
+
+@media (max-width: 576px) {
+    /* Ensure mobile filter dropdown appears above table content */
+    .bg-white.border.rounded {
+        position: relative;
+        isolation: isolate;
+        overflow: visible;
+    }
+
+    .bg-white.border.rounded .p-3.border-bottom {
+        position: relative;
+        z-index: 1200;
+        overflow: visible;
+    }
+
+    .bg-white.border.rounded .table-responsive {
+        position: relative;
+        z-index: 1;
+    }
+
+    #mobileFilterDropdown {
+        z-index: 2200 !important;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    #mobileFilterDropdown li:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #mobileFilterDropdown .form-select {
+        min-height: 34px;
+        font-size: 0.8rem;
+    }
+
+    #applyMobileFiltersBtn {
+        min-height: 34px;
+        font-size: 0.8rem;
+    }
+
+    #searchBalancesMobile {
+        min-height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Hide validation icon for captcha answer fields */
+#profileCaptchaAnswer.is-invalid,
+#profileCaptchaAnswer.is-valid,
+#captchaAnswer.is-invalid,
+#captchaAnswer.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+#profileCaptchaAnswer.form-control.is-invalid,
+#profileCaptchaAnswer.form-control.is-valid,
+#captchaAnswer.form-control.is-invalid,
+#captchaAnswer.form-control.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Fix Application History table in modal - allow text wrapping in Remarks column */
+.student-loan-details .student-loan-history-table {
+    min-width: 680px !important;
+    width: 100% !important;
+}
+
+.student-loan-details .student-loan-history-table th,
+.student-loan-details .student-loan-history-table td {
+    padding: 0.75rem 0.5rem !important;
+}
+
+.student-loan-details .student-loan-history-table th:nth-child(1),
+.student-loan-details .student-loan-history-table td:nth-child(1) {
+    width: 18% !important;
+    min-width: 140px !important;
+}
+
+.student-loan-details .student-loan-history-table th:nth-child(2),
+.student-loan-details .student-loan-history-table td:nth-child(2) {
+    width: 18% !important;
+    min-width: 130px !important;
+}
+
+.student-loan-details .student-loan-history-table th:nth-child(3),
+.student-loan-details .student-loan-history-table td:nth-child(3) {
+    width: 18% !important;
+    min-width: 130px !important;
+}
+
+.student-loan-details .student-loan-history-table th:nth-child(4),
+.student-loan-details .student-loan-history-table td:nth-child(4) {
+    width: 46% !important;
+    min-width: 250px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.student-pagination-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.student-pagination-size {
+    white-space: nowrap;
+}
+
+.student-pagination-footer :is(#itemsPerPage, #perPageSelect, #activityLogPerPage) {
+    width: 78px !important;
+    min-width: 78px;
+    height: 32px;
+}
+
+.student-page-buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-left: auto;
+}
+
+.student-page-buttons .btn {
+    min-width: 34px;
+}
+
+.student-pagination-footer .student-pagination-info {
+    flex-basis: 100%;
+    text-align: right;
+}
+
+@media (max-width: 767.98px) {
+    .student-pagination-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-page-buttons {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .student-pagination-size {
+        order: 2;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .student-pagination-footer .student-pagination-info {
+        order: 3;
+        width: 100%;
+        flex-basis: auto;
+        text-align: center !important;
+        font-style: normal !important;
+    }
+}

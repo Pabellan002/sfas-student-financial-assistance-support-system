@@ -1,0 +1,76 @@
+/* Loan-specific student/Assessment conversation UI. */
+.loan-chat-messages {
+    min-height: 360px;
+    max-height: 55vh;
+    overflow-y: auto;
+    background: #f5f7f9;
+}
+.loan-chat-message { display: flex; margin-bottom: 0.75rem; }
+.loan-chat-message.is-mine { justify-content: flex-end; }
+.loan-chat-message.is-other { justify-content: flex-start; }
+.loan-chat-bubble {
+    max-width: min(78%, 620px);
+    padding: 0.65rem 0.8rem;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #dee4e8;
+    color: #1f2933;
+    overflow-wrap: anywhere;
+}
+.loan-chat-message.is-mine .loan-chat-bubble {
+    background: #087a25;
+    border-color: #087a25;
+    color: #fff;
+    border-bottom-right-radius: 0.3rem;
+}
+.loan-chat-message.is-other .loan-chat-bubble { border-bottom-left-radius: 0.3rem; }
+.loan-chat-meta { display: block; margin-top: 0.25rem; font-size: 0.7rem; opacity: 0.75; }
+.loan-chat-typing {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin: 0.25rem 0 0.75rem;
+    color: #6c757d;
+    font-size: 0.72rem;
+}
+.loan-chat-typing__bubble {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 38px;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #dee4e8;
+    border-radius: 1rem 1rem 1rem 0.3rem;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(35, 64, 44, 0.06);
+}
+.loan-chat-typing__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7b8780;
+    animation: loan-chat-typing-bounce 1.15s infinite ease-in-out;
+}
+.loan-chat-typing__dot:nth-child(2) { animation-delay: 0.15s; }
+.loan-chat-typing__dot:nth-child(3) { animation-delay: 0.3s; }
+.loan-chat-typing__label { padding-bottom: 0.55rem; white-space: nowrap; }
+@keyframes loan-chat-typing-bounce {
+    0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .loan-chat-typing__dot { animation: none; }
+}
+.loan-chat-empty { color: #6c757d; text-align: center; padding: 5rem 1rem; }
+.loan-chat-page-shell { min-height: 620px; }
+.loan-chat-conversations { max-height: 650px; overflow-y: auto; }
+.loan-chat-conversation { cursor: pointer; border-left: 3px solid transparent; }
+.loan-chat-conversation:hover { background: #f7f9fa; }
+.loan-chat-conversation.is-active { background: #eef8f0; border-left-color: #087a25; }
+.loan-chat-conversation-preview { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 767.98px) {
+    .loan-chat-messages { min-height: 320px; max-height: 48vh; }
+    .loan-chat-bubble { max-width: 88%; }
+    .loan-chat-page-shell { min-height: auto; }
+    .loan-chat-conversations { max-height: 230px; }
+}

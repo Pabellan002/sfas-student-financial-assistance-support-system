@@ -1,0 +1,682 @@
+/* CSDL Loans Management Styles */
+
+.csdl-loan-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    border: 1px solid #dfe7e2;
+    border-radius: 0.85rem;
+    background: #f4f8f5;
+}
+
+.csdl-loan-tab {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 0.5rem;
+    min-height: 2.35rem;
+    padding: 0.45rem 0.8rem;
+    border: 0;
+    border-radius: 0.65rem;
+    background: transparent;
+    color: #52615a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.csdl-loan-tab:hover {
+    color: #03600f;
+    background: #e9f4ec;
+}
+
+.csdl-loan-tab.active {
+    color: #fff;
+    background: #03600f;
+    box-shadow: 0 4px 10px rgba(3, 96, 15, 0.2);
+}
+
+.csdl-loan-tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.45rem;
+    height: 1.45rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #03600f;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.csdl-loan-tab:not(.active) .csdl-loan-tab-count {
+    border: 1px solid #d7e4da;
+}
+
+.csdl-office-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5.5rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid #cce3d1;
+    border-radius: 0.65rem;
+    background: #edf8ef;
+    color: #03600f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.csdl-loan-mobile-select {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .csdl-loan-tabs {
+        display: none;
+    }
+
+    .csdl-loan-mobile-select {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .csdl-loan-mobile-toggle {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        width: 100%;
+        min-height: 2.7rem;
+        padding: .55rem .8rem;
+        border: 1px solid #d6dfe5;
+        border-radius: .7rem;
+        background: #fff;
+        color: #243746;
+        font-size: .82rem;
+        font-weight: 700;
+        text-align: left;
+        box-shadow: 0 2px 8px rgba(28, 45, 58, .08);
+    }
+
+    .csdl-loan-mobile-toggle:hover,
+    .csdl-loan-mobile-toggle:focus-visible {
+        border-color: #aebdc7;
+        background: #f8fafb;
+    }
+
+    .csdl-loan-mobile-toggle:focus-visible {
+        outline: 2px solid #718796;
+        outline-offset: 2px;
+    }
+
+    .csdl-loan-mobile-toggle .csdl-loan-tab-count,
+    .csdl-loan-mobile-option .csdl-loan-tab-count {
+        flex: 0 0 auto;
+        border: 1px solid #d6dfe5;
+        background: #eef2f5;
+        color: #243746;
+    }
+
+    .csdl-loan-mobile-chevron {
+        margin-left: auto;
+        font-size: .75rem;
+        transition: transform .18s ease;
+    }
+
+    .csdl-loan-mobile-toggle[aria-expanded="true"] .csdl-loan-mobile-chevron {
+        transform: rotate(180deg);
+    }
+
+    .csdl-loan-mobile-menu {
+        width: 100%;
+        padding: .35rem;
+        border: 1px solid #d6dfe5;
+        border-radius: .7rem;
+        box-shadow: 0 12px 24px rgba(28, 45, 58, .12);
+    }
+
+    .csdl-loan-mobile-option {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        min-height: 2.5rem;
+        padding: .5rem .65rem;
+        border-radius: .45rem;
+        color: #243746;
+        font-size: .82rem;
+        font-weight: 600;
+    }
+
+    .csdl-loan-mobile-option .csdl-loan-tab-count {
+        margin-left: auto;
+    }
+
+    .csdl-loan-mobile-option.active,
+    .csdl-loan-mobile-option:active {
+        background: #eef2f5;
+        color: #243746;
+    }
+}
+
+.csdl-loan-actions {
+    flex-wrap: wrap;
+}
+
+#bulkArchiveBtn:disabled {
+    opacity: 0.55;
+}
+
+#loansTable .loan-archive-checkbox {
+    cursor: pointer;
+}
+
+#loansTable .loan-archive-checkbox:disabled {
+    cursor: not-allowed;
+}
+
+/* Custom row action dropdown */
+#loansTable tbody tr,
+#loansTable tbody td {
+    overflow: visible !important;
+}
+
+#loansTable .action-dd {
+    position: relative;
+}
+
+#loansTable .action-dd > summary {
+    list-style: none;
+    cursor: pointer;
+    min-width: 32px !important;
+    width: 32px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#loansTable .action-dd > summary::-webkit-details-marker {
+    display: none;
+}
+
+#loansTable .action-dd-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    min-width: 150px;
+    max-height: none;
+    overflow: visible;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 0.35rem;
+    display: none;
+    z-index: 2100;
+}
+
+#loansTable .action-dd[open] .action-dd-menu {
+    display: block;
+}
+
+#loansTable .action-dd-item {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.35rem;
+    color: #212529;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+#loansTable .action-dd-item:hover {
+    background: rgba(25, 135, 84, 0.1);
+}
+
+/* Card-list modal: keep the data readable and horizontally scrollable on phones. */
+#loansListModal .modal-title i {
+    vertical-align: -0.05em;
+}
+
+#loansListModal .modal-footer {
+    justify-content: space-between;
+}
+
+@media (max-width: 767.98px) {
+    #loansListModal .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #loansListModalTable {
+        min-width: 43rem;
+        table-layout: auto;
+    }
+
+    #loansListModalTable th,
+    #loansListModalTable td {
+        white-space: nowrap;
+        padding: 0.65rem 0.75rem !important;
+    }
+
+    #loansListModal .modal-footer {
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+    }
+
+    #loansListModal .modal-footer .btn-secondary {
+        width: auto !important;
+        min-width: 6.25rem;
+        flex: 0 0 auto;
+    }
+
+    .csdl-modal-table-scroll-hint {
+        display: block;
+        padding-top: 0.35rem;
+        color: #64748b;
+        font-size: 0.72rem;
+        font-style: italic;
+        text-align: center;
+    }
+}
+
+/* Clickable stat cards */
+.stat-card.cursor-pointer {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card.cursor-pointer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.stat-card.cursor-pointer:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 575.98px) {
+    /* Stat Cards - Better Mobile Layout - 2x2 Grid */
+    .row.mb-3.g-3 {
+        margin-bottom: 1rem !important;
+        --bs-gutter-x: 0.5rem !important;
+        --bs-gutter-y: 0.5rem !important;
+    }
+    
+    /* Force 2 columns on mobile for stat cards */
+    .row.mb-3.g-3 > [class*="col-"] {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+    
+    .stat-card {
+        margin-bottom: 0 !important;
+        height: 100% !important;
+    }
+    
+    .stat-body {
+        padding: 0.75rem 0.5rem !important;
+        min-height: 90px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .stat-title {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.375rem !important;
+        line-height: 1.2 !important;
+        padding: 0 0.25rem !important;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem !important;
+        line-height: 1 !important;
+    }
+    
+    #viewLoanModal .modal-footer {
+        flex-direction: column !important;
+    }
+    #viewLoanModal #loanActionButtons {
+        order: 0 !important;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    #viewLoanModal #loanActionButtons .btn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    #viewLoanModal .modal-footer .btn-secondary {
+        order: 1 !important;
+        width: auto !important;
+        align-self: center !important;
+    }
+}
+
+/* Keep the loan table readable on small screens; scroll rather than squeeze columns. */
+@media (max-width: 767.98px) {
+    body.csdl-loans-premium .csdl-loans-main-card .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.csdl-loans-premium #loansTable {
+        width: 58rem !important;
+        min-width: 58rem !important;
+        table-layout: auto;
+    }
+
+    body.csdl-loans-premium.csdl-all-applications-view #loansTable {
+        width: 86rem !important;
+        min-width: 86rem !important;
+    }
+
+    body.csdl-loans-premium #loansTable thead th,
+    body.csdl-loans-premium #loansTable tbody td {
+        white-space: nowrap;
+        padding: 0.65rem 0.75rem !important;
+    }
+
+    body.csdl-loans-premium .csdl-loans-main-card .table-responsive::after {
+        display: none !important;
+    }
+
+    .csdl-mobile-table-scroll-hint {
+        display: block;
+        padding: 0.35rem 0;
+        color: #64748b;
+        font-size: 0.72rem;
+        font-style: italic;
+        text-align: center;
+    }
+}
+
+@media (min-width: 576px) {
+    #viewLoanModal #loanActionButtons .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+}
+
+/* Fix dropdown z-index in modals */
+#actionLoanModal .modal-dialog {
+    overflow: visible;
+}
+
+#actionLoanModal .modal-body {
+    overflow: visible !important;
+}
+
+#actionLoanModal .form-select {
+    position: relative;
+}
+
+#actionLoanModal .form-select:focus {
+    z-index: 1060;
+    position: relative;
+}
+
+/* CSDL approval confirmation */
+#approveLoanModal .modal-body {
+    padding: 1.5rem;
+}
+
+.csdl-approval-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.csdl-approval-summary > div {
+    padding: 0.85rem 0.9rem;
+    border: 1px solid #dfe7e2;
+    border-radius: 0.7rem;
+    background: #fbfdfb;
+}
+
+.csdl-approval-summary dt {
+    margin-bottom: 0.25rem;
+    color: #64748b;
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.csdl-approval-summary dd {
+    margin: 0;
+    color: #172033;
+    font-weight: 700;
+}
+
+.csdl-approval-summary__destination {
+    grid-column: 1 / -1;
+    border-color: #b9dcc1 !important;
+    background: #f1fbf3 !important;
+}
+
+.csdl-approval-summary__destination dd {
+    color: #076a1d;
+}
+
+@media (max-width: 575.98px) {
+    .csdl-approval-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .csdl-approval-summary__destination {
+        grid-column: auto;
+    }
+}
+
+/* Spinning animation for refresh and export buttons */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+.spinning i {
+    display: inline-block;
+}
+
+/* Loans Table Mobile Responsive Styles */
+@media (max-width: 991.98px) {
+    /* Table Header - Mobile */
+    #loansTable thead th {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.375rem !important;
+        white-space: nowrap;
+    }
+
+    /* Table Body - Mobile */
+    #loansTable tbody td {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.375rem !important;
+        vertical-align: middle;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #loansTable {
+        display: table !important;
+        width: 100% !important;
+        min-width: 750px;
+    }
+
+    #loansTable thead {
+        display: table-header-group !important;
+    }
+
+    #loansTable thead th {
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    #loansTable tbody {
+        display: table-row-group !important;
+    }
+
+    #loansTable tbody tr {
+        display: table-row !important;
+    }
+
+    #loansTable tbody td {
+        display: table-cell !important;
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.25rem !important;
+        white-space: nowrap;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0 !important;
+    }
+
+    #loansTable .badge {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #loansTable {
+        min-width: 700px;
+    }
+
+    #loansTable thead th {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #loansTable tbody td {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.2rem !important;
+    }
+
+    #loansTable .badge {
+        font-size: 0.6rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+}
+
+/* Simple-datatables style pagination */
+.datatable-pagination-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.datatable-pagination-list-item {
+    min-width: 32px;
+    height: 32px;
+    padding: 0.375rem 0.5rem;
+    margin: 0;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    color: #495057;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.datatable-pagination-list-item:hover:not(.active) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.datatable-pagination-list-item.active {
+    background-color: #198754;
+    border-color: #198754;
+    color: #fff;
+    font-weight: 500;
+}
+
+.datatable-pagination-list-item:active {
+    transform: translateY(1px);
+}
+
+.datatable-pagination-list-item:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    background: #f8fafc;
+}
+
+.csdl-pagination-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 0.45rem;
+    color: #475569;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.csdl-pagination-arrow {
+    border-radius: 0.65rem;
+}
+
+.datatable-pagination-ellipsis {
+    padding: 0 0.5rem;
+    color: #6c757d;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+}
+
+/* Mobile pagination adjustments */
+@media (max-width: 767.98px) {
+    .datatable-pagination-wrapper {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .datatable-pagination-list-item {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.375rem;
+    }
+    
+    .datatable-pagination-ellipsis {
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
+.csdl-loan-row-clickable {
+    cursor: pointer;
+}

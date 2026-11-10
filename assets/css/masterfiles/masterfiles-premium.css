@@ -1,0 +1,342 @@
+/**
+ * Masterfiles premium UI (use with body.csdl-loans-premium + body.masterfiles-premium)
+ */
+
+body.masterfiles-premium #mainContent {
+    min-height: calc(100vh - 56px);
+}
+
+body.masterfiles-premium .masterfiles-page-head-banner {
+    margin-bottom: 0;
+}
+
+body.masterfiles-premium .masterfiles-page-head-banner__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #03600f;
+    border-radius: 16px;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.masterfiles-premium .masterfiles-page-head-banner__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.95rem;
+    min-width: 0;
+}
+
+body.masterfiles-premium .masterfiles-page-head-banner__title,
+body.masterfiles-premium #pageTitle {
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #123524;
+    line-height: 1.15;
+    margin-bottom: 0 !important;
+}
+
+body.masterfiles-premium .masterfiles-page-head-banner__meta {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+@media (max-width: 575.98px) {
+    body.masterfiles-premium .masterfiles-page-head-banner__inner {
+        padding: 1rem;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__title,
+    body.masterfiles-premium #pageTitle {
+        font-size: 1.35rem;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__meta {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__meta .masterfiles-breadcrumb {
+        width: 100%;
+    }
+}
+
+/* Page title block (legacy helpers; banner uses masterfiles-page-head-banner) */
+body.masterfiles-premium .masterfiles-page-head {
+    gap: 1rem;
+    align-items: flex-start !important;
+}
+
+@media (min-width: 768px) {
+    body.masterfiles-premium .masterfiles-page-head {
+        align-items: center !important;
+    }
+}
+
+/* Breadcrumb */
+body.masterfiles-premium .masterfiles-breadcrumb {
+    padding: 0.45rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+}
+
+body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb-item a {
+    color: #03600f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb-item.active {
+    color: #64748b;
+}
+
+/* Departments / Programs tabs */
+body.masterfiles-premium #deptProgramsTabs,
+body.masterfiles-premium #studentsDirectoryTabs {
+    border-bottom: 1px solid #e2e8f0;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+body.masterfiles-premium #deptProgramsTabs::-webkit-scrollbar,
+body.masterfiles-premium #studentsDirectoryTabs::-webkit-scrollbar {
+    display: none;
+}
+
+body.masterfiles-premium #deptProgramsTabs .nav-item,
+body.masterfiles-premium #studentsDirectoryTabs .nav-item {
+    flex-shrink: 0;
+}
+
+body.masterfiles-premium #deptProgramsTabs .nav-link,
+body.masterfiles-premium #studentsDirectoryTabs .nav-link {
+    border: none;
+    border-radius: 10px 10px 0 0;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.65rem 1.15rem;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+body.masterfiles-premium #deptProgramsTabs .nav-link:hover,
+body.masterfiles-premium #studentsDirectoryTabs .nav-link:hover {
+    color: #03600f;
+    background: rgba(3, 96, 15, 0.07);
+}
+
+body.masterfiles-premium #deptProgramsTabs .nav-link.active,
+body.masterfiles-premium #studentsDirectoryTabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #03600f 0%, #0d8a28 100%);
+    box-shadow: 0 4px 14px rgba(3, 96, 15, 0.22);
+}
+
+@media (max-width: 575.98px) {
+    body.masterfiles-premium #studentsDirectoryTabs .nav-link {
+        font-size: 0.78rem;
+        padding: 0.55rem 0.85rem;
+    }
+
+    body.masterfiles-premium #studentsDirectoryTabs .nav-link .badge {
+        font-size: 0.65rem;
+    }
+}
+
+/* Directory card — align with loans premium main card */
+body.masterfiles-premium #mainContent .csdl-loans-main-card > .card-body {
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+/* Allow row action menus (.action-dd-menu) to extend past the scroll area; overflow:auto clips them */
+body.masterfiles-premium.csdl-loans-premium .csdl-loans-main-card {
+    overflow: visible;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table-responsive {
+    border-radius: 10px;
+    border: 1px solid #eef1f5;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table-responsive .datatable-wrapper {
+    overflow: visible !important;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table {
+    margin-bottom: 0;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table thead th {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    background: #f1f4f8 !important;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+body.masterfiles-premium #modalitiesTable thead th .modality-sort-button {
+    font: inherit;
+    color: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table tbody td {
+    font-size: 0.835rem;
+    color: #334155;
+    border-bottom: 1px solid #eef1f5;
+    vertical-align: middle;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .table tbody tr:hover {
+    background: #f8fafc;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card #tableFooter {
+    padding: 1rem 0 0;
+    margin-top: 1rem;
+    border-top: 1px solid #edf1f5;
+}
+
+/* Toolbar buttons */
+body.masterfiles-premium #mainContent .csdl-loans-main-card .btn-success {
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .btn-outline-secondary {
+    border-radius: 10px;
+    border-color: #d0d7de;
+}
+
+body.masterfiles-premium #mainContent .csdl-loans-main-card .btn-outline-secondary:hover {
+    border-color: #03600f;
+    color: #03600f;
+    background: rgba(3, 96, 15, 0.06);
+}
+
+body.masterfiles-students-page #bulkDeleteStudentsBtn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+body.masterfiles-students-page #studentsTable .student-select-col {
+    width: 44px;
+    min-width: 44px;
+    text-align: center;
+}
+
+body.masterfiles-students-page #studentsTable .form-check-input {
+    cursor: pointer;
+    margin: 0;
+}
+
+body.masterfiles-students-page #studentsTable .form-check-input:checked {
+    background-color: #03600f;
+    border-color: #03600f;
+}
+
+/* Keep the student directory readable instead of compressing ten columns. */
+body.masterfiles-students-page #studentsTable {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: auto !important;
+}
+
+body.masterfiles-students-page #studentsTable thead th,
+body.masterfiles-students-page #studentsTable tbody td {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+
+body.masterfiles-students-page #studentsTable tbody td:last-child > span {
+    min-width: 142px;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+    body.masterfiles-students-page #studentsTable {
+        min-width: 1580px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.masterfiles-students-page #studentsTable {
+        min-width: 1380px !important;
+    }
+}
+
+/* Stat KPI row spacing */
+body.masterfiles-premium #mainContent > .row.mb-4.g-3,
+body.masterfiles-premium #mainContent .tab-pane > .row.mb-4.g-3 {
+    --bs-gutter-y: 1rem;
+}
+
+@media (max-width: 575.98px) {
+    body.masterfiles-premium .masterfiles-breadcrumb {
+        width: 100%;
+    }
+}
+.scholarship-multi-menu {
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.scholarship-multi-option {
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    padding: .55rem .65rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.scholarship-multi-option:hover {
+    background: #f0f8f2;
+}
+
+.scholarship-multi-option .form-check-input {
+    flex: 0 0 auto;
+    margin-top: .18rem;
+}
+
+#externalScholarshipsDropdown {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

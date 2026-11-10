@@ -1,0 +1,1452 @@
+/* Student dashboard premium visual pass (layout + styling only). */
+
+body.student-dashboard-premium {
+    background:
+        radial-gradient(1200px 400px at 8% -10%, rgba(3, 96, 15, 0.09), transparent 60%),
+        radial-gradient(900px 300px at 100% 0%, rgba(25, 135, 84, 0.08), transparent 60%),
+        #f6f8fb;
+}
+
+@media (min-width: 992px) {
+    body.student-dashboard-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.student-dashboard-premium #pageTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #212529;
+}
+
+body.student-dashboard-premium #pageTitle + small {
+    font-size: 0.92rem;
+    color: #5f6c7b !important;
+}
+
+body.student-dashboard-premium .dashboard-grid {
+    --bs-gutter-x: 1.35rem;
+    --bs-gutter-y: 1.35rem;
+}
+
+body.student-dashboard-premium .dashboard-layout {
+    align-items: stretch;
+}
+
+body.student-dashboard-premium .dashboard-sidebar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+body.student-dashboard-premium .loan-history-panel {
+    container-type: inline-size;
+    container-name: loan-history;
+}
+
+body.student-dashboard-premium .loan-history-body {
+    min-height: 0;
+    overflow: hidden;
+}
+
+body.student-dashboard-premium .loan-history-body .loan-history-table-wrap {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.student-dashboard-premium .calendar-legend {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+body.student-dashboard-premium .calendar-legend--due {
+    background-color: #f6ead8;
+    border: 1px solid #c8892d;
+}
+
+body.student-dashboard-premium .calendar-legend--exam {
+    background-color: #e8f5eb;
+    border: 1px solid #2d8a47;
+}
+
+@media (min-width: 992px) {
+    body.student-dashboard-premium .dashboard-layout {
+        min-height: calc(100vh - 56px - 7.5rem);
+    }
+
+    body.student-dashboard-premium .loan-history-panel {
+        min-height: 100%;
+    }
+
+    body.student-dashboard-premium .loan-history-body .loan-history-table-wrap {
+        flex: 1 1 auto;
+        min-height: 280px;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col .profile-panel {
+        flex: 0 0 auto;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col .calendar-panel {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col .calendar-panel .calendar-container.compact {
+        flex: 1 1 0;
+        min-height: 0;
+        max-height: none;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col .calendar-panel .calendar-body.compact {
+        flex: 1 1 0;
+        min-height: 0;
+    }
+}
+
+body.student-dashboard-premium .dashboard-panel {
+    border: 1px solid #e6ebf1 !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.student-dashboard-premium .dashboard-panel > .p-3.border-bottom,
+body.student-dashboard-premium .dashboard-panel > .d-flex.border-bottom {
+    border-bottom-color: #edf1f5 !important;
+    padding: 1rem 1.15rem !important;
+}
+
+body.student-dashboard-premium .dashboard-panel h5,
+body.student-dashboard-premium .dashboard-panel h6 {
+    color: #212529;
+    letter-spacing: -0.01em;
+}
+
+body.student-dashboard-premium .loan-history-panel .loan-history-table-wrap {
+    padding: 0.2rem 0.7rem 0.4rem;
+}
+
+@container loan-history (min-width: 680px) {
+    body.student-dashboard-premium .loan-history-table-wrap::after {
+        content: 'Swipe sideways to see all columns';
+        display: block;
+        text-align: center;
+        font-size: 0.68rem;
+        color: #64748b;
+        padding: 0.35rem 0.5rem 0.15rem;
+        font-style: italic;
+    }
+}
+
+body.student-dashboard-premium #loanHistoryTable.loan-history-table {
+    table-layout: auto;
+    width: 100%;
+    min-width: 760px;
+}
+
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--app { width: auto; min-width: 7.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--advised { width: auto; min-width: 6.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--amount { width: auto; min-width: 6.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--status { width: auto; min-width: 5.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--pn { width: auto; min-width: 5.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--due { width: auto; min-width: 6.5rem; }
+body.student-dashboard-premium #loanHistoryTable .loan-history-col--period { width: auto; min-width: 6rem; }
+
+body.student-dashboard-premium #loanHistoryTable thead th.loan-history-th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5f6c7b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    line-height: 1.25;
+    vertical-align: middle;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+body.student-dashboard-premium #loanHistoryTable tbody td {
+    font-size: 0.835rem;
+    color: #2f3d4e;
+    border-bottom: 1px solid #eef1f5;
+    padding: 0.62rem 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+body.student-dashboard-premium #loanHistoryTable tbody td:first-child {
+    padding-left: 0.75rem;
+}
+
+body.student-dashboard-premium #loanHistoryTable tbody td:last-child {
+    padding-right: 0.75rem;
+}
+
+body.student-dashboard-premium #loanHistoryTable tbody td[colspan] {
+    overflow: visible;
+    text-overflow: unset;
+}
+
+body.student-dashboard-premium #loanHistoryTable tbody tr:hover {
+    background: #f6f8fb;
+}
+
+body.student-dashboard-premium #loanHistoryTable .badge {
+    border-radius: 9px;
+    padding: 0.34rem 0.6rem;
+    font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+    body.student-dashboard-premium #loanHistoryTable .badge {
+        border-radius: 8px !important;
+    }
+}
+
+body.student-dashboard-premium .loan-history-panel .border-top {
+    border-top-color: #edf1f5 !important;
+    background: #fbfcfe;
+}
+
+body.student-dashboard-premium .calendar-panel {
+    padding: 1rem !important;
+}
+
+body.student-dashboard-premium .calendar-panel #currentMonthYear {
+    font-size: 0.95rem;
+    color: #27374a;
+}
+
+body.student-dashboard-premium .calendar-panel #todayBtn {
+    border-radius: 999px;
+    padding: 0.32rem 0.8rem;
+    font-weight: 600;
+}
+
+body.student-dashboard-premium .calendar-panel .calendar-day-header {
+    color: #607283;
+    font-weight: 700;
+}
+
+body.student-dashboard-premium .calendar-panel .calendar-header.compact {
+    justify-items: stretch;
+}
+
+body.student-dashboard-premium .calendar-panel .calendar-header.compact .calendar-day-header {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+body.student-dashboard-premium #balanceFaqAccordion .accordion-button,
+body.student-dashboard-premium #balanceFaqAccordion .balances-faq-item__title,
+body.student-dashboard-premium #balanceFaqAccordion .balances-faq-item__text {
+    color: #111827 !important;
+}
+
+body.student-dashboard-premium .profile-panel .p-3 {
+    padding: 1.15rem !important;
+}
+
+body.student-dashboard-premium #profilePhoto {
+    border: 3px solid #ffffff !important;
+    box-shadow: 0 10px 22px rgba(3, 96, 15, 0.18);
+}
+
+body.student-dashboard-premium #profileName {
+    font-size: 1.12rem;
+    color: #1d2939;
+    letter-spacing: -0.01em;
+}
+
+body.student-dashboard-premium #profileRole {
+    color: #697586 !important;
+}
+
+body.student-dashboard-premium #quickActionLoan,
+body.student-dashboard-premium #quickActionBalance {
+    border-radius: 999px;
+    font-weight: 600;
+    border-width: 1px;
+    min-width: 92px;
+    transition: all 0.2s ease;
+}
+
+body.student-dashboard-premium #quickActionLoan:hover,
+body.student-dashboard-premium #quickActionBalance:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(16, 24, 40, 0.1);
+}
+
+body.student-dashboard-premium #profileNameDesktop,
+body.student-dashboard-premium #profileProgramDesktop,
+body.student-dashboard-premium #profileYearLevelDesktop,
+body.student-dashboard-premium #profileStudentIdDesktop {
+    color: #212529 !important;
+}
+
+/* Desktop refresh for student profile panel */
+@media (min-width: 992px) {
+    body.student-dashboard-premium .profile-panel > .p-3.border-bottom {
+        background: #ffffff;
+    }
+
+    body.student-dashboard-premium .profile-panel > .p-3.border-bottom h6 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #212529 !important;
+    }
+
+    body.student-dashboard-premium .profile-panel > .p-3.border-bottom a {
+        color: #212529 !important;
+        font-weight: 600;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 1px solid #e6ebf1;
+        background: #f8f9fa;
+        border-radius: 14px 14px 0 0;
+        border-bottom: 0;
+        padding: 0.95rem 1rem 0.8rem;
+        margin-bottom: 0 !important;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__avatar-wrap {
+        flex: 0 0 auto;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__avatar {
+        width: 84px;
+        height: 84px;
+        object-fit: cover;
+        box-shadow: 0 8px 20px rgba(3, 96, 15, 0.2);
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__content {
+        min-width: 0;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__aside {
+        margin-left: auto;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        padding-left: 1rem;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__aside-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-end;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__aside-label {
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6c757d;
+        font-weight: 800;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__aside-value {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #212529;
+        max-width: 20rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__name {
+        font-size: 1.08rem;
+        color: #212529;
+        letter-spacing: -0.01em;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__role {
+        font-size: 0.85rem;
+        color: #6c757d !important;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__sep {
+        color: #adb5bd;
+        font-size: 0.75rem;
+        line-height: 1;
+    }
+
+    body.student-dashboard-premium .students-desktop-hero__student-id {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        color: #212529;
+        background: #f1f3f5;
+        border: 1px solid #dee2e6;
+        border-radius: 999px;
+        padding: 0.14rem 0.48rem;
+    }
+
+    body.student-dashboard-premium .students-action-tiles {
+        justify-content: flex-start !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 0.55rem !important;
+        border: 1px solid #e6ebf1;
+        border-top: 0;
+        background: #f8f9fa;
+        border-radius: 0 0 14px 14px;
+        padding: 0.75rem 0.9rem 0.85rem;
+        margin-bottom: 1rem !important;
+    }
+
+    body.student-dashboard-premium #quickActionLoan,
+    body.student-dashboard-premium #quickActionBalance {
+        border-color: #ced4da !important;
+        background: #ffffff !important;
+        color: #212529 !important;
+        min-width: 0;
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 991.98px) {
+    body.student-dashboard-premium #pageTitle {
+        font-size: 1.65rem;
+    }
+
+    body.student-dashboard-premium .dashboard-grid {
+        --bs-gutter-x: 0.9rem;
+        --bs-gutter-y: 0.9rem;
+    }
+
+    body.student-dashboard-premium .dashboard-panel {
+        border-radius: 14px !important;
+    }
+
+    body.student-dashboard-premium .loan-history-panel {
+        min-height: 330px;
+    }
+
+    body.student-dashboard-premium .dashboard-sidebar-col {
+        gap: 0.9rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.student-dashboard-premium #pageTitle {
+        font-size: 1.45rem;
+    }
+
+    body.student-dashboard-premium .dashboard-panel > .p-3.border-bottom,
+    body.student-dashboard-premium .dashboard-panel > .d-flex.border-bottom,
+    body.student-dashboard-premium .profile-panel .p-3,
+    body.student-dashboard-premium .calendar-panel {
+        padding: 0.9rem !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable thead th.loan-history-th {
+        font-size: 0.72rem;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td {
+        font-size: 0.8rem;
+    }
+}
+
+/* Loan history — horizontal scroll table on narrow panels */
+@container loan-history (max-width: 679px) {
+    body.student-dashboard-premium .loan-history-table-wrap {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0.65rem 0.35rem !important;
+    }
+
+    body.student-dashboard-premium .loan-history-table-wrap::after {
+        content: '← Scroll to view more →';
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6c757d;
+        padding: 0.25rem 0;
+        font-style: italic;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable.loan-history-table {
+        display: table !important;
+        width: 100% !important;
+        min-width: 550px !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable thead {
+        display: table-header-group !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody {
+        display: table-row-group !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody tr {
+        display: table-row !important;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td {
+        display: table-cell !important;
+        width: auto !important;
+        padding: 0.5rem 0.35rem !important;
+        border-bottom: 1px solid #eef1f5 !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td::before {
+        content: none !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td.text-end {
+        text-align: right !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td[colspan] {
+        display: table-cell !important;
+        text-align: center !important;
+        padding: 2rem 1rem !important;
+        white-space: normal !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable .badge {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.student-dashboard-premium .loan-history-table-wrap {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.5rem 0.65rem 0.35rem !important;
+    }
+
+    body.student-dashboard-premium .loan-history-table-wrap::after {
+        content: '← Scroll to view more →';
+        display: block;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #6c757d;
+        padding: 0.25rem 0;
+        font-style: italic;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable.loan-history-table {
+        display: table !important;
+        width: 100% !important;
+        min-width: 550px !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable thead {
+        display: table-header-group !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody {
+        display: table-row-group !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody tr {
+        display: table-row !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td {
+        display: table-cell !important;
+        white-space: nowrap !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td::before {
+        content: none !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td[colspan] {
+        display: table-cell !important;
+        white-space: normal !important;
+    }
+}
+
+/* Override legacy students.css table squeezing on premium dashboard */
+@media (max-width: 991.98px) {
+    body.student-dashboard-premium #loanHistoryTable thead th.loan-history-th {
+        white-space: nowrap !important;
+        text-align: inherit;
+    }
+}
+
+@container loan-history (min-width: 680px) {
+    body.student-dashboard-premium .loan-history-table-wrap {
+        overflow-x: auto !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable.loan-history-table {
+        display: table !important;
+        min-width: 760px !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable thead {
+        display: table-header-group !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody tr {
+        display: table-row !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td {
+        display: table-cell !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td::before {
+        content: none !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td.text-end {
+        text-align: right !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td.text-center {
+        text-align: center !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable tbody td.ps-3 {
+        text-align: left !important;
+    }
+
+    body.student-dashboard-premium #loanHistoryTable thead th.loan-history-th {
+        white-space: nowrap !important;
+    }
+}
+
+/* Mobile-first visual refresh to match the provided reference (solid color, no gradients) */
+@media (max-width: 991.98px) {
+    body.student-dashboard-premium {
+        background: #f3f5f3;
+    }
+
+    body.student-dashboard-premium #mainContent {
+        padding: 0.75rem 0.8rem 0.8rem !important;
+    }
+
+    body.student-dashboard-premium #pageTitle {
+        font-size: 1.15rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    body.student-dashboard-premium #pageTitle + small {
+        font-size: 0.78rem !important;
+        color: #637381 !important;
+    }
+
+    body.student-dashboard-premium .profile-panel {
+        border-radius: 16px !important;
+        overflow: hidden;
+    }
+
+    /* Hide big dashboard heading area on mobile (reference uses top bar only) */
+    body.student-dashboard-premium .students-page-head {
+        display: none !important;
+    }
+
+    /* Mobile hero card */
+    body.student-dashboard-premium .students-hero-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        background: #ffffff;
+        color: #1d2939;
+        border-radius: 14px;
+        padding: 0.9rem 0.9rem;
+        text-decoration: none;
+        margin-bottom: 0.85rem;
+        border: 1px solid #e6ebf1;
+    }
+
+    body.student-dashboard-premium .students-hero-card__left {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    body.student-dashboard-premium .students-hero-card__avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        background: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+    }
+
+    body.student-dashboard-premium .students-hero-card__avatar img {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        object-fit: cover;
+        border: 2px solid #e5e7eb;
+    }
+
+    body.student-dashboard-premium .students-hero-card__text {
+        min-width: 0;
+    }
+
+    body.student-dashboard-premium .students-hero-card__name {
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    body.student-dashboard-premium .students-hero-card__meta {
+        margin-top: 0.15rem;
+        font-size: 0.74rem;
+        color: #697586;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    body.student-dashboard-premium .students-hero-card__sep {
+        margin: 0 0.35rem;
+        opacity: 0.65;
+    }
+
+    body.student-dashboard-premium .students-hero-card__chev {
+        color: #9aa4b2;
+        font-size: 1.05rem;
+        flex: 0 0 auto;
+    }
+
+    /* Ensure hero card text stays readable (override base rules) */
+    body.student-dashboard-premium .students-hero-card #profileName {
+        color: #1d2939 !important;
+    }
+    body.student-dashboard-premium .students-hero-card #profileRole,
+    body.student-dashboard-premium .students-hero-card #profileStudentIdMobile {
+        color: #697586 !important;
+    }
+
+    body.student-dashboard-premium .students-hero-card #profilePhoto {
+        border: 2px solid #e5e7eb !important;
+        box-shadow: none;
+    }
+
+    /* Tile actions like reference */
+    body.student-dashboard-premium .profile-panel .d-flex.justify-content-center {
+        margin-top: 0.55rem !important;
+        margin-bottom: 0.25rem !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    body.student-dashboard-premium #quickActionLoan,
+    body.student-dashboard-premium #quickActionBalance {
+        min-width: 0 !important;
+        width: 100%;
+        border-radius: 12px !important;
+        border-color: #d1d5db !important;
+        background: #ffffff !important;
+        color: #212529 !important;
+        font-size: 0.72rem !important;
+        line-height: 1.15;
+        padding: 0.55rem 0.35rem !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body.student-dashboard-premium #quickActionLoan i,
+    body.student-dashboard-premium #quickActionBalance i {
+        margin-right: 0 !important;
+        font-size: 0.9rem !important;
+        color: #374151;
+    }
+
+    body.student-dashboard-premium #quickActionLoan:hover,
+    body.student-dashboard-premium #quickActionBalance:hover,
+    body.student-dashboard-premium #quickActionLoan:focus-visible,
+    body.student-dashboard-premium #quickActionBalance:focus-visible {
+        background: #f8f9fa !important;
+        border-color: #9ca3af !important;
+        color: #212529 !important;
+    }
+
+    body.student-dashboard-premium #quickActionLoan:active,
+    body.student-dashboard-premium #quickActionBalance:active {
+        transform: translateY(0);
+        background: #e9ecef !important;
+        border-color: #9ca3af !important;
+        color: #212529 !important;
+    }
+
+    body.student-dashboard-premium .loan-history-panel > .p-3.border-bottom h5 {
+        font-size: 1rem !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Loans modal: latest application card matches mobile mini-card feel */
+body.student-dashboard-premium .students-modal-latest__card {
+    border: 1px solid #dfe9e2;
+    border-radius: 12px;
+    background: #fbfdfb;
+    padding: 0.8rem 0.85rem;
+    box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+body.student-dashboard-premium .students-modal-latest__card:hover {
+    border-color: rgba(3, 96, 15, 0.28);
+    box-shadow: 0 6px 16px rgba(3, 96, 15, 0.12);
+    transform: translateY(-1px);
+}
+
+body.student-dashboard-premium .students-modal-latest__head {
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e7efe8;
+}
+
+body.student-dashboard-premium .students-modal-latest__title {
+    font-size: 0.88rem;
+    color: #212529 !important;
+}
+
+body.student-dashboard-premium .students-modal-latest__meta,
+body.student-dashboard-premium .students-modal-latest__step {
+    font-size: 0.72rem !important;
+    color: #607283 !important;
+}
+
+body.student-dashboard-premium .students-modal-latest__amount {
+    color: #212529 !important;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+/* Calendar section title only — keep Today button green */
+body.student-dashboard-premium .calendar-panel > .d-flex.border-bottom h5,
+body.student-dashboard-premium .loan-history-panel > .p-3.border-bottom h5 {
+    color: #212529 !important;
+}
+
+body.student-dashboard-premium .students-modal-latest .badge {
+    font-size: 0.68rem;
+}
+
+/* Calendar event days — refined highlights */
+body.student-dashboard-premium .calendar-panel {
+    position: relative;
+}
+
+body.student-dashboard-premium .calendar-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+}
+
+body.student-dashboard-premium .calendar-day__number {
+    line-height: 1;
+}
+
+body.student-dashboard-premium .calendar-day__markers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 5px;
+}
+
+body.student-dashboard-premium .calendar-day__marker {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+body.student-dashboard-premium .calendar-day__marker--due {
+    background-color: #c8892d;
+}
+
+body.student-dashboard-premium .calendar-day__marker--exam {
+    background-color: #2d8a47;
+}
+
+body.student-dashboard-premium .calendar-day.has-due-date {
+    background: linear-gradient(180deg, #fffaf3 0%, #f8f0e4 100%) !important;
+    border: 1px solid #e2c89a !important;
+    color: #6b4f1d !important;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
+
+body.student-dashboard-premium .calendar-day.has-exam-date {
+    background: linear-gradient(180deg, #f4fbf6 0%, #e8f5eb 100%) !important;
+    border: 1px solid #9fd0ad !important;
+    color: #1f5d31 !important;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
+
+body.student-dashboard-premium .calendar-day.has-due-date.has-exam-date {
+    background: linear-gradient(135deg, #fffaf3 0%, #fffaf3 48%, #f4fbf6 52%, #e8f5eb 100%) !important;
+    border: 1px solid #b8c9b0 !important;
+    color: #314a38 !important;
+}
+
+body.student-dashboard-premium .calendar-day.has-due-date::after,
+body.student-dashboard-premium .calendar-day.has-exam-date::after,
+body.student-dashboard-premium .calendar-day.has-due-date.has-exam-date::after {
+    content: none;
+}
+
+body.student-dashboard-premium .calendar-day.calendar-day--interactive {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+body.student-dashboard-premium .calendar-day.calendar-day--interactive:hover,
+body.student-dashboard-premium .calendar-day.calendar-day--interactive:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(16, 24, 40, 0.12);
+    outline: none;
+    z-index: 2;
+}
+
+body.student-dashboard-premium .calendar-day.today.has-due-date,
+body.student-dashboard-premium .calendar-day.today.has-exam-date,
+body.student-dashboard-premium .calendar-day.today.has-due-date.has-exam-date {
+    color: #fff !important;
+}
+
+body.student-dashboard-premium .calendar-day.today.has-due-date:not(.has-exam-date) {
+    background: linear-gradient(180deg, #03600f 0%, #0a8f1b 100%) !important;
+    border-color: #024a0c !important;
+}
+
+body.student-dashboard-premium .calendar-day.today.has-exam-date:not(.has-due-date) {
+    background: linear-gradient(180deg, #03600f 0%, #0a8f1b 100%) !important;
+    border-color: #024a0c !important;
+}
+
+body.student-dashboard-premium .calendar-day.today.has-due-date.has-exam-date {
+    background: linear-gradient(180deg, #03600f 0%, #0a8f1b 100%) !important;
+    border-color: #024a0c !important;
+}
+
+body.student-dashboard-premium .calendar-day.today .calendar-day__marker--due,
+body.student-dashboard-premium .calendar-day.today .calendar-day__marker--exam {
+    background-color: #fff;
+}
+
+/* Hover preview card */
+body.student-dashboard-premium .calendar-day-popover {
+    position: fixed;
+    z-index: 1080;
+    width: 240px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow:
+        0 16px 36px rgba(16, 24, 40, 0.14),
+        0 4px 10px rgba(16, 24, 40, 0.06);
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+body.student-dashboard-premium .calendar-day-popover.is-above {
+    transform: translateY(calc(-100% - 8px));
+}
+
+body.student-dashboard-premium .calendar-day-popover__header {
+    padding: 0.7rem 0.85rem 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #123524;
+    border-bottom: 1px solid #edf1f5;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%);
+}
+
+body.student-dashboard-premium .calendar-day-popover__body {
+    padding: 0.65rem 0.85rem 0.5rem;
+}
+
+body.student-dashboard-premium .calendar-day-popover__section + .calendar-day-popover__section {
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+    border-top: 1px dashed #e8edf2;
+}
+
+body.student-dashboard-premium .calendar-day-popover__label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35rem;
+}
+
+body.student-dashboard-premium .calendar-day-popover__section--due .calendar-day-popover__label {
+    color: #9a6718;
+}
+
+body.student-dashboard-premium .calendar-day-popover__section--exam .calendar-day-popover__label {
+    color: #2d8a47;
+}
+
+body.student-dashboard-premium .calendar-day-popover__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body.student-dashboard-premium .calendar-day-popover__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.28rem 0;
+}
+
+body.student-dashboard-premium .calendar-day-popover__item-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1d2939;
+}
+
+body.student-dashboard-premium .calendar-day-popover__item-meta {
+    font-size: 0.72rem;
+    color: #64748b;
+}
+
+body.student-dashboard-premium .calendar-day-popover__more {
+    font-size: 0.72rem;
+    color: #64748b;
+    padding-top: 0.15rem;
+}
+
+body.student-dashboard-premium .calendar-day-popover__footer {
+    padding: 0.45rem 0.85rem 0.65rem;
+    font-size: 0.68rem;
+    color: #64748b;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #edf1f5;
+}
+
+/* Calendar event modal */
+body.student-dashboard-premium .calendar-event-modal-date {
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e8edf2;
+}
+
+body.student-dashboard-premium .calendar-event-section__title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1d2939;
+    margin-bottom: 0.75rem;
+}
+
+body.student-dashboard-premium .calendar-event-card {
+    border: 1px solid #e8edf2;
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    background: #ffffff;
+}
+
+body.student-dashboard-premium .calendar-event-card--due {
+    border-left: 4px solid #c8892d;
+    background: linear-gradient(180deg, #fffdf9 0%, #ffffff 100%);
+}
+
+body.student-dashboard-premium .calendar-event-card--exam {
+    border-left: 4px solid #2d8a47;
+    background: linear-gradient(180deg, #f8fcf9 0%, #ffffff 100%);
+}
+
+body.student-dashboard-premium .calendar-event-card__title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1d2939;
+}
+
+body.student-dashboard-premium .calendar-event-card__subtitle {
+    margin-top: 0.1rem;
+}
+
+body.student-dashboard-premium .calendar-event-modal .badge.bg-warning {
+    background-color: #f6ead8 !important;
+    color: #7a5312 !important;
+}
+
+body.student-dashboard-premium .calendar-event-modal .badge.bg-success {
+    background-color: #e8f5eb !important;
+    color: #1f5d31 !important;
+}
+
+body.student-dashboard-premium .calendar-event-card__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0.35rem;
+}
+
+/* Dashboard modals — centered on mobile */
+@media (max-width: 767.98px) {
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-dialog {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0.75rem auto;
+        max-width: none;
+        width: calc(100% - 1.5rem);
+        min-height: calc(100% - 1.5rem);
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-content {
+        width: 100%;
+        max-height: calc(100dvh - 1.5rem);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-header {
+        padding: 0.85rem 1rem;
+        flex-shrink: 0;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-title {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-body {
+        padding: 1rem !important;
+        overflow-y: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-footer {
+        padding: 0.75rem 1rem;
+        flex-shrink: 0;
+        justify-content: flex-end !important;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    /* Compact, right-aligned Close button — match clean balances-page style */
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-footer .btn {
+        min-height: unset !important;
+        height: auto !important;
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.875rem !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .calendar-event-card {
+        padding: 0.8rem 0.85rem;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .calendar-event-card__row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .calendar-event-card .btn {
+        width: auto;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .calendar-event-modal-date {
+        padding: 0.75rem 0.85rem;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .calendar-event-modal-date .fs-5 {
+        font-size: 1.05rem !important;
+    }
+
+    /* Keep modal centered above the floating bottom nav */
+    body.students-mobile-bottom-nav-enabled.student-dashboard-premium .students-dashboard-mobile-modal .modal-dialog {
+        margin-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+        min-height: calc(100% - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+    }
+
+    body.students-mobile-bottom-nav-enabled.student-dashboard-premium .students-dashboard-mobile-modal .modal-content {
+        max-height: calc(100dvh - 1.5rem - 96px - env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-dialog {
+        width: calc(100% - 1.25rem);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-header {
+        padding: 0.9rem 1rem 0.75rem;
+    }
+
+    body.student-dashboard-premium .students-dashboard-mobile-modal .modal-body {
+        padding: 0.85rem 1rem !important;
+    }
+}
+
+
+/* Force modal footer buttons to align right on mobile - CRITICAL FIX */
+@media (max-width: 991.98px) {
+    /* Calendar Event Modal */
+    #calendarEventModal .modal-footer,
+    body #calendarEventModal .modal-footer,
+    body.student-dashboard-premium #calendarEventModal .modal-footer {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    #calendarEventModal .modal-footer .btn,
+    body #calendarEventModal .modal-footer .btn,
+    body.student-dashboard-premium #calendarEventModal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+        margin-left: auto !important;
+    }
+
+    /* View Loan Modal */
+    #viewLoanModal .modal-footer,
+    #viewLoanModal #loanDetailsFooter,
+    body #viewLoanModal .modal-footer,
+    body.student-dashboard-premium #viewLoanModal .modal-footer,
+    body.student-dashboard-premium #viewLoanModal #loanDetailsFooter {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    body.student-dashboard-premium #viewLoanModal #loanDetailsFooter {
+        width: 100%;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-end !important;
+        gap: 0.5rem;
+    }
+
+    #viewLoanModal .modal-footer .btn,
+    #viewLoanModal #loanDetailsFooter .btn,
+    body #viewLoanModal .modal-footer .btn,
+    body.student-dashboard-premium #viewLoanModal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+        margin-left: 0 !important;
+    }
+
+    body.student-dashboard-premium #viewLoanModal #loanDetailsFooter .btn:last-child {
+        margin-left: 0 !important;
+    }
+
+    /* Balances Modal */
+    #balancesModal .modal-footer,
+    body #balancesModal .modal-footer,
+    body.student-dashboard-premium #balancesModal .modal-footer {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    #balancesModal .modal-footer .btn,
+    body #balancesModal .modal-footer .btn,
+    body.student-dashboard-premium #balancesModal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+        margin-left: auto !important;
+    }
+
+    /* View Document Modal */
+    #viewDocumentModal .modal-footer,
+    body #viewDocumentModal .modal-footer,
+    body.student-dashboard-premium #viewDocumentModal .modal-footer {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    #viewDocumentModal .modal-footer .btn,
+    body #viewDocumentModal .modal-footer .btn,
+    body.student-dashboard-premium #viewDocumentModal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+    }
+
+    /* Generic safe modal class */
+    .student-mobile-safe-modal .modal-footer,
+    body .student-mobile-safe-modal .modal-footer,
+    body.student-dashboard-premium .student-mobile-safe-modal .modal-footer {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        text-align: right !important;
+    }
+
+    .student-mobile-safe-modal .modal-footer .btn,
+    body .student-mobile-safe-modal .modal-footer .btn,
+    body.student-dashboard-premium .student-mobile-safe-modal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+        margin-left: auto !important;
+    }
+}
+
+/* Document viewer: center the compact mobile modal and keep its actions together. */
+@media (max-width: 767.98px) {
+    body.student-dashboard-premium #viewDocumentModal.modal.show {
+        display: flex !important;
+        align-items: center;
+        padding: 0.5rem !important;
+    }
+
+    body.student-dashboard-premium #viewDocumentModal .modal-dialog {
+        width: 100%;
+        margin: 0 auto !important;
+    }
+
+    body.student-dashboard-premium #viewDocumentModal .modal-footer {
+        justify-content: flex-end !important;
+        gap: 0.6rem !important;
+    }
+
+    body.student-dashboard-premium #viewDocumentModal .modal-footer .btn {
+        margin-left: 0 !important;
+    }
+}
+
+/* Loan history is intentionally wider than a phone. Keep the columns intact
+   and let the wrapper scroll sideways rather than stacking its cell contents. */
+body.student-dashboard-premium .loan-history-table-wrap,
+body.student-dashboard-premium .student-loan-history-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.student-dashboard-premium #loanHistoryTable.loan-history-table,
+body.student-dashboard-premium .student-loan-history-table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 680px !important;
+    table-layout: auto !important;
+}
+
+body.student-dashboard-premium #loanHistoryTable.loan-history-table thead,
+body.student-dashboard-premium .student-loan-history-table thead { display: table-header-group !important; }
+body.student-dashboard-premium #loanHistoryTable.loan-history-table tbody,
+body.student-dashboard-premium .student-loan-history-table tbody { display: table-row-group !important; }
+body.student-dashboard-premium #loanHistoryTable.loan-history-table tr,
+body.student-dashboard-premium .student-loan-history-table tr { display: table-row !important; }
+body.student-dashboard-premium #loanHistoryTable.loan-history-table th,
+body.student-dashboard-premium #loanHistoryTable.loan-history-table td,
+body.student-dashboard-premium .student-loan-history-table th,
+body.student-dashboard-premium .student-loan-history-table td {
+    display: table-cell !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+body.student-dashboard-premium .student-loan-history-table td:last-child {
+    min-width: 250px;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+body.student-dashboard-premium .badge.bg-success {
+    background-color: #087a25 !important;
+    color: #fff !important;
+}
+
+/* Hide validation icon for amount can pay field - keep border only */
+#amountCanPay.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+#amountCanPay.is-invalid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Keep date validation borders and feedback without Bootstrap's check/X icons. */
+#paymentDate.is-valid,
+#paymentDate.is-invalid,
+.was-validated #paymentDate:valid,
+.was-validated #paymentDate:invalid {
+    background-image: none !important;
+    padding-right: 0.75rem !important;
+}

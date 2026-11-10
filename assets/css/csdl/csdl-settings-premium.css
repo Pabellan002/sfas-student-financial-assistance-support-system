@@ -1,0 +1,530 @@
+/**
+ * CSDL Settings — premium (use with body.csdl-loans-premium + body.csdl-settings-premium)
+ */
+
+body.csdl-settings-premium #mainContent {
+    min-height: calc(100vh - 56px);
+}
+
+body.csdl-settings-premium .csdl-settings-main-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.csdl-settings-premium .csdl-settings-main-card > .card-header {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid #eef1f5;
+}
+
+body.csdl-settings-premium .csdl-settings-main-card > .card-body {
+    padding: 1.25rem 1.15rem 1.5rem;
+    background: #f4f6f9;
+}
+
+@media (min-width: 768px) {
+    body.csdl-settings-premium .csdl-settings-main-card > .card-body {
+        padding: 1.5rem 1.5rem 1.75rem;
+    }
+}
+
+body.csdl-settings-premium .csdl-settings-accordion {
+    --bs-accordion-border-color: #e8ecf0;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+    --bs-accordion-active-bg: #ffffff;
+    --bs-accordion-active-color: #212529;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion-item {
+    background: #fff;
+    border: 1px solid #e8ecf0 !important;
+    border-radius: 14px !important;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+}
+
+body.csdl-settings-premium .csdl-settings-accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .accordion-button {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #212529 !important;
+    background: #fff;
+    padding: 1rem 1.15rem;
+    box-shadow: none;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .accordion-button:not(.collapsed) {
+    color: #212529 !important;
+    background: #fff;
+    box-shadow: none;
+    border-bottom: 1px solid #eef1f5;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .accordion-button i {
+    font-size: 1.05rem;
+    color: #495057;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .accordion-button::after {
+    filter: none;
+    opacity: 0.55;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .accordion-body {
+    padding: 1.15rem 1.15rem 1.25rem;
+    background: #fff;
+}
+
+@media (min-width: 768px) {
+    body.csdl-settings-premium .csdl-settings-accordion .accordion-button {
+        padding: 1.1rem 1.5rem;
+    }
+
+    body.csdl-settings-premium .csdl-settings-accordion .accordion-body {
+        padding: 1.25rem 1.5rem 1.5rem;
+    }
+}
+
+body.csdl-settings-premium #profileImagePreview {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+
+body.csdl-settings-premium .csdl-settings-logs-wrap {
+    border-radius: 10px;
+    border: 1px solid #eef1f5;
+    background: #fff;
+}
+
+body.csdl-settings-premium .csdl-settings-logs-wrap .table thead.sticky-top {
+    box-shadow: 0 2px 6px rgba(16, 24, 40, 0.06);
+}
+
+body.csdl-settings-premium .csdl-settings-logs-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid #edf1f5;
+    margin-top: 0.5rem;
+}
+
+body.csdl-settings-premium .csdl-settings-logs-wrap .table thead th {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    background: #f1f4f8 !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    vertical-align: middle;
+}
+
+body.csdl-settings-premium .csdl-settings-logs-wrap .table tbody td {
+    font-size: 0.875rem;
+    border-bottom: 1px solid #eef1f5;
+    color: #334155;
+}
+
+body.csdl-settings-premium .csdl-settings-logs-wrap .table tbody tr:hover {
+    background: #f8fafc;
+}
+
+body.csdl-settings-premium .form-control,
+body.csdl-settings-premium .form-select {
+    border-radius: 10px;
+    border-color: #dce3ea;
+}
+
+body.csdl-settings-premium .form-control:focus,
+body.csdl-settings-premium .form-select:focus {
+    border-color: rgba(3, 96, 15, 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .input-group .form-control {
+    border-radius: 0 10px 10px 0;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .input-group .input-group-text {
+    border-radius: 10px 0 0 10px;
+    border-color: #dce3ea;
+    background: #f8fafc;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .input-group .btn-outline-secondary:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+body.csdl-settings-premium .csdl-settings-accordion .btn-success {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Refined detail-page content for the CSDL settings sections. */
+body.csdl-settings-premium .csdl-password-reminder {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #cfe7d5;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f0faf2, #ffffff);
+    color: #1f5130;
+}
+
+body.csdl-settings-premium .csdl-password-reminder > i {
+    font-size: 1.2rem;
+    color: #057019;
+}
+
+body.csdl-settings-premium .csdl-password-reminder strong,
+body.csdl-settings-premium .csdl-password-reminder span {
+    display: block;
+}
+
+body.csdl-settings-premium .csdl-password-reminder span {
+    margin-top: 0.15rem;
+    color: #52715c;
+    font-size: 0.85rem;
+}
+
+body.csdl-settings-premium .csdl-settings-section-note {
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dce7f2;
+    border-radius: 10px;
+    background: #f8fbff;
+    color: #53677e;
+    font-size: 0.9rem;
+}
+
+body.csdl-settings-premium .csdl-settings-section-note i {
+    color: #057019;
+}
+
+body.csdl-settings-premium .csdl-settings-data-table {
+    border: 1px solid #e3e9ef;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+body.csdl-settings-premium .csdl-settings-data-table .table {
+    margin-bottom: 0;
+}
+
+body.csdl-settings-premium .csdl-settings-data-table .table thead th {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #52657a;
+    background: #f5f8fb;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border: 1px solid #e1e9ef;
+    border-radius: 0.85rem;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table thead th {
+    padding: 0.8rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #dfe7ed;
+    color: #53677e;
+    background: #f5f8fb;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table tbody td {
+    padding: 0.7rem 0.45rem;
+    border: 0;
+    border-bottom: 1px solid #edf1f4;
+    background: #fff;
+    vertical-align: middle;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table .form-control,
+body.csdl-settings-premium .csdl-exam-schedules-table .form-select {
+    min-height: 2.45rem;
+    border-color: #dce5ec;
+    background-color: #fbfcfd;
+}
+
+body.csdl-settings-premium .csdl-exam-schedules-table .form-check-input {
+    width: 2.25rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+body.csdl-settings-premium .csdl-exam-schedule-actions {
+    padding: 1rem 0.1rem 0.1rem;
+    border-top: 1px solid #edf1f4;
+}
+
+body.csdl-settings-premium .csdl-exam-schedule-actions .btn {
+    min-height: 2.45rem;
+    padding-inline: 1rem;
+}
+
+@media (max-width: 767.98px) {
+    body.csdl-settings-premium .csdl-exam-schedules-table {
+        min-width: 46rem;
+    }
+
+    body.csdl-settings-premium .csdl-exam-schedule-actions {
+        flex-direction: column-reverse;
+        align-items: stretch !important;
+    }
+
+    body.csdl-settings-premium .csdl-exam-schedule-actions .btn {
+        width: 100%;
+    }
+}
+
+body.csdl-settings-premium .csdl-system-settings-grid .csdl-settings-control-card {
+    position: relative;
+}
+
+body.csdl-settings-premium .csdl-system-settings-grid .csdl-settings-control-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    body.csdl-settings-premium .csdl-system-settings-grid .csdl-settings-control-card {
+        padding: 1rem;
+        border: 1px solid #e6ecf1;
+        border-radius: 12px;
+        background: #fcfdfe;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.csdl-settings-premium .csdl-password-reminder {
+        padding: 0.8rem;
+    }
+
+    body.csdl-settings-premium .csdl-settings-data-table {
+        overflow-x: auto;
+    }
+}
+
+/* Activity log */
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-body {
+    padding: 1.25rem;
+    background: #f7f9fb;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #dce9df;
+    border-radius: .85rem;
+    background: linear-gradient(135deg, #f5fcf7, #fff);
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro-icon {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 2.5rem;
+    place-items: center;
+    border-radius: .75rem;
+    color: #057019;
+    background: #e8f6ec;
+    font-size: 1.15rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro h6 {
+    color: #102b1a;
+    font-weight: 700;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro p {
+    color: #617064;
+    font-size: .9rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
+    gap: .85rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #e1e8ef;
+    border-radius: .85rem;
+    background: #fff;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters .form-label {
+    margin-bottom: .35rem;
+    color: #39516c;
+    font-size: .76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters .form-select,
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters .form-control,
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters .input-group-text {
+    min-height: 2.45rem;
+    border-color: #d8e1eb;
+    font-size: .9rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: .75rem;
+    padding: 0 .2rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-activity-log-toolbar .btn {
+    min-width: 6.5rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-wrap {
+    max-height: 31rem;
+    overflow: auto;
+    border: 1px solid #dfe7ee;
+    border-radius: .85rem;
+    background: #fff;
+}
+
+body.csdl-settings-premium.portal-settings-page #activityLogTable {
+    min-width: 46rem;
+}
+
+body.csdl-settings-premium.portal-settings-page #activityLogTable thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: .8rem;
+    color: #52677f;
+    background: #f3f6fa;
+}
+
+body.csdl-settings-premium.portal-settings-page #activityLogTable tbody td {
+    padding: .75rem .8rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: .85rem .2rem 0;
+}
+
+body.csdl-settings-premium.portal-settings-page #logsPerPage {
+    width: 5rem;
+}
+
+body.csdl-settings-premium.portal-settings-page #logsPagination {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+body.csdl-settings-premium.portal-settings-page #logsPagination .btn {
+    min-width: 2rem;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-settings-page-ellipsis {
+    align-self: center;
+    padding: 0 .2rem;
+    color: #64748b;
+}
+
+body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-summary {
+    padding-top: 1rem;
+    text-align: right;
+}
+
+@media (max-width: 1199.98px) {
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-search {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-body {
+        padding: .75rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro {
+        align-items: flex-start;
+        margin-bottom: .75rem;
+        padding: .9rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-intro p {
+        font-size: .86rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-filters {
+        gap: .7rem;
+        margin-bottom: .75rem;
+        padding: .85rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-activity-log-toolbar {
+        margin-bottom: .7rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-wrap {
+        max-height: 27rem;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-footer {
+        flex-direction: column;
+        gap: .75rem;
+        text-align: center;
+    }
+
+    body.csdl-settings-premium.portal-settings-page #logsPagination {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+    }
+
+    body.csdl-settings-premium.portal-settings-page .csdl-settings-logs-summary {
+        text-align: center;
+    }
+}
+.csdl-email-template-preview {
+    background: #f7faf8;
+    border: 1px solid #dbe8de;
+    border-radius: 12px;
+    padding: 18px 20px;
+    color: #17312a;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

@@ -1,0 +1,173 @@
+/**
+ * Assessment dashboard — page-specific (requires assessment-portal-premium.css).
+ */
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium #dashboardContent > .row.mb-4.g-3 {
+    --bs-gutter-y: 1rem;
+}
+
+/* Recent PN tagging table — desktop sizing aligned with student loan history */
+body.assessment-app.assessment-dashboard-premium .assessment-recent-pn-table-wrap {
+    max-height: 420px;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable {
+    min-width: 640px;
+    margin-bottom: 0;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable thead th.assessment-recent-pn-th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5f6c7b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    line-height: 1.25;
+    vertical-align: middle;
+    padding: 0.62rem 0.65rem;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody td {
+    font-size: 0.835rem;
+    color: #2f3d4e;
+    border-bottom: 1px solid #eef1f5;
+    padding: 0.62rem 0.65rem;
+    vertical-align: middle;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody td:first-child {
+    padding-left: 0.85rem;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody td:last-child {
+    padding-right: 0.85rem;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody td[colspan] {
+    overflow: visible;
+    text-overflow: unset;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody tr:hover {
+    background: #f6f8fb;
+}
+
+body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable .badge {
+    border-radius: 999px;
+    padding: 0.34rem 0.6rem;
+    font-weight: 600;
+}
+
+/* Desktop / window view — taller content areas */
+@media (min-width: 992px) {
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-stack-mobile {
+        align-items: stretch;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-stack-mobile > .col-lg-4.d-flex {
+        min-height: 100%;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-dash-main-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-recent-pn-body {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 440px;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-recent-pn-table-wrap {
+        flex: 1 1 auto;
+        min-height: 440px;
+        max-height: 440px;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium #recentPnTaggingTable thead th.assessment-recent-pn-th {
+        padding: 0.78rem 0.75rem;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium #recentPnTaggingTable tbody td {
+        padding: 0.78rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-dash-chart-card {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-dash-chart-card .assessment-chart-body {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Keep the Status Distribution chart at its normal desktop size. */
+        min-height: 390px;
+        padding: 1rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-dash-chart-card canvas {
+        width: 100% !important;
+        max-height: 360px;
+        min-height: 0;
+        height: auto !important;
+    }
+}
+
+/* Mobile view — force table to scroll horizontally instead of stacking */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-dashboard-premium .assessment-recent-pn-table-wrap {
+        overflow-x: auto !important;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        display: block !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable {
+        display: table !important;
+        width: 100% !important;
+        min-width: 640px !important;
+        table-layout: auto !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable thead {
+        display: table-header-group !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody {
+        display: table-row-group !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tr {
+        display: table-row !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable th,
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable td {
+        display: table-cell !important;
+        white-space: nowrap !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable thead th {
+        font-size: 0.68rem !important;
+        padding: 0.5rem 0.5rem !important;
+    }
+
+    body.assessment-app.assessment-dashboard-premium #recentPnTaggingTable tbody td {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.5rem !important;
+    }
+}

@@ -1,0 +1,829 @@
+/* Hold login UI while auth redirect check runs to avoid flash. */
+html,
+body.login-page {
+  min-height: 100%;
+  margin: 0;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+body.auth-gate-pending {
+  overflow: hidden;
+}
+
+body.auth-gate-pending > *:not(#authGateOverlay) {
+  visibility: hidden;
+}
+
+.auth-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+body.auth-gate-pending .auth-gate-overlay {
+  display: flex;
+}
+
+body:not(.auth-gate-pending) .auth-gate-overlay {
+  display: none !important;
+}
+
+.auth-gate-card {
+  text-align: center;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.auth-gate-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25rem solid rgba(3, 96, 15, 0.2);
+  border-right-color: #03600f;
+  border-radius: 50%;
+  animation: auth-gate-spin 0.75s linear infinite;
+}
+
+@keyframes auth-gate-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Keep the login stable while Bootstrap switches from desktop to compact layouts. */
+.auth-login-shell,
+.auth-login-row,
+.auth-brand-panel,
+.auth-form-panel {
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Keep the desktop branding inside its column at tablet widths and on redirects. */
+.auth-brand-panel .brand-stack,
+.auth-brand-panel .brand-stack > div {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.auth-brand-panel img[alt="CSDL Logo"] {
+  width: min(600px, 100%) !important;
+  max-width: 100%;
+  height: auto !important;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.auth-form-panel .login-form-container {
+  width: min(100%, 500px);
+  max-width: 500px;
+}
+
+.auth-education-logo {
+  width: auto;
+  height: 64px;
+  object-fit: contain;
+}
+
+.auth-education-name {
+  color: #6c757d;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.auth-education-tagline {
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.auth-mobile-intro {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  body.login-page {
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+
+  body.login-page .auth-login-shell {
+    height: auto !important;
+    min-height: 100svh;
+  }
+
+  body.login-page .auth-login-row {
+    min-height: 100svh;
+    align-content: flex-start;
+  }
+
+  body.login-page .auth-brand-panel {
+    display: flex !important;
+    width: 100%;
+    min-height: 158px;
+    flex: 0 0 auto;
+    padding: 9px 16px !important;
+  }
+
+  body.login-page .auth-brand-panel .brand-stack {
+    position: relative;
+    z-index: 1;
+    margin: 0 !important;
+  }
+
+  body.login-page .auth-brand-panel img[alt="CSDL Logo"] {
+    width: 112px !important;
+    height: 58px !important;
+  }
+
+  body.login-page .auth-brand-panel h2 {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.12rem !important;
+  }
+
+  body.login-page .auth-brand-panel p {
+    margin-bottom: 0.1rem !important;
+    font-size: 0.69rem;
+  }
+
+  body.login-page .auth-brand-panel p.small {
+    font-size: 0.58rem;
+  }
+
+  body.login-page .auth-form-panel {
+    width: 100%;
+    min-height: auto;
+    align-items: center !important;
+    padding: 16px 0 20px;
+    background: #ffffff;
+  }
+
+  body.login-page .login-form-container {
+    width: min(100%, 500px);
+    margin: 0 auto;
+    padding: 16px 20px !important;
+    border: 0;
+    border-radius: 0;
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  body.login-page .auth-education-brand {
+    justify-content: center !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  body.login-page .auth-education-logo {
+    flex: 0 0 auto;
+    height: 38px;
+  }
+
+  body.login-page .auth-education-name {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+  }
+
+  body.login-page .auth-education-tagline {
+    margin-top: 4px;
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+
+  body.login-page .auth-mobile-intro {
+    display: none !important;
+  }
+
+  body.login-page .auth-mobile-eyebrow {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #007a29;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  body.login-page .auth-mobile-intro p {
+    max-width: 34rem;
+    margin: 0;
+    color: #526159;
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  body.login-page .auth-signin-title {
+    margin-bottom: 12px !important;
+    color: #14261a;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  body.login-page #loginForm > .mb-3 {
+    margin-bottom: 10px !important;
+  }
+
+  body.login-page #loginForm .form-label {
+    margin-bottom: 4px;
+    font-size: 0.76rem;
+  }
+
+  body.login-page #loginForm .form-control,
+  body.login-page #loginForm .input-group-text {
+    min-height: 40px;
+    padding-top: 0.42rem;
+    padding-bottom: 0.42rem;
+    font-size: 0.9rem;
+  }
+
+  body.login-page #loginForm .d-grid.mt-4 {
+    margin-top: 12px !important;
+  }
+
+  body.login-page #loginButton {
+    min-height: 42px;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+  }
+
+  body.login-page .auth-secondary-actions {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  body.login-page .auth-secondary-actions .auth-secondary-action {
+    min-height: 40px;
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Quickview Popup Tabs Styling */
+.nav-tabs-custom {
+  border-bottom: 2px solid #e9ecef;
+}
+
+.nav-tabs-custom .nav-link {
+  color: #6c757d;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.nav-tabs-custom .nav-link:hover {
+  color: #03600f;
+  border-bottom-color: rgba(3, 96, 15, 0.3);
+}
+
+.nav-tabs-custom .nav-link.active {
+  color: #03600f;
+  background: transparent;
+  border-bottom: 2px solid #03600f;
+  font-weight: 600;
+}
+
+/* FAQ Accordion Styling */
+#faqAccordion .accordion-item {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+#faqAccordion .accordion-button {
+  background-color: #f8f9fa;
+  color: #03600f;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  box-shadow: none;
+}
+
+#faqAccordion .accordion-button:not(.collapsed) {
+  background-color: #f2fff4;
+  color: #03600f;
+  box-shadow: none;
+}
+
+#faqAccordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(3, 96, 15, 0.25);
+  border-color: #03600f;
+}
+
+#faqAccordion .accordion-body {
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #495057;
+  background-color: #ffffff;
+}
+
+#faqAccordion .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2303600f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+#faqAccordion .accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2303600f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(180deg);
+}
+
+/* Loan Status tab: spaced input + search button, no valid/invalid icons */
+#accountStatusPopup .loan-status-search {
+  gap: 0.5rem;
+}
+
+#accountStatusPopup #statusSchoolId.is-valid,
+#accountStatusPopup #statusSchoolId.is-invalid {
+  background-image: none;
+  padding-right: 0.5rem;
+}
+
+#accountStatusPopup #checkStatusBtn {
+  min-width: 2.5rem;
+}
+
+/* Quickview Popup Scrollbar */
+#accountStatusPopup .card-body {
+  scrollbar-width: thin;
+  scrollbar-color: #03600f #f1f1f1;
+}
+
+#accountStatusPopup .card-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+#accountStatusPopup .card-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#accountStatusPopup .card-body::-webkit-scrollbar-thumb {
+  background: #03600f;
+  border-radius: 10px;
+}
+
+#accountStatusPopup .card-body::-webkit-scrollbar-thumb:hover {
+  background: #0a8f1b;
+}
+
+/* Fix spacing between logo and title text */
+.brand-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.container-fluid > .row > .col-md-7 > div.text-center > div.mb-0 {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.container-fluid > .row > .col-md-7 > div.text-center > div.mb-0 > img {
+  margin-bottom: 0 !important;
+  margin-inline: auto;
+  padding-bottom: 0 !important;
+  display: block;
+}
+
+.container-fluid > .row > .col-md-7 > div.text-center > h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  padding-top: 0 !important;
+  line-height: 1.2;
+}
+
+/* Login submit loading animation */
+#loginButton.is-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+#loginButton.is-loading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  transform-origin: left center;
+  animation: login-progress 1s ease-in-out infinite;
+}
+
+@keyframes login-progress {
+  0% { transform: scaleX(0.15); opacity: 0.7; }
+  50% { transform: scaleX(0.9); opacity: 1; }
+  100% { transform: scaleX(0.15); opacity: 0.7; }
+}
+
+/* Register section — simple link below sign in */
+.register-section-simple {
+  border-top: 1px solid #e9ecef;
+}
+
+.register-section-simple .btn-outline-success {
+  border-color: #03600f;
+  color: #03600f;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.register-section-simple .btn-outline-success:hover,
+.register-section-simple .btn-outline-success:focus-visible {
+  background-color: #03600f;
+  border-color: #03600f;
+  color: #fff;
+}
+
+/* Mobile compaction for login page */
+@media (max-width: 575.98px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  .container-fluid, .container-fluid .row { margin: 0 !important; }
+  img { max-width: 100%; height: auto; }
+  /* Shrink left branding logo and tighten paddings */
+  .container-fluid > .row > .col-md-7 { padding: 1.25rem !important; }
+  .container-fluid > .row > .col-md-7 > div.text-center { position: relative; z-index: 1; }
+  .container-fluid > .row > .col-md-7 img[alt="CSDL Logo"] { width: 200px !important; height: auto !important; position: relative; z-index: 2; background: transparent !important; filter: none !important; }
+  .container-fluid > .row > .col-md-7 h2 { font-size: 1.25rem !important; margin-bottom: .25rem !important; position: relative; z-index: 1; }
+  .container-fluid > .row > .col-md-7 p { margin-bottom: .25rem !important; position: relative; z-index: 1; }
+
+  /* Tighten right form area */
+  .login-form-container { max-width: 100% !important; padding: 20px !important; }
+  .login-form-container .mb-4 { margin-bottom: 1rem !important; }
+  .login-form-container img[alt="PHINMA Education"] { height: 40px !important; }
+  .login-form-container .auth-education-name { font-size: .95rem !important; }
+  .login-form-container .auth-education-tagline { font-size: .64rem !important; }
+
+  /* Quickview button/popup adjustments to avoid overlap */
+  #accountStatusBtn { 
+    width: 38px !important; 
+    height: 38px !important; 
+    bottom: 12px !important; 
+    right: 12px !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+  #accountStatusBtn i {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  /* Quickview popup - smaller and aligned with icon */
+  #accountStatusPopup { 
+    width: 320px !important; 
+    right: 11px !important; 
+    bottom: 58px !important; 
+    max-height: 500px !important;
+  }
+  #accountStatusPopup .card {
+    border-radius: 12px !important;
+  }
+  #accountStatusPopup .card-header {
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 10px 10px 0 0 !important;
+  }
+  #accountStatusPopup .card-header h6 {
+    font-size: 0.875rem !important;
+  }
+  #accountStatusPopup .nav-tabs-custom .nav-link {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+  #accountStatusPopup .card-body {
+    padding: 0 !important;
+    max-height: 400px !important;
+  }
+  #accountStatusPopup .tab-content {
+    max-height: 400px !important;
+  }
+  #accountStatusPopup .tab-pane {
+    padding: 0.75rem !important;
+  }
+  #accountStatusPopup #faqAccordion .accordion-button {
+    font-size: 0.8rem !important;
+    padding: 0.6rem 0.75rem !important;
+  }
+  #accountStatusPopup #faqAccordion .accordion-body {
+    font-size: 0.8rem !important;
+    padding: 0.75rem !important;
+  }
+  #accountStatusPopup .form-label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  #accountStatusPopup .loan-status-search {
+    font-size: 0.875rem !important;
+  }
+  #accountStatusPopup .loan-status-search .form-control {
+    font-size: 0.875rem !important;
+    padding: 0.375rem 0.5rem !important;
+  }
+  #accountStatusPopup .btn-sm {
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  #accountStatusPopup #accountStatusResult {
+    margin-top: 0.75rem !important;
+  }
+  #accountStatusPopup #accountStatusResult .bg-light {
+    padding: 0.75rem !important;
+  }
+  /* Align popup pointer with icon center */
+  #accountStatusPopup > div:last-child {
+    right: 28px !important;
+    bottom: -9px !important;
+    border-top-width: 10px !important;
+    border-left-width: 10px !important;
+    border-right-width: 10px !important;
+  }
+
+  /* SweetAlert mobile sizing */
+  .swal2-popup { 
+    width: 86vw !important; 
+    max-width: 360px !important; 
+    padding: 0.75rem !important; 
+    border-radius: 0.5rem !important; 
+  }
+  .swal2-title { 
+    font-size: 1rem !important; 
+    margin-bottom: 0.25rem !important; 
+  }
+  .swal2-html-container { 
+    font-size: 0.9rem !important; 
+    margin: 0.25rem 0 !important; 
+  }
+  .swal2-icon { 
+    transform: scale(0.85); 
+    margin: 0.25rem auto 0.5rem auto !important; 
+  }
+  .swal2-actions .swal2-styled { 
+    font-size: 0.85rem !important; 
+    padding: 0.45rem 0.75rem !important; 
+  }
+  .swal2-toast { 
+    min-width: 180px !important; 
+    width: fit-content !important; 
+    padding: 0.45rem 0.65rem !important; 
+    font-size: 0.85rem !important; 
+    border-radius: 0.5rem !important; 
+  }
+  .swal2-toast .swal2-title { 
+    font-size: 0.9rem !important; 
+  }
+}
+
+
+
+
+/* Login links styling */
+.d-flex a[href*="forget-password"],
+.d-flex a[href*="register"] {
+    font-size: 0.9rem;
+}
+
+.d-flex a[href*="forget-password"]:hover,
+.d-flex a[href*="register"]:hover {
+    color: #0a8f1b !important;
+    transform: translateY(-1px);
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+    .d-flex.gap-2.flex-wrap {
+        justify-content: center !important;
+        text-align: center;
+    }
+    
+    .d-flex a[href*="forget-password"],
+    .d-flex a[href*="register"] {
+        font-size: 0.85rem;
+    }
+}
+
+/* Responsive secondary account actions */
+.auth-secondary-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.auth-secondary-actions .auth-secondary-action {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 14px;
+    border: 1px solid #d5e3d8;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #006b24 !important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(0, 72, 27, 0.05);
+    transition: border-color 0.2s ease, background-color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.auth-secondary-actions .auth-secondary-action:hover {
+    border-color: #00852f;
+    background: #f1faf4;
+    box-shadow: 0 6px 16px rgba(0, 72, 27, 0.1);
+    transform: translateY(-1px);
+}
+
+.auth-secondary-actions .auth-secondary-action:focus-visible {
+    outline: 3px solid rgba(0, 133, 47, 0.2);
+    outline-offset: 2px;
+}
+
+.auth-secondary-actions .auth-secondary-action--register {
+    border-color: #b9dbc4;
+    background: #eef8f1;
+}
+
+@media (max-width: 520px) {
+    .auth-secondary-actions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+    .auth-secondary-actions .auth-secondary-action {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 12px;
+    }
+}
+
+/* Bottom-left seal on desktop; aligned beside the school identity on mobile. */
+.auth-seal-slot {
+    position: absolute;
+    bottom: 20px;
+    left: 16px;
+    z-index: 2;
+    width: auto;
+    mix-blend-mode: multiply;
+}
+
+.auth-education-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.auth-education-copy {
+    min-width: 0;
+}
+
+.auth-privacy-seal {
+    display: block;
+    width: 132px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.auth-privacy-seal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.auth-privacy-seal:focus-visible {
+    outline: 3px solid #82ad8a;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+@media (min-width: 768px) and (max-height: 650px) {
+    .auth-privacy-seal {
+        width: 104px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.login-page .auth-login-row .auth-brand-panel {
+        min-height: 128px;
+        padding: 9px 16px !important;
+    }
+
+    body.login-page .auth-form-panel {
+        padding-top: 0;
+        padding-bottom: 8px;
+    }
+
+    body.login-page .auth-login-shell,
+    body.login-page .auth-login-row {
+        height: auto !important;
+        min-height: 0;
+    }
+
+    body.login-page .auth-education-brand {
+        justify-content: space-between !important;
+        gap: 10px !important;
+    }
+
+    .auth-education-identity {
+        flex: 1 1 auto;
+        gap: 6px;
+    }
+
+    body.login-page .auth-education-identity .auth-education-logo {
+        height: clamp(52px, 16.4vw, 64px) !important;
+    }
+
+    .auth-seal-slot {
+        position: static;
+        flex: 0 0 auto;
+        padding: 0;
+    }
+
+    .auth-privacy-seal {
+        width: 104px;
+    }
+}
+
+/* Use the original transparent seal over a dark backdrop, without a card. */
+.auth-seal-modal {
+    --bs-modal-width: 508px;
+    --bs-modal-margin: 20px;
+}
+
+.auth-seal-modal .modal-content {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.auth-seal-modal .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.auth-seal-preview {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100svh - 64px);
+    object-fit: contain;
+}
+
+.auth-seal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #dce2de;
+    border-radius: 50%;
+    background: #fff;
+    color: #233b2d;
+    box-shadow: 0 2px 12px #0003;
+}
+
+.auth-seal-close:hover {
+    background: #edf3ef;
+}
+
+.auth-seal-close:focus-visible {
+    outline: 3px solid #82ad8a;
+    outline-offset: 3px;
+}
+
+body.login-page .modal-backdrop.show {
+    opacity: 0.72;
+}

@@ -1,0 +1,19 @@
+{
+    "require": {
+        "php": ">=8.2",
+        "symfony/mailer": "^7.3",
+        "minishlink/web-push": "^11.0",
+        "php-http/guzzle7-adapter": "^1.1",
+        "phpoffice/phpspreadsheet": "^5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "CSDL\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

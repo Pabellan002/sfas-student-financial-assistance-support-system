@@ -1,0 +1,190 @@
+.document-types-page .masterfiles-table-scroll {
+    overflow-x: auto;
+}
+
+.document-types-page .masterfiles-table-scroll table {
+    min-width: 850px;
+}
+
+.document-types-page .masterfiles-table-scroll th,
+.document-types-page .masterfiles-table-scroll td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+.document-types-page .document-type-data-row {
+    cursor: pointer;
+}
+
+.document-types-page .document-type-data-row:hover td {
+    background-color: #f2faf4;
+}
+
+.document-types-page .document-type-stat-card {
+    border: 0;
+    display: block;
+    width: 100%;
+    background: #fff;
+    color: inherit;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.document-types-page .document-type-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 .6rem 1.25rem rgba(13, 76, 40, .14) !important;
+}
+
+.document-types-page .document-types-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.document-types-page #documentTypesPerPage {
+    width: 78px;
+}
+
+.document-types-page .masterfiles-table-summary {
+    padding-top: 1rem;
+    color: #546779;
+    text-align: right;
+    font-size: .875rem;
+}
+
+.document-types-page .document-types-pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: .35rem;
+    flex-wrap: wrap;
+    margin-top: .75rem;
+}
+
+.document-types-page .masterfiles-scroll-hint {
+    padding-top: .5rem;
+    color: #536b83;
+    text-align: center;
+    font-size: .74rem;
+    font-style: italic;
+}
+
+.document-types-page .document-type-detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .75rem 0;
+    border-bottom: 1px solid #e4e9ee;
+}
+
+.document-types-page .document-type-detail-row > span,
+.document-types-page .detail-label {
+    color: #536b83;
+    font-size: .9rem;
+}
+
+.document-types-page .document-type-detail-description {
+    margin-top: .35rem;
+    padding: .75rem;
+    border-radius: .45rem;
+    background: #f7f9fb;
+    color: #273747;
+}
+
+@media (min-width: 768px) {
+    .document-types-page .document-types-filter-row .form-select {
+        flex: 0 0 160px;
+        width: 160px;
+    }
+
+    .document-types-page .document-types-search {
+        flex: 0 0 280px;
+        width: 280px;
+    }
+}
+
+.document-types-page .spin-icon {
+    animation: document-type-spin .75s linear infinite;
+}
+
+@keyframes document-type-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 575.98px) {
+    .document-types-page .documents-stat-grid > div:last-child {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .document-types-page .card-header .btn {
+        flex: 1 1 auto;
+    }
+
+    .document-types-page .card-header .d-flex.align-items-center.gap-2 {
+        width: 100%;
+    }
+
+    .document-types-page .document-types-toolbar {
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .document-types-page .document-types-toolbar > .btn {
+        flex: 1 1 0;
+    }
+
+    .document-types-page .document-types-toolbar > .dropdown {
+        flex: 0 0 42px;
+    }
+
+    .document-types-page .document-types-toolbar .document-types-mobile-filter-btn {
+        width: 42px;
+        min-width: 42px;
+        padding-inline: 0;
+    }
+
+    .document-types-page .document-types-mobile-filter-menu {
+        width: min(280px, calc(100vw - 42px));
+        padding: .9rem;
+        border: 1px solid #dbe3ed;
+        border-radius: .75rem;
+        box-shadow: 0 .75rem 1.5rem rgba(18, 44, 70, .15);
+    }
+
+    .document-types-page .document-types-mobile-filter-menu .form-label {
+        margin-bottom: .35rem;
+        color: #173f70;
+        font-size: .8rem;
+        font-weight: 700;
+    }
+
+    .document-types-page .document-types-search {
+        width: 100%;
+    }
+
+    .document-types-page .document-types-table-footer {
+        align-items: center;
+        flex-direction: column;
+        gap: .75rem;
+    }
+
+    .document-types-page .document-types-table-footer > :first-child {
+        order: 2;
+    }
+
+    .document-types-page .masterfiles-table-summary {
+        width: 100%;
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .document-types-page .document-types-pagination {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0;
+    }
+}

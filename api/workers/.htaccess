@@ -1,0 +1,2 @@
+# CLI jobs and their logs must never be served by Apache.
+Require all denied

@@ -1,0 +1,2674 @@
+/* Center card headers for all masterfiles */
+.csdl-loans-main-card .card-header h6 {
+    text-align: center !important;
+}
+
+@media (max-width: 575.98px) {
+    .card-header .masterfiles-directory-heading {
+        width: 100%;
+    }
+
+    .card-header .masterfiles-directory-heading > h6 {
+        width: 100%;
+        text-align: center !important;
+    }
+}
+
+/* Center headers for departments table */
+#departmentsTable thead th {
+    text-align: center !important;
+}
+
+/* Custom row action dropdown for masterfiles tables */
+#departmentsTable tbody tr,
+#departmentsTable tbody td,
+#programsTable2 tbody tr,
+#programsTable2 tbody td,
+#scholarshipsTable tbody tr,
+#scholarshipsTable tbody td,
+#schoolYearsTable tbody tr,
+#schoolYearsTable tbody td,
+#yearLevelsTable tbody tr,
+#yearLevelsTable tbody td,
+#employeesTable tbody tr,
+#employeesTable tbody td,
+#studentsTable tbody tr,
+#studentsTable tbody td,
+#campusesTable tbody tr,
+#campusesTable tbody td {
+    overflow: visible !important;
+}
+#pendingRegistrationsTable tbody tr,
+#pendingRegistrationsTable tbody td {
+    overflow: visible !important;
+}
+
+.action-dd {
+    position: relative;
+    display: inline-block;
+}
+
+.action-dd > summary {
+    list-style: none;
+    cursor: pointer;
+    min-width: 32px !important;
+    width: 32px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.action-dd > summary::-webkit-details-marker {
+    display: none;
+}
+
+.action-dd-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    min-width: 160px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 0.35rem;
+    display: none;
+    z-index: 2100;
+}
+
+.action-dd[open] .action-dd-menu {
+    display: block;
+}
+
+.action-dd-item {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.35rem;
+    color: #212529;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.action-dd-item:hover {
+    background: rgba(25, 135, 84, 0.1);
+}
+
+.btn[aria-busy="true"] .bi-arrow-repeat.spin {
+    animation: masterfiles-refresh-spin 0.8s linear infinite;
+}
+
+@keyframes masterfiles-refresh-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Masterfile modals: use a fixed mobile shell so headers and footer actions
+   stay available while the modal content scrolls. */
+@media (max-width: 991.98px) {
+    body.csdl-loans-premium.modal-open .csdl-mobile-bottom-nav {
+        display: none !important;
+    }
+
+    body.csdl-loans-premium .modal {
+        padding: 0.5rem;
+        overflow: hidden;
+    }
+
+    body.csdl-loans-premium .modal-dialog {
+        width: 100%;
+        max-width: none !important;
+        height: auto;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px));
+        min-height: 0;
+        margin: 0 auto !important;
+    }
+
+    /* Keep compact detail modals vertically centered; long modal content still
+       stops at the viewport limit and scrolls inside its body. */
+    body.csdl-loans-premium .modal-dialog.modal-dialog-centered {
+        min-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px));
+    }
+
+    body.csdl-loans-premium .modal-content {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px));
+        overflow: hidden;
+    }
+
+    body.csdl-loans-premium .modal-header,
+    body.csdl-loans-premium .modal-footer {
+        flex-shrink: 0;
+    }
+
+    body.csdl-loans-premium .modal-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    body.csdl-loans-premium .modal-footer {
+        flex-direction: row !important;
+        justify-content: flex-end;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.csdl-loans-premium .modal-footer .btn {
+        width: auto !important;
+        min-height: 44px;
+    }
+}
+
+/* Center headers for programs table */
+#programsTable2 thead th {
+    text-align: center !important;
+}
+
+/* Center headers for scholarships table */
+#scholarshipsTable thead th {
+    text-align: center !important;
+}
+
+/* Center headers for school years table */
+#schoolYearsTable thead th {
+    text-align: center !important;
+}
+
+/* Center headers for year levels table */
+#yearLevelsTable thead th {
+    text-align: center !important;
+}
+
+/* Center headers for campuses table */
+#campusesTable thead th {
+    text-align: center !important;
+}
+
+/* Hide simple-datatables default pagination info */
+.datatable-info,
+.datatable-wrapper .datatable-info,
+.datatable-pagination .datatable-info,
+.datatable-pagination .datatable-info-wrapper {
+    display: none !important;
+}
+
+
+/* Ensure sort indicators align without shifting */
+#departmentsTable thead th .datatable-sorter::before,
+#departmentsTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+
+/* Ensure sort indicators align without shifting - programs */
+#programsTable thead th .datatable-sorter::before,
+#programsTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+
+/* Ensure sort indicators align without shifting - scholarships */
+#scholarshipsTable thead th .datatable-sorter::before,
+#scholarshipsTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+
+/* Ensure sort indicators align without shifting - school years */
+#schoolYearsTable thead th .datatable-sorter::before,
+#schoolYearsTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+
+/* Ensure sort indicators align without shifting - employees */
+#employeesTable thead th .datatable-sorter::before,
+#employeesTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+/* Ensure sort indicators align without shifting - year levels */
+#studentsTable thead th .datatable-sorter::before,
+#campusesTable thead th .datatable-sorter::before,
+#campusesTable thead th .datatable-sorter::after,
+#yearLevelsTable thead th .datatable-sorter::before,
+#yearLevelsTable thead th .datatable-sorter::after {
+    margin-left: 4px;
+}
+
+/* Prevent pagination from scrolling with table on mobile */
+.card-body {
+    overflow-x: visible;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Ensure only the table scrolls, not the parent */
+    max-width: 100%;
+}
+
+/* Ensure pagination footer doesn't scroll with table */
+#tableFooter,
+#programsTableFooter {
+    position: relative;
+    z-index: 1;
+    overflow-x: visible;
+    width: 100%;
+    /* Prevent horizontal scrolling on mobile */
+    min-width: 0;
+}
+
+/* On mobile, ensure card-body doesn't create horizontal scroll */
+@media (max-width: 767.98px) {
+    .card-body {
+        overflow-x: hidden;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    #tableFooter,
+    #programsTableFooter {
+        overflow-x: visible;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Move simple-datatables pagination outside scrollable area on mobile */
+    .datatable-wrapper {
+        position: relative;
+    }
+    
+    .datatable-pagination {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+        overflow-x: visible !important;
+        transform: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    /* Ensure pagination numbers don't scroll with table */
+    .table-responsive ~ .datatable-pagination,
+    .datatable-wrapper .datatable-pagination {
+        position: static !important;
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Hide pagination inside table-responsive on mobile */
+    .table-responsive .datatable-pagination {
+        display: none !important;
+    }
+}
+
+/* Keep the student editor compact without changing its fields or behavior. */
+#studentModal .modal-dialog {
+    max-width: min(1080px, calc(100vw - 1rem)) !important;
+}
+
+#studentModal .modal-body {
+    padding: .85rem 1rem 1rem;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-section {
+    padding: .75rem .9rem .85rem;
+    border: 1px solid #e2e8e7;
+    border-radius: .7rem;
+    background: #fff;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-section__title {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0 0 .65rem;
+    color: #075e2d;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: .8rem;
+    row-gap: .65rem;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-field {
+    grid-column: span 3;
+    min-width: 0;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-field--wide {
+    grid-column: span 6;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-field .form-label {
+    margin-bottom: .25rem;
+    font-size: .84rem;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-field :is(.form-control, .form-select, .input-group) {
+    min-width: 0;
+}
+
+:is(#studentModal, .masterfile-editor-modal) .student-form-field .form-text {
+    margin-top: .25rem;
+    font-size: .72rem;
+    line-height: 1.25;
+}
+
+@media (max-width: 820px) {
+    :is(#studentModal, .masterfile-editor-modal) .student-form-field {
+        grid-column: span 6;
+    }
+
+    :is(#studentModal, .masterfile-editor-modal) .student-form-field--wide {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 575.98px) {
+    :is(#studentModal, .masterfile-editor-modal) .student-form-section {
+        padding: .7rem;
+    }
+
+    :is(#studentModal, .masterfile-editor-modal) .student-form-grid {
+        row-gap: .7rem;
+    }
+
+    :is(#studentModal, .masterfile-editor-modal) .student-form-field,
+    :is(#studentModal, .masterfile-editor-modal) .student-form-field--wide {
+        grid-column: span 12;
+    }
+}
+
+/* Ensure body cells align centered for Status and Actions columns */
+#departmentsTable tbody td:nth-child(4),
+#departmentsTable tbody td:nth-child(5) {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#programsTable2 tbody td:nth-child(5),
+#programsTable2 tbody td:nth-child(6),
+#programsTable tbody td:nth-child(5),
+#programsTable tbody td:nth-child(6) {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#scholarshipsTable tbody td:nth-child(5),
+#scholarshipsTable tbody td:nth-child(6),
+#scholarshipsTable tbody td:nth-child(7) {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#campusesTable tbody td:nth-child(4),
+#campusesTable tbody td:nth-child(5),
+#campusesTable tbody td:nth-child(6) {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#schoolYearsTable tbody td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#yearLevelsTable tbody td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#employeesTable thead th {
+    text-align: center !important;
+    vertical-align: middle;
+    font-weight: 600;
+}
+#employeesTable tbody td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#employeesTable tbody td:nth-child(7) .btn-group,
+#employeesTable tbody td:nth-child(7) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#studentsTable thead th {
+    text-align: center !important;
+    vertical-align: middle;
+    font-weight: 600;
+}
+#studentsTable tbody td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#studentsTable tbody tr {
+    cursor: pointer;
+}
+#pendingRegistrationsTable tbody tr[data-pending-id] {
+    cursor: pointer;
+}
+#studentsTable tbody td:nth-child(9) .btn-group,
+#studentsTable tbody td:nth-child(9) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#departmentsTable tbody td:nth-child(5) .btn-group,
+#departmentsTable tbody td:nth-child(5) .dropdown,
+#departmentsTable tbody td:nth-child(5) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#programsTable2 tbody td:nth-child(6) .btn-group,
+#programsTable2 tbody td:nth-child(6) .dropdown,
+#programsTable2 tbody td:nth-child(6) .action-dd,
+#programsTable tbody td:nth-child(6) .btn-group,
+#programsTable tbody td:nth-child(6) .dropdown,
+#programsTable tbody td:nth-child(6) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#scholarshipsTable tbody td:nth-child(7) .btn-group,
+#scholarshipsTable tbody td:nth-child(7) .dropdown,
+#scholarshipsTable tbody td:nth-child(7) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#schoolYearsTable tbody td:nth-child(6) .btn-group,
+#schoolYearsTable tbody td:nth-child(6) .dropdown,
+#schoolYearsTable tbody td:nth-child(6) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#yearLevelsTable tbody td:nth-child(5) .btn-group,
+#yearLevelsTable tbody td:nth-child(5) .dropdown,
+#yearLevelsTable tbody td:nth-child(5) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+
+/* Make Actions button compact */
+#departmentsTable tbody td:nth-child(5) .btn-group .btn,
+#departmentsTable tbody td:nth-child(5) .dropdown .btn,
+#departmentsTable tbody td:nth-child(5) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto; /* prevent bootstrap btn-group from stretching */
+}
+#departmentsTable tbody td:nth-child(5) .btn-group .btn i { font-size: 0.95rem; }
+
+/* Make Actions button compact - programs */
+#programsTable tbody td:nth-child(6) .btn-group .btn,
+#programsTable tbody td:nth-child(6) .dropdown .btn,
+#programsTable tbody td:nth-child(6) .action-dd > summary,
+#programsTable2 tbody td:nth-child(6) .btn-group .btn,
+#programsTable2 tbody td:nth-child(6) .dropdown .btn,
+#programsTable2 tbody td:nth-child(6) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#programsTable tbody td:nth-child(6) .btn-group .btn i,
+#programsTable2 tbody td:nth-child(6) .btn-group .btn i { font-size: 0.95rem; }
+
+/* Make Actions button compact - scholarships */
+#scholarshipsTable tbody td:nth-child(7) .btn-group .btn,
+#scholarshipsTable tbody td:nth-child(7) .dropdown .btn,
+#scholarshipsTable tbody td:nth-child(7) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#scholarshipsTable tbody td:nth-child(7) .btn-group .btn i { font-size: 0.95rem; }
+
+/* Make Actions button compact - school years */
+#schoolYearsTable tbody td:nth-child(6) .btn-group .btn,
+#schoolYearsTable tbody td:nth-child(6) .dropdown .btn,
+#schoolYearsTable tbody td:nth-child(6) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#schoolYearsTable tbody td:nth-child(6) .btn-group .btn i { font-size: 0.95rem; }
+
+/* Make Actions button compact - year levels (Actions = column 5) */
+#yearLevelsTable tbody td:nth-child(5) .btn-group .btn,
+#yearLevelsTable tbody td:nth-child(5) .dropdown .btn,
+#yearLevelsTable tbody td:nth-child(5) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#yearLevelsTable tbody td:nth-child(5) .btn-group .btn i { font-size: 0.95rem; }
+#employeesTable tbody td:nth-child(7) .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    min-width: 32px;
+}
+#employeesTable tbody td:nth-child(7) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#employeesTable tbody td:nth-child(7) .btn-group .btn i { font-size: 0.95rem; }
+#studentsTable tbody td:nth-child(9) .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+#studentsTable tbody td:nth-child(9) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#studentsTable tbody td:nth-child(9) .btn-group .btn i { font-size: 0.95rem; }
+
+#pendingRegistrationsTable thead th {
+    text-align: center !important;
+    vertical-align: middle;
+    font-weight: 600;
+}
+#pendingRegistrationsTable tbody td {
+    text-align: center !important;
+    vertical-align: middle;
+}
+#pendingRegistrationsTable tbody td:nth-child(7) .inline-row-actions {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+#pendingRegistrationsTable tbody td:nth-child(7) .action-dd {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+#pendingRegistrationsTable tbody td:nth-child(7) .action-dd > summary {
+    padding: 0;
+    min-width: 0 !important;
+    width: 36px;
+    line-height: 1;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+#pendingRegistrationsTable tbody td:nth-child(7) .action-dd > summary i { font-size: 0.95rem; }
+
+.pending-toolbar {
+    flex-wrap: nowrap;
+}
+
+.pending-toolbar__search {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 420px;
+}
+
+@media (max-width: 575.98px) {
+    .pending-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .pending-toolbar__search {
+        max-width: none;
+        width: 100%;
+    }
+
+    .pending-toolbar .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE DESIGN - EMPLOYEES PAGE
+   ============================================ */
+
+@media (max-width: 576px) {
+    /* Main Content Padding */
+    #mainContent {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-top: 0.5rem !important;
+    }
+    
+    /* Page Header Section */
+    #mainContent > div:first-child {
+        margin-bottom: 0.75rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    #pageTitle {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    #pageTitle i {
+        font-size: 1.1rem !important;
+        margin-right: 0.5rem !important;
+    }
+    
+    #pageTitle + small {
+        font-size: 0.75rem !important;
+        display: block;
+        margin-top: 0.25rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.7rem !important;
+        margin-top: 0.5rem;
+        padding: 0.25rem 0 !important;
+    }
+    
+    .breadcrumb-item {
+        padding: 0 !important;
+    }
+    
+    /* Stat Cards - Better Mobile Layout - 2x2 Grid */
+    .row.mb-3.g-3,
+    .row.mb-4.g-3 {
+        margin-bottom: 1rem !important;
+        --bs-gutter-x: 0.5rem !important;
+        --bs-gutter-y: 0.5rem !important;
+    }
+    
+    /* Force 2 columns on mobile for stat cards - employees page uses mb-3 */
+    .row.mb-3.g-3 > .col-6,
+    .row.mb-4.g-3 > .col-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+    
+    /* Fill the final row when a masterfile has three summary cards. */
+    body.csdl-loans-premium #mainContent .masterfiles-stat-grid--three > :last-child {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    .stat-card {
+        margin-bottom: 0 !important;
+        height: 100% !important;
+    }
+    
+    .stat-body {
+        padding: 0.75rem 0.5rem !important;
+        min-height: 90px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .stat-title {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.375rem !important;
+        line-height: 1.2 !important;
+        padding: 0 0.25rem !important;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem !important;
+        line-height: 1 !important;
+    }
+    
+    /* Card Header - Mobile Optimized */
+    .card-header {
+        padding: 0.75rem !important;
+    }
+    
+    .card-header > div:first-child {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .card-header h6 {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.5rem !important;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .card-header h6 i {
+        font-size: 0.875rem !important;
+    }
+    
+    .card-header h6 .badge,
+    #totalCount {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.5rem !important;
+        margin-left: 0.5rem !important;
+        white-space: nowrap;
+    }
+    
+    /* Action Buttons - Keep in Row, Compact Size */
+    .card-header > div:first-child > div:last-child {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.375rem !important;
+        justify-content: flex-start !important;
+    }
+    
+    .card-header > div:first-child > div:last-child .btn {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Make buttons more compact but still readable */
+    .card-header > div:first-child > div:last-child .btn i {
+        margin-right: 0.25rem !important;
+    }
+    
+    /* Filters Section - Fit Horizontally, Wrap if Needed */
+    .card-header > div:last-child {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.375rem !important;
+    }
+    
+    .card-header > div:last-child > div:first-child {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.375rem !important;
+    }
+    
+    #filterRole,
+    #filterStatus,
+    #filterCampus,
+    #filterDepartment,
+    #filterScholarship,
+    #filterSchoolYear,
+    #filterYearLevel,
+    #filterType,
+    #filterProgram,
+    #filterModality,
+    #filterStudentStatus {
+        flex: 1 1 calc(50% - 0.1875rem) !important;
+        min-width: calc(50% - 0.1875rem) !important;
+        max-width: calc(50% - 0.1875rem) !important;
+        height: 36px !important;
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* If there are 3 filters, make them fit in 2 rows */
+    .card-header > div:last-child > div:first-child > select:nth-child(3) {
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* If there are 4 filters, keep 2x2 grid */
+    .card-header > div:last-child > div:first-child > select:nth-child(4) {
+        flex: 1 1 calc(50% - 0.1875rem) !important;
+        min-width: calc(50% - 0.1875rem) !important;
+        max-width: calc(50% - 0.1875rem) !important;
+    }
+    
+    /* Search Bar - Full Width */
+    .card-header > div:last-child > div:last-child {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+    
+    .card-header .input-group {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+    
+    #searchEmployees,
+    #searchDepartments,
+    #searchPrograms,
+    #searchScholarships,
+    #searchSchoolYears,
+    #searchStudents,
+    #searchYearLevels {
+        height: 36px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .card-header .input-group-text {
+        height: 36px !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+    
+    /* Card Body */
+    .card-body {
+        padding: 0.75rem !important;
+    }
+    
+    /* Table - Mobile Optimized */
+    .table-responsive {
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        font-size: 0.75rem !important;
+        min-width: 800px; /* Force horizontal scroll on very small screens */
+    }
+    
+    .table thead th {
+        padding: 0.5rem 0.4rem !important;
+        font-size: 0.7rem !important;
+        white-space: nowrap;
+    }
+    
+    .table tbody td {
+        padding: 0.5rem 0.4rem !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap;
+    }
+    
+    /* Table Footer - Stack Controls */
+    #tableFooter {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem 0 !important;
+    }
+    
+    #tableFooter > div:first-child,
+    #programsTableFooter > div:first-child {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    #tableFooter > div:last-child,
+    #programsTableFooter > div:last-child {
+        width: 100%;
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    
+    #perPageSelectCustom {
+        width: 70px !important;
+        height: 32px !important;
+        font-size: 0.75rem !important;
+    }
+    
+    /* Mobile optimizations for toolbar/buttons on Departments page */
+    /* Shrink all action buttons so they fit nicely on mobile */
+    .card-header .btn,
+    .card-header .btn-sm,
+    #refreshBtn,
+    #addDepartmentBtn,
+    #exportBtn,
+    #importExportBtn,
+    #addProgramBtn,
+    #addScholarshipBtn,
+    #addSchoolYearBtn,
+    #addYearLevelBtn,
+    #addEmployeeBtn,
+    #addStudentBtn {
+        height: 32px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        border-radius: 6px;
+        white-space: nowrap;
+        min-width: auto;
+    }
+    
+    /* Make icons smaller in buttons */
+    .card-header .btn i,
+    .card-header .btn-sm i,
+    #refreshBtn i,
+    #addDepartmentBtn i,
+    #exportBtn i,
+    #importExportBtn i,
+    #addProgramBtn i,
+    #addScholarshipBtn i,
+    #addSchoolYearBtn i,
+    #addYearLevelBtn i,
+    #addEmployeeBtn i,
+    #addStudentBtn i {
+        font-size: 0.75rem;
+        margin-right: 0.25rem;
+    }
+    
+    /* Ensure button groups stack nicely */
+    .card-header .d-flex.align-items-center.gap-2 {
+        gap: 0.375rem !important;
+        flex-wrap: wrap;
+    }
+    
+    /* Make buttons more compact when in a row */
+    .card-header .d-flex.align-items-center.gap-2 > .btn {
+        flex: 0 0 auto;
+        margin: 0;
+    }
+
+    /* Keep header tools compact */
+    .card-header .input-group { width: 100%; min-width: 0; }
+
+    /* Filters small-normal size (not full width) */
+    #filterDepartment,
+    #filterStatus,
+    #filterScholarship,
+    #filterSchoolYear,
+    #filterYearLevel,
+    #filterType {
+        height: 28px;
+        padding: 2px 6px;
+        font-size: 0.75rem;
+        width: auto;
+        min-width: 110px;
+        display: inline-block;
+    }
+
+    /* Keep the two filters side-by-side with equal widths */
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: .5rem;
+    }
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterDepartment,
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterStatus,
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterScholarship,
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterSchoolYear,
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterYearLevel,
+    .card-header .d-flex.align-items-center.gap-2.flex-wrap select#filterType {
+        width: 48%;
+        flex: 0 0 48%;
+    }
+
+    /* Search compact width */
+    #searchDepartments { height: 30px; font-size: 0.75rem; }
+    #searchPrograms { height: 30px; font-size: 0.75rem; }
+    #searchScholarships { height: 30px; font-size: 0.75rem; }
+    #searchSchoolYears { height: 30px; font-size: 0.75rem; }
+    #searchEmployees { height: 30px; font-size: 0.75rem; }
+    #searchStudents { height: 30px; font-size: 0.75rem; }
+    #searchYearLevels { height: 30px; font-size: 0.75rem; }
+    .card-header .ms-auto { width: 100%; }
+
+    /* Smaller count badge */
+    #departmentsCountBadge {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+    /* Programs count badge */
+    #totalCount {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    /* Ensure compact selects */
+    #filterDepartment,
+    #filterStatus,
+    #filterScholarship,
+    #filterSchoolYear,
+    #filterYearLevel,
+    #filterType { height: 28px; padding: 2px 6px; }
+
+    /* Smaller search icon and container */
+    .card-header .input-group-text { padding: 2px 6px; height: 30px; }
+    .card-header .input-group-text i { font-size: 0.9rem; }
+
+    /* Ensure buttons don't overflow */
+    .card-header .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+    }
+    
+    /* Make dropdown buttons consistent */
+    .card-header .btn-group .btn {
+        height: 32px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Ensure modal buttons are also sized properly on mobile */
+    .modal-footer .btn,
+    .modal-footer .btn-sm {
+        height: 36px;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Make table action buttons smaller on mobile */
+    .table .btn-sm,
+    .table .dropdown .btn {
+        height: 28px;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+        min-width: 28px;
+    }
+    
+    /* Stat card buttons if any */
+    .stat-card .btn {
+        height: 32px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Ensure pagination buttons are properly sized */
+    .pagination-footer .btn,
+    .pagination-footer .btn-sm {
+        height: 32px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+        min-width: 70px;
+    }
+    
+    /* Make form buttons in modals smaller */
+    .modal-body .btn,
+    .modal-body .btn-sm {
+        height: 32px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Modal Optimizations for Mobile */
+    .modal-dialog {
+        margin: 0.5rem !important;
+        max-width: calc(100% - 1rem) !important;
+    }
+    
+    .modal-content {
+        border-radius: 0.5rem !important;
+    }
+    
+    .modal-header {
+        padding: 0.75rem 1rem !important;
+    }
+    
+    .modal-header h5,
+    .modal-header .modal-title {
+        font-size: 1rem !important;
+    }
+    
+    .modal-body {
+        padding: 1rem !important;
+        font-size: 0.875rem;
+    }
+    
+    .modal-footer {
+        padding: 0.75rem 1rem !important;
+        flex-direction: column-reverse !important;
+        gap: 0.5rem !important;
+    }
+    
+    .modal-footer .btn {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    /* Form Elements in Modals */
+    .modal-body .form-label {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .modal-body .form-control,
+    .modal-body .form-select {
+        font-size: 0.875rem !important;
+        padding: 0.5rem !important;
+        height: auto !important;
+    }
+    
+    .modal-body .row.g-3 {
+        --bs-gutter-y: 0.75rem;
+        --bs-gutter-x: 0.75rem;
+    }
+    
+    /* View Employee Modal Specific */
+    #viewEmployeeModal .modal-body .row {
+        flex-direction: column !important;
+    }
+    
+    #viewEmployeeModal .modal-body .col-md-6 {
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+    
+    #viewEmployeeModal .modal-body h6 {
+        font-size: 0.875rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    /* Import Modal */
+    #importEmployeesModal .table-responsive {
+        max-height: 250px !important;
+    }
+    
+    #importEmployeesModal .table {
+        font-size: 0.7rem !important;
+        min-width: 600px;
+    }
+    
+    #importEmployeesModal .table th,
+    #importEmployeesModal .table td {
+        padding: 0.375rem 0.25rem !important;
+    }
+    
+    /* Employees List Modal */
+    #employeesListModal .table {
+        font-size: 0.75rem !important;
+        min-width: 500px;
+    }
+    
+    /* Stat Cards Grid - 2 columns on very small screens */
+    @media (max-width: 400px) {
+        .col-sm-12 {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+    }
+    
+    /* Navbar alignment is handled by shared-layout.css */
+    
+    /* Sidebar Mobile */
+    .sidebar {
+        width: 280px !important;
+    }
+    
+    /* Better spacing for mobile */
+    .container-fluid.p-0 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Card shadows lighter on mobile for performance */
+    .card {
+        box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.08) !important;
+    }
+    
+    /* Improve touch targets */
+    .btn,
+    .btn-sm {
+        min-height: 36px;
+        min-width: 44px; /* Apple's recommended touch target size */
+    }
+    
+    /* Badge adjustments */
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    /* Alert boxes in modals */
+    .alert {
+        padding: 0.75rem !important;
+        font-size: 0.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .alert h6 {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .alert ol,
+    .alert ul {
+        margin-bottom: 0 !important;
+        padding-left: 1.25rem !important;
+    }
+    
+    .alert li {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    /* Form text help */
+    .form-text {
+        font-size: 0.7rem !important;
+        margin-top: 0.25rem !important;
+    }
+    
+    /* Input group adjustments */
+    .input-group .form-control {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Table action buttons container */
+    .table tbody td:last-child .btn-group {
+        flex-direction: row !important;
+        gap: 0.25rem !important;
+    }
+    
+    /* Ensure proper spacing between sections */
+    .row.mb-4 {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Pagination footer if exists */
+    .pagination-footer {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem 0 !important;
+    }
+    
+    .pagination-footer > div {
+        width: 100% !important;
+    }
+    
+    /* Loading states */
+    .spinner-border {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+    
+    /* Empty state messages */
+    .text-center.text-muted {
+        font-size: 0.8rem !important;
+        padding: 1.5rem 0.75rem !important;
+    }
+}
+
+/* Make small buttons squircle on all sizes for consistency */
+.btn,
+.btn-sm {
+    border-radius: 6px;
+}
+#filtersCard, #statsCard { min-height: 700px; }
+#filtersCard .btn { padding-top: .60rem; padding-bottom: .60rem; }
+#filtersCard .filters-grid { display: flex; flex-direction: column; height: 100%; gap: .75rem; }
+#filtersCard .filters-grid .btn { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; }
+#filtersCard .filters-grid .text-center { flex: 0 0 auto; }
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #03600f;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 100px;
+    --header-height: 56px;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+.filters-wrap select { width: 160px; }
+.filters-actions { flex-wrap: nowrap; }
+@media (max-width: 576px) {
+    .card .card-header { gap: .5rem; }
+    .filters-wrap { flex-wrap: wrap; width: 100%; }
+    .filters-actions { width: 100%; flex-wrap: wrap; }
+    .filters-wrap select { width: 160px; }
+    .filters-actions #search { flex: 1 1 auto; min-width: 160px; }
+}
+.pagination-footer .form-select.form-select-sm { width: 90px; }
+.pagination-footer .btn { min-width: 84px; }
+.pagination-footer .btn.btn-outline-success,
+.pagination-footer .btn-outline-success,
+.card-footer .btn.btn-outline-success,
+.card-footer .btn-outline-success,
+#prevPage.btn-outline-success,
+#nextPage.btn-outline-success,
+#approvalsPrevPage.btn-outline-success,
+#approvalsNextPage.btn-outline-success {
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1;
+}
+.pagination-footer .btn.btn-outline-success:hover,
+.pagination-footer .btn.btn-outline-success:focus,
+.pagination-footer .btn-outline-success:hover,
+.pagination-footer .btn-outline-success:focus,
+.card-footer .btn.btn-outline-success:hover,
+.card-footer .btn.btn-outline-success:focus,
+.card-footer .btn-outline-success:hover,
+.card-footer .btn-outline-success:focus,
+#prevPage.btn-outline-success:hover,
+#nextPage.btn-outline-success:hover,
+#approvalsPrevPage.btn-outline-success:hover,
+#approvalsNextPage.btn-outline-success:hover {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(3, 96, 15, 0.2);
+}
+.pagination-footer .btn.btn-outline-success:active,
+.pagination-footer .btn-outline-success:active,
+.card-footer .btn.btn-outline-success:active,
+.card-footer .btn-outline-success:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(3, 96, 15, 0.2);
+}
+.pagination-footer .btn.btn-outline-success:disabled,
+.pagination-footer .btn.btn-outline-success.disabled,
+.pagination-footer .btn-outline-success:disabled,
+.pagination-footer .btn-outline-success.disabled,
+.card-footer .btn.btn-outline-success:disabled,
+.card-footer .btn.btn-outline-success.disabled,
+.card-footer .btn-outline-success:disabled,
+.card-footer .btn-outline-success.disabled {
+    border-color: #dee2e6 !important;
+    color: #6c757d !important;
+    background-color: transparent !important;
+    cursor: not-allowed !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0.65 !important;
+}
+.pagination-footer .btn {
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    min-width: 84px;
+    transition: all 0.15s ease-in-out;
+}
+.pagination-footer {
+    position: relative;
+    z-index: 10;
+}
+
+.pagination-footer .btn:not(:disabled):not(.disabled) {
+    cursor: pointer !important;
+}
+.pagination-footer .btn:disabled,
+.pagination-footer .btn.disabled {
+    opacity: 0.65;
+    cursor: not-allowed !important;
+}
+.pagination-footer .btn + .btn {
+    margin-left: 0;
+}
+.pagination-footer .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.25);
+}
+.btn.btn-outline-success,
+.btn-outline-success,
+button.btn-outline-success {
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+    background-color: transparent !important;
+}
+.btn.btn-outline-success:hover,
+.btn.btn-outline-success:focus,
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+button.btn-outline-success:hover,
+button.btn-outline-success:focus {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+    color: white !important;
+}
+.btn.btn-outline-success:active,
+.btn-outline-success:active,
+button.btn-outline-success:active {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+    color: white !important;
+}
+.btn.btn-outline-success:disabled,
+.btn.btn-outline-success.disabled,
+.btn-outline-success:disabled,
+.btn-outline-success.disabled,
+button.btn-outline-success:disabled,
+button.btn-outline-success.disabled {
+    border-color: #dee2e6 !important;
+    color: #6c757d !important;
+    background-color: transparent !important;
+    cursor: not-allowed !important;
+    opacity: 0.65 !important;
+}
+.badge.bg-success {
+    background-color: var(--success-color) !important;
+}
+.badge.bg-primary {
+    background-color: var(--success-color) !important;
+}
+.table .badge.bg-success,
+.table .badge.bg-primary {
+    background-color: var(--success-color) !important;
+}
+.table .badge.bg-success,
+.card .badge.bg-success,
+.modal .badge.bg-success {
+    background-color: var(--success-color) !important;
+}
+.badge.bg-primary {
+    background-color: var(--success-color) !important;
+}
+.table thead th {
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+}
+.table thead th i {
+    opacity: 0.7;
+}
+.table tbody tr:hover {
+    background-color: rgba(25, 135, 84, 0.05);
+}
+.card-header h5 {
+    color: #495057;
+    font-weight: 600;
+}
+.card-header .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+.table td.text-center {
+    vertical-align: middle;
+}
+.table .dropdown .btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+}
+.table .dropdown .btn i {
+    font-size: 0.875rem;
+}
+.table .btn-sm {
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+@media (max-width: 576px) {
+  .pagination-footer { flex-wrap: wrap; gap: .5rem; }
+  .pagination-footer .form-select.form-select-sm { width: 90px; }
+  .pagination-footer span#pageInfo { min-width: 56px; text-align: center; }
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.spin {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* header/navbar rules removed from dashboard-only stylesheet */
+.btn-primary {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+.btn-primary:hover {
+    background-color: #024a0c !important;
+    border-color: #024a0c !important;
+}
+.btn-success {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+.btn-success:hover {
+    background-color: #024a0c !important;
+    border-color: #024a0c !important;
+}
+.border-success { border-color: var(--success-color) !important; }
+.link-primary { color: var(--success-color) !important; }
+.link-success { color: var(--success-color) !important; }
+.badge.bg-primary { background-color: var(--success-color) !important; }
+.badge.bg-success { background-color: var(--success-color) !important; }
+.alert-primary {
+    background-color: rgba(3, 96, 15, 0.1) !important;
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+}
+.alert-success {
+    background-color: rgba(3, 96, 15, 0.1) !important;
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+}
+#mainContent {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    min-height: calc(100vh - var(--header-height));
+    padding-top: 1rem;
+    overflow: visible;
+}
+.stat-card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--success-color);
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.stat-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+}
+.stat-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--success-color);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+    line-height: 1;
+}
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--success-color);
+    opacity: 0.8;
+}
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+    padding: 1rem 1.5rem;
+}
+.card-header h6 {
+    color: var(--success-color) !important;
+}
+.table {
+    margin-bottom: 0;
+}
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.875rem;
+}
+.table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+.badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+}
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+.dropdown-menu {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    margin: 0.125rem 0.5rem;
+}
+.dropdown-item:hover {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+.notification-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f8f9fa;
+    transition: background-color 0.2s ease;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.notification-item:hover {
+    background-color: #f8f9fa;
+}
+.notification-item:last-child {
+    border-bottom: none;
+}
+.dropdown-menu {
+    max-width: 400px;
+    min-width: 350px;
+}
+.dropdown-item.notification-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f8f9fa;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
+}
+
+
+
+.dropdown-item.notification-item .small {
+
+    line-height: 1.3;
+
+    margin-bottom: 0.25rem;
+
+}
+
+
+
+.dropdown-item.notification-item .text-muted {
+
+    font-size: 0.8rem;
+
+    line-height: 1.2;
+
+}
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+input.captcha-input[type=number]::-webkit-outer-spin-button,
+input.captcha-input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+input.captcha-input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+.captcha-input.valid-answer { border-color: #198754 !important; box-shadow: 0 0 0 .2rem rgba(25,135,84,.15); }
+.captcha-input.invalid-answer { border-color: #dc3545 !important; box-shadow: 0 0 0 .2rem rgba(220,53,69,.15); }
+.captcha-input.neutral-answer { border-color: #ced4da !important; box-shadow: none; }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.nav-pills.theme-green .nav-link {
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+    background-color: #ffffff;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+}
+.nav-pills.theme-green .nav-link i { color: var(--success-color); }
+.nav-pills.theme-green .nav-link.active {
+    background-color: var(--success-color) !important;
+    color: #ffffff !important;
+    border-color: var(--success-color) !important;
+}
+.nav-pills.theme-green .nav-link.active i { color: #ffffff; }
+.nav-pills.theme-green .nav-link:hover {
+    background-color: rgba(3, 96, 15, 0.1);
+    color: var(--success-color);
+}
+.nav-pills.theme-green {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: .5rem;
+}
+.nav-pills.theme-green .nav-link { white-space: nowrap; }
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* sidebar-profile-avatar rule removed */
+.navbar .navbar-brand .brand-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: transparent;
+    border: none;
+    mix-blend-mode: multiply;
+}
+.calendar-container {
+    background: #fff;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+.calendar-day-header {
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #6c757d;
+    border-right: 1px solid #dee2e6;
+}
+.calendar-day-header:last-child {
+    border-right: none;
+}
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    min-height: 300px;
+}
+.calendar-day {
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.calendar-day:nth-child(7n) {
+    border-right: none;
+}
+.calendar-day:hover {
+    background-color: #f8f9fa;
+}
+.calendar-day.other-month {
+    color: #adb5bd;
+    background-color: #f8f9fa;
+}
+.calendar-day.today {
+    background-color: #198754;
+    color: white;
+    font-weight: 700;
+    border-radius: 4px;
+    margin: 2px;
+}
+.calendar-day.today:hover {
+    background-color: #157347;
+}
+.calendar-day.selected {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 4px;
+    margin: 2px;
+}
+.calendar-day.selected:hover {
+    background-color: #0b5ed7;
+}
+.calendar-day.has-events {
+    position: relative;
+}
+.calendar-day.has-events::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #dc3545;
+    border-radius: 50%;
+}
+.calendar-day.today.has-events::after {
+    background-color: #fff;
+}
+.calendar-container.compact {
+    font-size: 0.8rem;
+}
+.calendar-container.compact .calendar-header {
+    padding: 4px 0;
+}
+.calendar-container.compact .calendar-day-header {
+    padding: 6px 2px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.calendar-container.compact .calendar-body {
+    min-height: 200px;
+}
+.calendar-container.compact .calendar-day {
+    padding: 6px 2px;
+    font-size: 0.75rem;
+    min-height: 28px;
+    border-right: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+.calendar-container.compact .calendar-day:nth-child(7n) {
+    border-right: none;
+}
+.calendar-container.compact .calendar-day.today {
+    background-color: #198754;
+    color: white;
+    font-weight: 700;
+    border-radius: 3px;
+    margin: 1px;
+}
+.calendar-container.compact .calendar-day.selected {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 3px;
+    margin: 1px;
+}
+.calendar-container.compact .calendar-day.has-events::after {
+    width: 4px;
+    height: 4px;
+    bottom: 2px;
+}
+@media (max-width: 768px) {
+    .calendar-day {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+        min-height: 35px;
+    }
+    .calendar-day-header {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+    }
+    .calendar-body {
+        min-height: 250px;
+    }
+}
+@media (max-width: 576px) {
+    .calendar-day {
+        padding: 6px 2px;
+        font-size: 0.75rem;
+        min-height: 30px;
+    }
+    .calendar-day-header {
+        padding: 6px 2px;
+        font-size: 0.75rem;
+    }
+    .calendar-body {
+        min-height: 200px;
+    }
+}
+.btn-outline-success,
+button.btn-outline-success,
+.btn.btn-outline-success,
+.pagination-footer .btn-outline-success,
+.card-footer .btn-outline-success,
+#studentsPrevPage,
+#studentsNextPage,
+#approvalsPrevPage,
+#approvalsNextPage,
+#loansPrev,
+#loansNext {
+    border: 1px solid #03600f !important;
+    color: #03600f !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+.btn-outline-success:not(:disabled):not(.disabled),
+button.btn-outline-success:not(:disabled):not(.disabled),
+.btn.btn-outline-success:not(:disabled):not(.disabled),
+#studentsPrevPage:not(:disabled):not(.disabled),
+#studentsNextPage:not(:disabled):not(.disabled),
+#approvalsPrevPage:not(:disabled):not(.disabled),
+#approvalsNextPage:not(:disabled):not(.disabled),
+#loansPrev:not(:disabled):not(.disabled),
+#loansNext:not(:disabled):not(.disabled) {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    user-select: none !important;
+}
+.btn-outline-success:hover,
+button.btn-outline-success:hover,
+.btn.btn-outline-success:hover,
+.pagination-footer .btn-outline-success:hover,
+.card-footer .btn-outline-success:hover,
+#studentsPrevPage:hover,
+#studentsNextPage:hover,
+#approvalsPrevPage:hover,
+#approvalsNextPage:hover,
+#loansPrev:hover,
+#loansNext:hover {
+    background-color: #03600f !important;
+    border-color: #03600f !important;
+    color: white !important;
+}
+.btn-outline-success:focus,
+button.btn-outline-success:focus,
+.btn.btn-outline-success:focus {
+    background-color: #03600f !important;
+    border-color: #03600f !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.25) !important;
+}
+.btn-outline-success:disabled,
+button.btn-outline-success:disabled,
+.btn.btn-outline-success:disabled,
+#studentsPrevPage:disabled,
+#studentsNextPage:disabled,
+#approvalsPrevPage:disabled,
+#approvalsNextPage:disabled,
+#loansPrev:disabled,
+#loansNext:disabled {
+    border-color: #dee2e6 !important;
+    color: #6c757d !important;
+    background-color: #f8f9fa !important;
+    cursor: not-allowed !important;
+    opacity: 0.65 !important;
+    position: relative !important;
+}
+.btn-outline-success:disabled::after,
+#studentsPrevPage:disabled::after,
+#studentsNextPage:disabled::after,
+#approvalsPrevPage:disabled::after,
+#approvalsNextPage:disabled::after,
+#loansPrev:disabled::after,
+#loansNext:disabled::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(108, 117, 125, 0.1) 2px,
+        rgba(108, 117, 125, 0.1) 4px
+    );
+    pointer-events: none;
+    border-radius: inherit;
+}
+#otpCode.is-invalid,
+#otpCode.is-invalid:focus {
+    background-image: none !important;
+}
+/* Keep the permissions editor readable on desktop without an unnecessarily tall modal. */
+@media (min-width: 992px) {
+    #managePermissionsModal.is-csdl-permissions .modal-dialog {
+        max-width: min(96vw, 1440px);
+    }
+
+    #managePermissionsModal.is-csdl-permissions #permissionsContainer {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 1rem;
+        align-items: start;
+    }
+
+    #managePermissionsModal.is-csdl-permissions #permissionsContainer > .card {
+        height: 100%;
+        margin-bottom: 0 !important;
+    }
+}
+
+
+/* ===================================
+   Fraud Detection Warning Badges
+   =================================== */
+.fraud-warning-badge {
+    animation: pulse-warning 2s ease-in-out infinite;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.fraud-warning-badge:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+@keyframes pulse-warning {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
+.fraud-warning-badge .bi {
+    font-size: 0.85em;
+}
+
+/* Fraud Details Modal Enhancements */
+#fraudDetailsModal .modal-body {
+    font-size: 0.95rem;
+}
+
+#fraudDetailsModal .modal-body h6 {
+    color: #0a8f1b;
+    font-weight: 600;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+#fraudDetailsModal .modal-body ul li {
+    padding: 0.25rem 0;
+}
+
+#fraudDetailsModal .progress {
+    border-radius: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#fraudDetailsModal .progress-bar {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+#fraudDetailsModal .alert {
+    font-size: 0.9rem;
+    border-left: 4px solid #ffc107;
+}
+
+/* Make suspicious rows slightly highlighted */
+tr[data-pending-id] .fraud-warning-badge {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Student import preview */
+#importStudentsModal .student-import-instructions summary {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #b9e4f0;
+    border-radius: 0.5rem;
+    background: #e8f7fc;
+    color: #0c5468;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#importStudentsModal .student-import-preview-scroll {
+    max-height: min(48vh, 460px);
+    overflow: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 0.4rem;
+    isolation: isolate;
+}
+
+#importStudentsModal .student-import-preview-table {
+    min-width: 1800px;
+}
+
+#importStudentsModal .student-import-preview-table th,
+#importStudentsModal .student-import-preview-table td {
+    min-width: 115px;
+    padding: 0.55rem 0.7rem;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+#importStudentsModal .student-import-preview-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #f8f9fa;
+}
+
+#importStudentsModal .student-import-preview-table :is(th, td):nth-child(5),
+#importStudentsModal .student-import-preview-table :is(th, td):nth-child(7),
+#importStudentsModal .student-import-preview-table :is(th, td):nth-child(8),
+#importStudentsModal .student-import-preview-table :is(th, td):last-child {
+    min-width: 190px;
+    max-width: 300px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+#importStudentsModal .student-import-preview-table :is(th, td):last-child {
+    min-width: 300px;
+}
+
+#importStudentsModal .student-import-family-line + .student-import-family-line {
+    margin-top: 0.35rem;
+}
+
+/* Student details modal */
+:is(#viewStudentModal, #viewEmployeeModal) .modal-dialog {
+    max-width: min(94vw, 980px);
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .modal-content {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-details-body {
+    padding: 1.25rem;
+    background: #f4f7f5;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-details-column {
+    display: grid;
+    gap: 1rem;
+}
+
+#viewStudentModal .student-detail-family {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+    #viewStudentModal .student-details-grid {
+        align-items: stretch;
+    }
+
+    #viewStudentModal .student-detail-personal,
+    #viewStudentModal .student-detail-personal .student-detail-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #viewStudentModal .student-detail-personal .student-detail-list,
+    #viewStudentModal .student-detail-personal .student-detail-row {
+        flex: 1;
+    }
+
+    #viewStudentModal .student-detail-personal .student-detail-row {
+        align-items: center;
+    }
+}
+
+#viewStudentModal .student-family-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding: 0.3rem 0 0.8rem;
+}
+
+#viewStudentModal .student-family-member {
+    min-width: 0;
+    padding: 0.8rem;
+    background: #f7faf8;
+    border: 1px solid #e5ebe7;
+    border-radius: 0.55rem;
+}
+
+#viewStudentModal .student-family-member-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #66736b;
+    font-size: 0.8rem;
+}
+
+#viewStudentModal .student-family-member-name,
+#viewStudentModal .student-family-member-contact {
+    display: block;
+    overflow-wrap: anywhere;
+    color: #17221b;
+    font-size: 0.88rem;
+}
+
+#viewStudentModal .student-family-member-contact {
+    color: #66736b;
+    font-weight: 400;
+}
+
+#viewStudentModal .student-family-member-part {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.2rem 0;
+    font-size: 0.84rem;
+}
+
+#viewStudentModal .student-family-member-part span {
+    color: #66736b;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-section {
+    min-width: 0;
+    padding: 1rem 1.1rem 0.25rem;
+    background: #fff;
+    border: 1px solid #dfe7e2;
+    border-radius: 0.7rem;
+    box-shadow: 0 2px 8px rgba(14, 54, 29, 0.04);
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.55rem;
+    color: #08751a;
+    font-size: 0.93rem;
+    font-weight: 700;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-heading .bi {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.5rem;
+    color: #08751a;
+    background: #e8f5ec;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-row {
+    display: grid;
+    grid-template-columns: 8.75rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.67rem 0;
+    border-bottom: 1px solid #e5ebe7;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-row:last-child {
+    border-bottom: 0;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-label {
+    color: #66736b;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-value {
+    min-width: 0;
+    color: #17221b;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: right;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-value-break {
+    overflow-wrap: anywhere;
+}
+
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-value .badge,
+:is(#viewStudentModal, #viewEmployeeModal) .student-detail-value.badge {
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+    #viewStudentModal .student-family-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    :is(#viewStudentModal, #viewEmployeeModal) .student-details-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    :is(#viewStudentModal, #viewEmployeeModal) .student-details-body {
+        padding: 0.85rem;
+    }
+}
+
+@media (max-width: 479.98px) {
+    #viewStudentModal .student-family-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    :is(#viewStudentModal, #viewEmployeeModal) .student-detail-section {
+        padding: 0.9rem 0.9rem 0.2rem;
+    }
+
+    :is(#viewStudentModal, #viewEmployeeModal) .student-detail-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.2rem;
+    }
+
+    :is(#viewStudentModal, #viewEmployeeModal) .student-detail-value {
+        text-align: left;
+    }
+}
+
+/* Mobile responsive adjustments for fraud badges */
+@media (max-width: 768px) {
+    .fraud-warning-badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
+        display: block;
+        margin-top: 0.25rem;
+        width: fit-content;
+    }
+    
+    #fraudDetailsModal .modal-body {
+        font-size: 0.9rem;
+    }
+    
+    #fraudDetailsModal .modal-body h6 {
+        font-size: 0.95rem;
+    }
+}
+
+/* Match the Documents directory pagination on every masterfiles table. */
+body.masterfiles-premium #mainContent .csdl-loans-main-card .datatable-pagination {
+    display: none !important;
+}
+
+.masterfiles-page-buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+.masterfiles-page-buttons .btn {
+    min-width: 34px;
+}
+
+body.masterfiles-premium #mainContent #tableFooter,
+body.masterfiles-premium #mainContent #programsTableFooter,
+body.masterfiles-premium #mainContent #pendingTableFooter {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: .75rem !important;
+}
+
+body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > div:first-child {
+    order: 1;
+    width: auto !important;
+}
+
+body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > .masterfiles-page-buttons {
+    order: 2;
+    margin-left: auto;
+}
+
+body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > :is(#pageInfo, #programsPageInfo, #pendingPageInfo) {
+    order: 3;
+    flex-basis: 100%;
+    text-align: right !important;
+}
+
+/* Consistent record editor, detail, and confirmation dialogs across masterfiles. */
+.masterfile-editor-modal--wide .modal-dialog {
+    max-width: min(1080px, calc(100vw - 1rem)) !important;
+}
+
+.masterfile-editor-modal .modal-content,
+.masterfile-view-modal .modal-content {
+    border: 0;
+    border-radius: .7rem;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(9, 42, 23, .18);
+}
+
+.masterfile-editor-modal .modal-body,
+.masterfile-view-modal .modal-body {
+    padding: .9rem 1rem 1rem;
+    background: #f8faf9;
+}
+
+.masterfile-editor-modal .modal-body > form.row,
+.masterfile-editor-modal .masterfile-edit-panel {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: .75rem;
+    margin: 0;
+    padding: .85rem .9rem .95rem;
+    border: 1px solid #e2e8e7;
+    border-radius: .7rem;
+    background: #fff;
+}
+
+.masterfile-editor-modal .modal-body > form.row > [class*="col-"],
+.masterfile-editor-modal .masterfile-edit-panel > [class*="col-"] {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.masterfile-editor-modal .modal-body > form.row > .col-md-4 { grid-column: span 4; }
+.masterfile-editor-modal .modal-body > form.row > .col-md-6 { grid-column: span 6; }
+.masterfile-editor-modal .modal-body > form.row > .col-md-8 { grid-column: span 8; }
+.masterfile-editor-modal .modal-body > form.row > .col-12 { grid-column: span 12; }
+.masterfile-editor-modal .masterfile-edit-panel > .col-12 { grid-column: span 12; }
+
+.masterfile-editor-modal .masterfile-edit-heading {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0;
+    color: #075e2d;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.masterfile-editor-modal .modal-body > form.row > .masterfile-edit-heading {
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.masterfile-editor-modal .form-label {
+    margin-bottom: .25rem;
+    font-size: .84rem;
+}
+
+.masterfile-editor-modal .form-text {
+    margin-top: .25rem;
+    font-size: .73rem;
+    line-height: 1.3;
+}
+
+.masterfile-editor-modal .modal-footer,
+.masterfile-view-modal .modal-footer {
+    background: #fff;
+    border-top: 1px solid #e2e8e7;
+}
+
+.masterfile-editor-modal .modal-footer .btn-primary {
+    color: #fff;
+    background: #006b18;
+    border-color: #006b18;
+}
+
+.masterfile-editor-modal .modal-footer .btn-primary:hover {
+    background: #005513;
+    border-color: #005513;
+}
+
+.masterfile-view-modal .modal-body > .row,
+.masterfile-view-modal .masterfile-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    margin: 0;
+}
+
+#documentTypeDetailsModal .masterfile-details-grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.masterfile-view-modal .modal-body > .row > [class*="col-"],
+.masterfile-view-modal .masterfile-details-card {
+    width: auto;
+    min-width: 0;
+    padding: .85rem .9rem;
+    border: 1px solid #e2e8e7;
+    border-radius: .7rem;
+    background: #fff;
+}
+
+.masterfile-view-modal .modal-body h6,
+.masterfile-view-modal .masterfile-details-card h6 {
+    margin-bottom: .55rem !important;
+    color: #075e2d !important;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.masterfile-view-modal .modal-body :is(.d-flex.justify-content-between, .document-type-detail-row) {
+    gap: .7rem;
+    min-width: 0;
+}
+
+.masterfile-view-modal .modal-body :is(.fw-semibold, .document-type-detail-row strong, .document-type-detail-description) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+.masterfiles-dialogs-page .swal2-popup {
+    padding: 1.3rem;
+    border-radius: .7rem;
+    box-shadow: 0 18px 48px rgba(9, 42, 23, .18);
+}
+
+.masterfiles-dialogs-page .swal2-title {
+    color: #203247;
+    font-size: 1.4rem;
+}
+
+.masterfiles-dialogs-page .swal2-html-container {
+    color: #526274;
+    line-height: 1.45;
+}
+
+.masterfiles-dialogs-page .swal2-actions {
+    gap: .5rem;
+}
+
+.masterfiles-dialogs-page .swal2-actions .swal2-styled {
+    border-radius: .4rem;
+    font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+    .masterfile-editor-modal .modal-body > form.row > [class*="col-"] {
+        grid-column: span 12;
+    }
+
+    .masterfile-view-modal .modal-body > .row,
+    .masterfile-view-modal .masterfile-details-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.masterfiles-premium #mainContent #tableFooter,
+    body.masterfiles-premium #mainContent #programsTableFooter,
+    body.masterfiles-premium #mainContent #pendingTableFooter {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > .masterfiles-page-buttons {
+        order: 1;
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+    }
+
+    body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > div:first-child {
+        order: 2;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    body.masterfiles-premium #mainContent :is(#tableFooter, #programsTableFooter, #pendingTableFooter) > :is(#pageInfo, #programsPageInfo, #pendingPageInfo) {
+        order: 3;
+        width: 100% !important;
+        flex-basis: auto;
+        text-align: center !important;
+    }
+}

@@ -1,0 +1,295 @@
+/**
+ * Branch Admin dashboard — layer on top of csdl-dashboard-premium.css.
+ * Body: branch-dashboard-premium csdl-dashboard-premium
+ */
+
+body.branch-dashboard-premium.csdl-dashboard-premium {
+    background:
+        radial-gradient(1200px 420px at 6% -8%, rgba(3, 96, 15, 0.08), transparent 58%),
+        radial-gradient(880px 320px at 100% 5%, rgba(21, 128, 61, 0.06), transparent 55%),
+        #f4f6f9;
+}
+
+@media (max-width: 1199.98px) {
+    body.branch-dashboard-premium .csdl-dashboard-filters-card .card-header #exportChartBtn.branch-dashboard-export {
+        display: inline-flex !important;
+        flex: 0 0 76px !important;
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px !important;
+        height: 32px !important;
+        min-height: 32px !important;
+        padding: 0.25rem 0.35rem !important;
+        font-size: 0.65rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* The shared navigation is fixed. Reserve its space so the dashboard can never
+   render behind or appear above the header while the page is loading. */
+@media (min-width: 992px) {
+    body.branch-dashboard-premium {
+        padding-top: var(--header-height);
+    }
+
+    body.branch-dashboard-premium > .navbar.sticky-top {
+        position: fixed !important;
+        inset: 0 0 auto 0;
+    }
+}
+
+@media (min-width: 992px) {
+    body.branch-dashboard-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.branch-dashboard-premium .csdl-insights-card .card-body {
+    padding: 1.25rem 1.35rem 1.5rem !important;
+}
+
+body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-heading {
+    text-align: center;
+}
+
+body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line {
+    position: relative;
+    justify-content: center;
+}
+
+body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line #pieTitle {
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-export {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+body.branch-dashboard-premium .chart-container-branch {
+    position: relative;
+    height: 480px;
+    width: 100%;
+}
+
+body.branch-dashboard-premium .csdl-insights-card .card-body {
+    padding: 1.25rem 1.35rem 1.5rem !important;
+}
+
+body.branch-dashboard-premium .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+body.branch-dashboard-premium .modal-header.bg-success {
+    border-bottom: none;
+}
+
+/* The former approval-summary panel is no longer part of the Branch dashboard. */
+body.branch-dashboard-premium #overview-section .csdl-dashboard-section--approval {
+    display: none !important;
+}
+
+body.branch-dashboard-premium .csdl-dashboard-filters-card .csdl-dashboard-panel-title {
+    width: auto !important;
+    flex: 1 1 auto;
+    text-align: left !important;
+}
+
+body.branch-dashboard-premium .csdl-dashboard-filters-card .card-header > .d-flex {
+    flex-wrap: nowrap !important;
+}
+
+body.branch-dashboard-premium #exportChartBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 86px !important;
+    max-width: none;
+    min-height: 38px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.75rem;
+}
+
+/* The Branch mobile/tablet layout stays in effect below the desktop sidebar
+   breakpoint. Keep the Export action the same compact width as Cashier across
+   that whole layout, not only on very narrow phones. */
+@media (max-width: 991.98px) {
+    body.branch-dashboard-premium .csdl-dashboard-filters-card .card-header > .d-flex {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    body.branch-dashboard-premium .csdl-dashboard-filters-card .card-header h6.csdl-dashboard-panel-title {
+        width: auto !important;
+        margin: 0 !important;
+    }
+
+    body.branch-dashboard-premium #exportChartBtn {
+        flex: 0 0 76px !important;
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px !important;
+        min-height: 32px !important;
+        padding: 0.25rem 0.35rem !important;
+        font-size: 0.65rem !important;
+    }
+}
+
+/* Branch Admin uses the same chart-and-filter dashboard arrangement as Cashier. */
+@media (min-width: 1200px) {
+    body.branch-dashboard-premium #overview-section .csdl-dashboard-sections {
+        display: grid;
+        grid-template-columns: minmax(0, 2.4fr) minmax(280px, 1fr);
+        grid-template-rows: minmax(420px, 1fr);
+        grid-template-areas: "chart filters";
+        align-items: stretch;
+    }
+
+    body.branch-dashboard-premium #overview-section .csdl-dashboard-section--chart {
+        grid-area: chart;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    body.branch-dashboard-premium #overview-section .csdl-dashboard-section--filters {
+        grid-area: filters;
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+}
+
+/* On phones and tablets, show the chart first, followed by the full filter panel. */
+@media (max-width: 1199.98px) {
+    body.branch-dashboard-premium #overview-section .csdl-dashboard-section--chart {
+        order: 1;
+    }
+
+    body.branch-dashboard-premium #overview-section .csdl-dashboard-section--filters {
+        order: 2;
+    }
+}
+
+@media (max-width: 576px) {
+    /*
+     * Match CSDL / Finance / COO dashboard mobile chart footprint.
+     */
+    body.branch-dashboard-premium .chart-container-branch {
+        height: auto !important;
+        min-height: 240px !important;
+        max-height: 300px !important;
+        flex: 0 0 auto !important;
+    }
+
+    body.branch-dashboard-premium #filtersStatsCard .card-body {
+        padding: 0.5rem 0.75rem 0.75rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    body.branch-dashboard-premium #filtersStatsCard #branchChartPanel canvas,
+    body.branch-dashboard-premium #filtersStatsCard .chart-container-branch canvas {
+        max-height: 280px !important;
+    }
+
+    body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line #pieTitle {
+        flex: 0 1 auto;
+        min-width: 0;
+        text-align: center;
+        font-size: 1rem !important;
+    }
+
+    body.branch-dashboard-premium #filtersStatsCard .csdl-insights-header-export {
+        flex-shrink: 0;
+        align-self: center;
+    }
+}
+
+/* Branch admin mobile floating bottom navigation (replaces sidebar on phones) */
+@media (max-width: 991.98px) {
+    body.branch-admin-mobile-bottom-nav-enabled {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.branch-admin-mobile-bottom-nav-enabled .navbar .container-fluid {
+        padding-left: 0.7rem !important;
+    }
+
+    body.branch-admin-mobile-bottom-nav-enabled .navbar .navbar-brand {
+        margin-left: 0.1rem !important;
+    }
+
+    body.branch-admin-mobile-bottom-nav-enabled .navbar .navbar-brand img {
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+    }
+
+    body.branch-admin-mobile-bottom-nav-enabled #sidebarMenu,
+    body.branch-admin-mobile-bottom-nav-enabled #mobileSidebarOverlay {
+        display: none !important;
+    }
+
+    body.branch-admin-mobile-bottom-nav-enabled .navbar .navbar-toggler {
+        display: none !important;
+    }
+
+    .branch-admin-mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        width: min(94vw, 520px);
+        z-index: 1200;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.15rem;
+        padding: 0.35rem;
+    }
+
+    .branch-admin-mobile-bottom-nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #5f6c7b;
+        border-radius: 12px;
+        min-height: 56px;
+        gap: 0.1rem;
+        font-size: 0.66rem;
+        font-weight: 700;
+    }
+
+    .branch-admin-mobile-bottom-nav__link i {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .branch-admin-mobile-bottom-nav__link.is-active {
+        background: #03600f;
+        color: #ffffff;
+    }
+}

@@ -1,0 +1,289 @@
+/**
+ * COO dashboard — thin layer on top of csdl-dashboard-premium.css.
+ * Body: coo-dashboard-premium csdl-dashboard-premium
+ */
+
+body.coo-dashboard-premium.csdl-dashboard-premium {
+    background:
+        radial-gradient(1200px 420px at 6% -8%, rgba(3, 96, 15, 0.08), transparent 58%),
+        radial-gradient(880px 320px at 100% 5%, rgba(21, 128, 61, 0.06), transparent 55%),
+        #f4f6f9;
+}
+
+@media (max-width: 575.98px) {
+    body.coo-dashboard-premium #dashboardContent .coo-dashboard-stat-row > :last-child {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    body.coo-dashboard-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.coo-dashboard-premium #pageSubtitle {
+    font-size: 0.92rem;
+    color: #5f6c7b !important;
+    max-width: 44rem;
+    line-height: 1.45;
+}
+
+body.coo-dashboard-premium .chart-container-coo {
+    position: relative;
+    height: 480px;
+    width: 100%;
+}
+
+/* COO dashboard follows the Cashier chart-and-filter arrangement. */
+body.coo-dashboard-premium .coo-dashboard-export {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-width: 86px;
+    min-height: 38px;
+    white-space: nowrap;
+}
+
+body.coo-dashboard-premium .coo-card-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1.15rem;
+    background: #fbfcfd;
+    border-top-color: #e8edf2;
+}
+
+body.coo-dashboard-premium .csdl-dashboard-filters-card .csdl-dashboard-panel-title {
+    width: auto !important;
+    flex: 1 1 auto;
+    text-align: left !important;
+}
+
+@media (min-width: 992px) {
+    body.coo-dashboard-premium .coo-dashboard-layout {
+        min-height: 600px;
+        align-items: stretch;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-layout > [class*="col-"] {
+        display: flex;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-layout .card {
+        width: 100%;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-layout .chart-container-coo {
+        height: 100%;
+        min-height: 540px;
+    }
+}
+
+body.coo-dashboard-premium .csdl-insights-card .card-body {
+    padding: 1.25rem 1.35rem 1.5rem !important;
+}
+
+body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-heading {
+    text-align: center;
+}
+
+body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line {
+    position: relative;
+    justify-content: center;
+}
+
+body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line #pieTitle {
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-export {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+body.coo-dashboard-premium .modal-content {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+body.coo-dashboard-premium .modal-header.bg-success {
+    border-bottom: none;
+}
+
+@media (max-width: 576px) {
+    /*
+     * Match CSDL / Finance dashboard mobile chart footprint (csdl-dashboard.css caps canvas ~280px).
+     */
+    body.coo-dashboard-premium .chart-container-coo {
+        height: auto !important;
+        min-height: 240px !important;
+        max-height: 300px !important;
+        flex: 0 0 auto !important;
+    }
+
+    body.coo-dashboard-premium #filtersStatsCard .card-body {
+        padding: 0.5rem 0.75rem 0.75rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    body.coo-dashboard-premium #filtersStatsCard #cooChartPanel canvas,
+    body.coo-dashboard-premium #filtersStatsCard .chart-container-coo canvas {
+        max-height: 280px !important;
+    }
+
+    body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-heading .insights-sub {
+        text-align: start;
+    }
+
+    /* Title centered, Export right — same row */
+    body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-title-line #pieTitle {
+        flex: 0 1 auto;
+        min-width: 0;
+        text-align: center;
+        font-size: 1rem !important;
+    }
+
+    body.coo-dashboard-premium #filtersStatsCard .csdl-insights-header-export {
+        flex-shrink: 0;
+        align-self: center;
+    }
+
+    body.coo-dashboard-premium .csdl-dashboard-filters-card .card-header > .d-flex {
+        flex-wrap: nowrap !important;
+        gap: 0.5rem !important;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-export {
+        flex: 0 0 76px !important;
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px;
+        min-height: 36px;
+        padding: 0.3rem 0.5rem;
+        font-size: 0.72rem;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-export i {
+        display: none;
+    }
+
+    body.coo-dashboard-premium .coo-card-modal-footer {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        padding: 0.8rem;
+    }
+
+    body.coo-dashboard-premium .coo-card-modal-footer .btn {
+        width: auto !important;
+        margin-left: auto !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    body.coo-dashboard-premium .coo-dashboard-layout {
+        flex-direction: column;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-layout > [class*="col-"] {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+
+    body.coo-dashboard-premium .coo-dashboard-layout .chart-container-coo {
+        height: min(76vw, 340px);
+        min-height: 250px;
+    }
+}
+
+/* COO mobile floating bottom navigation (replaces sidebar on phones) */
+@media (max-width: 991.98px) {
+    body.coo-mobile-bottom-nav-enabled {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.coo-mobile-bottom-nav-enabled .navbar .container-fluid {
+        padding-left: 0.7rem !important;
+    }
+
+    body.coo-mobile-bottom-nav-enabled .navbar .navbar-brand {
+        margin-left: 0.1rem !important;
+    }
+
+    body.coo-mobile-bottom-nav-enabled .navbar .navbar-brand img {
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+    }
+
+    body.coo-mobile-bottom-nav-enabled #sidebarMenu,
+    body.coo-mobile-bottom-nav-enabled #mobileSidebarOverlay {
+        display: none !important;
+    }
+
+    body.coo-mobile-bottom-nav-enabled .navbar .navbar-toggler {
+        display: none !important;
+    }
+
+    .coo-mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        width: min(94vw, 520px);
+        z-index: 1200;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        display: grid;
+        /* COO has Home, Loans, and Settings only. Keep each item in an equal column. */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.15rem;
+        padding: 0.35rem;
+    }
+
+    .coo-mobile-bottom-nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #5f6c7b;
+        border-radius: 12px;
+        min-height: 56px;
+        gap: 0.1rem;
+        font-size: 0.66rem;
+        font-weight: 700;
+    }
+
+    .coo-mobile-bottom-nav__link i {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .coo-mobile-bottom-nav__link.is-active {
+        background: #03600f;
+        color: #ffffff;
+    }
+}

@@ -1,0 +1,83 @@
+/* Consistent list modals opened by Assessment summary cards. */
+.assessment-card-modal .modal-title i { vertical-align: -0.06em; }
+.assessment-card-modal .modal-body { padding: 1.15rem; }
+.assessment-card-modal .assessment-table-scroll { border: 1px solid #e3eaf0; border-radius: 0.7rem; }
+.assessment-card-modal .table { margin-bottom: 0; }
+.assessment-card-modal .table thead th { background: #f3f6f9; border-bottom-color: #d9e2ea; color: #51657d; font-size: 0.73rem; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; }
+.assessment-card-modal .table td { border-color: #e9eef3; }
+.assessment-card-modal-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.85rem 1.15rem; }
+.assessment-card-modal-footer #loansModalPageInfo { color: #627286; font-size: 0.82rem; margin-right: auto; }
+.assessment-card-modal-footer #loansModalPageNumbers { display: flex; flex-wrap: wrap; gap: 0.25rem; justify-content: center; }
+.assessment-card-modal-footer .btn[data-bs-dismiss="modal"] { min-width: 6.25rem; }
+
+/* Remove sticky header in modals - headers should not stick */
+.assessment-card-modal .assessment-table-scroll .table-assessment thead th,
+.assessment-card-modal .assessment-table-scroll .table thead th {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+}
+
+/* Remove sticky first column in modals on mobile */
+.assessment-card-modal .assessment-table-scroll .table-assessment thead th:first-child,
+.assessment-card-modal .assessment-table-scroll .table-assessment tbody td:first-child,
+.assessment-card-modal .assessment-table-scroll .table thead th:first-child,
+.assessment-card-modal .assessment-table-scroll .table tbody td:first-child {
+    position: static !important;
+    left: auto !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+}
+
+/* Summary-card lists must scroll sideways instead of collapsing every value
+   into stacked lines on smaller displays. */
+.assessment-card-modal .assessment-table-scroll {
+    overflow-x: auto !important;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+.assessment-card-modal .assessment-table-scroll > .table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 52rem !important;
+    table-layout: auto !important;
+}
+.assessment-card-modal .assessment-table-scroll > .table thead { display: table-header-group !important; }
+.assessment-card-modal .assessment-table-scroll > .table tbody { display: table-row-group !important; }
+.assessment-card-modal .assessment-table-scroll > .table tr { display: table-row !important; }
+.assessment-card-modal .assessment-table-scroll > .table th,
+.assessment-card-modal .assessment-table-scroll > .table td {
+    display: table-cell !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+@media (max-width: 767.98px) {
+    .assessment-card-modal .modal-body { padding: 0.75rem; }
+    .assessment-card-modal .assessment-table-scroll { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+    .assessment-card-modal .table { min-width: 42rem; }
+    .assessment-card-modal .table th, .assessment-card-modal .table td { padding: 0.65rem 0.75rem; white-space: nowrap; }
+    .assessment-card-modal-footer { padding: 0.8rem; }
+}
+@media (max-width: 991.98px) {
+    /* This selector deliberately matches the stronger legacy report-grid rule. */
+    body.assessment-app.assessment-portal-premium .row.assessment-stat-row.g-3 > .assessment-stat-card--partial {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal.assessment-card-modal .assessment-card-modal-footer {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        width: 100%;
+    }
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal.assessment-card-modal .assessment-card-modal-footer #loansModalPageInfo {
+        flex: 1 1 auto;
+        margin: 0 auto 0 0 !important;
+        text-align: left;
+    }
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal.assessment-card-modal .assessment-card-modal-footer #loansModalPageNumbers { display: none; }
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal.assessment-card-modal .assessment-card-modal-footer .btn[data-bs-dismiss="modal"] { margin-left: auto !important; }
+}

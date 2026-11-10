@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../../assets/css/shared/shared-role-card-modals.css?v=20260811" rel="stylesheet">
+    <script defer src="../../js/shared/shared-role-card-modal-counts.js?v=20260811"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>Active Loans — Cashier</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management.css" rel="stylesheet">
+    <link href="../../assets/css/cashier/cashier-loans-management.css?v=20260907-payment-modal" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-dashboard-premium.css" rel="stylesheet">
+    <link href="../../assets/css/cashier/cashier-portal-premium.css?v=20261007-mobile-section-headings" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="bg-light finance-portal-premium csdl-dashboard-premium mobile-centered-headings">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261007-first-paint"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="cashier-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="cashier-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="#">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="cashier-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container app-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;">
+                                <div class="fw-bold text-white">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="cashier-dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active d-flex align-items-center" href="cashier-loans-management.html">
+                                <i class="bi bi-cash-coin me-2"></i>
+                                <span class="link-text">Active Loans</span>
+                                <span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/cashier/cashier-loan-management.php?action=payment_tagging_stats" data-live-count-path="stats.readyForPayment" data-live-count-label="loans ready for payment">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
+                            <div>
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Cashier Officer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <header class="finance-page-head-banner pt-3 pb-2 mb-3">
+                    <div class="finance-page-head-banner__inner">
+                        <div class="finance-page-head-banner__main">
+                            <h1 class="finance-page-head-banner__title mb-0" id="pageTitle">Active Loans</h1>
+                        </div>
+                        <div class="finance-page-head-banner__meta">
+                            <nav aria-label="breadcrumb" class="finance-page-breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="cashier-dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Active Loans</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                <div class="row mb-3 g-3">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="ready">
+                            <div class="card-body stat-body">
+                                <div class="stat-title">Pending Payment</div>
+                                <div class="stat-value" id="statPending">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="paid-pending">
+                            <div class="card-body stat-body">
+                                <div class="stat-title">Paid Pending</div>
+                                <div class="stat-value" id="statPaidPending">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 shadow-sm finance-main-card">
+                    <div class="card-header bg-white">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                            <div>
+                                <h6 class="m-0 mb-1">All Loan Applications</h6>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="dropdown d-md-none">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button" id="mobileFilterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-funnel"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 280px;" id="mobileFilterDropdown">
+                                        <li class="mb-3">
+                                            <label class="form-label small fw-semibold mb-2">Campus</label>
+                                            <select id="filterCampusMobile" class="form-select form-select-sm">
+                                                <option value="">All Campuses</option>
+                                            </select>
+                                        </li>
+                                        <li class="mb-3">
+                                            <label class="form-label small fw-semibold mb-2">Semester</label>
+                                            <select id="filterSemesterMobile" class="form-select form-select-sm">
+                                                <option value="">All Semesters</option>
+                                            </select>
+                                        </li>
+                                        <li class="mb-3">
+                                            <label class="form-label small fw-semibold mb-2">School Year</label>
+                                            <select id="filterSchoolYearMobile" class="form-select form-select-sm">
+                                                <option value="">All School Years</option>
+                                            </select>
+                                        </li>
+                                        <li class="mb-3">
+                                            <label class="form-label small fw-semibold mb-2">Period</label>
+                                            <select id="filterPeriodMobile" class="form-select form-select-sm">
+                                                <option value="">All Periods</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <button type="button" class="btn btn-success btn-sm w-100" id="applyMobileFiltersBtn">Apply Filters</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-outline-secondary btn-sm" id="refreshBtn"><i class="bi bi-arrow-repeat me-1"></i>Refresh</button>
+                                <button class="btn btn-outline-secondary btn-sm" id="exportBtn"><i class="bi bi-download me-1"></i>Export</button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between gap-2 d-none d-md-flex">
+                            <div class="d-flex align-items-center gap-2">
+                                <select id="filterCampus" class="form-select form-select-sm" style="width:160px;">
+                                    <option value="">All Campuses</option>
+                                </select>
+                                <select id="filterSemester" class="form-select form-select-sm" style="width:160px;">
+                                    <option value="">All Semesters</option>
+                                </select>
+                                <select id="filterSchoolYear" class="form-select form-select-sm" style="width:160px;">
+                                    <option value="">All School Years</option>
+                                </select>
+                                <select id="filterPeriod" class="form-select form-select-sm" style="width:160px;">
+                                    <option value="">All Periods</option>
+                                </select>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="input-group" style="min-width:280px;">
+                                    <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                    <input type="text" class="form-control" id="searchLoans" placeholder="Search application no...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-md-none mt-2">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                <input type="text" class="form-control" id="searchLoansMobile" placeholder="Search application no...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="loansTable" class="table table-hover table-sm align-middle" style="width:100%">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="text-center">Application No.</th>
+                                        <th class="text-center">Student ID</th>
+                                        <th class="text-center">Student Name</th>
+                                        <th class="text-center">Amount Can Pay</th>
+                                        <th class="text-center">Amount Paid</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Payment Status</th>
+                                        <th class="text-center">PN Status</th>
+                                        <th class="text-center">Due Date</th>
+                                        <th class="text-center">Payment Date</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between flex-wrap gap-3 mt-3">
+                            <div class="d-flex align-items-center gap-2 order-2 order-md-1">
+                                <label for="perPageSelect" class="small text-muted mb-0">Show</label>
+                                <select id="perPageSelect" class="form-select form-select-sm" style="width:78px">
+                                    <option value="10" selected>10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option>
+                                </select>
+                                <span class="small text-muted">entries per page</span>
+                            </div>
+                            <div id="pageNumbers" class="d-flex flex-wrap justify-content-center justify-content-md-end align-items-center gap-1 order-1 order-md-2" aria-label="Table pages"></div>
+                        </div>
+                        <div id="pageInfo" class="small text-muted text-center text-md-end mt-3">Showing 0 to 0 of 0 entries</div>
+                        
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="viewLoanModal" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title d-flex align-items-center">
+                        <i class="bi bi-file-earmark-text me-2"></i>Loan Application Details
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="loanDetailsContent">
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="cashierPaymentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="cashierPaymentModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title" id="cashierPaymentModalTitle"><i class="bi bi-cash-coin me-2"></i>Record Payment</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="cashierPaymentForm" novalidate>
+                        <input type="hidden" id="cashierPaymentLoanId">
+                        <input type="hidden" id="cashierPaymentAction">
+                        <div class="rounded-3 border bg-light p-3 mb-4">
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Student</span>
+                                <span class="fw-semibold text-end" id="cashierPaymentStudentName">—</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Application No.</span>
+                                <span class="fw-semibold text-end" id="cashierPaymentApplicationNo">—</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3">
+                                <span class="text-muted small">Amount Can Pay</span>
+                                <span class="fw-semibold text-end" id="cashierPaymentAmountCanPay">₱0.00</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cashierPaymentAmount" class="form-label fw-semibold">Actual Amount Paid <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">₱</span>
+                                <input id="cashierPaymentAmount" type="number" class="form-control" min="0.01" step="0.01" placeholder="0.00" required>
+                            </div>
+                            <div class="invalid-feedback" id="cashierPaymentAmountError">Enter a valid amount greater than zero with up to two decimal places.</div>
+                        </div>
+                        <div class="alert alert-info py-2 mb-0" id="cashierPaymentHelp" role="note"></div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light border-0 gap-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="submitCashierPaymentBtn"><span>Mark as Partial Paid</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="markPaidModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="markPaidModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title" id="markPaidModalTitle">Mark as Paid</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <input type="hidden" id="markPaidLoanId">
+                    <input type="hidden" id="markPaidAmount">
+                    <div class="rounded-3 border bg-light p-3 mb-3">
+                        <div class="d-flex justify-content-between gap-3 mb-2">
+                            <span class="text-muted small">Student</span>
+                            <span class="fw-semibold text-end" id="markPaidStudentName">—</span>
+                        </div>
+                        <div class="d-flex justify-content-between gap-3 mb-2">
+                            <span class="text-muted small">Application No.</span>
+                            <span class="fw-semibold text-end" id="markPaidApplicationNo">—</span>
+                        </div>
+                        <div class="d-flex justify-content-between gap-3">
+                            <span class="text-muted small" id="markPaidAmountLabel">Payment Amount</span>
+                            <span class="fw-bold text-dark text-end" id="markPaidAmountDisplay">₱0.00</span>
+                        </div>
+                    </div>
+                    <div class="alert alert-info py-2 mb-0" role="note">
+                        Confirming the payment will send this loan to Assessment for PN tagging.
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0 gap-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="submitMarkPaidBtn">Mark as Paid</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="actionLoanModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="actionLoanModalTitle">Process Loan</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="actionLoanForm">
+                        <input type="hidden" id="actionLoanId">
+                        <input type="hidden" id="actionType">
+                        <div class="mb-3" id="amountApprovedContainer">
+                            <label class="form-label" id="amountApprovedLabel">Amount Approved</label>
+                            <div id="amountApprovedDisplay" class="form-control bg-light text-dark">—</div>
+                            <input type="hidden" id="amountApproved" value="">
+                            <small class="text-muted" id="amountApprovedHelp">Based on the student's amount can pay from the application</small>
+                        </div><div class="mb-3">
+                            <label class="form-label" for="actionRemarks">Remarks <span class="text-danger">*</span></label>
+                            <textarea id="actionRemarks" class="form-control" rows="4" required placeholder="Enter remarks or reason…"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="submitActionBtn" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="partialPaymentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="partialPaymentModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="partialPaymentModalTitle">Mark as Partial Paid</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="partialPaymentForm" novalidate>
+                        <input type="hidden" id="partialPaymentLoanId">
+
+                        <div class="rounded-3 border bg-light p-3 mb-4">
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Student</span>
+                                <span class="fw-semibold text-end" id="partialPaymentStudentName">—</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Application No.</span>
+                                <span class="fw-semibold text-end" id="partialPaymentApplicationNo">—</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Amount Can Pay</span>
+                                <span class="fw-semibold text-end" id="partialPaymentAmountCanPay">₱0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3 mb-2">
+                                <span class="text-muted small">Amount Already Paid</span>
+                                <span class="fw-semibold text-end" id="partialPaymentAlreadyPaid">₱0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between gap-3">
+                                <span class="text-muted small">Remaining Amount</span>
+                                <span class="fw-bold text-dark text-end" id="partialPaymentRemaining">₱0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="partialPaymentAmount">Partial Paid Amount <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">₱</span>
+                                <input type="number" id="partialPaymentAmount" class="form-control" step="0.01" min="0.01" required placeholder="0.00">
+                            </div>
+                            <div class="invalid-feedback">Enter an amount greater than zero and less than the remaining payment.</div>
+                        </div>
+                        <div class="alert alert-info py-2 mb-0" role="note">
+                            The amount will be added to Amount Paid and the payment status will become Paid Partial.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="submitPartialPaymentBtn" class="btn btn-success">Mark as Partial Paid</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+    <div class="modal fade finance-mobile-safe-modal" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Notification Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"><div id="notificationModalContent"></div></div>
+                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button><button type="button" class="btn btn-success" id="markAsReadBtn">Mark as Read</button></div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261010-hide-zero-counts"></script>
+    <script type="module" src="../../js/shared/shared-sidebar-live-counts.js?v=20261010-hide-zero-counts"></script>
+    <script type="module" src="../../js/cashier/cashier-loans-management.js?v=20261015-action-badges"></script>
+    <div class="modal fade finance-mobile-safe-modal cashier-card-modal" id="pendingModal" tabindex="-1" aria-labelledby="pendingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="pendingModalLabel"><i class="bi bi-cash-coin me-2"></i>Ready for Payment</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Application No.</th>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Student Name</th>
+                                    <th class="text-center">Amount Can Pay</th>
+                                    <th class="text-center">Amount Paid</th>
+                                    <th class="text-center">Payment Status</th>
+                                    <th class="text-center">Due Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pendingModalTableBody">
+                                <tr><td colspan="7" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer cashier-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal cashier-card-modal" id="paidPendingModal" tabindex="-1" aria-labelledby="paidPendingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="paidPendingModalLabel"><i class="bi bi-hourglass-split me-2"></i>Pending Loan Approval Applications</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Application No.</th>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Student Name</th>
+                                    <th class="text-center">Amount</th>
+                                    <th class="text-center">Amount Paid</th>
+                                    <th class="text-center">Payment Status</th>
+                                    <th class="text-center">Current Step</th>
+                                    <th class="text-center">Recorded At</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paidPendingModalTableBody">
+                                <tr><td colspan="8" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer cashier-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

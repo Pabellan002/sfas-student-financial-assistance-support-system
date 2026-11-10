@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>Student Dashboard - CSDL Student Loan Management System</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">    <link href="../../assets/css/students/students.css?v=20261007-student-pagination" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-layout.css?v=20261007-date-calendar" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/students/students-chatbot.css?v=20261020-student-ai-pages" rel="stylesheet">
+    <link href="../../assets/css/students/students-portal-premium.css" rel="stylesheet">
+    <link href="../../assets/css/students/students-dashboard-premium.css?v=20261016-mobile-quick-actions" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="bg-light student-dashboard-premium">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261007-first-paint"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="students-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand student-mobile-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="students-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="students-notifications.html" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="students-notifications.html">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="students-settings.html"><i class="bi bi-person me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container app-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;overflow:hidden;">
+                                <div class="fw-bold text-white" style="font-size:0.8rem;line-height:1.3;white-space:nowrap;">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="students-dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="students-loans.html">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="link-text">Loans</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="students-chat.html">
+                                <i class="bi bi-chat-dots me-2"></i>
+                                <span class="link-text">Chat</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center sidebar-profile-container">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2 sidebar-profile-avatar" style="width:40px;height:40px;object-fit:cover">
+                            <div class="sidebar-profile-text">
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Student</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+             <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                <header class="student-page-head-banner pb-2 mb-3 students-page-head">
+                    <div class="student-page-head-banner__inner">
+                        <div class="student-page-head-banner__main">
+                            <h1 class="student-page-head-banner__title mb-0" id="pageTitle">Dashboard</h1>
+                        </div>
+                        <div class="student-page-head-banner__meta">
+                            <span class="student-page-head-banner__date">
+                                <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                <span class="student-page-head-date-text"></span>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                <div class="row g-4 dashboard-grid dashboard-layout align-items-stretch">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <div class="bg-white border rounded d-flex flex-column dashboard-panel loan-history-panel h-100">
+                            <div class="p-3 border-bottom">
+                                <h5 class="mb-0 fw-semibold">Loan History</h5>
+                            </div>
+                            <div class="flex-grow-1 d-flex flex-column loan-history-body">
+                                <div class="table-responsive loan-history-table-wrap" id="loanHistoryTableWrap">
+                                    <table class="table table-hover mb-0 loan-history-table" id="loanHistoryTable">
+                                        <colgroup>
+                                            <col class="loan-history-col loan-history-col--app">
+                                            <col class="loan-history-col loan-history-col--amount">
+                                            <col class="loan-history-col loan-history-col--status">
+                                            <col class="loan-history-col loan-history-col--payment">
+                                            <col class="loan-history-col loan-history-col--pn">
+                                            <col class="loan-history-col loan-history-col--due">
+                                            <col class="loan-history-col loan-history-col--period">
+                                        </colgroup>
+                                        <thead class="table-light sticky-top">
+                                            <tr>
+                                                <th class="border-0 small fw-semibold py-2 ps-3 loan-history-th">Application No.</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 loan-history-th">Amount to Pay</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 loan-history-th">Status</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 loan-history-th">Payment Status</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 loan-history-th">PN Status</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 loan-history-th">Due Date</th>
+                                                <th class="border-0 text-center small fw-semibold py-2 pe-3 loan-history-th">Period</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="loanHistoryTableBody">
+                                            <tr>
+                                                <td colspan="7" class="text-center text-muted py-5">
+                                                    <p class="small text-muted mb-1 fw-semibold">No loan applications yet</p>
+                                                    <p class="text-muted small mb-0">Your recent applications will show here.</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="student-pagination-footer p-3 border-top">
+                                    <div class="student-pagination-size d-flex align-items-center gap-2">
+                                        <label for="itemsPerPage" class="small text-muted mb-0">Show</label>
+                                        <select id="itemsPerPage" class="form-select form-select-sm">
+                                            <option value="5" selected>5</option>
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="small text-muted">entries per page</span>
+                                    </div>
+                                    <nav id="recentLoansPagination" class="student-page-buttons" aria-label="Recent loan pages"></nav>
+                                    <div class="small text-muted student-pagination-info" id="pageInfo">Showing 0 to 0 of 0 entries</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 dashboard-sidebar-col d-flex flex-column">
+                        <div class="bg-white border rounded dashboard-panel profile-panel">
+                           
+                            <div class="p-3">
+                                <a class="students-hero-card d-md-none" href="students-settings.html" aria-label="Open profile settings">
+                                    <div class="students-hero-card__left">
+                                        <div class="students-hero-card__avatar">
+                                            <img id="profilePhoto" src="https://ui-avatars.com/api/?name=Student&background=198754&color=fff&size=120" alt="Profile" class="rounded-circle">
+                                        </div>
+                                        <div class="students-hero-card__text">
+                                            <div id="profileName" class="students-hero-card__name">Student Name</div>
+                                            <div class="students-hero-card__meta">
+                                                <span id="profileRole">Student</span>
+                                                <span class="students-hero-card__sep">·</span>
+                                                <span id="profileStudentIdMobile">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-chevron-right students-hero-card__chev" aria-hidden="true"></i>
+                                </a>
+
+                                <div class="students-desktop-hero d-none d-md-flex">
+                                    <div class="students-desktop-hero__avatar-wrap">
+                                        <img id="profilePhotoDesktop" src="https://ui-avatars.com/api/?name=Student&background=6c757d&color=fff&size=120" alt="Profile" class="students-desktop-hero__avatar rounded-circle border border-2 border-secondary">
+                                    </div>
+                                    <div class="students-desktop-hero__content">
+                                        <h6 id="profileNameDesktop" class="students-desktop-hero__name mb-1 fw-bold">Student Name</h6>
+                                        <div class="students-desktop-hero__meta mb-0">
+                                            <span id="profileRoleDesktop" class="students-desktop-hero__role text-muted">Student</span>
+                                            <span class="students-desktop-hero__sep">•</span>
+                                            <span id="profileStudentIdDesktop" class="students-desktop-hero__student-id">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="students-desktop-hero__aside">
+                                        <div class="students-desktop-hero__aside-row">
+                                            <span class="students-desktop-hero__aside-label">Program</span>
+                                            <span id="profileProgramDesktop" class="students-desktop-hero__aside-value">-</span>
+                                        </div>
+                                        <div class="students-desktop-hero__aside-row">
+                                            <span class="students-desktop-hero__aside-label">Year level</span>
+                                            <span id="profileYearLevelDesktop" class="students-desktop-hero__aside-value">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="students-action-tiles d-flex justify-content-center gap-2 flex-wrap">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm py-2 px-3" id="quickActionLoan" title="Apply for Loan">
+                                        <i class="bi bi-plus-circle me-1"></i>Apply
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm py-2 px-3" id="quickActionBalance" title="View Balances">
+                                        <i class="bi bi-wallet2 me-1"></i>Balance
+                                    </button>
+                                </div>
+                                <p class="text-muted small mb-0 mt-3 d-none d-md-block">
+                                    <a href="students-settings.html" class="text-success text-decoration-none fw-semibold">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border rounded p-3 dashboard-panel calendar-panel">
+                          
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <button type="button" id="prevMonth" class="btn btn-outline-secondary btn-sm p-1" style="width: 32px; height: 32px;" aria-label="Previous month">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                <span id="currentMonthYear" class="fw-semibold text-center flex-grow-1 small">January 2024</span>
+                                <button type="button" id="nextMonth" class="btn btn-outline-secondary btn-sm p-1" style="width: 32px; height: 32px;" aria-label="Next month">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="text-center mb-4">
+                                <button type="button" id="todayBtn" class="btn btn-success btn-sm">
+                                    <i class="bi bi-calendar-check me-1"></i>Today
+                                </button>
+                            </div>
+                            <div class="small text-muted mb-3">
+                                <div class="d-flex flex-wrap justify-content-center gap-3">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="calendar-legend calendar-legend--due"></div>
+                                        <span>Due Date</span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <div class="calendar-legend calendar-legend--exam"></div>
+                                        <span>Periodical Exam</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="calendar-container compact">
+                                <div class="calendar-header compact">
+                                    <div class="calendar-day-header">S</div>
+                                    <div class="calendar-day-header">M</div>
+                                    <div class="calendar-day-header">T</div>
+                                    <div class="calendar-day-header">W</div>
+                                    <div class="calendar-day-header">T</div>
+                                    <div class="calendar-day-header">F</div>
+                                    <div class="calendar-day-header">S</div>
+                                </div>
+                                <div id="calendarBody" class="calendar-body compact"></div>
+                            </div>
+                            <div id="calendarDayPopover" class="calendar-day-popover" role="tooltip" aria-hidden="true" hidden></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+
+    <div class="modal fade students-dashboard-mobile-modal" id="calendarEventModal" tabindex="-1" aria-labelledby="calendarEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg calendar-event-modal">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title d-flex align-items-center mb-0" id="calendarEventModalLabel">
+                        <i class="bi bi-calendar-event me-2" aria-hidden="true"></i>Calendar details
+                    </h5>
+                </div>
+                <div class="modal-body p-4" id="calendarEventModalBody"></div>
+                <div class="modal-footer bg-light border-0 justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade student-mobile-safe-modal" id="viewLoanModal" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title d-flex align-items-center mb-0">
+                        <i class="bi bi-file-earmark-text me-2"></i>Loan Application Details
+                    </h5>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="loanDetailsContent"></div>
+                </div>
+                <div class="modal-footer bg-light border-0 justify-content-end" id="loanDetailsFooter">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="otpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white border-0">
+                    <h6 class="modal-title"><i class="bi bi-shield-lock me-2"></i>Verify OTP</h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="otpForm" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <label class="form-label small">Enter the 6-digit code sent to your email</label>
+                        <input type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" class="form-control form-control-lg text-center fw-bold" id="otpCode" placeholder="000000" autocomplete="one-time-code">
+                        <div class="d-flex justify-content-end align-items-center mt-3">
+                            <small class="text-muted">Resend in <span id="otpTimer">60</span>s</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Verify & Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loanApplicationModal" tabindex="-1" aria-labelledby="loanApplicationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title fw-bold" id="loanApplicationModalLabel">
+                        <i class="bi bi-file-earmark-text me-2"></i>Student Loan Application Form
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0" style="max-height: 80vh; overflow-y: auto;">
+                    <div class="alert alert-info m-4 mb-0">
+                        <h6 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Form Description</h6>
+                        <p class="mb-2">This form is intended for PHINMA COC Students use only. Students can apply for an interest-free loan to ensure that examination permit is secured on time or request forward balance during enrollment.</p>
+                        <hr>
+                        <h6 class="mb-2">Instructions:</h6>
+                        <ol class="mb-0 small">
+                            <li>Application is open one week before every periodic examination within office hours: Monday - Friday: 7:30 AM - 5:00 PM; Saturday 8:00 AM - 12:00 NN</li>
+                            <li>Students must attach/submit one (1) valid ID of parent/guardian with signature.</li>
+                            <li>The maximum amount per student is Php 3,000.00. Loan in excess of Php 3,000.00 require the approval of the Controller or COO.</li>
+                            <li>Wait 1-2 days for the verification process. Status will be sent to your PHINMAEd Email Account or you will receive a call/text from CSDL/Finance/COOs Office.</li>
+                            <li>Approved loan amount shall be paid within 30 days.</li>
+                        </ol>
+                    </div>
+                    <div class="p-4">
+                        <form id="loanApplicationForm">
+                            <input type="hidden" id="reapplyLoanId" name="reapplyLoanId" value="">
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="alert alert-warning">
+                                        <h6 class="alert-heading"><i class="bi bi-shield-check me-2"></i>PERSONAL DATA CONSENT</h6>
+                                        <p class="mb-3 small">By accomplishing this Student Information Form, the student and her/his parents or guardian (1) certify that the information provided is true and complete, (2) acknowledge that the confidentiality of information is protected by the Data Privacy Act of 2012 (R.A. 10173), and (3) authorize the release of any and all academic, financial, and any other information that may be requested by the government for regulatory purposes or affiliates of the school to aid the school in achieving its purposes. The information will be available to the school until such time the consent is revoked in writing.</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="dataConsent" id="consentAgree" value="agree" required>
+                                            <label class="form-check-label" for="consentAgree">I agree</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="dataConsent" id="consentDisagree" value="disagree" required>
+                                            <label class="form-check-label" for="consentDisagree">I disagree</label>
+                                        </div>
+                                        <div class="invalid-feedback">You must provide consent to continue.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-3"><i class="bi bi-person-badge me-2"></i>STUDENT INFORMATION</h6>
+                                    <p class="text-muted small mb-3">Your information has been automatically filled from your student profile.</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="studentId" class="form-label">Student ID Number <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="studentId" name="studentId" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="completeName" class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="completeName" name="completeName" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="course" class="form-label">Program <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="course" name="course" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="yearLevel" class="form-label">Year Level <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="yearLevel" name="yearLevel" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="campus" class="form-label">Campus <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="campus" name="campus" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="scholarship" class="form-label">Type of Scholarship <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="scholarship" name="scholarship" readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="contactNumber" class="form-label">Student Active Contact Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="contactNumber" name="contactNumber" 
+                                           maxlength="11" 
+                                           required
+                                           placeholder="09XXXXXXXXX">
+                                    <div class="invalid-feedback">Please enter a valid 11-digit Philippine mobile number starting with 09.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fbAccount" class="form-label">FB Account (Name or Link) <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="fbAccount" name="fbAccount" maxlength="255" placeholder="Enter your Facebook name or profile link" required>
+                                    <div class="invalid-feedback">Please enter your Facebook name or profile link.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="applicationPeriod" class="form-label">Application Period <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="applicationPeriod" name="applicationPeriod" required>
+                                        <option value="">Select Application Period</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select the application period.</div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-3"><i class="bi bi-file-text me-2"></i>PROMISSORY NOTE</h6>
+                                    <p class="text-muted small mb-3">Please provide the reason for studer loan application, indicate the amount you can pay, the promised date of payment of balance, your parent/guardian name and contact number. Attach any VALID ID with signature of your Parent/Guardian.</p>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="loanReason" class="form-label">Reason/s for student loan application <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="loanReason" name="loanReason" rows="3" maxlength="500" placeholder="Please describe your reason for applying for a student loan..." required></textarea>
+                                    <div class="form-text"><span id="charCount">0</span>/500 characters</div>
+                                    <div class="invalid-feedback">Please describe the reason for your loan application.</div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="previousBalance" class="form-label">Previous Balance</label>
+                                    <input type="text" class="form-control bg-light" id="previousBalance" name="previousBalance" readonly tabindex="-1" value="₱0.00">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="currentBalance" class="form-label">Current Balance</label>
+                                    <input type="text" class="form-control bg-light" id="currentBalance" name="currentBalance" readonly tabindex="-1" value="₱0.00">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="studentBalance" class="form-label">Total Balance</label>
+                                    <input type="text" class="form-control bg-light" id="studentBalance" name="studentBalance" readonly tabindex="-1" value="₱0.00">
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="advisedToPay" class="form-label">Advised to Pay</label>
+                                    <input type="text" class="form-control bg-light" id="advisedToPay" name="advisedToPay" readonly tabindex="-1" value="₱0.00">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="amountCanPay" class="form-label">Amount I can pay <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="amountCanPay" name="amountCanPay" min="0" step="0.01" placeholder="e.g. 5000.00" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" required>
+                                    <div class="d-flex flex-wrap align-items-baseline gap-1">
+                                        <div class="form-text" id="amountCanPayHelp">Pila imong kaya mabayad karon? (Numbers only, e.g., 5000.00)</div>
+                                        <span class="small text-danger fw-semibold">Subject for approval</span>
+                                    </div>
+                                    <div class="invalid-feedback" id="amountCanPayError">Please enter a valid amount (numbers only).</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="paymentDate" class="form-label">When do you intend to pay your balance? <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="paymentDate" name="paymentDate" required>
+                                    <div class="form-text" id="paymentDateHelp">Choose a payment date within 30 days.</div>
+                                    <div class="invalid-feedback" id="paymentDateError">Please select a valid intended payment date.</div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-3"><i class="bi bi-people me-2"></i>PARENT/GUARDIAN INFORMATION</h6>
+                                    <p class="text-muted small mb-3">Choose a family member saved in your student record.</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="parentName" class="form-label">Parent/Guardian Complete Name <span class="text-danger">*</span></label>
+                                    <div class="alert alert-info small mb-2">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        <strong>Step 1:</strong> Choose a relationship; the saved name will appear automatically.
+                                    </div>
+                                    <input type="text" class="form-control" id="parentName" name="parentName" placeholder="Choose a relationship first" readonly required>
+                                    <div class="form-text">Managed in your student family details.</div>
+                                    <div class="invalid-feedback">Please enter your parent/guardian's complete name.</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="relationship" class="form-label">Relationship to the Student <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="relationship" name="relationship" required>
+                                        <option value="">Select Relationship</option>
+                                    </select>
+                                    <div class="form-text">Select your relationship to this person</div>
+                                    <div class="invalid-feedback">Please select your relationship to the student.</div>
+                                </div>
+                                <input type="hidden" id="familyMemberId" name="familyMemberId">
+                                <div class="col-md-6 mb-3">
+                                    <label for="parentContact" class="form-label">Parent/Guardian Active Contact Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="parentContact" name="parentContact" placeholder="Choose a relationship first" pattern="^09[0-9]{9}$" inputmode="numeric" maxlength="11" readonly required>
+                                    <div class="form-text">Auto-filled from family details. You can correct this 11-digit number; it will update the saved family contact when your loan application is submitted.</div>
+                                    <div class="invalid-feedback">Please enter a valid 11-digit Philippine mobile number starting with 09.</div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-3"><i class="bi bi-upload me-2"></i>PARENT/GUARDIAN VALID ID WITH SIGNATURE</h6>
+                                    <div class="alert alert-info">
+                                        <h6 class="alert-heading">List of Valid ID:</h6>
+                                        <p class="mb-2 small">PhilSys / National ID Card, Printed PhilSys ID, UMID, GSIS, Passport, Postal ID, PRC ID, Senior Citizen ID, OFW ID, Voter's ID, and NBI Clearance</p>
+                                        <hr>
+                                        <h6 class="mb-2">For Self-Employed Students:</h6>
+                                        <p class="mb-0 small">Valid Company ID or Current Payslip</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="documentType" class="form-label">Document Type <span class="text-danger">*</span></label>
+                                            <div class="alert alert-info small mb-2">
+                                                <i class="bi bi-info-circle me-1"></i>
+                                                <strong>Step 2:</strong> Select the type of ID you're uploading
+                                            </div>
+                                            <select class="form-select" id="documentType" name="documentType" required>
+                                                <option value="">Select Document Type</option>
+                                            </select>
+                                            <div class="invalid-feedback">Please select a document type.</div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validIdFile" class="form-label">Upload Valid ID <span class="text-danger">*</span></label>
+                                            <div class="alert alert-info small mb-2">
+                                                <i class="bi bi-info-circle me-1"></i>
+                                                <strong>Step 3:</strong> Upload the ID document after completing steps 1 & 2 above
+                                            </div>
+                                            <input type="file" class="form-control" id="validIdFile" name="validIdFile" accept="image/*,.pdf" required>
+                                            <div class="invalid-feedback">Please upload a valid ID document.</div>
+                                            <div id="idPreviewContainer" class="id-document-preview mt-3" style="display: none;">
+                                                <div class="id-document-preview__header">
+                                                    <div>
+                                                        <div class="id-document-preview__title"><i class="bi bi-card-image" aria-hidden="true"></i>Document preview</div>
+                                                        <div class="id-document-preview__hint">Include the complete front of the ID with a clear portrait, readable details, and guardian signature. Samples and generated replacements are not accepted.</div>
+                                                    </div>
+                                                    <span class="id-document-preview__state"><i class="bi bi-shield-check" aria-hidden="true"></i>Ready</span>
+                                                </div>
+                                                <div class="id-document-preview__canvas-wrap">
+                                                    <canvas id="idPreviewCanvas"></canvas>
+                                                    <div id="scanningOverlay" class="id-document-preview__overlay d-none" aria-hidden="true">
+                                                        <span class="id-scan-corner id-scan-corner--tl"></span>
+                                                        <span class="id-scan-corner id-scan-corner--tr"></span>
+                                                        <span class="id-scan-corner id-scan-corner--bl"></span>
+                                                        <span class="id-scan-corner id-scan-corner--br"></span>
+                                                        <span class="id-scan-beam"></span>
+                                                    </div>
+                                                    <div id="scanningStatus" class="id-scan-status d-none">
+                                                        <span class="id-scan-status__icon"><i class="bi bi-upc-scan" aria-hidden="true"></i></span>
+                                                        <div>
+                                                            <div class="id-scan-status__title">Scanning ID...</div>
+                                                            <div class="id-scan-status__text">Checking portrait, document details and template indicators</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div id="idValidationBadge" class="d-none"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="alert alert-warning">
+                                        <h6 class="alert-heading"><i class="bi bi-exclamation-triangle me-2"></i>DECLARATION</h6>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="declaration" name="declaration" required>
+                                            <label class="form-check-label" for="declaration">
+                                                I/We certify that the information given on this Student Loan Program Application Form and Promissory Note are correct and complete. Falsification or withholding of information on this form will automatically nullify the application and/or subject the applicant to dismissal from the College.
+                                            </label>
+                                            <div class="invalid-feedback">You must agree to the declaration to continue.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex gap-2 justify-content-end">
+                                        <button type="submit" class="btn btn-success" id="submitApplicationBtn">
+                                            Submit Application
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="balancesModal" tabindex="-1" aria-labelledby="balancesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0 py-2 py-md-3">
+                    <h5 class="modal-title fw-bold mb-0" id="balancesModalLabel">
+                        <i class="bi bi-wallet me-2"></i>Balance Information
+                    </h5>
+                </div>
+                <div class="modal-body p-0" style="max-height: 70vh; overflow-y: auto;">
+                    <div id="balancesLoading" class="text-center py-4 py-md-5">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted small">Loading balance information...</p>
+                    </div>
+                    <div id="balancesContent" style="display: none;">
+                        <div class="p-3 p-md-4" id="balanceInfoContent">
+                        </div>
+                    </div>
+                    <div id="balancesError" class="text-center py-4 py-md-5" style="display: none;">
+                        <div class="text-danger mb-3">
+                            <i class="bi bi-exclamation-triangle fs-1"></i>
+                        </div>
+                        <h6 class="text-danger small">Failed to Load Balance Information</h6>
+                        <p class="text-muted small">Please try again later or contact support if the problem persists.</p>
+                        <button class="btn btn-outline-success btn-sm" onclick="window.openBalancesModal()">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Retry
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0 justify-content-end py-2 py-md-3">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loansModal" tabindex="-1" aria-labelledby="loansModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title fw-bold" id="loansModalLabel">
+                        <i class="bi bi-file-earmark-text me-2"></i>Loan Applications
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0" style="max-height: 80vh; overflow-y: auto;">
+                    <div id="loansLoading" class="text-center py-5">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Loading loan applications...</p>
+                    </div>
+                    <div id="loansContent" style="display: none;">
+                        <div class="p-4" id="loansInfoContent">
+                        </div>
+                    </div>
+                    <div id="loansError" class="text-center py-5" style="display: none;">
+                        <div class="text-danger mb-3">
+                            <i class="bi bi-exclamation-triangle fs-1"></i>
+                        </div>
+                        <h6 class="text-danger">Failed to Load Loan Applications</h6>
+                        <p class="text-muted">Please try again later or contact support if the problem persists.</p>
+                        <button class="btn btn-outline-success" onclick="window.openLoansModal()">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Retry
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0 justify-content-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade student-mobile-safe-modal" id="viewDocumentModal" tabindex="-1" aria-labelledby="viewDocumentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title fw-bold" id="viewDocumentModalLabel">
+                        <i class="bi bi-file-earmark-text me-2"></i>Document Viewer
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="documentViewerContent" style="min-height: 60vh; max-height: 70vh; overflow: auto;">
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0 justify-content-end">
+                    <button type="button" class="btn btn-success" id="downloadDocumentBtn">
+                        Download
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div id="chatbotWindow" class="chatbot-window d-none" role="dialog" aria-label="Ask SFAS student help">
+            <div class="chatbot-header">
+                <div class="d-flex align-items-center">
+                    <div class="chatbot-avatar me-2">
+                        <img src="../../assets/images/ask-sfas-adviser.png" alt="" aria-hidden="true">
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-semibold">Ask SFAS AI</h6>
+                        <small>Student account and loan help</small>
+                    </div>
+                </div>
+                <button type="button" class="chatbot-close" id="chatbotCloseBtn" aria-label="Close Ask SFAS">
+                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="chatbot-intro" id="chatbotIntro">
+                <div class="chatbot-intro__art" aria-hidden="true">
+                    <span class="chatbot-intro__spark chatbot-intro__spark--left"><i class="bi bi-stars"></i></span>
+                    <span class="chatbot-intro__avatar"><img src="../../assets/images/ask-sfas-adviser.png" alt=""></span>
+                    <span class="chatbot-intro__spark chatbot-intro__spark--right"><i class="bi bi-chat-heart-fill"></i></span>
+                </div>
+                <span class="chatbot-intro__eyebrow">YOUR STUDENT GUIDE</span>
+                <h2 id="chatbotGreeting">Hi there!</h2>
+                <p>Ask about registration, applying for a loan, requirements, status, or payments.</p>
+                <button type="button" class="chatbot-start" id="chatbotStartBtn">
+                    Start chatting <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </button>
+                <small>Answers are for guidance only. Staff can help with account-specific concerns.</small>
+            </div>
+            <div class="chatbot-conversation d-none" id="chatbotConversation">
+                <div class="chatbot-body" id="chatbotMessages" role="log" aria-live="polite" aria-relevant="additions">
+                    <div class="chat-message bot-message">
+                        <div class="message-avatar">
+                            <img src="../../assets/images/ask-sfas-adviser.png" alt="" aria-hidden="true">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                <p class="mb-0">Hi! I can help with student registration and loan questions. What would you like to know?</p>
+                            </div>
+                            <small class="message-time">Just now</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="chatbotInput" placeholder="Ask a question..." aria-label="Ask SFAS a question" autocomplete="off" maxlength="1000">
+                        <button class="btn btn-success" type="button" id="chatbotSendBtn" aria-label="Send message">
+                            <i class="bi bi-send-fill" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <small class="text-muted mt-2 d-block text-center">Answers are for guidance only</small>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="chatbot-button" id="chatbotButton" aria-label="Open Ask SFAS" aria-expanded="false" aria-controls="chatbotWindow">
+            <span class="chatbot-button__avatar"><img src="../../assets/images/ask-sfas-adviser.png" alt="" aria-hidden="true"></span>
+            <span class="chatbot-button__copy"><small>Need help?</small><strong>Ask SFAS</strong></span>
+            <i class="bi bi-chat-dots chatbot-button__chat-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261010-chat-zero-hidden"></script>
+    <script type="module" src="../../js/students/students-dashboard.js?v=20261020-student-ai-pages"></script>
+</body>
+</html>
+

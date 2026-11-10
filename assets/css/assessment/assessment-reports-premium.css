@@ -1,0 +1,156 @@
+/**
+ * Assessment Reports — PN tagged loans table (requires assessment-portal-premium.css).
+ */
+
+body.assessment-app.assessment-portal-premium .assessment-reports-table-wrap {
+    max-height: calc(100vh - 380px);
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table {
+    min-width: 1120px;
+    width: max-content;
+    table-layout: auto;
+    margin-bottom: 0;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table thead th.assessment-reports-th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5f6c7b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    line-height: 1.25;
+    vertical-align: middle;
+    padding: 0.62rem 0.65rem;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody td {
+    font-size: 0.835rem;
+    color: #2f3d4e;
+    border-bottom: 1px solid #eef1f5;
+    padding: 0.62rem 0.65rem;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Keep the people and date fields legible; narrow screens scroll sideways. */
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table th:nth-child(3),
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table td:nth-child(3) {
+    min-width: 185px;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table th:nth-child(7),
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table td:nth-child(7),
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table th:nth-child(8),
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table td:nth-child(8) {
+    min-width: 165px;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody td:first-child {
+    padding-left: 0.85rem;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody td:last-child {
+    padding-right: 0.85rem;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody td[colspan] {
+    overflow: visible;
+    text-overflow: unset;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody tr:hover {
+    background: #f6f8fb;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table .badge {
+    border-radius: 999px;
+    padding: 0.34rem 0.6rem;
+    font-weight: 600;
+}
+
+/* Keep PN-tagging records as a real, scrollable table on every screen size.
+   Some legacy responsive rules turn table cells into blocks, which makes the
+   columns look stacked and hard to read. */
+body.assessment-app.assessment-portal-premium .assessment-reports-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table {
+    display: table !important;
+    width: max-content !important;
+    min-width: 1120px !important;
+    table-layout: auto !important;
+}
+
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table thead { display: table-header-group !important; }
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tbody { display: table-row-group !important; }
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table tr { display: table-row !important; }
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table th,
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table td {
+    display: table-cell !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+
+/* Paid is a successful payment state, not a warning state. */
+body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table .badge.bg-success,
+body.assessment-app.assessment-portal-premium .assessment-card-modal .badge.bg-success {
+    background-color: #087a25 !important;
+    color: #fff !important;
+}
+
+/* Fill the full-width PN Tagging card on desktop. The fixed content width left
+   the header and data occupying only part of the card after the chart removal. */
+@media (min-width: 1200px) {
+    body.assessment-app.assessment-portal-premium #reportsTable.assessment-reports-table {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#reportsTable) .assessment-reports-actions-row {
+        width: 100% !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 0.5rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#reportsTable) .assessment-reports-actions-row > .dropdown {
+        flex: 0 0 auto !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#reportsTable) .assessment-reports-actions-row > .dropdown .btn {
+        width: 2.5rem;
+        min-width: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#reportsTable) .assessment-reports-actions-row > .btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#reportsTable) .assessment-reports-mobile-search .input-group-text {
+        flex: 0 0 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+

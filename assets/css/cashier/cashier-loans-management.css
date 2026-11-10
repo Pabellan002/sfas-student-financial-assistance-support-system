@@ -1,0 +1,56 @@
+/* Finance Loans Management - custom row action dropdown */
+#loansTable tbody tr,
+#loansTable tbody td {
+    overflow: visible !important;
+}
+
+#loansTable .action-dd {
+    position: relative;
+}
+
+#loansTable .action-dd > summary {
+    list-style: none;
+    cursor: pointer;
+    min-width: 32px !important;
+    width: 32px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#loansTable .action-dd > summary::-webkit-details-marker {
+    display: none;
+}
+
+#loansTable .action-dd-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    min-width: 160px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    padding: 0.35rem;
+    display: none;
+    z-index: 2100;
+}
+
+#loansTable .action-dd[open] .action-dd-menu {
+    display: block;
+}
+
+#loansTable .action-dd-item {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.35rem;
+    color: #212529;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+#loansTable .action-dd-item:hover {
+    background: rgba(25, 135, 84, 0.1);
+}

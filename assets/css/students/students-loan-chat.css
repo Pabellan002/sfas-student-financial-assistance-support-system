@@ -1,0 +1,348 @@
+/* Messenger-style student loan support workspace. */
+.student-loan-chat-page {
+    --chat-green: #08752a;
+    --chat-green-dark: #055d20;
+    --chat-green-soft: #eaf7ee;
+    --chat-ink: #17251d;
+    --chat-muted: #6b7870;
+    --chat-line: #e4eae6;
+    --chat-surface: #ffffff;
+}
+
+.student-loan-chat-page #mainContent {
+    padding-bottom: 1rem;
+}
+
+.loan-chat-app {
+    display: grid;
+    grid-template-columns: minmax(285px, 340px) minmax(0, 1fr);
+    height: clamp(610px, calc(100vh - 190px), 780px);
+    overflow: hidden;
+    border: 1px solid var(--chat-line);
+    border-radius: 20px;
+    background: var(--chat-surface);
+    box-shadow: 0 18px 48px rgba(31, 56, 40, .10);
+}
+
+.loan-chat-inbox {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    border-right: 1px solid var(--chat-line);
+    background: #fbfcfb;
+}
+
+.loan-chat-inbox-head {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--chat-line);
+    background: #fff;
+}
+
+.loan-chat-inbox-head h2,
+.loan-chat-thread-head h2 {
+    margin: 0;
+    color: var(--chat-ink);
+    font-size: 1rem;
+    font-weight: 750;
+}
+
+.loan-chat-inbox-head p,
+.loan-chat-thread-head p {
+    margin: .25rem 0 0;
+    color: var(--chat-muted);
+    font-size: .76rem;
+}
+
+.loan-chat-inbox-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 12px;
+    background: var(--chat-green-soft);
+    color: var(--chat-green);
+}
+
+.loan-chat-search {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    height: 42px;
+    padding: 0 .8rem;
+    border: 1px solid #e2e8e4;
+    border-radius: 12px;
+    background: #f5f7f6;
+    color: #87918b;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.loan-chat-search:focus-within {
+    border-color: #96c5a3;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(8, 117, 42, .09);
+}
+
+.loan-chat-search input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--chat-ink);
+    font-size: .83rem;
+}
+
+.student-loan-chat-page .loan-chat-conversations {
+    max-height: none;
+    min-height: 0;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: .6rem;
+}
+
+.student-loan-chat-page .loan-chat-conversation {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .75rem;
+    width: 100%;
+    margin-bottom: .25rem;
+    padding: .78rem;
+    border: 0;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--chat-ink);
+    text-align: left;
+    transition: background .18s, box-shadow .18s, transform .18s;
+}
+
+.student-loan-chat-page .loan-chat-conversation:hover {
+    background: #f0f5f1;
+    transform: translateY(-1px);
+}
+
+.student-loan-chat-page .loan-chat-conversation.is-active {
+    border-left: 0;
+    background: var(--chat-green-soft);
+    box-shadow: inset 0 0 0 1px rgba(8, 117, 42, .08);
+}
+
+.loan-chat-conversation-avatar {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #108b38, #056422);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 5px 13px rgba(8, 117, 42, .2);
+}
+
+.loan-chat-conversation-main { display: block; min-width: 0; overflow: hidden; }
+.loan-chat-conversation-title { display: block; overflow: hidden; font-size: .84rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.student-loan-chat-page .loan-chat-conversation-preview { display: block; margin-top: .22rem; color: #748078; font-size: .73rem; }
+.loan-chat-conversation-status { display: block; margin-top: .22rem; color: var(--chat-green); font-size: .68rem; font-weight: 700; }
+.loan-chat-conversation-meta { display: flex; align-self: stretch; flex-direction: column; align-items: flex-end; justify-content: space-between; gap: .35rem; }
+.loan-chat-conversation-time { color: #929b95; font-size: .64rem; white-space: nowrap; }
+.loan-chat-unread { min-width: 20px; padding: .2rem .4rem; border-radius: 999px; background: var(--chat-green); color: #fff; font-size: .65rem; font-weight: 750; text-align: center; }
+
+.loan-chat-thread {
+    min-width: 0;
+    min-height: 0;
+    background: #fff;
+}
+
+.loan-chat-thread-head {
+    display: flex;
+    min-height: 76px;
+    align-items: center;
+    gap: .8rem;
+    padding: .9rem 1.25rem;
+    border-bottom: 1px solid var(--chat-line);
+    background: rgba(255, 255, 255, .96);
+}
+
+.loan-chat-office-avatar {
+    position: relative;
+    display: grid;
+    width: 45px;
+    height: 45px;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #108b38, #055d20);
+    color: #fff;
+    font-size: 1.12rem;
+    box-shadow: 0 5px 15px rgba(8, 117, 42, .22);
+}
+
+.loan-chat-presence {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+    width: 11px;
+    height: 11px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #35c76f;
+}
+
+.loan-chat-thread-identity { min-width: 0; flex: 1 1 auto; }
+.loan-chat-thread-identity h2 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.loan-chat-thread-identity p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.loan-chat-online-dot { display: inline-block; width: 6px; height: 6px; margin-right: .35rem; border-radius: 50%; background: #35c76f; vertical-align: 1px; }
+
+.loan-chat-thread-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .45rem .65rem;
+    border-radius: 999px;
+    background: #f1f5f2;
+    color: #68766d;
+    font-size: .7rem;
+    font-weight: 650;
+}
+
+.loan-chat-mobile-back { display: none; border: 0; background: transparent; color: var(--chat-ink); font-size: 1.15rem; }
+
+.student-loan-chat-page .loan-chat-messages {
+    position: relative;
+    min-height: 0;
+    max-height: none;
+    padding: 1.35rem clamp(1rem, 3vw, 2.5rem);
+    overflow-y: auto;
+    background-color: #f4f7f5;
+    background-image: radial-gradient(circle at 1px 1px, rgba(19, 92, 43, .055) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+
+.student-loan-chat-page .loan-chat-message { margin-bottom: .85rem; }
+.student-loan-chat-page .loan-chat-bubble {
+    max-width: min(72%, 620px);
+    padding: .68rem .88rem .5rem;
+    border: 1px solid #e1e7e3;
+    border-radius: 18px 18px 18px 5px;
+    background: #fff;
+    color: #233029;
+    font-size: .87rem;
+    line-height: 1.48;
+    box-shadow: 0 3px 12px rgba(35, 64, 44, .07);
+}
+
+.student-loan-chat-page .loan-chat-message.is-mine .loan-chat-bubble {
+    border: 0;
+    border-radius: 18px 18px 5px 18px;
+    background: linear-gradient(145deg, #0c8732, #076c28);
+    color: #fff;
+    box-shadow: 0 5px 16px rgba(8, 117, 42, .18);
+}
+
+.student-loan-chat-page .loan-chat-meta { margin-top: .32rem; font-size: .63rem; opacity: .7; text-align: right; }
+
+.loan-chat-welcome-state,
+.loan-chat-empty-state,
+.loan-chat-loading {
+    display: flex;
+    height: 100%;
+    min-height: 260px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+    color: var(--chat-muted);
+    text-align: center;
+}
+
+.loan-chat-welcome-state h3,
+.loan-chat-empty-state h3 { margin: .9rem 0 .35rem; color: var(--chat-ink); font-size: 1rem; font-weight: 750; }
+.loan-chat-welcome-state p,
+.loan-chat-empty-state p { max-width: 390px; margin: 0; font-size: .8rem; line-height: 1.55; }
+.loan-chat-welcome-icon,
+.loan-chat-empty-state__icon {
+    display: grid;
+    width: 72px;
+    height: 72px;
+    place-items: center;
+    border: 1px solid #d8eadc;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #fff, #eaf7ee);
+    color: var(--chat-green);
+    font-size: 1.8rem;
+    box-shadow: 0 10px 25px rgba(24, 87, 44, .1);
+}
+
+.loan-chat-loading { min-height: 180px; gap: .65rem; font-size: .76rem; }
+.loan-chat-loading .spinner-border { color: var(--chat-green); }
+
+.loan-chat-composer {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: .65rem;
+    padding: .9rem 1.1rem;
+    border-top: 1px solid var(--chat-line);
+    background: #fff;
+}
+
+.loan-chat-compose-field {
+    position: relative;
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    border: 1px solid #dfe6e1;
+    border-radius: 17px;
+    background: #f5f7f6;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.loan-chat-compose-field:focus-within { border-color: #8fc19d; background: #fff; box-shadow: 0 0 0 3px rgba(8, 117, 42, .09); }
+.loan-chat-compose-field textarea { width: 100%; max-height: 115px; padding: .78rem 4.2rem .7rem .95rem; resize: none; border: 0; outline: 0; background: transparent; color: var(--chat-ink); font: inherit; font-size: .85rem; line-height: 1.35; }
+.loan-chat-compose-field textarea { scrollbar-width: none; }
+.loan-chat-compose-field textarea::-webkit-scrollbar { width: 0; height: 0; }
+.loan-chat-compose-field textarea:disabled { cursor: not-allowed; color: #9aa39d; }
+.loan-chat-character-count { position: absolute; right: .75rem; bottom: .5rem; color: #9aa39d; font-size: .58rem; }
+
+.loan-chat-send {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 0;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #0d8a35, #066824);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(8, 117, 42, .24);
+    transition: transform .18s, box-shadow .18s, opacity .18s;
+}
+
+.loan-chat-send:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(8, 117, 42, .3); }
+.loan-chat-send:disabled { cursor: not-allowed; opacity: .42; box-shadow: none; }
+@media (max-width: 767.98px) {
+    .student-loan-chat-page #mainContent { padding: .75rem .65rem 5.5rem !important; }
+    .loan-chat-app { display: block; height: calc(100dvh - 190px); min-height: 510px; border-radius: 16px; }
+    .loan-chat-inbox { height: 100%; border-right: 0; }
+    .loan-chat-thread { display: none !important; height: 100%; }
+    .loan-chat-app.is-thread-open .loan-chat-inbox { display: none; }
+    .loan-chat-app.is-thread-open .loan-chat-thread { display: flex !important; }
+    .loan-chat-mobile-back { display: inline-grid; width: 34px; height: 34px; place-items: center; flex: 0 0 auto; }
+    .loan-chat-thread-head { min-height: 68px; padding: .7rem .75rem; }
+    .loan-chat-office-avatar { width: 40px; height: 40px; }
+    .loan-chat-thread-badge { display: none; }
+    .student-loan-chat-page .loan-chat-messages { padding: 1rem .8rem; }
+    .student-loan-chat-page .loan-chat-bubble { max-width: 86%; }
+    .loan-chat-composer { padding: .72rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .loan-chat-app { grid-template-columns: minmax(265px, 300px) minmax(0, 1fr); }
+}
+
+@media (max-width: 420px) {
+    .loan-chat-app { height: calc(100dvh - 170px); }
+    .loan-chat-inbox-head { padding: 1rem; }
+}

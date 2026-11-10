@@ -1,0 +1,181 @@
+/**
+ * Mobile-only: reduce whitespace between navbar and page header banner.
+ * Does not affect stat/content cards or desktop layout.
+ */
+@media (max-width: 991.98px) {
+    #mainContent {
+        padding-top: 0.35rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    header[class*="page-head-banner"] {
+        padding-top: 0.15rem !important;
+        padding-bottom: 0.15rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    [class*="page-head-banner__inner"] {
+        padding: 0.7rem 0.85rem !important;
+        gap: 0.55rem !important;
+    }
+}
+
+/* On phones, keep the page title and breadcrumb together in one compact row. */
+@media (max-width: 575.98px) {
+    [class*="page-head-banner__inner"] {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.7rem !important;
+        padding: 0.85rem 1rem !important;
+    }
+
+    [class*="page-head-banner__main"] {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    [class*="page-head-banner__title"],
+    #pageTitle {
+        font-size: 1.25rem !important;
+        line-height: 1.25 !important;
+    }
+
+    [class*="page-head-banner__meta"] {
+        width: auto !important;
+        flex: 0 0 auto !important;
+        align-self: center !important;
+    }
+
+    .student-portal-breadcrumb,
+    .assessment-page-breadcrumb,
+    .finance-page-breadcrumb,
+    .coo-page-breadcrumb,
+    .branch-page-breadcrumb,
+    .csdl-page-breadcrumb {
+        width: auto !important;
+        padding: 0.34rem 0.58rem !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        background: #ffffff !important;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04) !important;
+    }
+
+    .student-portal-breadcrumb .breadcrumb,
+    .assessment-page-breadcrumb .breadcrumb,
+    .finance-page-breadcrumb .breadcrumb,
+    .coo-page-breadcrumb .breadcrumb,
+    .branch-page-breadcrumb .breadcrumb,
+    .csdl-page-breadcrumb .breadcrumb {
+        margin-bottom: 0 !important;
+        font-size: 0.76rem !important;
+        white-space: nowrap;
+    }
+
+    .student-portal-breadcrumb .breadcrumb-item a {
+        color: #03600f !important;
+        font-weight: 600;
+    }
+}
+
+/* Keep the full dashboard date beside the title on each staff portal. */
+@media (max-width: 575.98px) {
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__inner"] {
+        gap: 0.3rem !important;
+        padding-inline: 0.65rem !important;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__main"] {
+        flex: 0 0 auto !important;
+        width: auto !important;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) #pageTitle {
+        font-size: 1.05rem !important;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__meta"] {
+        flex: 0 1 auto !important;
+        min-width: 0;
+        width: auto !important;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__date"] {
+        width: auto !important;
+        max-width: 100%;
+        gap: 0.2rem;
+        padding: 0.3rem 0.4rem;
+        font-size: 0.64rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        letter-spacing: -0.015em;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__date"] i {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+    }
+}
+
+@media (max-width: 359.98px) {
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) #pageTitle {
+        font-size: 0.96rem !important;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__date"] {
+        padding: 0.28rem 0.35rem;
+        font-size: 0.58rem;
+    }
+
+    body:is(.assessment-dashboard-premium, .coo-dashboard-premium, .branch-dashboard-premium, .finance-dashboard-premium) [class*="page-head-banner__date"] i {
+        display: none;
+    }
+}
+
+/* Keep masterfile titles and breadcrumbs side by side without overlap on phones. */
+@media (max-width: 575.98px) {
+    body.masterfiles-premium .masterfiles-page-head-banner__inner {
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 0.35rem !important;
+        padding-inline: 0.6rem !important;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__main {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__title,
+    body.masterfiles-premium #pageTitle {
+        font-size: clamp(0.92rem, 4.2vw, 1.1rem) !important;
+        line-height: 1.15 !important;
+    }
+
+    body.masterfiles-premium .masterfiles-page-head-banner__meta {
+        flex: 0 1 auto !important;
+        width: auto !important;
+        min-width: 0;
+    }
+
+    body.masterfiles-premium .masterfiles-breadcrumb {
+        width: auto !important;
+        padding: 0.3rem 0.4rem !important;
+    }
+
+    body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb {
+        flex-wrap: nowrap !important;
+        margin-bottom: 0 !important;
+        font-size: 0.65rem !important;
+        white-space: nowrap;
+    }
+
+    /* The title already identifies the section; omit the redundant middle step. */
+    body.masterfiles-premium .masterfiles-breadcrumb .breadcrumb-item:nth-child(2) {
+        display: none;
+    }
+}

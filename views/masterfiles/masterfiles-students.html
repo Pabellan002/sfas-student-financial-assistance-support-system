@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Masterfiles</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3/dist/style.css">    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management-premium.css" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles.css?v=20261008-import-scroll" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles-premium.css?v=20260920-student-table-spacing" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles-card-modals.css?v=20260811" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="csdl-mobile-sidebar bg-light csdl-loans-premium masterfiles-premium masterfiles-students-page">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261020-csdl-pn-tagging"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="../csdl/csdl-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="../csdl/csdl-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="masterfiles-notifications.html">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../csdl/csdl-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container csdl-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;overflow:hidden;">
+                                <div class="fw-bold text-white" style="font-size:0.8rem;line-height:1.3;white-space:nowrap;">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-mobile-masterfiles d-lg-none">
+                        <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                        <li class="nav-item"><a class="nav-link active d-flex align-items-center" href="../masterfiles/masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span><span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/masterfiles/masterfiles-students.php?action=counts" data-live-count-path="pendingRegistrations" data-live-count-label="pending registrations">0</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                    </ul>
+                    <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-desktop-nav d-none d-lg-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../csdl/csdl-dashboard.html" data-section="overview">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="../csdl/csdl-loans-management.html">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="link-text">Active Loans</span>
+                                <span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/csdl/csdl-loans-management.php?action=stats" data-live-count-path="stats.pending" data-live-count-label="pending applications">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="../csdl/csdl-pn-tagging.html">
+                                <i class="bi bi-journal-check me-2"></i>
+                                <span class="link-text">PN Tagging</span>
+                            </a>
+                        </li>
+                        <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link active d-flex align-items-center" href="../masterfiles/masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span><span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/masterfiles/masterfiles-students.php?action=counts" data-live-count-path="pendingRegistrations" data-live-count-label="pending registrations">0</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
+                            <div>
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Staff</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <header class="masterfiles-page-head-banner pt-3 pb-2 mb-3 masterfiles-page-head">
+                    <div class="masterfiles-page-head-banner__inner">
+                        <div class="masterfiles-page-head-banner__main">
+                            <h1 class="masterfiles-page-head-banner__title mb-0" id="pageTitle">Students</h1>
+                        </div>
+                        <div class="masterfiles-page-head-banner__meta">
+                            <nav aria-label="breadcrumb" class="masterfiles-breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="../csdl/csdl-dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Masterfiles</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Students</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+
+                <ul class="nav nav-tabs mb-3" id="studentsDirectoryTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="students-tab" data-bs-toggle="tab" data-bs-target="#studentsPanel" type="button" role="tab" aria-controls="studentsPanel" aria-selected="true">
+                            </i>Registered Students
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-inline-flex align-items-center gap-2" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pendingPanel" type="button" role="tab" aria-controls="pendingPanel" aria-selected="false">
+                            </i>Pending Registrations
+                            <span class="badge bg-warning text-dark d-none" id="pendingRegistrationsBadge">0</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="studentsPanel" role="tabpanel" aria-labelledby="students-tab">
+                        <div class="row mb-3 g-3">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="allStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">TOTAL STUDENTS</div>
+                                        <div class="stat-value" id="statTotalStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="newStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">NEW STUDENTS</div>
+                                        <div class="stat-value" id="statNewStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="continuingStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">CONTINUING STUDENTS</div>
+                                        <div class="stat-value" id="statContinuingStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-view="activeStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">ACTIVE STUDENTS</div>
+                                        <div class="stat-value" id="statActiveStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm csdl-loans-main-card">
+                            <div class="card-header bg-white">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                                    <div class="masterfiles-directory-heading">
+                                        <h6 class="m-0 mb-1">Registered Students</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <div class="dropdown d-md-none">
+                                            <button class="btn btn-outline-secondary btn-sm" type="button" id="mobileFilterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-funnel"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 280px;" id="mobileFilterDropdown">
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Program</label>
+                                                    <select id="filterProgramMobile" class="form-select form-select-sm">
+                                                        <option value="">All Programs</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Year Level</label>
+                                                    <select id="filterYearLevelMobile" class="form-select form-select-sm">
+                                                        <option value="">All Year Levels</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Modality</label>
+                                                    <select id="filterModalityMobile" class="form-select form-select-sm">
+                                                        <option value="">All Modality</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Student Status</label>
+                                                    <select id="filterStudentStatusMobile" class="form-select form-select-sm">
+                                                        <option value="">All Student Status</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="btn btn-success btn-sm w-100" id="applyMobileFiltersBtn">Apply Filters</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm" id="refreshBtn"><i class="bi bi-arrow-repeat me-1"></i>Refresh</button>
+                                        <button class="btn btn-outline-danger btn-sm" id="bulkDeleteStudentsBtn" type="button" disabled>
+                                            <i class="bi bi-trash me-1"></i>Delete Selected <span id="bulkDeleteStudentsCount">0</span>
+                                        </button>
+                                        <button class="btn btn-success btn-sm" id="addStudentBtn" type="button">
+                                            <i class="bi bi-person-plus me-1"></i>Add Student
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-sm" id="importExportBtn">
+                                            <i class="bi bi-arrow-left-right me-1"></i>Import/Export
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 d-none d-md-flex">
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <select id="filterProgram" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Programs</option>
+                                        </select>
+                                        <select id="filterYearLevel" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Year Levels</option>
+                                        </select>
+                                        <select id="filterModality" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Modality</option>
+                                        </select>
+                                        <select id="filterStudentStatus" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Student Status</option>
+                                        </select>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="input-group" style="min-width:280px;">
+                                            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                            <input type="text" class="form-control" id="searchStudents" placeholder="Search students...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                        <input type="text" class="form-control" id="searchStudentsMobile" placeholder="Search students...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="studentsTablePanel">
+                                    <div class="table-responsive">
+                                        <table id="studentsTable" class="table table-hover table-sm align-middle" style="width:100%">
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2" id="tableFooter">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <label for="perPageSelectCustom" class="small text-muted mb-0">Show</label>
+                                            <select id="perPageSelectCustom" class="form-select form-select-sm" style="width: 80px;">
+                                                <option value="10" selected>10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                            <span class="small text-muted">entries per page</span>
+                                        </div>
+                                        <nav id="studentsPagination" class="masterfiles-page-buttons" aria-label="Student pages"></nav>
+                                        <div class="small text-muted" id="pageInfo">Showing 0 to 0 of 0 entries</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pendingPanel" role="tabpanel" aria-labelledby="pending-tab">
+                        <div class="row mb-3 g-3">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-view="allPending">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">All PENDING</div>
+                                        <div class="stat-value" id="statPendingTotal">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-view="uniqueYearLevels">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">YEAR LEVELS</div>
+                                        <div class="stat-value" id="statPendingYearLevels">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-view="uniqueCampuses">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">CAMPUSES</div>
+                                        <div class="stat-value" id="statPendingCampuses">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-view="uniquePrograms">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">PROGRAMS</div>
+                                        <div class="stat-value" id="statPendingPrograms">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm csdl-loans-main-card">
+                            <div class="card-header bg-white">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                                    <div class="masterfiles-directory-heading">
+                                        <h6 class="m-0 mb-1">Pending Registrations</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <div class="dropdown d-md-none">
+                                            <button class="btn btn-outline-secondary btn-sm" type="button" id="mobileFilterPendingBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-funnel"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 280px;" id="mobileFilterPendingDropdown">
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Program</label>
+                                                    <select id="filterPendingProgramMobile" class="form-select form-select-sm">
+                                                        <option value="">All Programs</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Year Level</label>
+                                                    <select id="filterPendingYearLevelMobile" class="form-select form-select-sm">
+                                                        <option value="">All Year Levels</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="btn btn-success btn-sm w-100" id="applyPendingMobileFiltersBtn">Apply Filters</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="exportPendingBtn"><i class="bi bi-download me-1"></i>Export</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="refreshPendingBtn"><i class="bi bi-arrow-repeat me-1"></i>Refresh</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 d-none d-md-flex">
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <select id="filterPendingProgram" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Programs</option>
+                                        </select>
+                                        <select id="filterPendingYearLevel" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Year Levels</option>
+                                        </select>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="input-group" style="min-width:280px;">
+                                            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                            <input type="text" class="form-control" id="searchPending" placeholder="Search pending registrations...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                        <input type="text" class="form-control" id="searchPendingMobile" placeholder="Search pending registrations...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-sm align-middle" id="pendingRegistrationsTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="text-center">School ID</th>
+                                                <th class="text-center">Name</th>
+                                                <th class="text-center">Program</th>
+                                                <th class="text-center">Year Level</th>
+                                                <th class="text-center">Email</th>
+                                                <th class="text-center">Submitted</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="pendingRegistrationsBody">
+                                            <tr><td colspan="7" class="text-center text-muted py-4">No pending registrations</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="pendingTableFooter" class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="pendingPerPage" class="small text-muted mb-0">Show</label>
+                                        <select id="pendingPerPage" class="form-select form-select-sm" style="width: 80px;">
+                                            <option value="10" selected>10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        <span class="small text-muted">entries per page</span>
+                                    </div>
+                                    <nav id="pendingPagination" class="masterfiles-page-buttons" aria-label="Pending registration pages"></nav>
+                                    <div class="small text-muted" id="pendingPageInfo">Showing 0 to 0 of 0 entries</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+    <div class="modal fade" id="studentModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="studentModalTitle">Add Student</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="studentForm" class="student-form-layout">
+                        <input type="hidden" id="student_id">
+                        <section class="student-form-section" aria-labelledby="studentFormIdentityTitle">
+                            <h6 class="student-form-section__title" id="studentFormIdentityTitle"><i class="bi bi-person-vcard" aria-hidden="true"></i> Student information</h6>
+                            <div class="student-form-grid">
+                                <div class="student-form-field">
+                                    <label class="form-label" for="school_id">School ID <span class="text-danger">*</span></label>
+                                    <input type="text" id="school_id" class="form-control" placeholder="02-2020-00001" required>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="first_name">First Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="first_name" class="form-control" required>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="middle_name">Middle Name</label>
+                                    <input type="text" id="middle_name" class="form-control">
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="last_name">Last Name <span class="text-danger">*</span></label>
+                                    <input type="text" id="last_name" class="form-control" required>
+                                </div>
+                                <div class="student-form-field student-form-field--wide">
+                                    <label class="form-label" for="date_of_birth">Date of Birth</label>
+                                    <input type="date" id="date_of_birth" class="form-control">
+                                </div>
+                                <div class="student-form-field student-form-field--wide">
+                                    <label class="form-label" for="gender">Gender <span class="text-danger">*</span></label>
+                                    <select id="gender" class="form-select" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="student-form-section" aria-labelledby="studentFormEnrollmentTitle">
+                            <h6 class="student-form-section__title" id="studentFormEnrollmentTitle"><i class="bi bi-mortarboard" aria-hidden="true"></i> Enrollment & scholarships</h6>
+                            <div class="student-form-grid">
+                                <div class="student-form-field student-form-field--wide">
+                                    <label class="form-label" for="program_id">Program <span class="text-danger">*</span></label>
+                                    <select id="program_id" class="form-select" required>
+                                        <option value="">Select Program</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="year_level_id">Year Level <span class="text-danger">*</span></label>
+                                    <select id="year_level_id" class="form-select" required>
+                                        <option value="">Select Year Level</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="campus_id">Campus</label>
+                                    <select id="campus_id" class="form-select">
+                                        <option value="">Select Campus</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="modality">Modality</label>
+                                    <select id="modality" class="form-select">
+                                        <option value="">Loading modalities...</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="status_id">Student Status <span class="text-danger">*</span></label>
+                                    <select id="status_id" class="form-select" required>
+                                        <option value="">Select Status</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="internal_scholarship_id">Internal Scholarship</label>
+                                    <select id="internal_scholarship_id" class="form-select">
+                                        <option value="">No internal scholarship</option>
+                                    </select>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="externalScholarshipsDropdown">External Scholarships</label>
+                                    <div class="dropdown">
+                                        <button class="form-select text-start" type="button" id="externalScholarshipsDropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                            No external scholarships selected
+                                        </button>
+                                        <div class="dropdown-menu w-100 p-2 scholarship-multi-menu" id="externalScholarshipOptions" aria-labelledby="externalScholarshipsDropdown">
+                                            <div class="small text-muted px-2 py-1">No external scholarships available</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-text" id="externalScholarshipsSummary">You can select more than one.</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="student-form-section" aria-labelledby="studentFormContactTitle">
+                            <h6 class="student-form-section__title" id="studentFormContactTitle"><i class="bi bi-envelope" aria-hidden="true"></i> Contact & account</h6>
+                            <div class="student-form-grid">
+                                <div class="student-form-field">
+                                    <label class="form-label" for="contact_number">Contact Number</label>
+                                    <input type="tel" id="contact_number" class="form-control" placeholder="09123456789" maxlength="11" inputmode="numeric" autocomplete="tel">
+                                </div>
+                                <div class="student-form-field student-form-field--wide">
+                                    <label class="form-label" for="email_local">PHINMAEd School Email</label>
+                                    <div class="input-group">
+                                        <input type="text" id="email_local" class="form-control" placeholder="romeo.joi.coc" autocomplete="off" inputmode="email" spellcheck="false" pattern="[a-z0-9]+(-[a-z0-9]+)*(\.[a-z0-9]+(-[a-z0-9]+)*)+\.coc">
+                                        <span class="input-group-text text-muted">@phinmaed.com</span>
+                                    </div>
+                                </div>
+                                <div class="student-form-field">
+                                    <label class="form-label" for="personal_email">Personal Email <span class="text-muted fw-normal">(optional)</span></label>
+                                    <input type="email" id="personal_email" class="form-control" placeholder="name@gmail.com">
+                                    <div class="form-text">Use when the school email is not approved or active yet.</div>
+                                </div>
+                                <div class="student-form-field student-form-field--wide">
+                                    <label class="form-label" for="fb_account">Facebook Account</label>
+                                    <input type="text" id="fb_account" class="form-control" placeholder="Facebook username or profile">
+                                </div>
+                                <div class="student-form-field student-form-field--wide" id="studentPasswordField">
+                                    <label class="form-label" for="password">Initial Password</label>
+                                    <div class="input-group">
+                                        <input type="password" id="password" class="form-control" placeholder="Auto-fill with School ID" readonly autocomplete="off" aria-label="Initial password, automatically set to School ID">
+                                        <button type="button" class="btn btn-outline-secondary" id="togglePasswordBtn" aria-label="Show or hide password">
+                                            <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="student-form-section" aria-labelledby="studentFormFamilyTitle">
+                            <h6 class="student-form-section__title" id="studentFormFamilyTitle"><i class="bi bi-people" aria-hidden="true"></i> Family details</h6>
+                            <p class="small text-muted mb-3">Enter a full name and mobile number for each family member. Enter a sibling under Guardian when they will act as the student's guardian.</p>
+                            <div class="row g-3">
+                                <div class="col-md-4" data-family-member data-relationship-id="1"><div class="border rounded p-3 h-100"><h6>Father</h6><label class="form-label small d-block">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name maxlength="200" aria-label="Father full name"></label><label class="form-label small d-block mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Father mobile number"></label></div></div>
+                                <div class="col-md-4" data-family-member data-relationship-id="2"><div class="border rounded p-3 h-100"><h6>Mother</h6><label class="form-label small d-block">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name maxlength="200" aria-label="Mother full name"></label><label class="form-label small d-block mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Mother mobile number"></label></div></div>
+                                <div class="col-md-4" data-family-member data-relationship-id="3"><div class="border rounded p-3 h-100"><h6>Guardian</h6><label class="form-label small d-block">Full Name <span class="text-danger">*</span><input class="form-control" data-family-name maxlength="200" aria-label="Guardian full name"></label><label class="form-label small d-block mb-0">Contact Number <span class="text-danger">*</span><input class="form-control" data-family-contact type="tel" inputmode="numeric" maxlength="11" placeholder="09XXXXXXXXX" aria-label="Guardian mobile number"></label></div></div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="saveStudentBtn" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="viewStudentModal" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-success text-white border-0">
+                    <h5 class="modal-title d-flex align-items-center gap-2">
+                        <i class="bi bi-person-vcard"></i>
+                        <span>Student Details</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body student-details-body">
+                    <div class="student-details-grid">
+                        <div class="student-details-column">
+                            <section class="student-detail-section" aria-labelledby="studentSummaryHeading">
+                                <h6 id="studentSummaryHeading" class="student-detail-heading">
+                                    <i class="bi bi-person-badge"></i>Student Information
+                                </h6>
+                                <div class="student-detail-list">
+                                    <div class="student-detail-row"><span class="student-detail-label">Student ID</span><span class="student-detail-value" id="viewStudentSchoolId">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Name</span><span class="student-detail-value" id="viewStudentNameText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Active Status</span><span class="student-detail-value"><span class="badge" id="viewStudentStatus">Active</span></span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Student Status</span><span class="student-detail-value" id="viewStudentStatusText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Modality</span><span class="student-detail-value"><span class="badge bg-success" id="viewStudentModality">-</span></span></div>
+                                </div>
+                            </section>
+
+                            <section class="student-detail-section" aria-labelledby="studentAcademicHeading">
+                                <h6 id="studentAcademicHeading" class="student-detail-heading">
+                                    <i class="bi bi-mortarboard"></i>Academic Information
+                                </h6>
+                                <div class="student-detail-list">
+                                    <div class="student-detail-row"><span class="student-detail-label">Program</span><span class="student-detail-value" id="viewStudentProgramText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Year Level</span><span class="student-detail-value" id="viewStudentYearLevelText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Internal Scholarship</span><span class="student-detail-value" id="viewStudentInternalScholarshipText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">External Scholarships</span><span class="student-detail-value student-detail-value-break" id="viewStudentExternalScholarshipsText">-</span></div>
+                                    <div class="student-detail-row"><span class="student-detail-label">Campus</span><span class="student-detail-value" id="viewStudentCampus">-</span></div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <section class="student-detail-section student-detail-personal" aria-labelledby="studentPersonalHeading">
+                            <h6 id="studentPersonalHeading" class="student-detail-heading">
+                                <i class="bi bi-person-lines-fill"></i>Personal Information
+                            </h6>
+                            <div class="student-detail-list">
+                                <div class="student-detail-row"><span class="student-detail-label">First Name</span><span class="student-detail-value" id="viewStudentFirstName">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Middle Name</span><span class="student-detail-value" id="viewStudentMiddleName">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Last Name</span><span class="student-detail-value" id="viewStudentLastName">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Gender</span><span class="student-detail-value" id="viewStudentGender">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Date of Birth</span><span class="student-detail-value" id="viewStudentDateOfBirth">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Contact Number</span><span class="student-detail-value" id="viewStudentContact">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">School Email</span><span class="student-detail-value student-detail-value-break" id="viewStudentEmail">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Personal Email</span><span class="student-detail-value student-detail-value-break" id="viewStudentPersonalEmail">-</span></div>
+                                <div class="student-detail-row"><span class="student-detail-label">Facebook Account</span><span class="student-detail-value student-detail-value-break" id="viewStudentFbAccount">-</span></div>
+                            </div>
+                        </section>
+                        <section class="student-detail-section student-detail-family" aria-labelledby="studentFamilyHeading">
+                            <h6 id="studentFamilyHeading" class="student-detail-heading"><i class="bi bi-people"></i>Family Details</h6>
+                            <div class="student-family-grid" id="viewStudentFamilyDetails"></div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0 d-flex flex-wrap align-items-center gap-2">
+                    <button type="button" class="btn btn-success" id="editStudentFromViewBtn"><i></i>Edit Student</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade masterfile-card-modal" id="studentsListModal" tabindex="-1" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-people-fill me-2"></i><span id="studentsModalTitle">Students</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm align-middle mb-0">
+                            <thead class="table-light" id="studentsModalThead">
+                                <tr>
+                                    <th class="text-center">School ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Program</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsModalTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="small text-muted" data-card-modal-count>Loading records…</div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade masterfile-card-modal" id="pendingRegistrationStatsModal" tabindex="-1" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i id="pendingRegistrationStatsModalIcon" class="bi bi-hourglass-split me-2"></i><span id="pendingRegistrationStatsModalTitle">TOTAL PENDING</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm align-middle mb-0">
+                            <thead class="table-light" id="pendingRegistrationStatsModalHead"></thead>
+                            <tbody id="pendingRegistrationStatsModalBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="small text-muted" data-card-modal-count>Loading records…</div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="importStudentsModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-upload me-2"></i>Import Students</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <details class="student-import-instructions mb-3">
+                        <summary><i class="bi bi-info-circle me-2"></i>Import Instructions <span class="small fw-normal">(CSV formatting rules)</span></summary>
+                        <div class="alert alert-info mb-0 mt-2">
+                        <ol class="mb-0 small">
+                            <li>Download the template — columns match export format for easy round-trip</li>
+                            <li><strong>School Email (optional):</strong> if provided, use the local part ending in <code>.coc</code> (e.g. <code>romeo-joi.santos.coc</code> → becomes <code>romeo-joi.santos.coc@phinmaed.com</code>)</li>
+                            <li><strong>Personal Email (optional):</strong> any valid email address, including <code>@phinmaed.com</code>.</li>
+                            <li>Both email columns may be blank. A dash (<code>-</code>) or <code>N/A</code> also counts as blank in the CSV. Blank emails leave existing addresses unchanged when updating a student.</li>
+                            <li><strong>Contact Number (optional):</strong> accepts <code>09XXXXXXXXX</code>, <code>9XXXXXXXXX</code>, and country-code format <code>639XXXXXXXXX</code>. A dash, <code>N/A</code>, or an incomplete number will not block the student import. Unusable numbers are left blank for new students and leave existing numbers unchanged.</li>
+                            <li><strong>Date of Birth:</strong> <code>YYYY-MM-DD</code> recommended; <code>M/D/YYYY</code> (e.g. <code>5/15/2005</code>) and Excel serial dates are also accepted</li>
+                            <li><strong>Internal Scholarship (optional):</strong> enter one active internal scholarship name or code. An unmatched value is ignored and reported as a warning; the student still imports.</li>
+                            <li><strong>External Scholarships (optional):</strong> enter active external scholarship names or codes separated by semicolons (for example, <code>CHED; DOST</code>). Unmatched values are ignored and reported without skipping the student.</li>
+                            <li><strong>Family Details (optional):</strong> each name and valid mobile-number pair is imported; the family name does not have to match the student's name or surname. Incomplete or invalid family entries and old split-name or sibling columns are ignored without skipping the student. Existing family entries in other roles are kept when updating a student.</li>
+                            <li>New students are activated with an <strong>Awaiting Balance</strong> status until Assessment creates their balance</li>
+                            <li>An existing School ID updates that student's information; students with an existing balance remain approved</li>
+                            <li>Importing students does not send email notifications.</li>
+                            <li>Upload CSV (.csv). Review validation messages in the preview before importing</li>
+                        </ol>
+                        </div>
+                    </details>
+                    <div class="mb-3">
+                        <label class="form-label">Select File <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="importFileInput" accept=".csv,.xls,.xlsx" required>
+                        <div class="form-text">Import uses CSV (.csv) only. Maximum file size: 250 MB. Export supports CSV, Excel, Word, and PDF.</div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-success btn-sm" id="downloadTemplateBtn">
+                            <i class="bi bi-download me-1"></i>Download Template
+                        </button>
+                    </div>
+                    <div id="importErrors" class="mb-3" aria-live="polite"></div>
+                    <div id="importPreview" style="display: none;">
+                        <hr>
+                        <h6 class="mb-3">Preview (<span id="previewCount">0</span> records)</h6>
+                        <div class="student-import-preview-scroll" role="region" aria-label="Student import preview table" tabindex="0">
+                            <table class="table table-sm table-bordered student-import-preview-table mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>School ID</th>
+                                        <th>First Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                        <th>Program</th>
+                                        <th>Year Level</th>
+                                        <th>School Email</th>
+                                        <th>Personal Email</th>
+                                        <th>Campus</th>
+                                        <th>Internal Scholarship</th>
+                                        <th>External Scholarships</th>
+                                        <th>Status</th>
+                                        <th>Family Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="importPreviewBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="confirmImportBtn" disabled>
+                        Import Students
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="aiFraudModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-shield-exclamation me-2"></i>AI Fraud Detection Analysis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning border-warning mb-3">
+                        <i class="bi bi-info-circle me-2"></i><strong>Important:</strong> This analysis is AI-generated and should be used as a guide only. Human judgment is required for final approval/rejection decisions.
+                    </div>
+
+                    <div class="card border-0 shadow-sm mb-3">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h6 class="text-success fw-bold mb-2">Risk Assessment</h6>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div>
+                                            <span class="text-muted small">Risk Score:</span>
+                                            <h3 class="mb-0" id="aiFraudRiskScore">85/100</h3>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-danger fs-6" id="aiFraudRiskBadge">High Risk</span>
+                                        </div>
+                                    </div>
+                                    <div class="progress mt-2" style="height: 20px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 85%;" id="aiFraudRiskBar">85%</div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="badge bg-warning text-dark" id="aiFraudRecommendation"><i class="bi bi-exclamation-triangle me-1"></i>AI Recommends: Manual Review</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="p-3 bg-light rounded">
+                                        <i class="bi bi-files text-success fs-1"></i>
+                                        <p class="mb-0 small text-muted mt-2">Duplicate Detection</p>
+                                        <h5 class="mb-0 text-success" id="aiFraudDuplicateCount">1</h5>
+                                        <small class="text-muted">recent (24h)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h6 class="text-success fw-bold mb-3"><i class="bi bi-person-circle me-2"></i>Student Information</h6>
+                                    <div class="mb-2">
+                                        <small class="text-muted">Name:</small>
+                                        <div class="fw-semibold" id="aiFraudStudentName">CHERRY LUMAYOG</div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <small class="text-muted">School ID:</small>
+                                        <div class="fw-semibold" id="aiFraudStudentId">02-2223-05120</div>
+                                    </div>
+                                    <div class="mb-0">
+                                        <small class="text-muted">Email:</small>
+                                        <div class="fw-semibold small" id="aiFraudStudentEmail">lok.sos.coc@phinmaed.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 bg-light">
+                                <div class="card-body">
+                                    <h6 class="text-success fw-bold mb-3"><i class="bi bi-mortarboard me-2"></i>Academic Details</h6>
+                                    <div class="mb-2">
+                                        <small class="text-muted">Program:</small>
+                                        <div class="fw-semibold small" id="aiFraudProgram">Criminology & Criminal Justice</div>
+                                    </div>
+                                    <div class="mb-0">
+                                        <small class="text-muted">Year Level:</small>
+                                        <div class="fw-semibold" id="aiFraudYearLevel">Basic Education</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-warning mb-3">
+                        <div class="card-header bg-warning bg-opacity-10 border-warning">
+                            <h6 class="mb-0 text-warning"><i class="bi bi-exclamation-triangle-fill me-2"></i>Detected Issues (<span id="aiFraudIssueCount">3</span>)</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0" id="aiFraudIssuesList">
+                                <li class="mb-2 pb-2 border-bottom">
+                                    <i class="bi bi-exclamation-circle text-warning me-2"></i>
+                                    <strong>Year level mismatch:</strong> Program is Criminology & Criminal Justice (typically tertiary/college), but Year Level is listed as 'Basic Education' (elementary or high school).
+                                </li>
+                                <li class="mb-2 pb-2 border-bottom">
+                                    <i class="bi bi-exclamation-circle text-warning me-2"></i>
+                                    <strong>Suspicious email pattern:</strong> School email prefix 'lok.sos.coc' and personal email 'komkar@gmail.com' contain nonsensical or potentially generated strings.
+                                </li>
+                                <li class="mb-0">
+                                    <i class="bi bi-exclamation-circle text-warning me-2"></i>
+                                    <strong>IP address anomaly:</strong> IP address is '::1' (localhost/loopback), which indicates testing behavior or proxy/VPN masking rather than a genuine student network connection.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Close
+                    </button>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-danger" id="aiFraudRejectBtn">
+                            <i class="bi bi-x-lg me-1"></i>Reject Registration
+                        </button>
+                        <button type="button" class="btn btn-success" id="aiFraudApproveBtn">
+                            <i class="bi bi-check-lg me-1"></i>Approve Anyway
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="managePeriodAccessModal" tabindex="-1" aria-labelledby="managePeriodAccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="managePeriodAccessModalLabel">Manage Application Period Access</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Student</label>
+                        <p class="mb-0" id="periodAccessStudentName"></p>
+                        <small class="text-muted" id="periodAccessStudentId"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Grant Access to Periods</label>
+                        <small class="text-muted d-block mb-2">Select which application periods this student can access, even when periods are closed globally.</small>
+                        <div id="periodAccessCheckboxes">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="savePeriodAccessBtn">Save Access</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261020-csdl-pn-tagging"></script>
+    <script type="module" src="../../js/shared/shared-sidebar-live-counts.js?v=20261020-csdl-pn-tagging"></script>
+    <script type="module" src="../../js/masterfiles/masterfiles-students.js?v=20261029-refresh"></script>
+    <script type="module" src="../../js/masterfiles/masterfiles-card-modal-counts.js?v=20261020-csdl-pn-tagging"></script>
+</body>
+</html>

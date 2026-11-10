@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="../../assets/css/shared/shared-role-card-modals.css?v=20260811" rel="stylesheet">
+    <script defer src="../../js/shared/shared-role-card-modal-counts.js?v=20260811"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balances — Assessment</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management.css" rel="stylesheet">
+    <link href="../../assets/css/assessment/assessment-balances-management.css?v=20261010-balance-table-scroll" rel="stylesheet">
+    <link href="../../assets/css/assessment/assessment-dashboard-premium.css" rel="stylesheet">
+    <link href="../../assets/css/assessment/assessment-portal-premium.css?v=20261007-mobile-section-headings" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="bg-light assessment-app assessment-portal-premium assessment-dashboard-premium assessment-mobile-centered-headings">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261007-first-paint"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="assessment-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="assessment-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="#">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="assessment-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container app-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;">
+                                <div class="fw-bold text-white">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="assessment-dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="assessment-loans-management.html">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="link-text">Active Loans</span>
+                                <span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/assessment/assessment-loan-management.php?action=stats" data-live-count-path="stats.allApplications" data-live-count-label="pending applications">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active d-flex align-items-center" href="assessment-balances-management.html">
+                                <i class="bi bi-wallet2 me-2"></i>
+                                <span class="link-text">Balances</span>
+                                <span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/assessment/assessment-balances-management.php?action=count" data-live-count-path="pendingBalanceRegistrations" data-live-count-label="pending balance registrations">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="assessment-pn-tagging.html">
+                                <i class="bi bi-graph-up me-2"></i>
+                                <span class="link-text">PN Tagging</span>
+                                <span class="sidebar-live-count ms-auto" style="display:none" data-live-count-url="../../api/assessment/assessment-pn-tagging.php?action=stats" data-live-count-path="stats.pending" data-live-count-label="applications awaiting PN tagging">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
+                            <div>
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Assessment Officer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main id="mainContent" class="col-12 col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pb-4">
+                <header class="assessment-page-head-banner pt-3 pb-2 mb-3">
+                    <div class="assessment-page-head-banner__inner">
+                        <div class="assessment-page-head-banner__main">
+                            <h1 class="assessment-page-head-banner__title mb-0" id="pageTitle">Balances</h1>
+                        </div>
+                        <div class="assessment-page-head-banner__meta">
+                            <nav aria-label="breadcrumb" class="assessment-page-breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="assessment-dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Balances</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+
+                <ul class="nav nav-tabs mb-3" id="balancesDirectoryTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="registered-balances-tab" data-bs-toggle="tab" data-bs-target="#registeredBalancesPanel" type="button" role="tab" aria-controls="registeredBalancesPanel" aria-selected="true">
+                            Balance Records
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-inline-flex align-items-center gap-2" id="pending-registration-tab" data-bs-toggle="tab" data-bs-target="#pendingRegistrationPanel" type="button" role="tab" aria-controls="pendingRegistrationPanel" aria-selected="false">
+                            Pending Registrations
+                            <span class="badge bg-warning text-dark d-none" id="pendingRegistrationTabBadge">0</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="registeredBalancesPanel" role="tabpanel" aria-labelledby="registered-balances-tab">
+                        <div class="row mb-3 g-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" id="cardTotalStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Total students with balance</div>
+                                        <div class="stat-value" id="statTotalStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" id="cardSchoolYears">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Periodic summary</div>
+                                        <div class="stat-value" id="statSchoolYears">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm finance-main-card" id="balanceRecordsSection">
+                            <div class="card-header bg-white">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                                    <div>
+                                        <h6 class="m-0 mb-1">Balance Records</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <div class="dropdown d-md-none">
+                                            <button class="btn btn-outline-secondary btn-sm" type="button" id="mobileFilterBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-funnel"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 280px;" id="mobileFilterDropdown">
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">School Year</label>
+                                                    <select id="filterSchoolYearMobile" class="form-select form-select-sm">
+                                                        <option value="">All School Years</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Semester</label>
+                                                    <select id="filterSemesterMobile" class="form-select form-select-sm">
+                                                        <option value="">All Semesters</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Period</label>
+                                                    <select id="filterPeriodMobile" class="form-select form-select-sm">
+                                                        <option value="">All Periods</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="btn btn-success btn-sm w-100" id="applyMobileFiltersBtn">Apply Filters</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm" id="refreshBtn"><i class="bi bi-arrow-repeat me-1"></i>Refresh</button>
+                                        <button class="btn btn-outline-danger btn-sm d-none" id="bulkDeleteBalancesBtn" type="button" disabled>
+                                            <i class="bi bi-trash me-1"></i>Delete Selected <span id="bulkDeleteBalancesCount">0</span>
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-sm" id="importExportBtn">
+                                            <i class="bi bi-arrow-left-right me-1"></i>Import/Export
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between gap-2 d-none d-md-flex">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <select id="filterSchoolYear" class="form-select form-select-sm" style="width:180px;">
+                                            <option value="">All School Years</option>
+                                        </select>
+                                        <select id="filterSemester" class="form-select form-select-sm" style="width:180px;">
+                                            <option value="">All Semesters</option>
+                                        </select>
+                                        <select id="filterPeriod" class="form-select form-select-sm" style="width:180px;">
+                                            <option value="">All Periods</option>
+                                        </select>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="input-group" style="min-width:280px;">
+                                            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                            <input type="text" class="form-control" id="searchBalances" placeholder="Search student ID or name...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                        <input type="text" class="form-control" id="searchBalancesMobile" placeholder="Search student ID or name...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive balances-table-responsive">
+                                    <table id="balancesTable" class="table table-hover table-sm align-middle" style="width:100%">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="text-center balance-selection-cell d-none" data-balance-selection-column>
+                                                    <input class="form-check-input" type="checkbox" id="selectAllBalances" aria-label="Select all balance records on this page">
+                                                </th>
+                                                <th class="text-center balance-student-id-column">Student ID</th>
+                                                <th class="text-center balance-student-name-column">Name</th>
+                                                <th class="text-center">School Year</th>
+                                                <th class="text-center">Semester</th>
+                                                <th class="text-center">Period</th>
+                                                <th class="text-center">Total Balance</th>
+                                                <th class="text-center">Advised to Pay</th>
+                                                <th class="text-center">Internal Scholarship</th>
+                                                <th class="text-center">External Scholarships</th>
+                                                <th class="text-center">As of Date</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="balance-table-footer">
+                                    <div class="balance-page-size d-flex align-items-center gap-2">
+                                        <label for="perPageSelect" class="small text-muted mb-0">Show</label>
+                                        <select id="perPageSelect" class="form-select form-select-sm">
+                                            <option value="10" selected>10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        <span class="small text-muted">entries per page</span>
+                                    </div>
+                                    <div id="balancePagination" class="balance-pagination" aria-label="Balances pages"></div>
+                                </div>
+                                <div class="balance-table-summary" id="pageInfo">Showing 0 to 0 of 0 entries</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pendingRegistrationPanel" role="tabpanel" aria-labelledby="pending-registration-tab">
+                        <div class="row mb-3 g-3">
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-finance-view="allPending">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Total pending</div>
+                                        <div class="stat-value" id="statPendingFinanceTotal">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-finance-view="totalStudents">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Total students</div>
+                                        <div class="stat-value" id="statPendingFinanceStudents">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-finance-view="uniquePrograms">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Programs</div>
+                                        <div class="stat-value" id="statPendingFinancePrograms">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                <div class="card stat-card csdl-stat-tile shadow-sm h-100 text-center cursor-pointer" data-pending-finance-view="uniqueYearLevels">
+                                    <div class="card-body stat-body">
+                                        <div class="stat-title">Year levels</div>
+                                        <div class="stat-value" id="statPendingFinanceYearLevels">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm finance-main-card" id="pendingFinanceSection">
+                            <div class="card-header bg-white">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                                    <div>
+                                        <h6 class="m-0 mb-1">Pending Balances</h6>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <div class="dropdown d-md-none">
+                                            <button class="btn btn-outline-secondary btn-sm" type="button" id="mobileFilterPendingFinanceBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-funnel"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-3" style="min-width: 280px;" id="mobileFilterPendingFinanceDropdown">
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Program</label>
+                                                    <select id="filterPendingFinanceProgramMobile" class="form-select form-select-sm">
+                                                        <option value="">All Programs</option>
+                                                    </select>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <label class="form-label small fw-semibold mb-2">Year Level</label>
+                                                    <select id="filterPendingFinanceYearLevelMobile" class="form-select form-select-sm">
+                                                        <option value="">All Year Levels</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="btn btn-success btn-sm w-100" id="applyPendingFinanceMobileFiltersBtn">Apply Filters</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm" type="button" id="refreshPendingBtn">
+                                            <i class="bi bi-arrow-repeat me-1"></i>Refresh
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm d-none" id="bulkDeletePendingBtn" type="button" disabled>
+                                            <i class="bi bi-trash me-1"></i>Delete Selected <span id="bulkDeletePendingCount">0</span>
+                                        </button>
+                                        <button class="btn btn-outline-secondary btn-sm" type="button" id="pendingExportBtn">
+                                            <i class="bi bi-download me-1"></i>Export
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 d-none d-md-flex">
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <select id="filterPendingFinanceProgram" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Programs</option>
+                                        </select>
+                                        <select id="filterPendingFinanceYearLevel" class="form-select form-select-sm" style="width:160px;">
+                                            <option value="">All Year Levels</option>
+                                        </select>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="input-group" style="min-width:280px;">
+                                            <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                            <input type="text" class="form-control" id="searchPendingFinance" placeholder="Search student ID or name...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none mt-2">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                                        <input type="text" class="form-control" id="searchPendingFinanceMobile" placeholder="Search student ID or name...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive balances-table-responsive pending-balances-table-scroll">
+                                    <table id="pendingFinanceTable" class="table table-hover table-sm align-middle mb-0" style="width:100%">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="text-center balance-selection-cell d-none" data-pending-selection-column>
+                                                    <input class="form-check-input" type="checkbox" id="selectAllPendingBalances" aria-label="Select all pending balances on this page">
+                                                </th>
+                                                <th class="text-center">Student ID</th>
+                                                <th class="text-center">Student Name</th>
+                                                <th class="text-center">Program</th>
+                                                <th class="text-center">Year Level</th>
+                                                <th class="text-center">Department</th>
+                                                <th class="text-center">Internal Scholarship</th>
+                                                <th class="text-center">External Scholarships</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="pendingFinanceTableBody">
+                                            <tr>
+                                                <td colspan="9" class="text-center text-muted py-4">No pending balances</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="balance-table-footer">
+                                    <div class="balance-page-size d-flex align-items-center gap-2">
+                                        <label for="pendingPerPageSelect" class="small text-muted mb-0">Show</label>
+                                        <select id="pendingPerPageSelect" class="form-select form-select-sm">
+                                            <option value="10" selected>10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        <span class="small text-muted">entries per page</span>
+                                    </div>
+                                    <div id="pendingBalancePagination" class="balance-pagination" aria-label="Pending balance pages"></div>
+                                </div>
+                                <div class="balance-table-summary" id="pendingFinanceTableSummary">Showing 0 to 0 of 0 entries</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="balanceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="balanceModalTitle">Add Balance</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="balanceForm">
+                        <input type="hidden" id="balanceId">
+                        <div class="mb-4">
+                            <h6 class="text-success fw-bold mb-3 border-bottom pb-2">Student Information</h6>
+                            <input type="hidden" id="balanceStudentId">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label class="form-label">Student <span class="text-danger">*</span></label>
+                                    <div id="balanceStudentDisplay" class="form-control bg-light text-dark">—</div>
+                                    <small class="text-muted">Student is selected from the pending balances queue</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">School Year <span class="text-danger">*</span></label>
+                                    <select id="balanceSchoolYearId" class="form-select" required>
+                                        <option value="">Select school year...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Period <span class="text-danger">*</span></label>
+                                    <select id="balancePeriodId" class="form-select" required>
+                                        <option value="">Select period...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h6 class="text-success fw-bold mb-3 border-bottom pb-2">Balance Information</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Previous Balance</label>
+                                    <input type="number" id="balancePreviousBalance" class="form-control" step="0.01" min="0" value="0.00">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Current Balance <span class="text-danger">*</span></label>
+                                    <input type="number" id="balanceCurrentBalance" class="form-control" step="0.01" min="0" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Total Balance <span class="text-danger">*</span></label>
+                                    <input type="number" id="balanceTotalBalance" class="form-control" step="0.01" min="0" required readonly>
+                                    <small class="text-muted">Sum of previous and current balance</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Advice to Pay</label>
+                                    <input type="number" id="balanceAdviceToPay" class="form-control" step="0.01" min="0" value="0.00" readonly>
+                                    <small class="text-muted">100% PB + 75% CB</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-success fw-bold mb-3 border-bottom pb-2">Additional Information</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Internal Scholarship</label>
+                                    <div id="balanceInternalScholarshipDisplay" class="form-control bg-light text-dark">None</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">External Scholarships</label>
+                                    <div id="balanceExternalScholarshipsDisplay" class="form-control bg-light text-dark">None</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="submitBalanceBtn" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="totalBalancesModal" tabindex="-1" aria-labelledby="totalBalancesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="totalBalancesModalLabel"><i class="bi bi-wallet2 me-2"></i>All Registered Balances</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">School Year</th>
+                                    <th class="text-center">Total Balance</th>
+                                    <th class="text-center">Current Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="totalBalancesModalTableBody">
+                                <tr><td colspan="5" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="totalStudentsModal" tabindex="-1" aria-labelledby="totalStudentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="totalStudentsModalLabel"><i class="bi bi-people me-2"></i>Students with Balances</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">School Year</th>
+                                    <th class="text-center">Total Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="totalStudentsModalTableBody">
+                                <tr><td colspan="4" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="activeBalancesModal" tabindex="-1" aria-labelledby="activeBalancesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="activeBalancesModalLabel"><i class="bi bi-check-circle me-2"></i>Active Balances</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">School Year</th>
+                                    <th class="text-center">Total Balance</th>
+                                    <th class="text-center">Current Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activeBalancesModalTableBody">
+                                <tr><td colspan="5" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="schoolYearsModal" tabindex="-1" aria-labelledby="schoolYearsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="schoolYearsModalLabel"><i class="bi bi-calendar-range me-2"></i>Periodic Summary</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">School Semesters</th>
+                                    <th class="text-center">Period</th>
+                                    <th class="text-center">Student Count</th>
+                                    <th class="text-center">Total Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schoolYearsModalTableBody">
+                                <tr><td colspan="4" class="text-center text-muted">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="importBalancesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title"><i class="bi bi-upload me-2"></i>Import Balances</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Import Instructions</h6>
+                        <ol class="mb-0 small">
+                            <li>Download the template file to see the required format</li>
+                            <li>Fill in the balance data following the template structure</li>
+                            <li>The template uses the same columns and order as the exported CSV</li>
+                            <li>Required columns: Student ID, School Year, Period, Total Balance, Previous Balance, Current Balance, Advice to Pay</li>
+                            <li>As of Date accepts YYYY-MM-DD or MM/DD/YYYY</li>
+                            <li>Upload the CSV file</li>
+                            <li>The CSV imports when selected. Skipped rows and their reasons appear in the import summary.</li>
+                        </ol>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Select File <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="importBalancesFileInput" accept=".csv" required>
+                        <div class="form-text">Accepted format: CSV only. Maximum file size: 250 MB</div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-success btn-sm" id="downloadBalancesTemplateBtn">
+                            <i class="bi bi-download me-1"></i>Download Template
+                        </button>
+                    </div>
+                    <div id="importBalancesPreview" style="display: none;">
+                        <hr>
+                        <h6 class="mb-3">Import Summary</h6>
+                        <div id="importBalancesResult"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="confirmImportBalancesBtn" style="display: none;">
+                        <i class="bi bi-check-circle me-1"></i>Import Balances
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="pendingFinanceStudentsModal" tabindex="-1" aria-labelledby="pendingFinanceStudentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="pendingFinanceStudentsModalLabel"><i class="bi bi-people me-2"></i>Pending Students</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Student ID</th>
+                                    <th class="text-center">Student Name</th>
+                                    <th class="text-center">Program</th>
+                                    <th class="text-center">Year Level</th>
+                                    <th class="text-center">Department</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pendingFinanceStudentsModalBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="pendingFinanceProgramsModal" tabindex="-1" aria-labelledby="pendingFinanceProgramsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="pendingFinanceProgramsModalLabel"><i class="bi bi-mortarboard me-2"></i>Pending by Program</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Program</th>
+                                    <th class="text-center">Students</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pendingFinanceProgramsModalBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal assessment-card-modal" id="pendingFinanceYearLevelsModal" tabindex="-1" aria-labelledby="pendingFinanceYearLevelsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="pendingFinanceYearLevelsModalLabel"><i class="bi bi-layers me-2"></i>Pending by Year Level</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive assessment-table-scroll">
+                        <table class="table table-hover table-sm align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center">Year Level</th>
+                                    <th class="text-center">Students</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pendingFinanceYearLevelsModalBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer assessment-card-modal-footer">
+                    <span data-card-modal-count>Loading records...</span>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="viewPendingFinanceModal" tabindex="-1" aria-labelledby="viewPendingFinanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="viewPendingFinanceModalLabel"><i class="bi bi-person-badge me-2"></i>Pending Student</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Student ID</small>
+                                    <strong id="viewPendingFinanceSchoolId" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Student Name</small>
+                                    <strong id="viewPendingFinanceName" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Program</small>
+                                    <strong id="viewPendingFinanceProgram" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Year Level</small>
+                                    <strong id="viewPendingFinanceYearLevel" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Internal Scholarship</small>
+                                    <span id="viewPendingFinanceInternalScholarship" class="d-block">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">External Scholarships</small>
+                                    <span id="viewPendingFinanceExternalScholarships" class="d-block">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Status</small>
+                                    <span id="viewPendingFinanceStatus" class="badge bg-warning text-dark">Pending</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <small class="text-muted d-block mb-1">Department</small>
+                                    <span id="viewPendingFinanceDepartment" class="d-block">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-success btn-sm d-none" id="viewPendingFinanceAddBalanceBtn">
+                        <i class="bi bi-plus-lg me-1"></i>Add balance
+                    </button>
+                    <button type="button" class="btn btn-secondary ms-auto" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade finance-mobile-safe-modal" id="viewBalanceModal" tabindex="-1" aria-labelledby="viewBalanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="viewBalanceModalLabel"><i class="bi bi-eye me-2"></i>Balance Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0"><i class="bi bi-person-circle me-2"></i>Student Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Student ID</small>
+                                    <strong id="viewStudentId" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Student Name</small>
+                                    <strong id="viewStudentName" class="fs-6">-</strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">School Year</small>
+                                    <span id="viewSchoolYear" class="badge bg-success">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Period</small>
+                                    <span id="viewPeriod" class="badge bg-success">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0"><i class="bi bi-cash-stack me-2"></i>Balance Breakdown</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border">
+                                        <small class="text-muted d-block mb-1">Total Balance</small>
+                                        <h4 id="viewTotalBalance" class="mb-0 text-dark">₱0.00</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border">
+                                        <small class="text-muted d-block mb-1">Current Balance</small>
+                                        <h4 id="viewCurrentBalance" class="mb-0 text-dark">₱0.00</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border">
+                                        <small class="text-muted d-block mb-1">Previous Balance</small>
+                                        <h5 id="viewPreviousBalance" class="mb-0 text-dark">₱0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border">
+                                        <small class="text-muted d-block mb-1">Advice to Pay</small>
+                                        <h5 id="viewAdviceToPay" class="mb-0 text-dark">₱0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Additional Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Internal Scholarship</small>
+                                    <span id="viewInternalScholarship" class="d-block">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">External Scholarships</small>
+                                    <span id="viewExternalScholarships" class="d-block">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">As of Date</small>
+                                    <span id="viewAsOfDate" class="d-block">-</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted d-block mb-1">Last Updated</small>
+                                    <span id="viewUpdatedAt" class="d-block text-muted small">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class=""></i>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261010-hide-zero-counts"></script>
+    <script type="module" src="../../js/shared/shared-sidebar-live-counts.js?v=20261010-hide-zero-counts"></script>
+    <script type="module" src="../../js/assessment/assessment-balances-management.js?v=20261020-csdl-pn-tagging"></script>
+</body>
+</html>

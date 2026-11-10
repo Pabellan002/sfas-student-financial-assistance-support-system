@@ -1,0 +1,193 @@
+RewriteEngine On
+RewriteBase /sfas/
+Options -Indexes
+
+# Student masterfile imports may contain large institutional CSV files.
+# post_max_size includes multipart form overhead, so it must exceed the 250 MB file limit.
+<IfModule php_module>
+  php_value upload_max_filesize 250M
+  php_value post_max_size 260M
+  php_value max_input_time 600
+  php_value max_execution_time 600
+</IfModule>
+
+# Environment files contain server credentials and must never be downloaded.
+<FilesMatch "(?i)^\.env(?:\..*)?$">
+  Require all denied
+</FilesMatch>
+
+# Keep database exports and server-side configuration out of the web response.
+<FilesMatch "(?i)\.(?:sql|bak|backup|ini|log)$">
+  Require all denied
+</FilesMatch>
+
+# Keep .html URL but serve the guarded PHP view in security folder
+RewriteRule ^views/csdl/csdl-dashboard\.html$ views/security/csdl/security-csdl-dashboard.php [L,NC]
+RewriteRule ^views/csdl/loan-management\.html$ views/security/csdl/security-csdl-loans-management.php [L,NC]
+RewriteRule ^views/csdl/csdl-loans-management\.html$ views/security/csdl/security-csdl-loans-management.php [L,NC]
+RewriteRule ^views/csdl/csdl-pn-tagging\.html$ views/security/csdl/security-csdl-pn-tagging.php [L,NC]
+RewriteRule ^csdl/pn-tagging/?$ views/security/csdl/security-csdl-pn-tagging.php [L,NC]
+RewriteRule ^views/csdl/csdl-settings\.html$ views/security/csdl/security-csdl-settings.php [L,NC]
+RewriteRule ^views/csdl/csdl-notifications\.html$ views/security/csdl/security-csdl-notifications.php [L,NC]
+RewriteRule ^views/students/students-dashboard\.html$ views/security/students/security-students-dashboard.php [L,NC]
+RewriteRule ^views/students/students-loans\.html$ views/security/students/security-students-loans.php [L,NC]
+RewriteRule ^views/students/students-chat\.html$ views/security/students/security-students-chat.php [L,NC]
+RewriteRule ^views/students/students-settings\.html$ views/security/students/security-students-settings.php [L,NC]
+RewriteRule ^views/students/students-notifications\.html$ views/security/students/security-students-notifications.php [L,NC]
+
+# Masterfiles pages - redirect to security wrappers
+RewriteRule ^views/masterfiles/masterfiles-programs\.html$ views/security/masterfiles/security-masterfiles-programs.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-departments\.html$ views/security/masterfiles/security-masterfiles-departments.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-scholarships\.html$ views/security/masterfiles/security-masterfiles-scholarships.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-school-years\.html$ views/security/masterfiles/security-masterfiles-school-years.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-year-levels\.html$ views/security/masterfiles/security-masterfiles-year-levels.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-modalities\.html$ views/security/masterfiles/security-masterfiles-modalities.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-employees\.html$ views/security/masterfiles/security-masterfiles-employees.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-students\.html$ views/security/masterfiles/security-masterfiles-students.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-notifications\.html$ views/security/masterfiles/security-masterfiles-notifications.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-documents\.html$ views/security/masterfiles/security-masterfiles-documents.php [L,NC]
+RewriteRule ^views/masterfiles/masterfiles-campuses\.html$ views/security/masterfiles/security-masterfiles-campuses.php [L,NC]
+
+# COO pages
+RewriteRule ^views/coo/coo-dashboard\.html$ views/security/coo/security-coo-dashboard.php [L,NC]
+RewriteRule ^views/coo/coo-loans-management\.html$ views/security/coo/security-coo-loans-management.php [L,NC]
+RewriteRule ^views/coo/coo-settings\.html$ views/security/coo/security-coo-settings.php [L,NC]
+RewriteRule ^views/coo/coo-notifications\.html$ views/security/coo/security-coo-notifications.php [L,NC]
+
+# Branch Admin pages
+RewriteRule ^views/branch-admin/branch-admin-dashboard\.html$ views/security/branch-admin/security-branch-admin-dashboard.php [L,NC]
+RewriteRule ^views/branch-admin/branch-admin-settings\.html$ views/security/branch-admin/security-branch-admin-settings.php [L,NC]
+RewriteRule ^views/branch-admin/branch-admin-loans-mangement\.html$ views/security/branch-admin/security-branch-admin-loans-mangement.php [L,NC]
+RewriteRule ^views/branch-admin/branch-admin-notifications\.html$ views/security/branch-admin/security-branch-admin-notifications.php [L,NC]
+
+# Assessment pages
+RewriteRule ^views/assessment/assessment-dashboard\.html$ views/security/assessment/security-assessment-dashboard.php [L,NC]
+RewriteRule ^views/assessment/assessment-loans-management\.html$ views/security/assessment/security-assessment-loans-management.php [L,NC]
+RewriteRule ^views/assessment/assessment-balances-management\.html$ views/security/assessment/security-assessment-balances-management.php [L,NC]
+RewriteRule ^views/assessment/assessment-reports\.html$ views/security/assessment/security-assessment-reports.php [L,NC]
+RewriteRule ^views/assessment/assessment-settings\.html$ views/security/assessment/security-assessment-settings.php [L,NC]
+RewriteRule ^views/assessment/assessment-notifications\.html$ views/security/assessment/security-assessment-notifications.php [L,NC]
+RewriteRule ^views/assessment/assessment-pn-tagging\.html$ views/security/assessment/security-assessment-pn-tagging.php [L,NC]
+
+# Cashier pages
+RewriteRule ^views/cashier/cashier-dashboard\.html$ views/security/cashier/security-cashier-dashboard.php [L,NC]
+RewriteRule ^views/cashier/cashier-loans-management\.html$ views/security/cashier/security-cashier-loans-management.php [L,NC]
+RewriteRule ^views/cashier/cashier-settings\.html$ views/security/cashier/security-cashier-settings.php [L,NC]
+RewriteRule ^views/cashier/cashier-notifications\.html$ views/security/cashier/security-cashier-notifications.php [L,NC]
+
+# Prevent cached dashboard pages after logout
+<IfModule mod_headers.c>
+  <FilesMatch "^views/csdl/csdl-dashboard\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/csdl/csdl-loans-management\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/csdl/csdl-settings\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/students/students-dashboard\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/students/students-loans\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/students/students-chat\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/students/students-settings\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+              <FilesMatch "^views/masterfiles/masterfiles-(programs|departments|scholarships|school-years|year-levels|modalities|employees|students)\.(php|html)$">
+                Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+                Header set Pragma "no-cache"
+                Header set Expires 0
+              </FilesMatch>
+  <FilesMatch "^views/coo/coo-dashboard\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/coo/coo-loans-management\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/coo/coo-settings\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/branch-admin/branch-admin-dashboard\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/branch-admin/branch-admin-settings\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/branch-admin/branch-admin-loans-mangement\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/branch-admin/branch-admin-pn-tagging\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-dashboard\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-loans-management\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-balances-management\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-reports\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-settings\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/assessment/assessment-notifications\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+  <FilesMatch "^views/cashier/cashier-(dashboard|loans-management|reports|settings|notifications)\.(php|html)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
+
+# Custom 404 page (path is from server document root; matches RewriteBase /sfas/)
+ErrorDocument 404 /sfas/views/errors/404.php

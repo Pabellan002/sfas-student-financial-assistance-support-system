@@ -1,0 +1,23 @@
+/* Shared list-card modals for Cashier, COO, and Branch Admin. */
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-content { border: 0; overflow: hidden; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-body { padding: 1.15rem; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table-responsive,
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-body > .table-responsive { border: 1px solid #e3eaf0; border-radius: .7rem; overflow: auto; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table { margin-bottom: 0; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table thead th { background: #f3f6f9; border-bottom-color: #d9e2ea; color: #51657d; font-size: .73rem; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table td { border-color: #e9eef3; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-footer,
+.cashier-card-modal-footer { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .85rem 1.15rem; background: #fbfcfd; border-top-color: #e8edf2; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) [data-card-modal-count] { color: #627286; font-size: .82rem; margin-right: auto; }
+:is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-footer .btn[data-bs-dismiss="modal"] { background: #74808b !important; border-color: #74808b !important; color: #fff !important; min-width: 6.25rem; }
+.branch-card-modal .modal-footer > [id$="Pagination"] { flex: 1 1 auto; width: auto !important; }
+@media (max-width: 767.98px) {
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-body { padding: .75rem; }
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table { min-width: 42rem; }
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table th,
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .table td { padding: .65rem .75rem; white-space: nowrap; }
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-footer,
+  .cashier-card-modal-footer { flex-direction: row !important; flex-wrap: nowrap !important; padding: .8rem; }
+  :is(.cashier-card-modal, .coo-card-modal, .branch-card-modal) .modal-footer .btn,
+  .cashier-card-modal-footer .btn { width: auto !important; margin-left: auto !important; }
+}

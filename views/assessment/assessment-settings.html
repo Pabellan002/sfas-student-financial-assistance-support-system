@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>Settings - Assessment</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/assessment/assessment-portal-premium.css?v=20260815-assessment-mobile-nav" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-settings-accordion.css?v=20260927-mobile-profile-stack" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="bg-light assessment-app assessment-portal-premium portal-settings-page">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261007-first-paint"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="assessment-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="assessment-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="#">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="assessment-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container app-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;overflow:hidden;">
+                                <div class="fw-bold text-white" style="font-size:0.8rem;line-height:1.3;white-space:nowrap;">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="assessment-dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assessment-loans-management.html">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="link-text">Active Loans</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assessment-balances-management.html">
+                                <i class="bi bi-wallet2 me-2"></i>
+                                <span class="link-text">Balances</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assessment-pn-tagging.html">
+                                <i class="bi bi-journal-check me-2"></i>
+                                <span class="link-text">PN Tagging</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
+                            <div>
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Assessment Officer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <header class="assessment-page-head-banner pt-3 pb-2 mb-3 assessment-page-head">
+                    <div class="assessment-page-head-banner__inner">
+                        <div class="assessment-page-head-banner__main">
+                            <h1 class="assessment-page-head-banner__title mb-0" id="pageTitle">Settings</h1>
+                        </div>
+                        <div class="assessment-page-head-banner__meta">
+                            <nav aria-label="breadcrumb" class="assessment-page-breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="assessment-dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="card border-0 shadow-sm assessment-settings-card portal-settings-main-card assessment-settings-modern">
+                    <div class="card-body">
+                        <div class="accordion portal-settings-accordion" id="assessmentSettingsAccordion" hidden>
+                            <div class="accordion-item portal-settings-accordion-item">
+                                <h2 class="accordion-header" id="assessmentSettingsHeadingContact">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#assessmentSettingsCollapseContact" aria-expanded="false" aria-controls="assessmentSettingsCollapseContact">
+                                        <i class="bi bi-person-circle me-2" aria-hidden="true"></i>Profile & Contact
+                                    </button>
+                                </h2>
+                                <div id="assessmentSettingsCollapseContact" class="accordion-collapse collapse" aria-labelledby="assessmentSettingsHeadingContact" data-bs-parent="#assessmentSettingsAccordion">
+                                    <div class="accordion-body">
+                                <form id="updateContactForm">
+                                    <div class="mb-4 text-center">
+                                        <div class="position-relative d-inline-block">
+                                            <img id="profileImagePreview" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=128" alt="Profile" class="rounded-circle border border-3" style="width:128px;height:128px;object-fit:cover;">
+                                            <label for="profileImageInput" class="position-absolute bottom-0 end-0 btn btn-success btn-sm rounded-circle" style="width:36px;height:36px;padding:0;cursor:pointer;" title="Change profile picture">
+                                                <i class="bi bi-camera"></i>
+                                            </label>
+                                            <input type="file" id="profileImageInput" accept="image/jpeg,image/jpg,image/png" style="display:none;">
+                                        </div>
+                                        <div class="mt-2">
+                                            <small class="text-muted">Click camera icon to upload profile picture (JPG, PNG - Max 2MB)</small>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold">Employee ID</label>
+                                        <input type="text" class="form-control" id="employeeId" readonly>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label fw-semibold">First Name</label>
+                                            <input type="text" class="form-control" id="updFirstName" readonly>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label fw-semibold">Middle Name</label>
+                                            <input type="text" class="form-control" id="updMiddleName" readonly>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold">Last Name</label>
+                                            <input type="text" class="form-control" id="updLastName" readonly>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label fw-semibold">Birthdate</label>
+                                            <input type="date" class="form-control" id="updBirthdate">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label fw-semibold">Gender</label>
+                                            <select class="form-select" id="updGender">
+                                                <option value="">Select Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold">Contact Number <span class="text-danger">*</span></label>
+                                            <input type="tel" class="form-control" id="updContact" required placeholder="Enter contact number" pattern="^09[0-9]{9}$" maxlength="11">
+                                        </div>
+                                        <div class="w-100 assessment-settings-email-field" style="flex: 0 0 100% !important; width: 100% !important; max-width: 100% !important; padding-right: calc(var(--bs-gutter-x) * .5); padding-left: calc(var(--bs-gutter-x) * .5);">
+                                            <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="updEmail" required placeholder="Enter email address" style="width: 100% !important;">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-text"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end pt-2">
+                                        <button type="button" class="btn btn-success px-4" id="sendOtpProfileBtn">Save changes</button>
+                                    </div>
+                                </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item portal-settings-accordion-item">
+                                <h2 class="accordion-header" id="assessmentSettingsHeadingPassword">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#assessmentSettingsCollapsePassword" aria-expanded="false" aria-controls="assessmentSettingsCollapsePassword">
+                                        <i class="bi bi-key me-2" aria-hidden="true"></i>Change password
+                                    </button>
+                                </h2>
+                                <div id="assessmentSettingsCollapsePassword" class="accordion-collapse collapse" aria-labelledby="assessmentSettingsHeadingPassword" data-bs-parent="#assessmentSettingsAccordion">
+                                    <div class="accordion-body">
+                                <form id="passwordSettingsForm">
+                                    <div class="alert alert-info border-0 shadow-sm mb-4">
+                                        <h6 class="alert-heading mb-2 fw-bold">
+                                            <i class=""></i>Password Requirements
+                                        </h6>
+                                        <ul class="mb-0 small ps-3">
+                                            <li>At least 8 characters long</li>
+                                            <li>Contains at least one uppercase letter (A-Z)</li>
+                                            <li>Contains at least one lowercase letter (a-z)</li>
+                                            <li>Contains at least one number (0-9)</li>
+                                            <li>Contains at least one special character (!@#$%^&*...)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="row g-4 mb-4">
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold mb-2">Old Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="oldPassword" required placeholder="Enter current password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleOldPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold mb-2">New Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="newPassword" required placeholder="Enter new password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleNewPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold mb-2">Confirm Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock-fill text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="confirmPassword" required placeholder="Confirm new password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleConfirmPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end pt-2">
+                                        <button type="submit" class="btn btn-success px-4">Change password</button>
+                                    </div>
+                                </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item portal-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingFaq">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseFaq" aria-expanded="false" aria-controls="settingsCollapseFaq">
+                                        <i class="bi bi-question-circle me-2" aria-hidden="true"></i>FAQs
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseFaq" class="accordion-collapse collapse" aria-labelledby="settingsHeadingFaq" data-bs-parent="#assessmentSettingsAccordion">
+                                    <div class="accordion-body">
+                                        <p class="text-muted small mb-3">Common questions about your account and security settings.</p>
+                                        <div class="portal-settings-faq-list" id="settingsFaqContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portal-settings-logout-panel">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+                                <div>
+                                    <div class="portal-settings-logout-panel__title"><i class="bi bi-box-arrow-right me-2" aria-hidden="true"></i>Logout</div>
+                                    <p class="portal-settings-logout-copy mb-0">Sign out of your account on this device.</p>
+                                </div>
+                                <button type="button" class="btn btn-outline-danger px-4" id="settingsLogoutBtn">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+
+    <div class="modal fade" id="otpModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-4 pt-0">
+                    <div class="mb-3">
+                        <div class="mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: linear-gradient(135deg, #198754 0%, #146c43 100%); border-radius: 50%; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.25);">
+                            <i class="bi bi-shield-check text-white" style="font-size: 1.6rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-2">Verify OTP</h5>
+                    <p class="text-muted mb-3" style="font-size: 0.875rem;">
+                        We've sent a 6-digit OTP code to your email.<br>Please enter it below to verify.
+                    </p>
+                    <form id="otpForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control text-center fw-bold" id="otpCode" required maxlength="6" pattern="[0-9]{6}" inputmode="numeric" placeholder="000000" style="letter-spacing: 0.5rem; font-size: 1.25rem; padding: 10px; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted" id="otpTimerText">Code expires in <span id="otpTimer" class="fw-bold text-danger">60</span>s</small>
+                        </div>
+                        <div class="d-grid gap-2 mb-2">
+                            <button type="submit" class="btn btn-success" style="border-radius: 8px; padding: 10px; font-weight: 600;">
+                                Submit
+                            </button>
+                        </div>
+                        <button type="button" id="resendOtpBtn" class="btn btn-link text-success text-decoration-none d-none" style="font-weight: 500; font-size: 0.9rem;">
+                            Resend Code
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileTurnstile" class="settings-turnstile-overlay d-none" data-overlay="true" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+    <div id="passwordTurnstile" class="settings-turnstile-overlay d-none" data-overlay="true" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261008-server-rbac"></script>
+    <script type="module" src="../../js/assessment/assessment-settings.js?v=20261020-csdl-pn-tagging"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/**
+ * Assessment Active Loans — untagged applications table (requires assessment-portal-premium.css).
+ */
+
+body.assessment-app.assessment-portal-premium .assessment-loans-table-wrap {
+    max-height: calc(100vh - 380px);
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table {
+    min-width: 1320px;
+    margin-bottom: 0;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table thead th.assessment-loans-th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5f6c7b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    line-height: 1.25;
+    vertical-align: middle;
+    padding: 0.62rem 0.65rem;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table tbody td {
+    font-size: 0.835rem;
+    color: #2f3d4e;
+    border-bottom: 1px solid #eef1f5;
+    padding: 0.62rem 0.65rem;
+    vertical-align: middle;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table tbody td:first-child {
+    padding-left: 0.85rem;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table tbody td:last-child {
+    padding-right: 0.85rem;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table tbody td[colspan] {
+    overflow: visible;
+    text-overflow: unset;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table tbody tr:hover {
+    background: #f6f8fb;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table .badge {
+    border-radius: 8px;
+    padding: 0.34rem 0.6rem;
+    font-weight: 600;
+}
+
+/* Mobile toolbar — match dashboard Recent PN tagging */
+@media (max-width: 767.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) .assessment-loans-actions-row {
+        width: 100% !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 0.5rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) .assessment-loans-actions-row > .dropdown {
+        flex: 0 0 auto !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) .assessment-loans-actions-row > .dropdown .btn {
+        width: 2.5rem;
+        min-width: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) .assessment-loans-actions-row > .btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) .assessment-loans-mobile-search .input-group-text {
+        flex: 0 0 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+/* Disable sticky header on mobile to allow proper horizontal scrolling */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table thead {
+        position: relative !important;
+    }
+    
+    body.assessment-app.assessment-portal-premium #loansTable.assessment-loans-table thead th.assessment-loans-th {
+        position: relative !important;
+        top: auto !important;
+    }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Types - Masterfiles</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3/dist/style.css">    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management-premium.css" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles.css?v=20261007-mobile-stat-span" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles-premium.css" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles-card-modals.css" rel="stylesheet">
+    <link href="../../assets/css/masterfiles/masterfiles-documents.css?v=20260814-mobile-pagination" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="csdl-mobile-sidebar bg-light csdl-loans-premium masterfiles-premium document-types-page masterfiles-dialogs-page">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261020-csdl-pn-tagging"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar"><i class="bi bi-list"></i></button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="../csdl/csdl-dashboard.html"><img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;"><span>Student Financial Assistance</span></a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="../csdl/csdl-dashboard.html"><img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;"><span>Student Financial Assistance</span></a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications"><i class="bi bi-bell"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none;width:8px;height:8px;padding:0;min-width:8px;font-size:0;"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu"><li><h6 class="dropdown-header notifications-header">Notifications</h6></li><li><hr class="dropdown-divider"></li><li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li><li><hr class="dropdown-divider"></li><li><div class="notifications-footer"><a class="notifications-view-all" href="masterfiles-notifications.html">View all</a><button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button></div></li></ul>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"><div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;"><img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover"></div></a><ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;"><li><h6 class="dropdown-header">Account</h6></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item" href="../csdl/csdl-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li></ul></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0"><div class="row g-0">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container csdl-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+            <div class="d-flex flex-column h-100 sidebar-scroll">
+                <div class="sidebar-header-mobile d-lg-none"><div class="d-flex align-items-center"><button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn"><i class="bi bi-list"></i></button><img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;"><div class="flex-grow-1" style="min-width:0;overflow:hidden;"><div class="fw-bold text-white" style="font-size:.8rem;line-height:1.3;white-space:nowrap;">Student Financial Assistance</div></div></div></div>
+                <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar"><i class="bi bi-chevron-right"></i></button>
+                <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-mobile-masterfiles d-lg-none">
+                    <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                </ul>
+                <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-desktop-nav d-none d-lg-flex">
+                    <li class="nav-item"><a class="nav-link" href="../csdl/csdl-dashboard.html"><i class="bi bi-speedometer2 me-2"></i><span class="link-text">Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../csdl/csdl-loans-management.html"><i class="bi bi-clipboard-data me-2"></i><span class="link-text">Active Loans</span></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="../csdl/csdl-pn-tagging.html">
+                                <i class="bi bi-journal-check me-2"></i>
+                                <span class="link-text">PN Tagging</span>
+                            </a>
+                        </li>
+                    <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                    <li class="nav-item"><a class="nav-link" href="masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                                            <li class="nav-item"><a class="nav-link" href="masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                                            <li class="nav-item"><a class="nav-link active" href="masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                </ul>
+                <div class="mt-auto pt-3 px-3 border-top"><div class="d-flex align-items-center"><img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover"><div><div id="sidebarProfileName" class="fw-semibold">User</div><small id="sidebarProfileRole" class="text-muted">Staff</small></div></div></div>
+            </div>
+        </nav>
+
+        <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <header class="masterfiles-page-head-banner pt-3 pb-2 mb-3 masterfiles-page-head"><div class="masterfiles-page-head-banner__inner"><div class="masterfiles-page-head-banner__main"><h1 class="masterfiles-page-head-banner__title mb-0">Documents</h1></div><div class="masterfiles-page-head-banner__meta"><nav aria-label="breadcrumb" class="masterfiles-breadcrumb"><ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="../csdl/csdl-dashboard.html">Dashboard</a></li><li class="breadcrumb-item"><a href="#">Masterfiles</a></li><li class="breadcrumb-item active" aria-current="page">Documents</li></ol></nav></div></div></header>
+
+            <div class="row mb-3 g-3 documents-stat-grid masterfiles-stat-grid--three">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6"><button type="button" class="card stat-card csdl-stat-tile shadow-sm h-100 text-center document-type-stat-card" data-document-view="all"><div class="card-body stat-body"><div class="stat-title">TOTAL DOCUMENT TYPES</div><div class="stat-value" id="documentTypesTotal">0</div></div></button></div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6"><button type="button" class="card stat-card csdl-stat-tile shadow-sm h-100 text-center document-type-stat-card" data-document-view="active"><div class="card-body stat-body"><div class="stat-title">ACTIVE DOCUMENT TYPES</div><div class="stat-value" id="documentTypesActive">0</div></div></button></div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 documents-stat-grid__inactive"><button type="button" class="card stat-card csdl-stat-tile shadow-sm h-100 text-center document-type-stat-card" data-document-view="inactive"><div class="card-body stat-body"><div class="stat-title">INACTIVE DOCUMENT TYPES</div><div class="stat-value" id="documentTypesInactive">0</div></div></button></div>
+            </div>
+
+            <section class="card border-0 shadow-sm csdl-loans-main-card">
+                <div class="card-header bg-white">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2"><h6 class="m-0 mb-1">Document Types Directory</h6><div class="d-flex align-items-center gap-2 document-types-toolbar"><div class="dropdown d-md-none"><button id="documentTypeMobileFilterBtn" class="btn btn-outline-success btn-sm document-types-mobile-filter-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Open document type filters"><i class="bi bi-funnel"></i></button><div class="dropdown-menu document-types-mobile-filter-menu"><label class="form-label">Status</label><select id="documentTypeStatusFilterMobile" aria-label="Filter document types by status" class="form-select form-select-sm"><option value="all">All Statuses</option><option value="1">Active</option><option value="0">Inactive</option></select><label class="form-label mt-3">Requirement</label><select id="documentTypeRequirementFilterMobile" aria-label="Filter document types by requirement" class="form-select form-select-sm"><option value="all">All Requirements</option><option value="1">Required</option><option value="0">Optional</option></select><button id="documentTypeApplyMobileFilters" type="button" class="btn btn-success btn-sm w-100 mt-3">Apply Filters</button></div></div><button id="documentTypeRefresh" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button><button id="documentTypeAdd" class="btn btn-success btn-sm"><i class="bi bi-plus-lg me-1"></i>Add Document Type</button><button id="documentTypeExport" class="btn btn-outline-secondary btn-sm"><i class="bi bi-download me-1"></i>Export</button></div></div>
+                    <div class="d-none d-md-flex align-items-center gap-2 document-types-filter-row"><select id="documentTypeStatusFilter" aria-label="Filter document types by status" class="form-select form-select-sm"><option value="all">All Statuses</option><option value="1">Active</option><option value="0">Inactive</option></select><select id="documentTypeRequirementFilter" aria-label="Filter document types by requirement" class="form-select form-select-sm"><option value="all">All Requirements</option><option value="1">Required</option><option value="0">Optional</option></select><div class="input-group document-types-search ms-auto"><span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span><input id="documentTypeSearch" class="form-control" placeholder="Search document types..."></div></div><div class="d-md-none mt-2"><div class="input-group document-types-search"><span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span><input id="documentTypeSearchMobile" class="form-control" placeholder="Search document types..."></div></div>
+                </div>
+                <div class="card-body p-3 pt-0"><div class="table-responsive masterfiles-table-scroll"><table id="documentTypesTable" class="table align-middle mb-0"><thead class="table-light"><tr><th class="text-center"><input type="checkbox" class="form-check-input" data-bulk-all aria-label="Select all records on this page" hidden></th><th class="text-center">Document Type</th><th class="text-center">Description</th><th class="text-center">Requirement</th><th class="text-center">Status</th><th class="text-center">Actions</th></tr></thead><tbody id="documentTypesTableBody"></tbody></table></div><div id="documentTypesShowing" class="masterfiles-table-summary">No records</div></div>
+            </section>
+        </main>
+    </div></div>
+
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+    <div class="modal fade masterfile-editor-modal" id="documentTypeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white"><h5 class="modal-title" id="documentTypeModalTitle">Add Document Type</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <div class="masterfile-edit-panel">
+                        <input type="hidden" id="documentTypeId">
+                        <h6 class="masterfile-edit-heading"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Document type information</h6>
+                        <div class="col-12"><label class="form-label" for="documentTypeName">Document Type <span class="text-danger">*</span></label><input id="documentTypeName" class="form-control" maxlength="100"></div>
+                        <div class="col-12"><label class="form-label" for="documentTypeDescription">Description</label><textarea id="documentTypeDescription" class="form-control" rows="3"></textarea></div>
+                        <div class="col-12"><div class="form-check form-switch"><input id="documentTypeRequired" class="form-check-input" type="checkbox"><label class="form-check-label" for="documentTypeRequired">Required document</label></div></div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button id="documentTypeSave" class="btn btn-success">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261020-csdl-pn-tagging"></script>
+    <script type="module" src="../../js/masterfiles/masterfiles-documents.js?v=20261029-refresh"></script>
+</body>
+</html>

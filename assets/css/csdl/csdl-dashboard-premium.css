@@ -1,0 +1,666 @@
+/**
+ * CSDL admin dashboard — premium shell (body.csdl-dashboard-premium).
+ * Aligns with student portal: soft background, elevated panels, neutral data tables.
+ */
+
+body.csdl-dashboard-premium {
+    background:
+        radial-gradient(1200px 400px at 8% -10%, rgba(3, 96, 15, 0.07), transparent 60%),
+        radial-gradient(900px 300px at 100% 0%, rgba(25, 135, 84, 0.06), transparent 60%),
+        #f4f6f9;
+}
+
+@media (min-width: 992px) {
+    body.csdl-dashboard-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.csdl-dashboard-premium #pageTitle {
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #123524;
+}
+
+body.csdl-dashboard-premium #pageTitle + small,
+body.csdl-dashboard-premium #pageSubtitle {
+    font-size: 0.92rem;
+    color: #5f6c7b !important;
+    max-width: 42rem;
+}
+
+@media (max-width: 575.98px) {
+    body.csdl-dashboard-premium .csdl-page-head-banner__inner {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0.3rem !important;
+        padding-inline: 0.65rem !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__main {
+        width: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    body.csdl-dashboard-premium #pageTitle {
+        font-size: 1.05rem !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__meta {
+        width: auto !important;
+        min-width: 0;
+        flex: 0 1 auto !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__date {
+        width: auto !important;
+        max-width: 100%;
+        gap: 0.2rem;
+        padding: 0.3rem 0.4rem;
+        font-size: 0.64rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        letter-spacing: -0.015em;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__date i {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+    }
+}
+
+@media (max-width: 359.98px) {
+    body.csdl-dashboard-premium #pageTitle {
+        font-size: 0.96rem !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__date {
+        padding: 0.28rem 0.35rem;
+        font-size: 0.58rem;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner__date i {
+        display: none;
+    }
+}
+
+/* Stat tiles */
+body.csdl-dashboard-premium .csdl-stat-tile {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    background: #fff !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+    border-left: none !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.csdl-dashboard-premium .csdl-stat-tile:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 36px rgba(16, 24, 40, 0.08),
+        0 4px 12px rgba(16, 24, 40, 0.04);
+}
+
+body.csdl-dashboard-premium .csdl-stat-tile .stat-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #64748b !important;
+    margin-bottom: 0.35rem;
+}
+
+body.csdl-dashboard-premium .csdl-stat-tile .stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1d2939 !important;
+    letter-spacing: -0.02em;
+}
+
+body.csdl-dashboard-premium .csdl-stat-tile .stat-hint {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.35rem;
+    line-height: 1.3;
+}
+
+/* Insights card */
+body.csdl-dashboard-premium .csdl-insights-card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.csdl-dashboard-premium .csdl-insights-card .card-header {
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid #edf1f5 !important;
+    /* Less bottom padding so filter pills sit closer to the table */
+    padding: 1rem 1.25rem 0.5rem !important;
+}
+
+body.csdl-dashboard-premium .csdl-insights-card #pieTitle {
+    color: #1d2939 !important;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+body.csdl-dashboard-premium .csdl-insights-card .insights-sub {
+    font-size: 0.8125rem;
+    color: #64748b;
+}
+
+body.csdl-dashboard-premium #exportStatsBtn {
+    border-color: #cbd5e1;
+    color: #475569;
+    border-radius: 10px;
+}
+
+body.csdl-dashboard-premium #exportStatsBtn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    color: #1e293b;
+}
+
+/* Filter pills */
+body.csdl-dashboard-premium .csdl-filter-btn {
+    border-radius: 999px !important;
+    padding: 0.45rem 1rem !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500;
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+    background: #fff !important;
+}
+
+body.csdl-dashboard-premium .csdl-filter-btn:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    color: #1e293b !important;
+}
+
+/* Inactive pills — explicit reset (beats stray .btn / .active from other rules) */
+body.csdl-dashboard-premium #filtersContainer .csdl-filter-btn:not(.csdl-filter-active) {
+    background: #fff !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+body.csdl-dashboard-premium .csdl-filter-btn.csdl-filter-active {
+    background: #123524 !important;
+    border-color: #123524 !important;
+    color: #fff !important;
+}
+
+body.csdl-dashboard-premium .filters-scroll-container {
+    scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+body.csdl-dashboard-premium .filters-scroll-container::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+}
+
+/* Stats table (injected by module) */
+body.csdl-dashboard-premium #statsDataContainer .table thead th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.csdl-dashboard-premium #statsDataContainer .table tbody td {
+    font-size: 0.875rem;
+    color: #334155;
+    border-bottom: 1px solid #eef1f5;
+    vertical-align: middle;
+}
+
+body.csdl-dashboard-premium #statsDataContainer .table tbody tr:hover {
+    background: #f8fafc;
+}
+
+body.csdl-dashboard-premium #statsDataContainer .table tfoot td {
+    font-size: 0.875rem;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+body.csdl-dashboard-premium #statsDataContainer .tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+body.csdl-dashboard-premium #statsDataContainer .pct-pill {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 576px) {
+    body.csdl-dashboard-premium .csdl-stat-tile .stat-value {
+        font-size: 1.65rem;
+    }
+}
+
+/* Client dashboard layout: filters | chart | for approval */
+body.csdl-dashboard-premium .csdl-dashboard-main {
+    min-width: 0;
+    width: 100%;
+}
+
+/* Mobile/tablet: each panel is its own full-width section */
+body.csdl-dashboard-premium .csdl-dashboard-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-main-grid {
+    align-items: stretch;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel,
+body.csdl-dashboard-premium .csdl-dashboard-filters-card,
+body.csdl-dashboard-premium .csdl-dashboard-chart-card,
+body.csdl-dashboard-premium .csdl-dashboard-approval-card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+    min-width: 0;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel .card-header {
+    text-align: center;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel .card-header h6.csdl-dashboard-panel-title,
+body.csdl-dashboard-premium .csdl-dashboard-panel-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #212529 !important;
+    text-align: center;
+    width: 100%;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel-toggle {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    color: #212529 !important;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel-toggle .csdl-dashboard-panel-title {
+    grid-column: 2;
+    color: #212529 !important;
+    text-align: center;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel-toggle .csdl-dashboard-panel-chevron {
+    grid-column: 3;
+    justify-self: end;
+    transition: transform 0.2s ease;
+    color: #64748b;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-panel-toggle:not(.collapsed) .csdl-dashboard-panel-chevron,
+body.csdl-dashboard-premium .csdl-dashboard-panel-toggle[aria-expanded="true"] .csdl-dashboard-panel-chevron {
+    transform: rotate(180deg);
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-filter-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: -0.15rem;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-filter-select,
+body.csdl-dashboard-premium .csdl-dashboard-filters-card .form-select,
+body.csdl-dashboard-premium .csdl-dashboard-approval-card .form-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: none !important;
+    border-color: #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.8125rem;
+    color: #334155;
+    min-height: 38px;
+}
+
+body.csdl-dashboard-premium #filterPeriod {
+    flex: none !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-approval-actions {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-approval-period-wrap {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(100% - 5.75rem);
+}
+
+body.csdl-dashboard-premium #filterApprovalPeriod {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-chart-wrap {
+    position: relative;
+    min-height: 280px;
+    width: 100%;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-chart-legend {
+    word-break: break-word;
+    line-height: 1.45;
+}
+
+body.csdl-dashboard-premium .csdl-for-approval-table td {
+    border-bottom: 1px solid #eef1f5;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+    font-size: 0.875rem;
+    color: #334155;
+}
+
+body.csdl-dashboard-premium .csdl-for-approval-table tr:last-child td {
+    border-bottom: none;
+}
+
+body.csdl-dashboard-premium .tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+body.csdl-dashboard-premium #exportChartBtn,
+body.csdl-dashboard-premium #exportApprovalBtn,
+body.csdl-dashboard-premium #exportPendingBtn {
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    min-height: 38px;
+    white-space: nowrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+body.csdl-dashboard-premium #exportApprovalBtn,
+body.csdl-dashboard-premium #exportPendingBtn {
+    flex: 0 0 auto;
+    align-self: stretch;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-chart-actions {
+    min-height: 38px;
+}
+
+/* Desktop: filters | chart | approval in one row */
+@media (min-width: 1200px) {
+    body.csdl-dashboard-premium #mainContent {
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 56px);
+        padding-bottom: 1rem !important;
+    }
+
+    body.csdl-dashboard-premium #dashboardContent,
+    body.csdl-dashboard-premium #overview-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-sections {
+        --csdl-dashboard-side-col: minmax(0, 1.1fr);
+        display: grid;
+        grid-template-columns: var(--csdl-dashboard-side-col) minmax(0, 2.45fr) var(--csdl-dashboard-side-col);
+        grid-template-rows: minmax(0, 1fr);
+        gap: 1rem;
+        align-items: stretch;
+        flex: 1 1 auto;
+        min-height: 0;
+        margin-bottom: 0 !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-section--filters,
+    body.csdl-dashboard-premium .csdl-dashboard-section--approval {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-section--chart {
+        min-width: 0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-section {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        height: 100%;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-section > .card {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-card,
+    body.csdl-dashboard-premium .csdl-dashboard-chart-card,
+    body.csdl-dashboard-premium .csdl-dashboard-approval-card {
+        min-height: 0;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-card .card-header,
+    body.csdl-dashboard-premium .csdl-dashboard-approval-card .card-header {
+        flex: 0 0 auto;
+    }
+
+    body.csdl-dashboard-premium #dashboardFiltersCollapse {
+        flex: 0 0 auto;
+        display: block !important;
+        min-height: 0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-body {
+        flex: 0 0 auto;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-chart-card .card-body {
+        flex: 1 1 auto;
+        min-height: 320px;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-approval-card .card-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        justify-content: flex-start;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-chart-wrap {
+        min-height: 280px;
+        flex: 1 1 auto;
+        height: 100%;
+    }
+
+    body.csdl-dashboard-premium .csdl-for-approval-panel {
+        flex: 0 0 auto;
+        align-self: flex-start;
+        width: 100%;
+    }
+
+    body.csdl-dashboard-premium #dashboardFiltersCollapse.collapse {
+        display: block !important;
+        height: auto !important;
+        visibility: visible !important;
+    }
+}
+
+/* Tablet and below: stacked full-width sections */
+@media (max-width: 1199.98px) {
+    body.csdl-dashboard-premium .csdl-dashboard-filters-card,
+    body.csdl-dashboard-premium .csdl-dashboard-chart-card,
+    body.csdl-dashboard-premium .csdl-dashboard-approval-card {
+        min-height: 0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-chart-wrap {
+        min-height: 260px;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-body {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-filters-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+body.csdl-dashboard-premium .csdl-dashboard-filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+@media (max-width: 767.98px) {
+    body.csdl-dashboard-premium .csdl-dashboard-sections > .csdl-dashboard-section--filters {
+        display: none;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-inline {
+        width: 100%;
+        height: auto !important;
+        margin: 0 0 0.75rem;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-inline .csdl-dashboard-filters-card {
+        height: auto !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-inline .card-header {
+        display: none;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-inline .csdl-dashboard-filters-body {
+        padding: 0.75rem 0 0 !important;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-stat-row .csdl-stat-tile-pending {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-stat-row .stat-body {
+        padding: 0.85rem 0.75rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.csdl-dashboard-premium .csdl-dashboard-main {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-page-head-banner {
+        margin-bottom: 0.5rem !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-stat-row .stat-title {
+        font-size: 0.62rem;
+        letter-spacing: 0.04em;
+        line-height: 1.25;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-stat-row .stat-value {
+        font-size: 1.45rem;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-filters-body {
+        grid-template-columns: 1fr;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-chart-wrap {
+        min-height: 220px;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-chart-legend {
+        font-size: 0.75rem;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-approval-actions {
+        flex-direction: row;
+        align-items: stretch !important;
+    }
+
+    body.csdl-dashboard-premium .csdl-dashboard-approval-period-wrap {
+        flex: 1 1 auto;
+        max-width: calc(100% - 5.75rem);
+    }
+
+    body.csdl-dashboard-premium #exportPendingBtn {
+        flex: 0 0 auto;
+        min-width: 5.25rem;
+    }
+
+    body.csdl-dashboard-premium .csdl-for-approval-head {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    body.csdl-dashboard-premium #forApprovalTimestamp {
+        text-align: left !important;
+        font-size: 0.72rem;
+        line-height: 1.35;
+    }
+}

@@ -1,0 +1,995 @@
+/**
+ * Assessment portal — premium shell (body.assessment-app.assessment-portal-premium).
+ * Shared by dashboard, active loans, reports, and settings.
+ */
+
+body.assessment-app.assessment-portal-premium {
+    background:
+        radial-gradient(1200px 400px at 8% -10%, rgba(3, 96, 15, 0.07), transparent 60%),
+        radial-gradient(900px 300px at 100% 0%, rgba(25, 135, 84, 0.06), transparent 60%),
+        #f4f6f9;
+}
+
+@media (min-width: 992px) {
+    body.assessment-app.assessment-portal-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.assessment-app.assessment-portal-premium #mainContent {
+    min-height: calc(100vh - 56px);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-head {
+    gap: 1rem;
+    align-items: flex-start !important;
+}
+
+@media (min-width: 768px) {
+    body.assessment-app.assessment-portal-premium .assessment-page-head {
+        align-items: center !important;
+    }
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner {
+    margin-bottom: 0;
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__inner,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #03600f;
+    border-radius: 16px;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__main,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__main {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    min-width: 0;
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__title,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__title,
+body.assessment-app.assessment-portal-premium #pageTitle {
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #123524;
+    line-height: 1.15;
+    margin-bottom: 0 !important;
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__meta,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__meta {
+    flex-shrink: 0;
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__date,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #64748b;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__date i,
+body.assessment-app.assessment-portal-premium .assessment-page-head-banner__date i {
+    color: #03600f;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 575.98px) {
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__inner,
+    body.assessment-app.assessment-portal-premium .assessment-page-head-banner__inner {
+        padding: 1rem;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__title,
+    body.assessment-app.assessment-portal-premium .assessment-page-head-banner__title,
+    body.assessment-app.assessment-portal-premium #pageTitle {
+        font-size: 1.35rem;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__meta,
+    body.assessment-app.assessment-portal-premium .assessment-page-head-banner__meta {
+        width: 100%;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-dashboard-premium .assessment-page-head-banner__date,
+    body.assessment-app.assessment-portal-premium .assessment-page-head-banner__date {
+        width: 100%;
+        justify-content: center;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-page-head-banner__meta .assessment-page-breadcrumb {
+        width: 100%;
+    }
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb {
+    padding: 0.45rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb .breadcrumb {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb .breadcrumb-item a {
+    color: #03600f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb .breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb .breadcrumb-item.active {
+    color: #64748b;
+}
+
+@media (max-width: 575.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-page-breadcrumb {
+        width: 100%;
+    }
+}
+
+/* Assessment mobile floating bottom navigation (replaces sidebar on phones) */
+@media (max-width: 991.98px) {
+    body.assessment-mobile-bottom-nav-enabled {
+        padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Match students/finance mobile header spacing when toggler is hidden */
+    body.assessment-mobile-bottom-nav-enabled .navbar .container-fluid {
+        padding-left: 0.7rem !important;
+    }
+
+    body.assessment-mobile-bottom-nav-enabled .navbar .navbar-brand {
+        margin-left: 0.1rem !important;
+    }
+
+    body.assessment-mobile-bottom-nav-enabled .navbar .navbar-brand img {
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+    }
+
+    body.assessment-mobile-bottom-nav-enabled #sidebarMenu,
+    body.assessment-mobile-bottom-nav-enabled #mobileSidebarOverlay {
+        display: none !important;
+    }
+
+    body.assessment-mobile-bottom-nav-enabled .navbar .navbar-toggler {
+        display: none !important;
+    }
+
+    .assessment-mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        width: min(94vw, 520px);
+        z-index: 1200;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        display: grid;
+        /* Assessment has five destinations. Keeping five equal columns prevents
+           Settings from wrapping onto a second row on smaller phones. */
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.15rem;
+        padding: 0.55rem 0.35rem 0.35rem;
+    }
+
+    .assessment-mobile-bottom-nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #5f6c7b;
+        border-radius: 12px;
+        min-height: 56px;
+        gap: 0.1rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .assessment-mobile-bottom-nav__link i {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .assessment-mobile-bottom-nav__link.is-active {
+        background: #03600f;
+        color: #ffffff;
+    }
+
+    /* Removed special styling for Balances button - now uses normal positioning */
+}
+
+/* Assessment settings: mobile tabs (Account / Password) */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-settings-mobile-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        padding: 0.35rem;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-settings-mobile-tab {
+        border: 1px solid rgba(3, 96, 15, 0.24);
+        background: #f5faf6;
+        color: #365546;
+        border-radius: 10px;
+        min-height: 40px;
+        font-size: 0.85rem;
+        font-weight: 800;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-settings-mobile-tab.is-active {
+        background: #03600f;
+        color: #ffffff;
+        border-color: #03600f;
+        box-shadow: 0 6px 14px rgba(3, 96, 15, 0.2);
+    }
+
+    body.assessment-app.assessment-portal-premium #assessmentSettingsPasswordSection.is-hidden-mobile,
+    body.assessment-app.assessment-portal-premium #assessmentSettingsAccountSection.is-hidden-mobile {
+        display: none !important;
+    }
+}
+
+/* KPI tiles */
+body.assessment-app.assessment-portal-premium .csdl-stat-tile {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    background: #fff !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+    border-left: none !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.assessment-app.assessment-portal-premium .csdl-stat-tile:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 36px rgba(16, 24, 40, 0.08),
+        0 4px 12px rgba(16, 24, 40, 0.04);
+}
+
+body.assessment-app.assessment-portal-premium .csdl-stat-tile .stat-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #64748b !important;
+    margin-bottom: 0.35rem;
+}
+
+body.assessment-app.assessment-portal-premium .csdl-stat-tile .stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1d2939 !important;
+    letter-spacing: -0.02em;
+}
+
+body.assessment-app.assessment-portal-premium .csdl-stat-tile .stat-hint {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.35rem;
+    line-height: 1.3;
+}
+
+@media (max-width: 576px) {
+    body.assessment-app.assessment-portal-premium .csdl-stat-tile .stat-value {
+        font-size: 1.85rem;
+    }
+}
+
+/* Main data / table cards */
+body.assessment-app.assessment-portal-premium .assessment-main-card,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card > .card-header,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card > .card-header {
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid #edf1f5 !important;
+    padding: 1rem 1.25rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-card-sub,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-card-sub {
+    font-size: 0.8125rem;
+    color: #64748b;
+    max-width: 36rem;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .assessment-table-scroll,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-table-scroll {
+    border-top: 1px solid #eef1f5;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .table-assessment thead th,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card .table-assessment thead th {
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b !important;
+    background: #f1f4f8 !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    padding-top: 0.85rem !important;
+    padding-bottom: 0.85rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .table-assessment tbody td,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card .table-assessment tbody td {
+    font-size: 0.835rem;
+    color: #334155;
+    border-bottom: 1px solid #eef1f5;
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .table-assessment tbody tr:hover,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card .table-assessment tbody tr:hover {
+    background: #f8fafc;
+}
+
+body.assessment-app.assessment-portal-premium #mainContent #tableFooter {
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid #edf1f5;
+}
+
+@media (max-width: 767.98px) {
+    body.assessment-app.assessment-portal-premium #mainContent #tableFooter > .d-none.d-md-flex,
+    body.assessment-app.assessment-portal-premium #loansModalPagination > .d-none.d-md-flex {
+        display: none !important;
+    }
+
+    body.assessment-app.assessment-portal-premium #mainContent #tableFooter {
+        justify-content: center !important;
+        padding: 0.5rem 1rem 0.75rem !important;
+        border-top: none !important;
+        background: transparent;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-reports-table-wrap,
+    body.assessment-app.assessment-portal-premium .assessment-loans-table-wrap,
+    body.assessment-app.assessment-dashboard-premium .assessment-recent-pn-table-wrap {
+        max-height: none;
+    }
+
+    body.assessment-app.assessment-dashboard-premium .assessment-recent-pn-body {
+        padding-bottom: 0.25rem;
+    }
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .btn-outline-secondary,
+body.assessment-app.assessment-portal-premium .assessment-dash-main-card #exportActivityBtn {
+    border-radius: 10px;
+    border-color: #cbd5e1;
+    font-weight: 500;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-main-card .btn-success.btn-sm {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+body.assessment-app.assessment-portal-premium #exportActivityBtn {
+    border-color: #cbd5e1;
+    color: #475569;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+body.assessment-app.assessment-portal-premium #exportActivityBtn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    color: #1e293b;
+}
+
+/* Chart side cards */
+body.assessment-app.assessment-portal-premium .assessment-chart-card,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-chart-card > .card-header,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card > .card-header {
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid #edf1f5 !important;
+    padding: 0.85rem 1.1rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-chart-card > .card-header h6,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card > .card-header h6 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1d2939;
+    letter-spacing: -0.01em;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-chart-card > .card-body,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card > .card-body {
+    background: #fafbfc;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-chart-card canvas,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card canvas {
+    max-height: 220px;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-chart-body,
+body.assessment-app.assessment-portal-premium .assessment-dash-chart-card .assessment-chart-body {
+    min-height: 200px;
+}
+
+/* List modals */
+body.assessment-app.assessment-portal-premium #loansListModal .modal-content {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(16, 24, 40, 0.12);
+}
+
+body.assessment-app.assessment-portal-premium #loansListModal .modal-header {
+    border-radius: 16px 16px 0 0;
+}
+
+body.assessment-app.assessment-portal-premium #viewLoanModal .modal-content {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+body.assessment-app.assessment-portal-premium #actionLoanModal .modal-content,
+body.assessment-app.assessment-portal-premium #pnTaggingModal .modal-content {
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+}
+
+/* Settings */
+body.assessment-app.assessment-portal-premium .assessment-settings-card.card {
+    border: 1px solid #e6ebf1 !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03) !important;
+    overflow: hidden;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card .card-header {
+    border-bottom: 1px solid #edf1f5 !important;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%) !important;
+    padding: 1rem 1.25rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card .card-header h5,
+body.assessment-app.assessment-portal-premium .assessment-settings-card .card-header h6 {
+    color: #1d2939 !important;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card .card-body {
+    padding: 1.35rem 1.5rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card .form-control,
+body.assessment-app.assessment-portal-premium .assessment-settings-card .form-select {
+    border-radius: 10px;
+    border-color: #dce3ea;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card .form-control:focus,
+body.assessment-app.assessment-portal-premium .assessment-settings-card .form-select:focus {
+    border-color: rgba(3, 96, 15, 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-card #profileImagePreview {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+
+/* Undo csdl-dashboard.css mobile rule that forces .row.mb-3.g-3 columns to 50% (meant for KPI stat rows only). */
+@media (max-width: 576px) {
+    body.assessment-app.assessment-portal-premium .assessment-settings-card .row.mb-3.g-3 > [class*="col-"],
+    body.assessment-app.assessment-portal-premium .assessment-settings-card .row.mb-4.g-3 > [class*="col-"] {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/*
+ * Recent PN tagging — mobile toolbar matches Active Loans (Untagged):
+ * full-width action row [funnel] [Refresh flex] [Export flex]; search row aligns icon column with funnel.
+ */
+@media (max-width: 767.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row {
+        width: 100% !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        gap: 0.5rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row > .dropdown {
+        flex: 0 0 auto !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row > .dropdown .btn {
+        width: 2.5rem;
+        min-width: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row > .btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-mobile-search {
+        width: 100%;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-mobile-search .input-group {
+        width: 100%;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-mobile-search .input-group-text {
+        flex: 0 0 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row {
+        width: auto !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-dash-main-card .assessment-recent-pn-actions-row > .btn {
+        flex: 0 0 auto !important;
+    }
+}
+
+/*
+ * Assessment mobile layout:
+ * - Stat KPI cards: 2×2 grid (50% width)
+ * - Table + chart sections: full-width vertical stack
+ */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-portal-premium .row.assessment-stat-row.g-3 > [class*="col-"],
+    body.assessment-app.assessment-portal-premium .row.mb-4.g-3.assessment-stat-row > [class*="col-"],
+    body.assessment-app.assessment-portal-premium .row.mb-3.g-3.assessment-stat-row > [class*="col-"] {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .row.assessment-stat-row {
+        --bs-gutter-x: 0.5rem !important;
+        --bs-gutter-y: 0.5rem !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .row.assessment-stack-mobile.g-3 > [class*="col-"],
+    body.assessment-app.assessment-portal-premium .row.mb-4.g-3.assessment-stack-mobile > [class*="col-"] {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .row.assessment-stack-mobile {
+        --bs-gutter-x: 0 !important;
+        --bs-gutter-y: 0.75rem !important;
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .row.assessment-stack-mobile .col-lg-4.d-flex {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium.assessment-mobile-bottom-nav-enabled #mainContent {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-stat-row .stat-body {
+        min-height: 84px !important;
+        padding: 0.65rem 0.5rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-stat-row .stat-title {
+        font-size: 0.62rem !important;
+        line-height: 1.2 !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-stat-row .stat-value {
+        font-size: 1.35rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-chart-card .assessment-chart-body,
+    body.assessment-app.assessment-portal-premium .assessment-dash-chart-card .assessment-chart-body {
+        min-height: 220px;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-chart-card canvas,
+    body.assessment-app.assessment-portal-premium .assessment-dash-chart-card canvas {
+        max-height: 260px;
+    }
+}
+
+@media (max-width: 576px) {
+    body.assessment-app.assessment-portal-premium .row.assessment-stack-mobile > [class*="col-"] {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-stat-row > [class*="col-"] {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        width: 50% !important;
+    }
+
+    /* Reports has three KPIs. Let the final payment card occupy its own
+       complete row instead of leaving a half-empty fourth slot. */
+    body.assessment-app.assessment-portal-premium .assessment-stat-row > .assessment-stat-card--partial {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-chart-card .assessment-chart-body,
+    body.assessment-app.assessment-portal-premium .assessment-dash-chart-card .assessment-chart-body {
+        min-height: 220px;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-chart-card canvas,
+    body.assessment-app.assessment-portal-premium .assessment-dash-chart-card canvas {
+        max-height: 240px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 991.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-stat-row > .assessment-stat-card--partial {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+
+/* Assessment reports has three cards. Let the final payment card fill the
+   second row on mobile/tablet layouts. This rule is deliberately last because
+   legacy shared styles force generic report cards to half width. */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-stat-row > .assessment-stat-card--partial {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+body.assessment-app.assessment-portal-premium #otpModal .modal-content {
+    border-radius: 16px;
+}
+
+/* Active loans — row action menu (escapes scroll clip; pairs with bindActionMenuPositionFix) */
+body.assessment-app.assessment-portal-premium .assessment-main-card:has(#loansTable) {
+    overflow: visible;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable tbody tr,
+body.assessment-app.assessment-portal-premium #loansTable tbody td {
+    overflow: visible !important;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd > summary.action-menu {
+    list-style: none;
+    cursor: pointer;
+    min-width: 36px !important;
+    width: 36px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 10px !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd > summary.action-menu:hover {
+    border-color: #03600f !important;
+    color: #03600f !important;
+    background: rgba(3, 96, 15, 0.06);
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd > summary::-webkit-details-marker {
+    display: none;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd-menu {
+    min-width: 160px;
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow:
+        0 12px 32px rgba(16, 24, 40, 0.12),
+        0 4px 12px rgba(16, 24, 40, 0.06) !important;
+    padding: 0.4rem !important;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd-item {
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #334155;
+}
+
+body.assessment-app.assessment-portal-premium #loansTable .action-dd-item:hover {
+    background: #f1f5f9 !important;
+    color: #03600f !important;
+}
+
+/* Assessment modals: use the available phone viewport and keep actions reachable. */
+@media (max-width: 991.98px) {
+    body.assessment-app.assessment-mobile-bottom-nav-enabled.modal-open .assessment-mobile-bottom-nav {
+        display: none !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal {
+        padding: 0.5rem !important;
+        overflow: hidden !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-dialog {
+        width: 100%;
+        max-width: none !important;
+        height: auto;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+        min-height: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-dialog.modal-dialog-centered {
+        min-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-content {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        max-height: calc(100dvh - 1rem - env(safe-area-inset-bottom, 0px)) !important;
+        overflow: hidden;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-header,
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-footer {
+        flex-shrink: 0;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-footer {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: flex-end !important;
+        gap: 0.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled .assessment-mobile-safe-modal .modal-footer .btn {
+        width: auto !important;
+        min-height: 44px;
+        margin: 0 !important;
+        align-self: auto !important;
+        order: auto !important;
+    }
+
+    /* Override the shared CSDL loan-modal rule that stacks Close in the center. */
+    body.assessment-app.assessment-mobile-bottom-nav-enabled #viewLoanModal.assessment-mobile-safe-modal .modal-footer {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+
+    body.assessment-app.assessment-mobile-bottom-nav-enabled #viewLoanModal.assessment-mobile-safe-modal .modal-footer .btn-secondary {
+        width: auto !important;
+        align-self: auto !important;
+        order: auto !important;
+    }
+}
+
+/* Assessment Settings — modern account panel while preserving all existing forms. */
+body.assessment-app.assessment-portal-premium .assessment-settings-modern {
+    width: 100%;
+    margin: 0 auto 2rem;
+    border: 1px solid #e4eaf0 !important;
+    border-radius: 20px !important;
+    background: #f6f8fb;
+    box-shadow: 0 14px 32px rgba(16, 24, 40, 0.07) !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern > .card-body {
+    padding: 1.25rem !important;
+    background: transparent;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .portal-settings-accordion-item {
+    border-color: #e2e8f0 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 2px 7px rgba(16, 24, 40, 0.035);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .portal-settings-accordion-item:has(.accordion-button:not(.collapsed)) {
+    border-color: rgba(3, 96, 15, 0.3) !important;
+    box-shadow: 0 8px 20px rgba(3, 96, 15, 0.07);
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .accordion-button {
+    min-height: 70px;
+    padding: 1rem 1.2rem !important;
+    color: #172b1d !important;
+    font-size: 0.86rem !important;
+    letter-spacing: 0.04em !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .accordion-button > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 0.8rem !important;
+    color: #03600f !important;
+    background: #e9f7ed;
+    border-radius: 10px;
+    font-size: 1rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .accordion-body {
+    padding: 1.25rem 1.4rem 1.5rem !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern form {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
+/* Keep the email field full width on phones; dashboard KPI styles otherwise target grid columns. */
+body.assessment-app.assessment-portal-premium .assessment-settings-email-field,
+body.assessment-app.assessment-portal-premium .assessment-settings-email-field #updEmail {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-email-field {
+    flex: 0 0 100% !important;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .form-label {
+    color: #344054;
+    font-size: 0.82rem;
+}
+
+body.assessment-app.assessment-portal-premium .assessment-settings-modern .portal-settings-logout-panel {
+    margin-top: 1rem;
+    border-radius: 15px;
+}
+
+@media (max-width: 575.98px) {
+    body.assessment-app.assessment-portal-premium .assessment-settings-modern {
+        margin-bottom: 6.5rem;
+        border-radius: 16px !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-settings-modern > .card-body {
+        padding: 0.75rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-settings-modern .accordion-button {
+        min-height: 62px;
+        padding: 0.8rem 0.9rem !important;
+    }
+
+    body.assessment-app.assessment-portal-premium .assessment-settings-modern .accordion-body {
+        padding: 1rem !important;
+    }
+}
+@media (max-width: 767.98px) {
+    body.assessment-app.assessment-mobile-centered-headings #mainContent :is(.assessment-dash-main-card, .assessment-main-card, #balanceRecordsSection, #pendingFinanceSection) > .card-header > .d-flex:first-child > div:first-child {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    body.assessment-app.assessment-mobile-centered-headings #mainContent :is(.assessment-dash-main-card, .assessment-dash-chart-card, .assessment-main-card, #balanceRecordsSection, #pendingFinanceSection) > .card-header h6 {
+        width: 100%;
+        text-align: center !important;
+    }
+}

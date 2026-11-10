@@ -1,0 +1,44 @@
+/* Shared card-list modal layout for all masterfiles. */
+.masterfile-card-modal .modal-title i {
+    vertical-align: -0.05em;
+}
+
+.masterfile-card-modal .modal-footer {
+    justify-content: space-between;
+}
+
+.masterfile-card-modal [data-card-modal-count] {
+    min-width: 0;
+}
+
+@media (max-width: 767.98px) {
+    .masterfile-card-modal .table-responsive {
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .masterfile-card-modal .table {
+        min-width: 42rem;
+        table-layout: auto;
+    }
+
+    .masterfile-card-modal .table th,
+    .masterfile-card-modal .table td {
+        white-space: nowrap;
+        padding: 0.65rem 0.75rem !important;
+    }
+
+    .masterfile-card-modal .modal-footer {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        justify-content: space-between !important;
+    }
+
+    .masterfile-card-modal .modal-footer .btn-secondary {
+        width: auto !important;
+        min-width: 6.25rem;
+        flex: 0 0 auto;
+    }
+}

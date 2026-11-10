@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Financial Assistance - Login</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+    <link href="../../assets/css/auth/login.css?v=20261022-large-header-logo3" rel="stylesheet">
+</head>
+<body class="login-page auth-gate-pending">
+    <div id="authGateOverlay" class="auth-gate-overlay" role="status" aria-live="polite" aria-label="Checking session">
+        <div class="auth-gate-card">
+            <div class="auth-gate-spinner" role="status" aria-hidden="true"></div>
+            <p class="mb-0 mt-2">Checking session...</p>
+        </div>
+    </div>
+    <div class="container-fluid p-0 vh-100 auth-login-shell" data-auth-gated-content hidden>
+        <div class="row g-0 h-100 auth-login-row">
+            <div class="col-md-7 bg-light d-flex flex-column justify-content-center align-items-center p-5 position-relative auth-brand-panel">
+                <div class="text-center mb-3 brand-stack" style="margin-top:-12px;">
+                    <div class="mb-0">
+                        <img src="../../assets/images/csdl-logo.png" alt="CSDL Logo" style="width: 600px; height: 300px; object-fit: contain;">
+                    </div>
+                    <p class="text-muted">PHINMA Cagayan de Oro College</p>
+                </div>
+                <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: 0;">
+                    <div class="position-absolute" style="width: 200px; height: 300px; background-color: rgba(3, 96, 15, 0.10); top: 10%; left: 5%; transform: skew(-15deg);"></div>
+                    <div class="position-absolute" style="width: 150px; height: 200px; background-color: rgba(3, 96, 15, 0.15); top: 15%; left: 25%; transform: skew(-15deg);"></div>
+                    <div class="position-absolute" style="width: 250px; height: 350px; background-color: rgba(3, 96, 15, 0.20); bottom: 10%; right: 15%; transform: skew(-15deg);"></div>
+                </div>
+            </div>
+            <div class="col-md-5 bg-white d-flex align-items-center justify-content-center auth-form-panel">
+                <div class="login-form-container p-4">
+                    <div class="auth-education-brand mb-4 d-flex align-items-center justify-content-center gap-3">
+                        <div class="auth-seal-slot" data-auth-gated-content hidden>
+                            <button class="auth-privacy-seal" type="button" data-bs-toggle="modal" data-bs-target="#privacySealModal" aria-label="View DPO/DPS registration seal" aria-haspopup="dialog" aria-controls="privacySealModal">
+                                <img src="../../assets/images/dpo-dps-registration-seal.png" alt="National Privacy Commission DPO/DPS registered seal, valid until 23 September 2027" width="508" height="780">
+                            </button>
+                        </div>
+                        <div class="auth-education-identity">
+                            <img class="auth-education-logo" src="../../assets/images/logo.png" alt="PHINMA Education">
+                            <div class="text-start auth-education-copy">
+                                <div class="fw-semibold auth-education-name">PHINMA EDUCATION</div>
+                                <div class="text-muted auth-education-tagline">MAKING LIVES BETTER THROUGH EDUCATION</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-mobile-intro d-md-none">
+                        <span class="auth-mobile-eyebrow">STUDENT FINANCIAL ASSISTANCE</span>
+                        <p>Access your loan application, updates, and student support in one secure place.</p>
+                    </div>
+                    
+                    <h5 class="auth-signin-title mb-4 border-bottom pb-2">Sign In</h5>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="school_id" class="form-label small fw-bold">School ID</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="school_id" name="school_id" placeholder="Enter School ID" autocomplete="username" required tabindex="1">
+                                <span class="input-group-text bg-white border-start-0" tabindex="-1">
+                                    <i class="bi bi-person-fill text-muted"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label small fw-bold">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" autocomplete="current-password" required tabindex="2">
+                                <span class="input-group-text bg-white border-start-0 password-toggle" style="cursor: pointer;" id="togglePassword" tabindex="-1">
+                                    <i class="bi bi-eye-slash-fill text-muted"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div id="loginTurnstile" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+                            <p id="turnstileStatus" class="small text-muted mt-2 mb-0 d-none" role="status" aria-live="polite"></p>
+                            <noscript><p class="small text-danger">Please enable JavaScript to complete security verification and sign in.</p></noscript>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success py-2 border-0" id="loginButton" style="background: linear-gradient(135deg, #03600f 0%, #0a8f1b 100%);" tabindex="4" disabled>
+                                <span id="loginButtonText">Sign In</span>
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <span id="loginSpinner" class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3 gap-2 flex-wrap">
+                            <a href="forget-password.html" class="text-decoration-none fw-semibold" id="forgotPasswordLink" tabindex="5" style="color: #03600f; transition: all 0.3s;">
+                                <i class="bi bi-key me-1"></i>Forgot Password?
+                            </a>
+                            <a href="register.html" class="text-decoration-none fw-semibold" tabindex="6" style="color: #03600f; transition: all 0.3s;">
+                                <i class="bi bi-person-plus me-1"></i>Register
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade auth-seal-modal" id="privacySealModal" tabindex="-1" aria-labelledby="privacySealTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <h2 class="visually-hidden" id="privacySealTitle">DPO / DPS registration seal</h2>
+                <button class="auth-seal-close" type="button" data-bs-dismiss="modal" aria-label="Close registration seal">
+                    <i class="bi bi-x-lg" aria-hidden="true"></i>
+                </button>
+                <div class="modal-body">
+                    <img class="auth-seal-preview" src="../../assets/images/dpo-dps-registration-seal.png" alt="National Privacy Commission DPO/DPS registered seal, valid until 23 September 2027" width="508" height="780">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed" data-auth-gated-content hidden style="bottom: 20px; right: 20px; z-index: 1000;">
+        <div id="accountStatusPopup" class="d-none" style="position: absolute; bottom: 60px; right: 0px; width: 400px; max-height: 600px;">
+            <div class="card shadow-lg border-0" style="border-radius: 15px; background: #ffffff; border: 2px solid #03600f;">
+                <div class="card-header bg-gradient border-0" style="border-radius: 13px 13px 0 0; background: linear-gradient(135deg, #ffffff 0%, #f2fff4 100%);">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <h6 class="mb-0 fw-bold text-success" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                            <i class="bi bi-info-circle me-2"></i>Quick Help
+                        </h6>
+                        <button type="button" class="btn-close" id="closeStatusPopup"></button>
+                    </div>
+                    <ul class="nav nav-tabs nav-tabs-custom border-0" id="quickviewTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-pane" type="button" role="tab" aria-controls="faq-pane" aria-selected="true">
+                                <i class="bi bi-question-circle me-1"></i>FAQs
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="status-tab" data-bs-toggle="tab" data-bs-target="#status-pane" type="button" role="tab" aria-controls="status-pane" aria-selected="false">
+                                <i class="bi bi-eye me-1"></i>Loan Status
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="registration-status-tab" data-bs-toggle="tab" data-bs-target="#registration-status-pane" type="button" role="tab" aria-controls="registration-status-pane" aria-selected="false">
+                                <i class="bi bi-person-check me-1"></i>Registration
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0" style="background: #ffffff; max-height: 500px; overflow-y: auto;">
+                    <div class="tab-content" id="quickviewTabContent">
+                        <div class="tab-pane fade show active" id="faq-pane" role="tabpanel" aria-labelledby="faq-tab">
+                            <div class="p-3">
+                                <div class="accordion accordion-flush" id="faqAccordion">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="status-pane" role="tabpanel" aria-labelledby="status-tab">
+                            <div class="p-3">
+                                <div class="mb-3">
+                                    <label for="statusSchoolId" class="form-label small fw-bold text-black mb-2">
+                                        <i class="bi bi-search me-1 text-success"></i>Enter Student ID
+                                    </label>
+                                    <div class="d-flex align-items-stretch gap-2 loan-status-search">
+                                        <input type="text" class="form-control form-control-sm border-2 flex-grow-1" id="statusSchoolId" placeholder="Student ID..." style="border-radius: 8px; border-color: #03600f;">
+                                        <button type="button" class="btn btn-success btn-sm border-0 flex-shrink-0" id="checkStatusBtn" style="border-radius: 8px;">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="accountStatusResult" class="d-none mt-3">
+                                    <div class="bg-light rounded-2 p-3 border" style="border-radius: 10px; border: 1px solid #03600f;">
+                                        <div id="statusContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="registration-status-pane" role="tabpanel" aria-labelledby="registration-status-tab">
+                            <div class="p-3">
+                                <div class="mb-3">
+                                    <label for="regStatusSchoolId" class="form-label small fw-bold text-black mb-2">
+                                        <i class="bi bi-search me-1 text-success"></i>Enter Student ID
+                                    </label>
+                                    <div class="d-flex align-items-stretch gap-2 loan-status-search">
+                                        <input type="text" class="form-control form-control-sm border-2 flex-grow-1" id="regStatusSchoolId" placeholder="Student ID..." style="border-radius: 8px; border-color: #03600f;">
+                                        <button type="button" class="btn btn-success btn-sm border-0 flex-shrink-0" id="checkRegStatusBtn" style="border-radius: 8px;">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="registrationStatusResult" class="d-none mt-3">
+                                    <div class="bg-light rounded-2 p-3 border" style="border-radius: 10px; border: 1px solid #03600f;">
+                                        <div id="registrationStatusContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute; bottom: -10px; right: 20px; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 15px solid #f2fff4;"></div>
+        </div>
+        <button type="button" class="btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center" id="accountStatusBtn" 
+                style="width: 45px; height: 45px; background: linear-gradient(135deg, #03600f 0%, #0a8f1b 100%); border: none; transition: all 0.3s ease; padding: 0;" 
+                title="Quick Help, Loan Status & Registration Status"
+                onmouseover="this.style.transform='scale(1.1)'"
+                onmouseout="this.style.transform='scale(1)'">
+            <i class="bi bi-info-circle fs-5 text-white"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <meta name="csrf-token" content="">
+    <script src="../../js/auth/auth-secondary-actions.js"></script>
+    <script type="module" src="../../js/auth/auth-login.js?v=20260930-password-dismiss"></script>
+</body>
+</html>

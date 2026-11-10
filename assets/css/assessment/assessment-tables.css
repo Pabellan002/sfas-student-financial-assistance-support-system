@@ -1,0 +1,341 @@
+/**
+ * Assessment module — mobile-friendly data tables (table layout preserved).
+ * Horizontal scroll with readable type, aligned headers/cells, sticky thead.
+ */
+
+body.assessment-app .assessment-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+body.assessment-app .assessment-table-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+body.assessment-app .assessment-table-scroll::-webkit-scrollbar-thumb {
+    background: rgba(3, 96, 15, 0.45);
+    border-radius: 4px;
+}
+
+/* Base table: prevent columns from collapsing narrower than content */
+body.assessment-app .table-assessment {
+    width: 100%;
+    margin-bottom: 0;
+    --assessment-cell-pad-y: 0.5rem;
+    --assessment-cell-pad-x: 0.5rem;
+}
+
+body.assessment-app .table-assessment thead th {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: var(--assessment-cell-pad-y) var(--assessment-cell-pad-x);
+}
+
+body.assessment-app .table-assessment tbody td {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    vertical-align: middle;
+    padding: var(--assessment-cell-pad-y) var(--assessment-cell-pad-x);
+}
+
+body.assessment-app .table-assessment .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Sticky header inside scroll container */
+body.assessment-app .assessment-table-scroll .table-assessment thead.table-light th,
+body.assessment-app .assessment-table-scroll .table-assessment thead th {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background-color: var(--bs-table-bg, #f8f9fa);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Min widths: modal / compact 6-column lists */
+body.assessment-app #loansListModal .table-assessment {
+    min-width: 720px;
+    table-layout: auto;
+}
+body.assessment-app #loansListModal .table-assessment th:nth-child(1),
+body.assessment-app #loansListModal .table-assessment td:nth-child(1) {
+    min-width: 132px;
+}
+
+body.assessment-app #loansListModal .table-assessment th:nth-child(3),
+body.assessment-app #loansListModal .table-assessment td:nth-child(3) {
+    min-width: 140px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Dashboard — recent activity (7 columns now) */
+body.assessment-app #dashboardContent .assessment-table-scroll .table-assessment {
+    min-width: 640px;
+    table-layout: auto;
+    width: 100%;
+}
+
+/* Loans management main grid (many columns) */
+body.assessment-app #loansTable.table-assessment {
+    min-width: 1200px;
+}
+
+body.assessment-app #loansTable.table-assessment th:nth-child(2),
+body.assessment-app #loansTable.table-assessment td:nth-child(2) {
+    min-width: 140px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Actions column — single row of icon buttons */
+body.assessment-app #loansTable.table-assessment th.assessment-actions-col,
+body.assessment-app #loansTable.table-assessment td.assessment-actions-col,
+body.assessment-app #loansTable.table-assessment th:last-child,
+body.assessment-app #loansTable.table-assessment td:last-child {
+    min-width: 168px;
+    width: 168px;
+    white-space: nowrap;
+    vertical-align: middle;
+    overflow: visible !important;
+}
+
+body.assessment-app #loansTable .assessment-intake-actions {
+    display: inline-block;
+}
+
+body.assessment-app #loansTable .assessment-intake-actions .inline-row-actions {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+body.assessment-app #loansTable .assessment-intake-actions .inline-action-btn {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* Reports table (7 columns) */
+body.assessment-app #reportsTable.table-assessment {
+    min-width: 900px;
+}
+
+body.assessment-app #reportsTable.table-assessment th:nth-child(3),
+body.assessment-app #reportsTable.table-assessment td:nth-child(3) {
+    min-width: 140px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+@media (max-width: 767.98px) {
+    body.assessment-app .table-assessment {
+        --assessment-cell-pad-y: 0.5625rem;
+        --assessment-cell-pad-x: 0.5rem;
+    }
+
+    body.assessment-app .table-assessment thead th {
+        font-size: 0.75rem;
+    }
+
+    body.assessment-app .table-assessment tbody td {
+        font-size: 0.8125rem;
+    }
+
+    body.assessment-app .table-assessment .badge {
+        font-size: 0.7rem;
+    }
+
+    body.assessment-app #loansListModal.modal.show .modal-body {
+        padding-bottom: 0.5rem;
+    }
+}
+
+/* Win over csdl-loans-management.css mobile !important rules on Active Loans */
+@media (max-width: 991.98px) {
+    body.assessment-app #loansTable.table-assessment thead th {
+        font-size: 0.8125rem !important;
+        padding: 0.5625rem 0.5rem !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td {
+        font-size: 0.8125rem !important;
+        padding: 0.5625rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body.assessment-app #loansTable.table-assessment thead th {
+        font-size: 0.75rem !important;
+        white-space: nowrap !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td {
+        font-size: 0.8125rem !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td:nth-child(2) {
+        white-space: normal !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment .badge {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.assessment-app #loansTable.table-assessment thead th {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.45rem !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td {
+        font-size: 0.8125rem !important;
+        padding: 0.5rem 0.45rem !important;
+    }
+}
+
+/* Avoid duplicate scroll hint from shared loans CSS ::after on .table-responsive */
+body.assessment-app .assessment-table-scroll.table-responsive::after {
+    content: none !important;
+    display: none !important;
+    padding: 0 !important;
+}
+
+/* Mobile: horizontal scroll tables with sticky first column */
+@media (max-width: 767.98px) {
+    body.assessment-app .assessment-table-scroll {
+        display: block;
+        width: 100%;
+        max-height: min(55vh, 420px);
+        overflow-x: auto !important;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment {
+        display: table !important;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    body.assessment-app #dashboardContent .assessment-table-scroll .table-assessment {
+        min-width: 580px;
+    }
+
+    body.assessment-app #reportsTable.table-assessment {
+        min-width: 820px;
+    }
+
+    body.assessment-app #loansTable.table-assessment {
+        min-width: 1080px;
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment thead th,
+    body.assessment-app .assessment-table-scroll .table-assessment tbody td {
+        white-space: nowrap;
+        font-size: 0.75rem;
+        padding: 0.45rem 0.4rem;
+    }
+
+    body.assessment-app #dashboardContent .assessment-table-scroll .table-assessment tbody td:nth-child(2),
+    body.assessment-app #dashboardContent .assessment-table-scroll .table-assessment thead th:nth-child(2),
+    body.assessment-app #reportsTable.table-assessment tbody td:nth-child(3),
+    body.assessment-app #reportsTable.table-assessment thead th:nth-child(3) {
+        min-width: 120px;
+        max-width: 150px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td:nth-child(2),
+    body.assessment-app #loansTable.table-assessment thead th:nth-child(2) {
+        min-width: 120px;
+        max-width: 150px;
+        white-space: normal !important;
+        word-break: break-word;
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment thead th {
+        position: sticky;
+        top: 0;
+        z-index: 6;
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment thead th:first-child,
+    body.assessment-app .assessment-table-scroll .table-assessment tbody td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 4;
+        background-color: #fff;
+        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment thead th:first-child {
+        z-index: 9;
+        background-color: var(--bs-table-bg, #f8f9fa);
+    }
+
+    body.assessment-app #loansTable.table-assessment thead th:last-child,
+    body.assessment-app #loansTable.table-assessment tbody td:last-child {
+        position: sticky;
+        right: 0;
+        z-index: 5;
+        background-color: #fff;
+        box-shadow: -2px 0 4px rgba(0, 0, 0, 0.06);
+        min-width: 168px !important;
+        width: 168px;
+    }
+
+    body.assessment-app #loansTable.table-assessment thead th:last-child {
+        z-index: 10;
+        background-color: var(--bs-table-bg, #f8f9fa);
+    }
+
+    /* Let the Actions column move with the horizontally scrolled table. */
+    body.assessment-app #loansTable.table-assessment thead th.assessment-actions-col,
+    body.assessment-app #loansTable.table-assessment tbody td.assessment-actions-col,
+    body.assessment-app #loansTable.table-assessment thead th:last-child,
+    body.assessment-app #loansTable.table-assessment tbody td:last-child {
+        position: static !important;
+        right: auto !important;
+        z-index: auto !important;
+        box-shadow: none !important;
+    }
+
+    body.assessment-app .assessment-table-scroll .table-assessment tbody tr:hover td:first-child,
+    body.assessment-app #loansTable.table-assessment tbody tr:hover td:last-child {
+        background-color: var(--bs-table-hover-bg, rgba(0, 0, 0, 0.075));
+    }
+
+    body.assessment-app .assessment-scroll-hint {
+        font-size: 0.7rem;
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    body.assessment-app #loansTable.table-assessment {
+        min-width: 1020px !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment thead th {
+        font-size: 0.68rem !important;
+        padding: 0.4rem 0.3rem !important;
+    }
+
+    body.assessment-app #loansTable.table-assessment tbody td {
+        font-size: 0.72rem !important;
+        padding: 0.4rem 0.3rem !important;
+    }
+}

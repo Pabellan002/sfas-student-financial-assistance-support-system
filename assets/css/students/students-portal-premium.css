@@ -1,0 +1,827 @@
+/**
+ * Student portal premium shell — balances, settings (and any page using body.student-portal-premium).
+ * Matches dashboard mood: soft background, elevated panels, refined tables/forms.
+ */
+
+body.student-portal-premium {
+    background:
+        radial-gradient(1200px 400px at 8% -10%, rgba(3, 96, 15, 0.09), transparent 60%),
+        radial-gradient(900px 300px at 100% 0%, rgba(25, 135, 84, 0.08), transparent 60%),
+        #f6f8fb;
+}
+
+/* Student settings destination menu */
+body.portal-settings-page .student-settings-menu__item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 104px;
+    padding: 1rem 1.1rem;
+    color: #1f2937;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Student Settings home — compact, scannable account actions. */
+body.portal-settings-page .student-settings-menu__item:hover {
+    color: #03600f;
+    border-color: rgba(3, 96, 15, 0.35);
+    box-shadow: 0 10px 24px rgba(3, 96, 15, 0.1);
+    transform: translateY(-2px);
+}
+
+body.portal-settings-page .student-settings-menu__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    color: #03600f;
+    background: #eaf7ee;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+body.portal-settings-page .student-settings-menu__item span:nth-child(2) {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+body.portal-settings-page .student-settings-menu__item small {
+    margin-top: 0.22rem;
+    color: #64748b;
+    line-height: 1.35;
+}
+
+body.portal-settings-page .student-settings-menu__arrow {
+    color: #94a3b8;
+}
+
+body.portal-settings-page .student-settings-back {
+    margin-bottom: 1rem;
+}
+
+body.portal-settings-page .student-settings-back a {
+    color: #03600f;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Focused settings pages use their page heading, not an accordion dropdown. */
+body.portal-settings-page .student-settings-focus-view .accordion-header {
+    display: none;
+}
+
+body.portal-settings-page .student-settings-focus-view .portal-settings-accordion-item {
+    border: 0 !important;
+    box-shadow: none;
+}
+
+body.portal-settings-page .student-settings-focus-view .accordion-collapse {
+    display: block;
+}
+
+body.portal-settings-page .student-settings-focus-view .accordion-body {
+    padding: 0 !important;
+}
+
+/* Keep each selected settings page focused and easy to scan on wide screens. */
+body.portal-settings-page .portal-settings-main-card.student-settings-detail-mode {
+    width: min(100%, 960px);
+    margin-right: auto;
+    margin-left: auto;
+    background: transparent;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+body.portal-settings-page .student-settings-detail-mode > .card-body {
+    padding: 0 !important;
+}
+
+body.portal-settings-page .student-settings-detail-mode .student-settings-back {
+    margin-bottom: 0.8rem;
+}
+
+body.portal-settings-page .student-settings-detail-mode .student-settings-focus-view .portal-settings-accordion-item {
+    padding: clamp(1rem, 2.2vw, 1.7rem);
+    background: #fff;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+body.portal-settings-page .student-settings-detail-mode .student-settings-focus-view form,
+body.portal-settings-page .student-settings-detail-mode .student-settings-focus-view > .portal-settings-accordion-item > .accordion-collapse > .accordion-body > :not(form) {
+    max-width: 100%;
+}
+
+body.portal-settings-page .student-profile-settings-hero {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+    padding: 1.15rem;
+    background: linear-gradient(135deg, #f0faf3 0%, #ffffff 72%);
+    border: 1px solid #d8ebdd;
+    border-radius: 16px;
+}
+
+body.portal-settings-page .student-profile-settings-hero__image-wrap {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+body.portal-settings-page .student-profile-settings-hero__image {
+    display: block;
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 16px rgba(3, 96, 15, 0.18);
+}
+
+body.portal-settings-page .student-profile-settings-hero__camera {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    cursor: pointer;
+    background: #03600f;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 9px rgba(3, 96, 15, 0.25);
+}
+
+body.portal-settings-page .student-profile-settings-hero__copy {
+    min-width: 0;
+}
+
+body.portal-settings-page .student-profile-settings-hero__copy > span,
+body.portal-settings-page .student-settings-form-label {
+    display: block;
+    color: #03600f;
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.portal-settings-page .student-profile-settings-hero__copy h2 {
+    margin: 0.18rem 0 0.28rem;
+    color: #173b25;
+    font-size: 1.25rem;
+    font-weight: 750;
+}
+
+body.portal-settings-page .student-profile-settings-hero__copy p {
+    max-width: 600px;
+    margin: 0;
+    color: #52635a;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+body.portal-settings-page .student-profile-settings-hero__copy small {
+    display: inline-block;
+    margin-top: 0.45rem;
+    color: #61746a;
+    font-size: 0.78rem;
+}
+
+body.portal-settings-page .student-settings-form-label {
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid #e5ece7;
+}
+
+@media (max-width: 575.98px) {
+    body.portal-settings-page .portal-settings-main-card.student-settings-detail-mode {
+        width: 100%;
+    }
+
+    body.portal-settings-page .student-settings-detail-mode .student-settings-focus-view .portal-settings-accordion-item {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    body.portal-settings-page .student-profile-settings-hero {
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1rem;
+    }
+
+    body.portal-settings-page .student-profile-settings-hero__image {
+        width: 68px;
+        height: 68px;
+    }
+
+    body.portal-settings-page .student-profile-settings-hero__copy h2 {
+        font-size: 1.05rem;
+    }
+
+    body.portal-settings-page .student-profile-settings-hero__copy p {
+        font-size: 0.82rem;
+    }
+}
+
+@media (min-width: 992px) {
+    body.student-portal-premium #mainContent {
+        padding-top: 1.15rem !important;
+    }
+}
+
+body.student-dashboard-premium .student-page-head-banner,
+body.student-portal-premium .student-page-head-banner {
+    margin-bottom: 0;
+}
+
+body.student-dashboard-premium .student-page-head-banner__inner,
+body.student-portal-premium .student-page-head-banner__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #cbd5e1;
+    border-radius: 16px;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+}
+
+body.student-dashboard-premium .student-page-head-banner__main,
+body.student-portal-premium .student-page-head-banner__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.95rem;
+    min-width: 0;
+}
+
+body.student-dashboard-premium .student-page-head-banner__title,
+body.student-portal-premium .student-page-head-banner__title,
+body.student-dashboard-premium #pageTitle,
+body.student-portal-premium #pageTitle {
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 0 !important;
+}
+
+body.student-dashboard-premium .student-page-head-banner__meta,
+body.student-portal-premium .student-page-head-banner__meta {
+    flex-shrink: 0;
+    align-self: center;
+}
+
+body.student-dashboard-premium .student-page-head-banner__date,
+body.student-portal-premium .student-page-head-banner__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #64748b;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+body.student-dashboard-premium .student-page-head-banner__date i,
+body.student-portal-premium .student-page-head-banner__date i {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 575.98px) {
+    body.student-dashboard-premium .student-page-head-banner__inner,
+    body.student-portal-premium .student-page-head-banner__inner {
+        padding: 1rem;
+    }
+
+    body.student-dashboard-premium .student-page-head-banner__title,
+    body.student-portal-premium .student-page-head-banner__title,
+    body.student-dashboard-premium #pageTitle,
+    body.student-portal-premium #pageTitle {
+        font-size: 1.35rem;
+    }
+
+    body.student-dashboard-premium .student-page-head-banner__meta,
+    body.student-portal-premium .student-page-head-banner__meta {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    body.student-portal-premium .student-page-head-banner__meta .student-portal-breadcrumb {
+        width: 100%;
+    }
+
+    body.student-dashboard-premium .student-page-head-banner__date,
+    body.student-portal-premium .student-page-head-banner__date {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Page title row + breadcrumb (aligned with CSDL premium pages) */
+body.student-portal-premium .student-portal-page-head {
+    gap: 1rem;
+    align-items: flex-start !important;
+}
+
+@media (min-width: 768px) {
+    body.student-portal-premium .student-portal-page-head {
+        align-items: center !important;
+    }
+}
+
+body.student-portal-premium #pageTitle {
+    margin-bottom: 0.35rem !important;
+}
+
+body.student-portal-premium #pageSubtitle {
+    display: block;
+    line-height: 1.45;
+    max-width: 40rem;
+}
+
+body.student-portal-premium .student-portal-breadcrumb {
+    padding: 0.45rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+body.student-portal-premium .student-portal-breadcrumb .breadcrumb {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+}
+
+body.student-portal-premium .student-portal-breadcrumb .breadcrumb-item a {
+    /* Match the green linked breadcrumb used by the staff portals. */
+    color: #03600f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+body.student-portal-premium .student-portal-breadcrumb .breadcrumb-item a:hover {
+    color: #024a0c;
+    text-decoration: underline;
+}
+
+body.student-portal-premium .student-portal-breadcrumb .breadcrumb-item.active {
+    color: #64748b;
+}
+
+@media (max-width: 575.98px) {
+    body.student-portal-premium .student-portal-breadcrumb {
+        width: 100%;
+    }
+}
+
+/* Compact page title and breadcrumb into one header card on phones. */
+@media (max-width: 575.98px) {
+    body.student-portal-premium .student-page-head-banner {
+        padding-bottom: 0 !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    body.student-portal-premium .student-page-head-banner__inner {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.85rem 1rem !important;
+        border-radius: 16px;
+    }
+
+    body.student-portal-premium .student-page-head-banner__main {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+        min-width: 0;
+    }
+
+    body.student-portal-premium .student-page-head-banner__title,
+    body.student-portal-premium #pageTitle {
+        font-size: 1.28rem;
+        line-height: 1.25;
+    }
+
+    body.student-portal-premium .student-page-head-banner__meta {
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    body.student-portal-premium .student-page-head-banner__meta .student-portal-breadcrumb,
+    body.student-portal-premium .student-portal-breadcrumb {
+        width: auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    body.student-portal-premium .student-portal-breadcrumb .breadcrumb {
+        font-size: 0.76rem;
+        color: #64748b;
+        white-space: nowrap;
+    }
+}
+
+/* Elevated panels (balances list cards) */
+body.student-portal-premium .student-panel {
+    border: 1px solid #e6ebf1 !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03);
+    overflow: hidden;
+}
+
+body.student-portal-premium .student-panel > .p-3.border-bottom,
+body.student-portal-premium .student-panel > .d-flex.border-bottom {
+    border-bottom-color: #edf1f5 !important;
+    background: linear-gradient(180deg, #fcfdfd 0%, #ffffff 100%);
+}
+
+/* Settings cards */
+body.student-portal-premium .student-settings-card.card {
+    border: 1px solid #e6ebf1 !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 28px rgba(16, 24, 40, 0.06),
+        0 2px 8px rgba(16, 24, 40, 0.03) !important;
+    overflow: hidden;
+}
+
+body.student-portal-premium .student-settings-card .card-header {
+    border-bottom: 1px solid #edf1f5 !important;
+    background: #fff !important;
+    padding: 1rem 1.25rem !important;
+}
+
+body.student-portal-premium .student-settings-card .card-header h5 {
+    color: #212529;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+body.student-portal-premium .student-settings-card .card-body {
+    padding: 1.35rem 1.5rem !important;
+}
+
+body.student-portal-premium .student-settings-card .form-control,
+body.student-portal-premium .student-settings-card .form-select {
+    border-radius: 10px;
+    border-color: #e0e6ed;
+}
+
+body.student-portal-premium .student-settings-card .form-control:focus,
+body.student-portal-premium .student-settings-card .form-select:focus {
+    border-color: rgba(3, 96, 15, 0.45);
+    box-shadow: 0 0 0 0.2rem rgba(3, 96, 15, 0.12);
+}
+
+/* Captcha fields: premium card rules above override Bootstrap validation borders — restore red/green feedback */
+body.student-portal-premium .student-settings-card #captchaAnswer.form-control.is-valid,
+body.student-portal-premium .student-settings-card #profileCaptchaAnswer.form-control.is-valid {
+    border-color: #198754 !important;
+}
+
+body.student-portal-premium .student-settings-card #captchaAnswer.form-control.is-invalid,
+body.student-portal-premium .student-settings-card #profileCaptchaAnswer.form-control.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+body.student-portal-premium .student-settings-card #captchaAnswer.form-control.is-valid:focus,
+body.student-portal-premium .student-settings-card #profileCaptchaAnswer.form-control.is-valid:focus {
+    border-color: #198754 !important;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25) !important;
+}
+
+body.student-portal-premium .student-settings-card #captchaAnswer.form-control.is-invalid:focus,
+body.student-portal-premium .student-settings-card #profileCaptchaAnswer.form-control.is-invalid:focus {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+body.student-portal-premium .student-settings-card #studentProfileImagePreview {
+    border-width: 3px !important;
+    box-shadow: 0 10px 22px rgba(16, 24, 40, 0.08);
+}
+
+/* Data tables — neutral headers (no green tint) */
+body.student-portal-premium #allBalancesTable thead th,
+body.student-portal-premium #allLoansTable thead th {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #5f6c7b;
+    background: #f1f4f8 !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.student-portal-premium #allBalancesTable tbody td,
+body.student-portal-premium #allLoansTable tbody td {
+    font-size: 0.835rem;
+    color: #2f3d4e;
+    border-bottom: 1px solid #eef1f5;
+    padding-top: 0.62rem;
+    padding-bottom: 0.62rem;
+    vertical-align: middle;
+}
+
+body.student-portal-premium #allBalancesTable tbody tr:hover,
+body.student-portal-premium #allLoansTable tbody tr:hover {
+    background: #f6f8fb;
+}
+
+/* Loan status highlights use a rounded-square shape instead of pills. */
+body.student-portal-premium #allLoansTable .badge,
+body.student-portal-premium #viewLoanModal .badge {
+    border-radius: 9px;
+}
+
+body.student-portal-premium .student-panel .table-responsive,
+body.student-portal-premium .student-panel > .d-flex.flex-column > .table-responsive,
+body.student-portal-premium .student-panel .student-records-table-wrap {
+    padding: 0.15rem 0.5rem 0.35rem;
+}
+
+@media (min-width: 768px) {
+    body.student-portal-premium #allLoansTableWrap.student-records-table-wrap,
+    body.student-portal-premium #allBalancesTableWrap.student-records-table-wrap {
+        max-height: 500px;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    body.student-dashboard-premium .loan-history-table-wrap {
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+}
+
+body.student-portal-premium .student-panel .d-flex.border-top {
+    border-top-color: #edf1f5 !important;
+    background: #fbfcfe;
+}
+
+@media (max-width: 991.98px) {
+    body.student-portal-premium .student-mobile-record--clickable {
+        cursor: pointer;
+    }
+
+    body.student-portal-premium .student-settings-card .card-body {
+        padding: 1.1rem !important;
+    }
+
+    body.student-portal-premium .student-settings-mobile-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        padding: 0.35rem;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+    }
+
+    body.student-portal-premium .student-settings-mobile-tab {
+        border: 1px solid #d1d5db;
+        background: #f9fafb;
+        color: #374151;
+        border-radius: 10px;
+        min-height: 40px;
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    body.student-portal-premium .student-settings-mobile-tab.is-active {
+        background: #111827;
+        color: #ffffff;
+        border-color: #111827;
+        box-shadow: 0 6px 14px rgba(16, 24, 40, 0.12);
+    }
+
+    body.student-portal-premium #settingsPasswordSection.is-hidden-mobile,
+    body.student-portal-premium #settingsAccountSection.is-hidden-mobile {
+        display: none !important;
+    }
+}
+
+body.student-portal-premium .student-panel .btn-outline-success,
+body.student-portal-premium .student-settings-card .btn-outline-success {
+    color: #374151;
+    border-color: #d1d5db;
+    background: #ffffff;
+}
+
+body.student-portal-premium .student-panel .btn-outline-success:hover,
+body.student-portal-premium .student-settings-card .btn-outline-success:hover {
+    color: #111827;
+    border-color: #9ca3af;
+    background: #f3f4f6;
+}
+
+body.student-portal-premium .balances-faq-trigger,
+body.student-dashboard-premium .balances-faq-trigger {
+    line-height: 1;
+    text-decoration: none;
+}
+
+body.student-portal-premium .balances-faq-trigger:hover,
+body.student-portal-premium .balances-faq-trigger:focus,
+body.student-dashboard-premium .balances-faq-trigger:hover,
+body.student-dashboard-premium .balances-faq-trigger:focus {
+    opacity: 0.85;
+}
+
+body.student-portal-premium .balances-faq-modal-body .balances-faq-item,
+body.student-dashboard-premium .balances-faq-modal-body .balances-faq-item {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.student-portal-premium .balances-faq-modal-body .balances-faq-item:last-child,
+body.student-dashboard-premium .balances-faq-modal-body .balances-faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+body.student-portal-premium .balances-faq-item__title,
+body.student-dashboard-premium .balances-faq-item__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #03600f;
+    margin-bottom: 0.35rem;
+}
+
+body.student-portal-premium .balances-faq-item__text,
+body.student-dashboard-premium .balances-faq-item__text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #475569;
+}
+
+/* Notifications full page */
+body.student-portal-premium .notifications-page-panel {
+    overflow: hidden;
+}
+
+body.student-portal-premium .notifications-page-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-height: 120px;
+}
+
+body.student-portal-premium .notifications-page-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 0.85rem 0.95rem;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+}
+
+body.student-portal-premium .notifications-page-item:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+body.student-portal-premium .notifications-page-item--unread {
+    background: #f8fafc;
+    border-color: #dbeafe;
+}
+
+body.student-portal-premium .notifications-page-item__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+body.student-portal-premium .notifications-page-item__title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+}
+
+body.student-portal-premium .notifications-page-item__message {
+    margin-top: 0.35rem;
+    font-size: 0.84rem;
+    color: #475569;
+    line-height: 1.45;
+}
+
+body.student-portal-premium .notifications-page-item__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.45rem;
+}
+
+body.student-portal-premium .notifications-page-item__time {
+    font-size: 0.72rem;
+    color: #94a3b8;
+}
+
+body.student-portal-premium .notifications-page-item__action {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+body.student-portal-premium .notifications-page-footer {
+    background: #fbfcfe;
+}
+
+@media (max-width: 991.98px) {
+    body.student-portal-premium .notifications-menu {
+        display: none !important;
+    }
+}
+
+/* Force modal footer buttons to align right */
+@media (max-width: 991.98px) {
+    body.student-portal-premium #viewLoanModal .modal-footer,
+    body.student-portal-premium #viewDocumentModal .modal-footer {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+
+    body.student-portal-premium #viewLoanModal .modal-footer .btn,
+    body.student-portal-premium #viewDocumentModal .modal-footer .btn {
+        width: auto !important;
+        min-width: 80px !important;
+        margin-left: auto !important;
+    }
+
+    /* Keep loan-detail actions together instead of pushing each button apart. */
+    body.student-portal-premium #viewLoanModal #loanDetailsFooter {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-end !important;
+        gap: 0.5rem;
+    }
+
+    body.student-portal-premium #viewLoanModal #loanDetailsFooter .btn {
+        width: auto !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* Document viewer: center the compact mobile modal and keep its actions together. */
+@media (max-width: 767.98px) {
+    body.student-portal-premium #viewDocumentModal.modal.show {
+        display: flex !important;
+        align-items: center;
+        padding: 0.5rem !important;
+    }
+
+    body.student-portal-premium #viewDocumentModal .modal-dialog {
+        width: 100%;
+        margin: 0 auto !important;
+    }
+
+    body.student-portal-premium #viewDocumentModal .modal-footer {
+        justify-content: flex-end !important;
+        gap: 0.6rem !important;
+    }
+
+    body.student-portal-premium #viewDocumentModal .modal-footer .btn {
+        margin-left: 0 !important;
+    }
+}

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <title>Settings - CSDL Student Loan Management System</title>
+    <link rel="icon" type="image/png" href="../../assets/images/i.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">    <link href="../../assets/css/csdl/csdl-dashboard.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-loans-management-premium.css" rel="stylesheet">
+    <link href="../../assets/css/csdl/csdl-settings-premium.css?v=20261007-log-pagination" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-layout.css?v=20261008-permission-guards" rel="stylesheet">
+    <link href="../../assets/css/shared/shared-settings-accordion.css?v=20260926-settings-refresh" rel="stylesheet">
+
+    <link href="../../assets/css/shared/shared-portal-mobile-head.css" rel="stylesheet">
+</head>
+<body class="csdl-mobile-sidebar bg-light csdl-loans-premium csdl-settings-premium portal-settings-page">
+    <script src="../../js/shared/shared-mobile-bottom-nav.js?v=20261020-csdl-pn-tagging"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top py-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler btn btn-outline-light border-0 d-lg-none order-0" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-none d-lg-flex" href="csdl-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <a class="navbar-brand fw-bold d-flex align-items-center order-1 d-lg-none" href="csdl-dashboard.html">
+                <img src="../../assets/images/i.png" alt="CSDL Logo" style="width:28px;height:28px;object-fit:contain;">
+                <span>Student Financial Assistance</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto order-2" id="navbarNav">
+                <ul class="navbar-nav align-items-center d-flex m-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link position-relative notifications-bell-link" href="#" role="button" data-bs-toggle="dropdown" aria-label="Notifications">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount" style="display:none; width:8px; height:8px; padding:0; min-width:8px; font-size:0;"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm notifications-menu">
+                            <li><h6 class="dropdown-header notifications-header">Notifications</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><div id="notificationsList" class="notifications-list"><div class="notification-empty">No notifications yet</div></div></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <div class="notifications-footer">
+                                    <a class="notifications-view-all" href="#">View all</a>
+                                    <button class="btn btn-sm btn-link notifications-mark-read" id="markAllReadBtn">Mark all read</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width:28px;height:28px;">
+                                <img id="headerUserAvatarImg" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=28" alt="User" class="rounded-circle" style="width:24px;height:24px;object-fit:cover">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="width:280px;min-width:260px;">
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="csdl-settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse shadow-sm px-2 sidebar-toggle-container csdl-sidebar-modern" style="position:sticky;top:56px;height:calc(99vh - 56px);">
+                <div class="d-flex flex-column h-100 sidebar-scroll">
+                    <div class="sidebar-header-mobile d-lg-none">
+                        <div class="d-flex align-items-center">
+                            <button class="sidebar-close-btn d-lg-none me-2" type="button" aria-label="Close sidebar" id="mobileSidebarCloseBtn">
+                                <i class="bi bi-list"></i>
+                            </button>
+                            <img src="../../assets/images/i.png" alt="CSDL Logo" class="me-2" style="width:28px;height:28px;object-fit:contain;">
+                            <div class="flex-grow-1" style="min-width:0;overflow:hidden;">
+                                <div class="fw-bold text-white" style="font-size:0.8rem;line-height:1.3;white-space:nowrap;">Student Financial Assistance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn d-none d-lg-flex" id="sidebarToggleBtn" title="Toggle sidebar">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-mobile-masterfiles d-lg-none">
+                        <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                    </ul>
+                    <ul class="nav flex-column px-2 pt-3 mt-1 csdl-sidebar-desktop-nav d-none d-lg-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="csdl-dashboard.html">
+                                <i class="bi bi-speedometer2 me-2"></i>
+                                <span class="link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="csdl-loans-management.html">
+                                <i class="bi bi-clipboard-data me-2"></i>
+                                <span class="link-text">Active Loans</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="csdl-pn-tagging.html">
+                                <i class="bi bi-journal-check me-2"></i>
+                                <span class="link-text">PN Tagging</span>
+                            </a>
+                        </li>
+                        <li class="csdl-sidebar-section-label csdl-sidebar-section-label--masterfiles" aria-hidden="true"><span class="link-text">Masterfiles</span></li>
+                        <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-employees.html"><i class="bi bi-person-badge me-2"></i><span class="link-text">Employees</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-students.html"><i class="bi bi-people me-2"></i><span class="link-text">Students</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-campuses.html"><i class="bi bi-geo-alt me-2"></i><span class="link-text">Campuses</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-departments.html"><i class="bi bi-building me-2"></i><span class="link-text">Departments</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-scholarships.html"><i class="bi bi-award me-2"></i><span class="link-text">Scholarships</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-school-years.html"><i class="bi bi-calendar3 me-2"></i><span class="link-text">School Years</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-year-levels.html"><i class="bi bi-layers me-2"></i><span class="link-text">Year Levels</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-modalities.html"><i class="bi bi-grid-3x3-gap me-2"></i><span class="link-text">Modalities</span></a></li>
+                                                            <li class="nav-item"><a class="nav-link" href="../masterfiles/masterfiles-documents.html"><i class="bi bi-file-earmark-text me-2"></i><span class="link-text">Documents</span></a></li>
+                    </ul>
+                    <div class="mt-auto pt-3 px-3 border-top">
+                        <div class="d-flex align-items-center">
+                            <img id="sidebarProfileAvatar" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=64" alt="User" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
+                            <div>
+                                <div id="sidebarProfileName" class="fw-semibold">User</div>
+                                <small id="sidebarProfileRole" class="text-muted">Staff</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main id="mainContent" class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <header class="csdl-page-head-banner pt-3 pb-2 mb-3 csdl-page-head">
+                    <div class="csdl-page-head-banner__inner">
+                        <div class="csdl-page-head-banner__main">
+                            <h1 class="csdl-page-head-banner__title mb-0" id="pageTitle">Settings</h1>
+                        </div>
+                        <div class="csdl-page-head-banner__meta">
+                            <nav aria-label="breadcrumb" class="csdl-page-breadcrumb">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="csdl-dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                <div class="card border-0 shadow-sm csdl-loans-main-card csdl-settings-main-card">
+                    <div class="card-body">
+                        <div class="accordion csdl-settings-accordion" id="csdlSettingsAccordion" hidden>
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingContact">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseContact" aria-expanded="false" aria-controls="settingsCollapseContact">
+                                        <i class="bi bi-person-circle me-2" aria-hidden="true"></i>Profile & Contact
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseContact" class="accordion-collapse collapse" aria-labelledby="settingsHeadingContact" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <form id="profileForm">
+                                    <div class="row g-3">
+                                        <div class="col-12 text-center mb-3">
+                                            <div class="position-relative d-inline-block">
+                                                <img id="profileImagePreview" src="https://ui-avatars.com/api/?name=User&background=03600f&color=fff&size=128" alt="Profile" class="rounded-circle border border-3" style="width:128px;height:128px;object-fit:cover;">
+                                                <label for="profileImageInput" class="position-absolute bottom-0 end-0 btn btn-success btn-sm rounded-circle" style="width:36px;height:36px;padding:0;cursor:pointer;" title="Change profile picture">
+                                                    <i class="bi bi-camera"></i>
+                                                </label>
+                                                <input type="file" id="profileImageInput" accept="image/jpeg,image/jpg,image/png" style="display:none;">
+                                            </div>
+                                            <div class="mt-2">
+                                                <small class="text-muted">Click camera icon to upload profile picture (JPG, PNG - Max 2MB)</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileEmployeeId" class="form-label">Employee ID</label>
+                                            <input type="text" class="form-control" id="profileEmployeeId" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileFirstName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="profileFirstName" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileMiddleName" class="form-label">Middle Name</label>
+                                            <input type="text" class="form-control" id="profileMiddleName" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileLastName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="profileLastName" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileBirthdate" class="form-label">Birthdate</label>
+                                            <input type="date" class="form-control" id="profileBirthdate">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileGender" class="form-label">Gender</label>
+                                            <select class="form-select" id="profileGender">
+                                                <option value="">Select Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileContactNumber" class="form-label">Contact Number</label>
+                                            <input type="text" class="form-control" id="profileContactNumber" maxlength="11" placeholder="09XXXXXXXXX">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="profileEmail" class="form-label">Email Address</label>
+                                            <input type="email" class="form-control" id="profileEmail">
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-success px-4" id="updateProfileBtn">
+                                            Save changes
+                                        </button>
+                                    </div>
+                                </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingPassword">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapsePassword" aria-expanded="false" aria-controls="settingsCollapsePassword">
+                                        <i class="bi bi-key me-2" aria-hidden="true"></i>Change password
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapsePassword" class="accordion-collapse collapse" aria-labelledby="settingsHeadingPassword" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <form id="passwordForm">
+                                    <div class="alert alert-info border-0 shadow-sm mb-4">
+                                        <h6 class="alert-heading mb-2 fw-bold">
+                                            <i class="bi bi-info-circle me-1"></i>Password Requirements
+                                        </h6>
+                                        <ul class="mb-0 small ps-3">
+                                            <li>At least 8 characters long</li>
+                                            <li>Contains at least one uppercase letter (A-Z)</li>
+                                            <li>Contains at least one lowercase letter (a-z)</li>
+                                            <li>Contains at least one number (0-9)</li>
+                                            <li>Contains at least one special character (!@#$%^&amp;*...)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <label for="currentPassword" class="form-label fw-semibold mb-2">Current Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="currentPassword" required placeholder="Enter current password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleCurrentPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="newPassword" class="form-label fw-semibold mb-2">New Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="newPassword" required placeholder="Enter new password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleNewPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="confirmPassword" class="form-label fw-semibold mb-2">Confirm New Password <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-light" style="border-right: none;"><i class="bi bi-lock-fill text-muted"></i></span>
+                                                <input type="password" class="form-control" style="border-left: none; border-right: none;" id="confirmPassword" required placeholder="Confirm new password">
+                                                <button class="btn btn-outline-secondary" style="border-left: none;" type="button" id="toggleConfirmPassword">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-success px-4" id="changePasswordBtn">
+                                            Change password
+                                        </button>
+                                    </div>
+                                </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingSecurity">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseSecurity" aria-expanded="false" aria-controls="settingsCollapseSecurity">
+                                        <i class="bi bi-shield-lock me-2" aria-hidden="true"></i>Security settings
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseSecurity" class="accordion-collapse collapse" aria-labelledby="settingsHeadingSecurity" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="maxLoginAttempts" class="form-label fw-semibold mb-2">Maximum Login Attempts <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="maxLoginAttempts" min="1" max="10" required>
+                                        <small class="text-muted d-block mt-2">Number of failed login attempts before account lock</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="accountLockDuration" class="form-label fw-semibold mb-2">Account Lock Duration (minutes) <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="accountLockDuration" min="1" required>
+                                        <small class="text-muted d-block mt-2">Duration in minutes before account is automatically unlocked</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="sessionTimeoutSeconds" class="form-label fw-semibold mb-2">Session Timeout (seconds) <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="sessionTimeoutSeconds" min="300" required>
+                                        <small class="text-muted d-block mt-2">Session timeout in seconds (300 = 5 minutes). A warning appears during the final minute.</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold d-block mb-2">Account Management</label>
+                                        <div class="form-check form-switch mt-2">
+                                            <input class="form-check-input" type="checkbox" id="autoUnlockAccounts" role="switch">
+                                            <label class="form-check-label" for="autoUnlockAccounts">
+                                                Automatically Unlock Expired Accounts
+                                            </label>
+                                        </div>
+                                        <small class="text-muted d-block mt-2">Automatically unlock accounts after lock duration expires</small>
+                                    </div>
+                                </div>
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success px-4" id="saveSecuritySettingsBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingDocument">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseDocument" aria-expanded="false" aria-controls="settingsCollapseDocument">
+                                        <i class="bi bi-file-earmark me-2" aria-hidden="true"></i>Document settings
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseDocument" class="accordion-collapse collapse" aria-labelledby="settingsHeadingDocument" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="documentMaxSize" class="form-label fw-semibold mb-2">Maximum Document Size (bytes) <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="documentMaxSize" min="1048576" required>
+                                        <small class="text-muted d-block mt-2">Maximum file size in bytes (e.g., 10485760 = 10MB)</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="allowedDocumentTypes" class="form-label fw-semibold mb-2">Allowed Document Types <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="allowedDocumentTypes" placeholder="pdf,doc,docx,jpg,jpeg,png" required>
+                                        <small class="text-muted d-block mt-2">Comma-separated list of allowed file extensions</small>
+                                    </div>
+                                </div>
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success px-4" id="saveDocumentSettingsBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingPeriods">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapsePeriods" aria-expanded="false" aria-controls="settingsCollapsePeriods">
+                                        <i class="bi bi-calendar3 me-2" aria-hidden="true"></i>Application periods
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapsePeriods" class="accordion-collapse collapse" aria-labelledby="settingsHeadingPeriods" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <p class="text-muted mb-4">Enable or disable application periods. Only enabled periods will be available for students during loan application.</p>
+                                <div id="applicationPeriodsContainer" class="row g-3">
+                                    <div class="col-12">
+                                        <div class="text-center text-muted py-4">
+                                            <i class="bi bi-hourglass-split me-2"></i>Loading application periods...
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success px-4" id="saveApplicationPeriodsBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingExam">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseExam" aria-expanded="false" aria-controls="settingsCollapseExam">
+                                        <i class="bi bi-calendar-event me-2" aria-hidden="true"></i>Periodical exam schedule
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseExam" class="accordion-collapse collapse" aria-labelledby="settingsHeadingExam" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <p class="csdl-settings-section-note"><i class="bi bi-info-circle me-2"></i>Set school year, period, and exam dates. Active schedules appear on the student dashboard calendar.</p>
+                                <div class="table-responsive csdl-settings-data-table">
+                                    <table class="table table-sm align-middle mb-0 csdl-exam-schedules-table" id="examSchedulesTable">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>School year</th>
+                                                <th>Period</th>
+                                                <th>Exam start</th>
+                                                <th>Exam end</th>
+                                                <th class="text-center">Active</th>
+                                                <th class="text-center" style="width: 72px;">Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="examSchedulesTableBody">
+                                            <tr>
+                                                <td colspan="6" class="text-center text-muted py-4">
+                                                    <i class="bi bi-hourglass-split me-2"></i>Loading exam schedules...
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="csdl-exam-schedule-actions d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3">
+                                    <button type="button" class="btn btn-outline-success btn-sm" id="addExamScheduleBtn">
+                                        <i class="bi bi-plus-circle me-1"></i>Add schedule
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-sm px-4" id="saveExamSchedulesBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingSystem">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseSystem" aria-expanded="false" aria-controls="settingsCollapseSystem">
+                                        <i class="bi bi-gear-wide me-2" aria-hidden="true"></i>System settings
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseSystem" class="accordion-collapse collapse" aria-labelledby="settingsHeadingSystem" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <div class="row g-4 csdl-system-settings-grid">
+                                    <div class="col-md-6 csdl-settings-control-card">
+                                        <label for="systemName" class="form-label fw-semibold mb-2">System Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="systemName" required>
+                                        <small class="text-muted d-block mt-2">Display name of the system</small>
+                                    </div>
+                                    <div class="col-md-6 csdl-settings-control-card">
+                                        <label for="schoolName" class="form-label fw-semibold mb-2">School Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="schoolName" required>
+                                        <small class="text-muted d-block mt-2">Name of the educational institution</small>
+                                    </div>
+                                    <div class="col-md-6 csdl-settings-control-card">
+                                        <label for="systemLogo" class="form-label fw-semibold mb-2">System Logo</label>
+                                        <input type="file" class="form-control" id="systemLogo" accept="image/png,image/jpeg,image/jpg,image/gif">
+                                        <small class="text-muted d-block mt-2">Upload a logo image (PNG, JPG, GIF - Max 2MB). Leave empty to keep current logo.</small>
+                                        <div id="currentLogoPreview" class="mt-3" style="display:none;">
+                                            <label class="form-label fw-semibold small">Current Logo:</label>
+                                            <div class="border rounded p-2 bg-light d-inline-block">
+                                                <img id="currentLogoImg" src="" alt="Current Logo" style="max-width:100px;max-height:50px;object-fit:contain;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 csdl-settings-control-card">
+                                        <label class="form-label fw-semibold d-block mb-2">Email Notifications</label>
+                                        <div class="form-check form-switch mt-2">
+                                            <input class="form-check-input" type="checkbox" id="emailNotifications" role="switch">
+                                            <label class="form-check-label" for="emailNotifications">
+                                                Enable Email Notifications
+                                            </label>
+                                        </div>
+                                        <small class="text-muted d-block mt-2">Send email notifications for important events</small>
+                                    </div>
+                                    <div class="col-md-6 csdl-settings-control-card">
+                                        <label class="form-label fw-semibold d-block mb-2">Control Number Generation</label>
+                                        <div class="form-check form-switch mt-2">
+                                            <input class="form-check-input" type="checkbox" id="autoControlNumber" role="switch">
+                                            <label class="form-check-label" for="autoControlNumber">
+                                                Auto-Generate Control Numbers
+                                            </label>
+                                        </div>
+                                        <small class="text-muted d-block mt-2">Automatically generate control numbers for loan applications</small>
+                                    </div>
+                                </div>
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success px-4" id="saveSystemSettingsBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingForm">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseForm" aria-expanded="false" aria-controls="settingsCollapseForm">
+                                        <i class="bi bi-file-text me-2" aria-hidden="true"></i>Loan application form description
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseForm" class="accordion-collapse collapse" aria-labelledby="settingsHeadingForm" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                <p class="text-muted mb-4">Customize the description and instructions that appear on the student loan application form.</p>
+                                <div class="row g-4">
+                                    <div class="col-12">
+                                        <label for="formTitle" class="form-label fw-semibold mb-2">Form Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="formTitle" required>
+                                        <small class="text-muted d-block mt-2">Main title displayed at the top of the application form</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="formDescription" class="form-label fw-semibold mb-2">Form Description <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="formDescription" rows="3" required></textarea>
+                                        <small class="text-muted d-block mt-2">Brief description of the loan application form purpose</small>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="formInstructions" class="form-label fw-semibold mb-2">Instructions <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="formInstructions" rows="6" required></textarea>
+                                        <small class="text-muted d-block mt-2">Step-by-step instructions for students (one instruction per line)</small>
+                                    </div>
+                                </div>
+                                <div class="mt-4 d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success px-4" id="saveFormDescriptionBtn">
+                                        Save changes
+                                    </button>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingPaymentLimitation">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapsePaymentLimitation" aria-expanded="false" aria-controls="settingsCollapsePaymentLimitation">
+                                        <i class="bi bi-cash-stack me-2" aria-hidden="true"></i>Payment limitation
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapsePaymentLimitation" class="accordion-collapse collapse" aria-labelledby="settingsHeadingPaymentLimitation" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                        <div class="csdl-settings-section-note"><i class="bi bi-info-circle me-2"></i>Set the minimum amount a student can enter in the <strong>Amount I can pay</strong> field when submitting a loan application.</div>
+                                        <div class="row g-4 align-items-end">
+                                            <div class="col-md-6">
+                                                <label for="minimumAmountCanPay" class="form-label fw-semibold mb-2">Minimum amount can pay <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">₱</span>
+                                                    <input type="number" class="form-control" id="minimumAmountCanPay" min="1" step="0.01" placeholder="e.g. 500.00" required>
+                                                </div>
+                                                <small class="text-muted d-block mt-2">Students cannot submit an amount lower than this limit.</small>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 d-flex justify-content-end">
+                                            <button type="button" class="btn btn-success px-4" id="savePaymentLimitationBtn">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingEmailTemplates">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseEmailTemplates" aria-expanded="false" aria-controls="settingsCollapseEmailTemplates">
+                                        <i class="bi bi-envelope-paper me-2" aria-hidden="true"></i>Email templates
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseEmailTemplates" class="accordion-collapse collapse" aria-labelledby="settingsHeadingEmailTemplates" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                        <p class="csdl-settings-section-note"><i class="bi bi-info-circle me-2"></i>Edit the subject and message sent by each office. Student details, amounts, links, and the email layout remain generated by the system. Account verification emails are managed separately.</p>
+                                        <div id="emailTemplatesStatus" class="small mb-3" role="status" aria-live="polite"></div>
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6"><label class="form-label fw-semibold" for="emailTemplateOffice">Sending office</label><select class="form-select" id="emailTemplateOffice"></select></div>
+                                            <div class="col-md-6"><label class="form-label fw-semibold" for="emailTemplateType">Email event</label><select class="form-select" id="emailTemplateType"></select></div>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2 mb-3"><span id="emailTemplateMode" class="badge bg-light text-dark border">Built-in</span><small class="text-muted">Built-in entries show suggested starting text; the existing wording stays active until you save. Changes also affect queued emails that have not been sent.</small></div>
+                                        <div class="mb-3"><label class="form-label fw-semibold" for="emailTemplateSubject">Subject</label><input id="emailTemplateSubject" class="form-control" maxlength="180" autocomplete="off"></div>
+                                        <div class="mb-3"><label class="form-label fw-semibold" for="emailTemplateBody">Message</label><textarea id="emailTemplateBody" class="form-control" rows="7" maxlength="5000"></textarea><small class="text-muted">Plain text only. Available placeholders: {student_name}, {school_id}, {application_no}, {amount}, {due_date}, {destination_office}.</small></div>
+                                        <div class="csdl-email-template-preview mb-3"><div class="fw-semibold mb-2">Message preview</div><div id="emailTemplatePreviewSubject" class="small fw-semibold mb-2"></div><div id="emailTemplatePreviewBody" class="small"></div><div class="small text-muted mt-3">Required application details and standard footer are added automatically.</div></div>
+                                        <div class="d-flex flex-wrap justify-content-end gap-2"><button type="button" class="btn btn-outline-secondary" id="resetEmailTemplateBtn">Restore built-in</button><button type="button" class="btn btn-success px-4" id="saveEmailTemplateBtn">Save template</button></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingAudit">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseAudit" aria-expanded="false" aria-controls="settingsCollapseAudit">
+                                        <i class="bi bi-clock-history me-2" aria-hidden="true"></i>Activity logs
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseAudit" class="accordion-collapse collapse" aria-labelledby="settingsHeadingAudit" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body csdl-activity-log-body">
+                                <div class="csdl-activity-log-filters">
+                                    <div class="csdl-activity-log-search"><label for="logSearch" class="form-label">Search logs</label><div class="input-group"><span class="input-group-text bg-white"><i class="bi bi-search"></i></span><input id="logSearch" class="form-control" placeholder="Search user, action, or details..."></div></div>
+                                    <div>
+                                        <label for="logActionFilter" class="form-label">Action Type</label>
+                                        <select id="logActionFilter" class="form-select">
+                                            <option value="">All Actions</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="logUserTypeFilter" class="form-label">User Type</label>
+                                        <select id="logUserTypeFilter" class="form-select">
+                                            <option value="">All Users</option>
+                                            <option value="employee">Employee</option>
+                                            <option value="student">Student</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="logDateFrom" class="form-label">Date From</label>
+                                        <input type="date" id="logDateFrom" class="form-control">
+                                    </div>
+                                    <div>
+                                        <label for="logDateTo" class="form-label">Date To</label>
+                                        <input type="date" id="logDateTo" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="csdl-activity-log-toolbar">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="exportAuditLogsBtn">
+                                        <i class="bi bi-download me-1"></i>Export
+                                    </button>
+                                </div>
+                                <div class="table-responsive csdl-settings-logs-wrap">
+                                    <table class="table table-hover align-middle mb-0" id="activityLogTable">
+                                        <thead class="sticky-top">
+                                            <tr>
+                                                <th class="text-center">User</th>
+                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Details</th>
+                                                <th class="text-center">Date &amp; time</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="auditLogsTableBody">
+                                            <tr>
+                                                <td colspan="4" class="text-center text-muted py-4">
+                                                    <i class="bi bi-hourglass-split me-2"></i>Loading audit logs...
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="csdl-settings-logs-footer">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="logsPerPage" class="small text-muted mb-0">Show</label>
+                                        <select id="logsPerPage" class="form-select form-select-sm">
+                                            <option value="10" selected>10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                        <span class="small text-muted">entries per page</span>
+                                    </div>
+                                    <nav id="logsPagination" aria-label="Activity log pages"></nav>
+                                </div>
+                                <div class="small text-muted csdl-settings-logs-summary" id="logsCount">Showing 0 to 0 of 0 entries</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item csdl-settings-accordion-item">
+                                <h2 class="accordion-header" id="settingsHeadingFaq">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settingsCollapseFaq" aria-expanded="false" aria-controls="settingsCollapseFaq">
+                                        <i class="bi bi-question-circle me-2" aria-hidden="true"></i>FAQs
+                                    </button>
+                                </h2>
+                                <div id="settingsCollapseFaq" class="accordion-collapse collapse" aria-labelledby="settingsHeadingFaq" data-bs-parent="#csdlSettingsAccordion">
+                                    <div class="accordion-body">
+                                        <p class="text-muted small mb-3">Common questions about your account and security settings.</p>
+                                        <div class="portal-settings-faq-list" id="settingsFaqContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="portal-settings-logout-panel">
+                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+                                <div>
+                                    <div class="portal-settings-logout-panel__title"><i class="bi bi-box-arrow-right me-2" aria-hidden="true"></i>Logout</div>
+                                    <p class="portal-settings-logout-copy mb-0">Sign out of your account on this device.</p>
+                                </div>
+                                <button type="button" class="btn btn-outline-danger px-4" id="settingsLogoutBtn">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+    <div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center px-4 pb-4 pt-0">
+                    <div class="mb-3">
+                        <div class="mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: linear-gradient(135deg, #198754 0%, #146c43 100%); border-radius: 50%; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.25);">
+                            <i class="bi bi-shield-check text-white" style="font-size: 1.6rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-2">Verify OTP</h5>
+                    <p class="text-muted mb-3" style="font-size: 0.875rem;">
+                        We've sent a 6-digit OTP code to your email.<br>Please enter it below to verify.
+                    </p>
+                    <form id="otpForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control text-center fw-bold" id="otpInput" required maxlength="6" pattern="[0-9]{6}" inputmode="numeric" placeholder="000000" style="letter-spacing: 0.5rem; font-size: 1.25rem; padding: 10px; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted" id="otpTimerText">Code expires in <span id="otpTimer" class="fw-bold text-danger">60</span>s</small>
+                        </div>
+                        <div id="otpError" class="alert alert-danger d-none"></div>
+                        <div class="d-grid gap-2 mb-2">
+                            <button type="submit" class="btn btn-success" id="otpVerifyBtn" style="border-radius: 8px; padding: 10px; font-weight: 600;">
+                                Submit
+                            </button>
+                        </div>
+                        <button type="button" id="resendOtpBtn" class="btn btn-link text-success text-decoration-none d-none" style="font-weight: 500; font-size: 0.9rem;">
+                            Resend Code
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileTurnstile" class="settings-turnstile-overlay d-none" data-overlay="true" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+    <div id="passwordTurnstile" class="settings-turnstile-overlay d-none" data-overlay="true" data-sitekey="0x4AAAAAAEfJmTeYu_FnS4Lj" aria-label="Security verification"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionChecker.js"></script>
+    <script type="module" src="../../js/auth/auth-sessionManager.js"></script>
+    <script type="module" src="../../js/shared/shared-layout.js?v=20261020-csdl-pn-tagging"></script>
+    <script type="module" src="../../js/csdl/csdl-settings.js?v=20261020-csdl-pn-tagging"></script>
+</body>
+</html>
